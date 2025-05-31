@@ -54,7 +54,7 @@ cd firefox-extension
 
 ## 📝 License
 
-Distributed under the GNU License. See `LICENSE` for more information.
+Distributed under the GNU License. See `[LICENSE](https://github.com/alexandre-leng/Tabs-Pin-Firefox-Extension/tree/main?tab=GPL-3.0-1-ov-file#readme)` for more information.
 
 ---
 
