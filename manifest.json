@@ -16,7 +16,7 @@
     "128": "assets/icons/icon-128.png"
   },
 
-  "permissions": ["tabs", "storage", "activeTab"],
+  "permissions": ["tabs", "storage", "activeTab", "<all_urls>"],
 
   "background": {
     "scripts": ["background/background.js"]
