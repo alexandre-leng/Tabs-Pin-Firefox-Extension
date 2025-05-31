@@ -367,7 +367,182 @@
     "description": "Foutbericht tijdens het opnieuw rangschikken"
   },
   "footerCreatedBy": {
-    "message": "Gemaakt door Alexandre with",
-    "description": "Footer tekst - gemaakt door Alexandre with"
+    "message": "Gemaakt door Alexandre met",
+    "description": "Footer created by text"
+  },
+  "changeCategoryTooltip": {
+    "message": "Categorie wijzigen",
+    "description": "Tooltip for the category badge on a tab item"
+  },
+  "categoryChanged": {
+    "message": "Categorie bijgewerkt!",
+    "description": "Success message when a tab's category is changed via quick edit"
+  },
+  "openOneTab": {
+    "message": "1 Tabblad openen"
+  },
+  "pinnedTabsShort": {
+    "message": "Vastgemaakt"
+  },
+  "categoriesShort": {
+    "message": "Categorieën"
+  },
+  "allTabsAlreadyOpen": {
+    "message": "Alle tabbladen zijn al geopend en vastgemaakt"
+  },
+  "someTabsAlreadyOpen": {
+    "message": "$SKIPPED$ tabblad(en) al geopend, $OPENED$ nieuwe tabblad(en) aangemaakt",
+    "placeholders": {
+      "skipped": {
+        "content": "$1",
+        "example": "3"
+      },
+      "opened": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+  "checkingExistingTabs": {
+    "message": "Bestaande tabbladen controleren..."
+  },
+  "openTabsSingular": {
+    "message": "$COUNT$ tabblad openen",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "openTabsPlural": {
+    "message": "$COUNT$ tabbladen openen",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "refresh": {
+    "message": "Vernieuwen"
+  },
+  "refreshTooltip": {
+    "message": "Tabbladen en categorieën gegevens vernieuwen"
+  },
+  "clickToOpenPinnedTabs": {
+    "message": "Klik om uw vastgemaakte tabbladen te openen"
+  },
+  "lastOpenedPrefix": {
+    "message": "Laatst geopend:"
+  },
+  "tabSingular": {
+    "message": "tabblad"
+  },
+  "tabPlural": {
+    "message": "tabbladen"
+  },
+  "pinCurrentTabTooltip": {
+    "message": "Huidige Tabblad Vastmaken"
+  },
+  "manageTabsAndSettingsTooltip": {
+    "message": "Beheer uw tabbladen en instellingen"
+  },
+  "manageCategoriesButtonTooltip": {
+    "message": "Categorieën beheren"
+  },
+  "viewAllPinnedTabsTooltip": {
+    "message": "Alle vastgemaakte tabbladen bekijken"
+  },
+  "manageCategoriesStatTooltip": {
+    "message": "Categorieën beheren"
+  },
+  "extensionVersionTooltip": {
+    "message": "Extensie versie"
+  },
+  "exportSettingsTooltip": {
+    "message": "Instellingen exporteren"
+  },
+  "importSettingsTooltip": {
+    "message": "Instellingen importeren"
+  },
+  "notificationsDenied": {
+    "message": "Meldingen uitgeschakeld. Schakel ze in via uw browserinstellingen."
+  },
+  "criticalErrorTitle": {
+    "message": "Kritieke fout"
+  },
+  "criticalErrorMessage": {
+    "message": "Er is een kritieke fout opgetreden. Start de extensie opnieuw."
+  },
+  "selectCategory": {
+    "message": "Selecteer een categorie"
+  },
+  "tabPinnedInCategory": {
+    "message": "\"$TAB_TITLE$\" vastgemaakt in $CATEGORY_NAME$",
+    "placeholders": {
+      "tab_title": {
+        "content": "$1",
+        "example": "Google"
+      },
+      "category_name": {
+        "content": "$2",
+        "example": "Werk"
+      }
+    }
+  },
+  "categoryPrefix": {
+    "message": "Categorie"
+  },
+  "containsPrefix": {
+    "message": "bevat"
+  },
+  "noCategoryTabs": {
+    "message": "Geen tabbladen in deze categorie"
+  },
+  "selectCategoryIcon": {
+    "message": "Categorie Pictogram Selecteren"
+  },
+  "searchIcons": {
+    "message": "Pictogrammen zoeken..."
+  },
+  "recent": {
+    "message": "Recent"
+  },
+  "objects": {
+    "message": "Objecten"
+  },
+  "symbols": {
+    "message": "Symbolen"
+  },
+  "activities": {
+    "message": "Activiteiten"
+  },
+  "nature": {
+    "message": "Natuur"
+  },
+  "food": {
+    "message": "Voedsel"
+  },
+  "noRecentIcons": {
+    "message": "Geen recente pictogrammen"
+  },
+  "configureManually": {
+    "message": "Handmatig configureren"
+  },
+  "getStartedTitle": {
+    "message": "Begin hier!"
+  },
+  "getStartedDescription": {
+    "message": "Maak uw eerste tabblad vast om uw persoonlijke ruimte te creëren en productiviteit te verhogen."
+  },
+  "pinCurrentTabAction": {
+    "message": "Huidige Tabblad Vastmaken"
+  },
+  "pinCurrentTabHelper": {
+    "message": "Voeg het tabblad toe dat u momenteel bekijkt"
+  },
+  "orDivider": {
+    "message": "of"
   }
 } 

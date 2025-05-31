@@ -367,7 +367,182 @@
     "description": "Mensagem de erro durante o reordenamento"
   },
   "footerCreatedBy": {
-    "message": "Criado por Alexandre with",
-    "description": "Texto do rodapé - criado por Alexandre with"
+    "message": "Criado por Alexandre com",
+    "description": "Footer created by text"
+  },
+  "changeCategoryTooltip": {
+    "message": "Mudar categoria",
+    "description": "Tooltip for the category badge on a tab item"
+  },
+  "categoryChanged": {
+    "message": "Categoria atualizada!",
+    "description": "Success message when a tab's category is changed via quick edit"
+  },
+  "configureManually": {
+    "message": "Configurar manualmente"
+  },
+  "getStartedTitle": {
+    "message": "Comece aqui!"
+  },
+  "getStartedDescription": {
+    "message": "Fixe sua primeira aba para criar seu espaço pessoal e aumentar a produtividade."
+  },
+  "pinCurrentTabAction": {
+    "message": "Fixar Aba Atual"
+  },
+  "pinCurrentTabHelper": {
+    "message": "Adicione a aba que você está visualizando atualmente"
+  },
+  "orDivider": {
+    "message": "ou"
+  },
+  "openOneTab": {
+    "message": "Abrir 1 Aba"
+  },
+  "pinnedTabsShort": {
+    "message": "Fixadas"
+  },
+  "categoriesShort": {
+    "message": "Categorias"
+  },
+  "allTabsAlreadyOpen": {
+    "message": "Todas as abas já estão abertas e fixadas"
+  },
+  "someTabsAlreadyOpen": {
+    "message": "$SKIPPED$ aba(s) já aberta(s), $OPENED$ nova(s) aba(s) criada(s)",
+    "placeholders": {
+      "skipped": {
+        "content": "$1",
+        "example": "3"
+      },
+      "opened": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+  "checkingExistingTabs": {
+    "message": "Verificando abas existentes..."
+  },
+  "openTabsSingular": {
+    "message": "Abrir $COUNT$ aba",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "openTabsPlural": {
+    "message": "Abrir $COUNT$ abas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "refresh": {
+    "message": "Atualizar"
+  },
+  "refreshTooltip": {
+    "message": "Atualizar dados de abas e categorias"
+  },
+  "clickToOpenPinnedTabs": {
+    "message": "Clique para abrir suas abas fixadas"
+  },
+  "lastOpenedPrefix": {
+    "message": "Última abertura:"
+  },
+  "tabSingular": {
+    "message": "aba"
+  },
+  "tabPlural": {
+    "message": "abas"
+  },
+  "pinCurrentTabTooltip": {
+    "message": "Fixar Aba Atual"
+  },
+  "manageTabsAndSettingsTooltip": {
+    "message": "Gerencie suas abas e configurações"
+  },
+  "manageCategoriesButtonTooltip": {
+    "message": "Gerenciar categorias"
+  },
+  "viewAllPinnedTabsTooltip": {
+    "message": "Ver todas as abas fixadas"
+  },
+  "manageCategoriesStatTooltip": {
+    "message": "Gerenciar categorias"
+  },
+  "extensionVersionTooltip": {
+    "message": "Versão da extensão"
+  },
+  "exportSettingsTooltip": {
+    "message": "Exportar configurações"
+  },
+  "importSettingsTooltip": {
+    "message": "Importar configurações"
+  },
+  "notificationsDenied": {
+    "message": "Notificações desativadas. Ative-as nas configurações do seu navegador."
+  },
+  "criticalErrorTitle": {
+    "message": "Erro crítico"
+  },
+  "criticalErrorMessage": {
+    "message": "Ocorreu um erro crítico. Reinicie a extensão."
+  },
+  "selectCategory": {
+    "message": "Selecionar uma categoria"
+  },
+  "tabPinnedInCategory": {
+    "message": "\"$TAB_TITLE$\" fixada em $CATEGORY_NAME$",
+    "placeholders": {
+      "tab_title": {
+        "content": "$1",
+        "example": "Google"
+      },
+      "category_name": {
+        "content": "$2",
+        "example": "Trabalho"
+      }
+    }
+  },
+  "categoryPrefix": {
+    "message": "Categoria"
+  },
+  "containsPrefix": {
+    "message": "contém"
+  },
+  "noCategoryTabs": {
+    "message": "Nenhuma aba nesta categoria"
+  },
+  "selectCategoryIcon": {
+    "message": "Selecionar Ícone da Categoria"
+  },
+  "searchIcons": {
+    "message": "Buscar ícones..."
+  },
+  "recent": {
+    "message": "Recente"
+  },
+  "objects": {
+    "message": "Objetos"
+  },
+  "symbols": {
+    "message": "Símbolos"
+  },
+  "activities": {
+    "message": "Atividades"
+  },
+  "nature": {
+    "message": "Natureza"
+  },
+  "food": {
+    "message": "Comida"
+  },
+  "noRecentIcons": {
+    "message": "Nenhum ícone recente"
   }
 } 

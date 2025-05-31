@@ -1,0 +1,460 @@
+{
+  "extensionName": {
+    "message": "标签页固定"
+  },
+  "extensionDescription": {
+    "message": "轻松管理和打开您的固定标签页。将标签页按类别整理，并在新窗口中自动打开它们。"
+  },
+  "browserActionTitle": {
+    "message": "打开标签页固定"
+  },
+  "openAllTabs": {
+    "message": "打开所有标签页"
+  },
+  "openOneTab": {
+    "message": "打开 1 个标签页"
+  },
+  "openTabsCount": {
+    "message": "打开 $COUNT$ 个标签页",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "openTabsSingular": {
+    "message": "打开 $COUNT$ 个标签页",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "openTabsPlural": {
+    "message": "打开 $COUNT$ 个标签页",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "noTabsConfigured": {
+    "message": "未配置标签页"
+  },
+  "configureTabsMessage": {
+    "message": "在选项页面配置您的收藏标签页以开始使用。"
+  },
+  "pinCurrentTab": {
+    "message": "固定当前标签页"
+  },
+  "openOptions": {
+    "message": "打开选项"
+  },
+  "categories": {
+    "message": "类别"
+  },
+  "work": {
+    "message": "工作"
+  },
+  "personal": {
+    "message": "个人"
+  },
+  "development": {
+    "message": "开发"
+  },
+  "social": {
+    "message": "社交"
+  },
+  "tools": {
+    "message": "工具"
+  },
+  "entertainment": {
+    "message": "娱乐"
+  },
+  "optionsTitle": {
+    "message": "标签页固定选项"
+  },
+  "manageTabs": {
+    "message": "管理您的固定标签页"
+  },
+  "addNewTab": {
+    "message": "添加新标签页"
+  },
+  "tabUrl": {
+    "message": "标签页URL"
+  },
+  "tabTitle": {
+    "message": "标签页标题（可选）"
+  },
+  "tabCategory": {
+    "message": "类别"
+  },
+  "saveTab": {
+    "message": "保存标签页"
+  },
+  "cancel": {
+    "message": "取消"
+  },
+  "edit": {
+    "message": "编辑"
+  },
+  "delete": {
+    "message": "删除"
+  },
+  "deleteConfirm": {
+    "message": "您确定要删除此标签页吗？"
+  },
+  "generalSettings": {
+    "message": "常规设置"
+  },
+  "autoOpenTabs": {
+    "message": "创建新窗口时自动打开标签页"
+  },
+  "autoOpenTabsDescription": {
+    "message": "启用后，当您创建新的Firefox窗口时，固定的标签页将自动打开。"
+  },
+  "importExport": {
+    "message": "导入/导出"
+  },
+  "exportSettings": {
+    "message": "导出设置"
+  },
+  "importSettings": {
+    "message": "导入设置"
+  },
+  "settingsExported": {
+    "message": "设置导出成功！"
+  },
+  "settingsImported": {
+    "message": "设置导入成功！"
+  },
+  "invalidFile": {
+    "message": "无效的文件格式"
+  },
+  "tabsSaved": {
+    "message": "标签页保存成功！"
+  },
+  "tabDeleted": {
+    "message": "标签页删除成功！"
+  },
+  "invalidUrl": {
+    "message": "请输入有效的URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "titlePlaceholder": {
+    "message": "我的收藏网站"
+  },
+  "loading": {
+    "message": "加载中..."
+  },
+  "retry": {
+    "message": "重试"
+  },
+  "close": {
+    "message": "关闭"
+  },
+  "options": {
+    "message": "选项"
+  },
+  "refresh": {
+    "message": "刷新"
+  },
+  "tabAlreadyPinned": {
+    "message": "标签页已固定"
+  },
+  "currentTabCannotBePinned": {
+    "message": "当前标签页无法固定"
+  },
+  "lastOpenedPrefix": {
+    "message": "上次打开："
+  },
+  "readyToOpenTabs": {
+    "message": "准备打开标签页"
+  },
+  "tabPlural": {
+    "message": "个标签页"
+  },
+  "tabSingular": {
+    "message": "个标签页"
+  },
+  "checkingExistingTabs": {
+    "message": "检查现有标签页..."
+  },
+  "allTabsAlreadyOpen": {
+    "message": "所有标签页都已打开并固定"
+  },
+  "someTabsAlreadyOpen": {
+    "message": "$SKIPPED$ 个标签页已打开，$OPENED$ 个新标签页已创建",
+    "placeholders": {
+      "skipped": {
+        "content": "$1",
+        "example": "3"
+      },
+      "opened": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+  "tabsOpened": {
+    "message": "标签页已成功打开！"
+  },
+  "errorOpeningTabs": {
+    "message": "打开标签页时出错"
+  },
+  "cannotPinTab": {
+    "message": "无法固定此标签页"
+  },
+  "failedToInitialize": {
+    "message": "初始化失败"
+  },
+  "categoryPrefix": {
+    "message": "类别"
+  },
+  "containsPrefix": {
+    "message": "包含"
+  },
+  "noCategoryTabs": {
+    "message": "此类别中没有标签页"
+  },
+  "tabPinnedInCategory": {
+    "message": "已将 \"$TITLE$\" 固定到 $CATEGORY$",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      },
+      "category": {
+        "content": "$2",
+        "example": "工作"
+      }
+    }
+  },
+  "failedToPinTab": {
+    "message": "固定标签页失败"
+  },
+  "ago": {
+    "message": "前"
+  },
+  "days": {
+    "message": "天"
+  },
+  "hours": {
+    "message": "小时"
+  },
+  "minutes": {
+    "message": "分钟"
+  },
+  "justNow": {
+    "message": "刚刚"
+  },
+  "tabsOpenedCount": {
+    "message": "已打开 $COUNT$ 个标签页",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "errorOpeningCategoryTabs": {
+    "message": "打开类别标签页时出错"
+  },
+  "tabPinned": {
+    "message": "\"$TITLE$\" 已固定",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      }
+    }
+  },
+  "openingTabs": {
+    "message": "正在打开标签页..."
+  },
+  "openingCategoryTabs": {
+    "message": "正在打开类别标签页..."
+  },
+  "lastOpened": {
+    "message": "上次打开：$TIME$",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "5分钟前"
+      }
+    }
+  },
+  "editTab": {
+    "message": "编辑标签页"
+  },
+  "deleteTab": {
+    "message": "删除标签页"
+  },
+  "uncategorized": {
+    "message": "未分类"
+  },
+  "manageCategories": {
+    "message": "管理类别"
+  },
+  "resetCategories": {
+    "message": "重置为默认"
+  },
+  "editCategory": {
+    "message": "编辑类别"
+  },
+  "categoryName": {
+    "message": "类别名称"
+  },
+  "categoryNamePlaceholder": {
+    "message": "输入类别名称"
+  },
+  "categoryIcon": {
+    "message": "类别图标"
+  },
+  "categoryIconPlaceholder": {
+    "message": "📁"
+  },
+  "categoryIconHelp": {
+    "message": "选择一个表情符号来代表此类别"
+  },
+  "saveCategory": {
+    "message": "保存类别"
+  },
+  "categorySaved": {
+    "message": "类别保存成功！"
+  },
+  "categoriesReset": {
+    "message": "类别已重置为默认！"
+  },
+  "resetCategoriesConfirm": {
+    "message": "您确定要重置所有类别吗？这将恢复默认的名称和图标。"
+  },
+  "categoryNameRequired": {
+    "message": "类别名称为必填项"
+  },
+  "categoryIconRequired": {
+    "message": "类别图标为必填项"
+  },
+  "pinnedTabsShort": {
+    "message": "已固定"
+  },
+  "categoriesShort": {
+    "message": "类别"
+  },
+  "refreshTooltip": {
+    "message": "刷新标签页和类别数据"
+  },
+  "clickToOpenPinnedTabs": {
+    "message": "点击打开您的固定标签页"
+  },
+  "pinCurrentTabTooltip": {
+    "message": "固定当前标签页"
+  },
+  "manageTabsAndSettingsTooltip": {
+    "message": "管理您的标签页和设置"
+  },
+  "manageCategoriesButtonTooltip": {
+    "message": "管理类别"
+  },
+  "viewAllPinnedTabsTooltip": {
+    "message": "查看所有固定标签页"
+  },
+  "manageCategoriesStatTooltip": {
+    "message": "管理类别"
+  },
+  "extensionVersionTooltip": {
+    "message": "扩展版本"
+  },
+  "exportSettingsTooltip": {
+    "message": "导出设置"
+  },
+  "importSettingsTooltip": {
+    "message": "导入设置"
+  },
+  "notificationsDenied": {
+    "message": "通知已禁用。请在浏览器设置中启用它们。"
+  },
+  "criticalErrorTitle": {
+    "message": "严重错误"
+  },
+  "criticalErrorMessage": {
+    "message": "发生严重错误。请重启扩展。"
+  },
+  "selectCategory": {
+    "message": "选择类别"
+  },
+  "selectCategoryIcon": {
+    "message": "选择类别图标"
+  },
+  "searchIcons": {
+    "message": "搜索图标..."
+  },
+  "recent": {
+    "message": "最近"
+  },
+  "objects": {
+    "message": "对象"
+  },
+  "symbols": {
+    "message": "符号"
+  },
+  "activities": {
+    "message": "活动"
+  },
+  "nature": {
+    "message": "自然"
+  },
+  "food": {
+    "message": "食物"
+  },
+  "noRecentIcons": {
+    "message": "无最近图标"
+  },
+  "noIconsFound": {
+    "message": "未找到图标"
+  },
+  "dragToReorder": {
+    "message": "拖拽重新排序"
+  },
+  "dropHere": {
+    "message": "放在这里"
+  },
+  "tabReordered": {
+    "message": "标签页顺序已更新！"
+  },
+  "reorderError": {
+    "message": "重新排序标签页时出错"
+  },
+  "footerCreatedBy": {
+    "message": "由 Alexandre 创建"
+  },
+  "changeCategoryTooltip": {
+    "message": "更改类别"
+  },
+  "categoryChanged": {
+    "message": "类别已更新！"
+  },
+  "getStartedTitle": {
+    "message": "从这里开始！"
+  },
+  "getStartedDescription": {
+    "message": "固定您的第一个标签页以创建您的个性化空间并提高工作效率。"
+  },
+  "pinCurrentTabAction": {
+    "message": "固定当前标签页"
+  },
+  "pinCurrentTabHelper": {
+    "message": "添加您当前正在查看的标签页"
+  },
+  "orDivider": {
+    "message": "或"
+  },
+  "configureManually": {
+    "message": "手动配置"
+  }
+} 

@@ -1,0 +1,460 @@
+{
+  "extensionName": {
+    "message": "Penyematan Tab"
+  },
+  "extensionDescription": {
+    "message": "Kelola dan buka tab yang disematkan dengan mudah. Atur tab berdasarkan kategori dan buka otomatis di jendela baru."
+  },
+  "browserActionTitle": {
+    "message": "Buka Penyematan Tab"
+  },
+  "openAllTabs": {
+    "message": "Buka Semua Tab"
+  },
+  "openOneTab": {
+    "message": "Buka 1 Tab"
+  },
+  "openTabsCount": {
+    "message": "Buka $COUNT$ tab",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "openTabsSingular": {
+    "message": "Buka $COUNT$ tab",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "openTabsPlural": {
+    "message": "Buka $COUNT$ tab",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "noTabsConfigured": {
+    "message": "Tidak ada tab yang dikonfigurasi"
+  },
+  "configureTabsMessage": {
+    "message": "Konfigurasikan tab favorit Anda di halaman opsi untuk memulai."
+  },
+  "pinCurrentTab": {
+    "message": "Sematkan Tab Saat Ini"
+  },
+  "openOptions": {
+    "message": "Buka Opsi"
+  },
+  "categories": {
+    "message": "Kategori"
+  },
+  "work": {
+    "message": "Kerja"
+  },
+  "personal": {
+    "message": "Pribadi"
+  },
+  "development": {
+    "message": "Pengembangan"
+  },
+  "social": {
+    "message": "Sosial"
+  },
+  "tools": {
+    "message": "Alat"
+  },
+  "entertainment": {
+    "message": "Hiburan"
+  },
+  "optionsTitle": {
+    "message": "Opsi Penyematan Tab"
+  },
+  "manageTabs": {
+    "message": "Kelola Tab yang Disematkan"
+  },
+  "addNewTab": {
+    "message": "Tambah Tab Baru"
+  },
+  "tabUrl": {
+    "message": "URL Tab"
+  },
+  "tabTitle": {
+    "message": "Judul Tab (opsional)"
+  },
+  "tabCategory": {
+    "message": "Kategori"
+  },
+  "saveTab": {
+    "message": "Simpan Tab"
+  },
+  "cancel": {
+    "message": "Batal"
+  },
+  "edit": {
+    "message": "Edit"
+  },
+  "delete": {
+    "message": "Hapus"
+  },
+  "deleteConfirm": {
+    "message": "Apakah Anda yakin ingin menghapus tab ini?"
+  },
+  "generalSettings": {
+    "message": "Pengaturan Umum"
+  },
+  "autoOpenTabs": {
+    "message": "Buka tab otomatis saat membuat jendela baru"
+  },
+  "autoOpenTabsDescription": {
+    "message": "Jika diaktifkan, tab yang disematkan akan terbuka otomatis saat Anda membuat jendela Firefox baru."
+  },
+  "importExport": {
+    "message": "Impor/Ekspor"
+  },
+  "exportSettings": {
+    "message": "Ekspor Pengaturan"
+  },
+  "importSettings": {
+    "message": "Impor Pengaturan"
+  },
+  "settingsExported": {
+    "message": "Pengaturan berhasil diekspor!"
+  },
+  "settingsImported": {
+    "message": "Pengaturan berhasil diimpor!"
+  },
+  "invalidFile": {
+    "message": "Format file tidak valid"
+  },
+  "tabsSaved": {
+    "message": "Tab berhasil disimpan!"
+  },
+  "tabDeleted": {
+    "message": "Tab berhasil dihapus!"
+  },
+  "invalidUrl": {
+    "message": "Harap masukkan URL yang valid"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "titlePlaceholder": {
+    "message": "Situs Favorit Saya"
+  },
+  "loading": {
+    "message": "Memuat..."
+  },
+  "retry": {
+    "message": "Coba Lagi"
+  },
+  "close": {
+    "message": "Tutup"
+  },
+  "options": {
+    "message": "Opsi"
+  },
+  "refresh": {
+    "message": "Segarkan"
+  },
+  "tabAlreadyPinned": {
+    "message": "Tab sudah disematkan"
+  },
+  "currentTabCannotBePinned": {
+    "message": "Tab saat ini tidak dapat disematkan"
+  },
+  "lastOpenedPrefix": {
+    "message": "Terakhir dibuka:"
+  },
+  "readyToOpenTabs": {
+    "message": "Siap membuka tab"
+  },
+  "tabPlural": {
+    "message": "tab"
+  },
+  "tabSingular": {
+    "message": "tab"
+  },
+  "checkingExistingTabs": {
+    "message": "Memeriksa tab yang ada..."
+  },
+  "allTabsAlreadyOpen": {
+    "message": "Semua tab sudah terbuka dan disematkan"
+  },
+  "someTabsAlreadyOpen": {
+    "message": "$SKIPPED$ tab sudah terbuka, $OPENED$ tab baru dibuat",
+    "placeholders": {
+      "skipped": {
+        "content": "$1",
+        "example": "3"
+      },
+      "opened": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+  "tabsOpened": {
+    "message": "Tab berhasil dibuka!"
+  },
+  "errorOpeningTabs": {
+    "message": "Kesalahan saat membuka tab"
+  },
+  "cannotPinTab": {
+    "message": "Tidak dapat menyematkan tab ini"
+  },
+  "failedToInitialize": {
+    "message": "Gagal menginisialisasi"
+  },
+  "categoryPrefix": {
+    "message": "Kategori"
+  },
+  "containsPrefix": {
+    "message": "berisi"
+  },
+  "noCategoryTabs": {
+    "message": "Tidak ada tab dalam kategori ini"
+  },
+  "tabPinnedInCategory": {
+    "message": "\"$TITLE$\" disematkan di $CATEGORY$",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      },
+      "category": {
+        "content": "$2",
+        "example": "Kerja"
+      }
+    }
+  },
+  "failedToPinTab": {
+    "message": "Gagal menyematkan tab"
+  },
+  "ago": {
+    "message": "yang lalu"
+  },
+  "days": {
+    "message": "hari"
+  },
+  "hours": {
+    "message": "jam"
+  },
+  "minutes": {
+    "message": "menit"
+  },
+  "justNow": {
+    "message": "Baru saja"
+  },
+  "tabsOpenedCount": {
+    "message": "$COUNT$ tab dibuka",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "errorOpeningCategoryTabs": {
+    "message": "Kesalahan saat membuka tab kategori"
+  },
+  "tabPinned": {
+    "message": "\"$TITLE$\" disematkan",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      }
+    }
+  },
+  "openingTabs": {
+    "message": "Membuka tab..."
+  },
+  "openingCategoryTabs": {
+    "message": "Membuka tab kategori..."
+  },
+  "lastOpened": {
+    "message": "Terakhir dibuka: $TIME$",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "5 menit yang lalu"
+      }
+    }
+  },
+  "editTab": {
+    "message": "Edit Tab"
+  },
+  "deleteTab": {
+    "message": "Hapus Tab"
+  },
+  "uncategorized": {
+    "message": "Tidak Berkategori"
+  },
+  "manageCategories": {
+    "message": "Kelola Kategori"
+  },
+  "resetCategories": {
+    "message": "Reset ke Default"
+  },
+  "editCategory": {
+    "message": "Edit Kategori"
+  },
+  "categoryName": {
+    "message": "Nama Kategori"
+  },
+  "categoryNamePlaceholder": {
+    "message": "Masukkan nama kategori"
+  },
+  "categoryIcon": {
+    "message": "Ikon Kategori"
+  },
+  "categoryIconPlaceholder": {
+    "message": "📁"
+  },
+  "categoryIconHelp": {
+    "message": "Pilih emoji untuk mewakili kategori ini"
+  },
+  "saveCategory": {
+    "message": "Simpan Kategori"
+  },
+  "categorySaved": {
+    "message": "Kategori berhasil disimpan!"
+  },
+  "categoriesReset": {
+    "message": "Kategori direset ke default!"
+  },
+  "resetCategoriesConfirm": {
+    "message": "Apakah Anda yakin ingin mereset semua kategori? Ini akan mengembalikan nama dan ikon default."
+  },
+  "categoryNameRequired": {
+    "message": "Nama kategori diperlukan"
+  },
+  "categoryIconRequired": {
+    "message": "Ikon kategori diperlukan"
+  },
+  "pinnedTabsShort": {
+    "message": "Disematkan"
+  },
+  "categoriesShort": {
+    "message": "Kategori"
+  },
+  "refreshTooltip": {
+    "message": "Segarkan data tab dan kategori"
+  },
+  "clickToOpenPinnedTabs": {
+    "message": "Klik untuk membuka tab yang disematkan"
+  },
+  "pinCurrentTabTooltip": {
+    "message": "Sematkan tab saat ini"
+  },
+  "manageTabsAndSettingsTooltip": {
+    "message": "Kelola tab dan pengaturan Anda"
+  },
+  "manageCategoriesButtonTooltip": {
+    "message": "Kelola kategori"
+  },
+  "viewAllPinnedTabsTooltip": {
+    "message": "Lihat semua tab yang disematkan"
+  },
+  "manageCategoriesStatTooltip": {
+    "message": "Kelola kategori"
+  },
+  "extensionVersionTooltip": {
+    "message": "Versi ekstensi"
+  },
+  "exportSettingsTooltip": {
+    "message": "Ekspor pengaturan"
+  },
+  "importSettingsTooltip": {
+    "message": "Impor pengaturan"
+  },
+  "notificationsDenied": {
+    "message": "Notifikasi dinonaktifkan. Harap aktifkan di pengaturan browser Anda."
+  },
+  "criticalErrorTitle": {
+    "message": "Kesalahan Kritis"
+  },
+  "criticalErrorMessage": {
+    "message": "Terjadi kesalahan kritis. Harap restart ekstensi."
+  },
+  "selectCategory": {
+    "message": "Pilih Kategori"
+  },
+  "selectCategoryIcon": {
+    "message": "Pilih Ikon Kategori"
+  },
+  "searchIcons": {
+    "message": "Cari ikon..."
+  },
+  "recent": {
+    "message": "Terbaru"
+  },
+  "objects": {
+    "message": "Objek"
+  },
+  "symbols": {
+    "message": "Simbol"
+  },
+  "activities": {
+    "message": "Aktivitas"
+  },
+  "nature": {
+    "message": "Alam"
+  },
+  "food": {
+    "message": "Makanan"
+  },
+  "noRecentIcons": {
+    "message": "Tidak ada ikon terbaru"
+  },
+  "noIconsFound": {
+    "message": "Tidak ada ikon ditemukan"
+  },
+  "dragToReorder": {
+    "message": "Seret untuk mengurutkan ulang"
+  },
+  "dropHere": {
+    "message": "Letakkan di sini"
+  },
+  "tabReordered": {
+    "message": "Urutan tab diperbarui!"
+  },
+  "reorderError": {
+    "message": "Kesalahan saat mengurutkan ulang tab"
+  },
+  "footerCreatedBy": {
+    "message": "Dibuat oleh Alexandre"
+  },
+  "changeCategoryTooltip": {
+    "message": "Ubah kategori"
+  },
+  "categoryChanged": {
+    "message": "Kategori diperbarui!"
+  },
+  "getStartedTitle": {
+    "message": "Mulai di sini!"
+  },
+  "getStartedDescription": {
+    "message": "Sematkan tab pertama Anda untuk membuat ruang personal dan meningkatkan produktivitas."
+  },
+  "pinCurrentTabAction": {
+    "message": "Sematkan tab saat ini"
+  },
+  "pinCurrentTabHelper": {
+    "message": "Tambahkan tab yang sedang Anda lihat"
+  },
+  "orDivider": {
+    "message": "atau"
+  },
+  "configureManually": {
+    "message": "Konfigurasikan secara manual"
+  }
+} 

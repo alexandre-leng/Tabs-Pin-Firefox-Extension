@@ -367,7 +367,182 @@
     "description": "Fehlermeldung beim Neuordnen"
   },
   "footerCreatedBy": {
-    "message": "Erstellt von Alexandre with",
-    "description": "Footer-Text - erstellt von Alexandre with"
+    "message": "Erstellt von Alexandre mit",
+    "description": "Footer created by text"
+  },
+  "changeCategoryTooltip": {
+    "message": "Kategorie ändern",
+    "description": "Tooltip for the category badge on a tab item"
+  },
+  "categoryChanged": {
+    "message": "Kategorie aktualisiert!",
+    "description": "Success message when a tab's category is changed via quick edit"
+  },
+  "openOneTab": {
+    "message": "1 Tab öffnen"
+  },
+  "pinnedTabsShort": {
+    "message": "Angeheftet"
+  },
+  "categoriesShort": {
+    "message": "Kategorien"
+  },
+  "allTabsAlreadyOpen": {
+    "message": "Alle Tabs sind bereits geöffnet und angeheftet"
+  },
+  "someTabsAlreadyOpen": {
+    "message": "$SKIPPED$ Tab(s) bereits geöffnet, $OPENED$ neue Tab(s) erstellt",
+    "placeholders": {
+      "skipped": {
+        "content": "$1",
+        "example": "3"
+      },
+      "opened": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+  "checkingExistingTabs": {
+    "message": "Prüfe bestehende Tabs..."
+  },
+  "openTabsSingular": {
+    "message": "$COUNT$ Tab öffnen",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "openTabsPlural": {
+    "message": "$COUNT$ Tabs öffnen",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "refresh": {
+    "message": "Aktualisieren"
+  },
+  "refreshTooltip": {
+    "message": "Tabs und Kategorien-Daten aktualisieren"
+  },
+  "clickToOpenPinnedTabs": {
+    "message": "Klicken Sie hier, um Ihre angehefteten Tabs zu öffnen"
+  },
+  "lastOpenedPrefix": {
+    "message": "Zuletzt geöffnet:"
+  },
+  "tabSingular": {
+    "message": "Tab"
+  },
+  "tabPlural": {
+    "message": "Tabs"
+  },
+  "pinCurrentTabTooltip": {
+    "message": "Aktuellen Tab anheften"
+  },
+  "manageTabsAndSettingsTooltip": {
+    "message": "Verwalten Sie Ihre Tabs und Einstellungen"
+  },
+  "manageCategoriesButtonTooltip": {
+    "message": "Kategorien verwalten"
+  },
+  "viewAllPinnedTabsTooltip": {
+    "message": "Alle angehefteten Tabs anzeigen"
+  },
+  "manageCategoriesStatTooltip": {
+    "message": "Kategorien verwalten"
+  },
+  "extensionVersionTooltip": {
+    "message": "Erweiterungsversion"
+  },
+  "exportSettingsTooltip": {
+    "message": "Einstellungen exportieren"
+  },
+  "importSettingsTooltip": {
+    "message": "Einstellungen importieren"
+  },
+  "notificationsDenied": {
+    "message": "Benachrichtigungen deaktiviert. Bitte aktivieren Sie sie in Ihren Browser-Einstellungen."
+  },
+  "criticalErrorTitle": {
+    "message": "Kritischer Fehler"
+  },
+  "criticalErrorMessage": {
+    "message": "Ein kritischer Fehler ist aufgetreten. Bitte starten Sie die Erweiterung neu."
+  },
+  "selectCategory": {
+    "message": "Kategorie auswählen"
+  },
+  "tabPinnedInCategory": {
+    "message": "\"$TAB_TITLE$\" in $CATEGORY_NAME$ angeheftet",
+    "placeholders": {
+      "tab_title": {
+        "content": "$1",
+        "example": "Google"
+      },
+      "category_name": {
+        "content": "$2",
+        "example": "Arbeit"
+      }
+    }
+  },
+  "categoryPrefix": {
+    "message": "Kategorie"
+  },
+  "containsPrefix": {
+    "message": "enthält"
+  },
+  "noCategoryTabs": {
+    "message": "Keine Tabs in dieser Kategorie"
+  },
+  "selectCategoryIcon": {
+    "message": "Kategorie-Symbol auswählen"
+  },
+  "searchIcons": {
+    "message": "Symbole suchen..."
+  },
+  "recent": {
+    "message": "Kürzlich"
+  },
+  "objects": {
+    "message": "Objekte"
+  },
+  "symbols": {
+    "message": "Symbole"
+  },
+  "activities": {
+    "message": "Aktivitäten"
+  },
+  "nature": {
+    "message": "Natur"
+  },
+  "food": {
+    "message": "Essen"
+  },
+  "noRecentIcons": {
+    "message": "Keine kürzlichen Symbole"
+  },
+  "configureManually": {
+    "message": "Manuell konfigurieren"
+  },
+  "getStartedTitle": {
+    "message": "Hier anfangen!"
+  },
+  "getStartedDescription": {
+    "message": "Heften Sie Ihren ersten Tab an, um Ihren persönlichen Arbeitsbereich zu erstellen und die Produktivität zu steigern."
+  },
+  "pinCurrentTabAction": {
+    "message": "Aktuellen Tab anheften"
+  },
+  "pinCurrentTabHelper": {
+    "message": "Den Tab hinzufügen, den Sie gerade betrachten"
+  },
+  "orDivider": {
+    "message": "oder"
   }
 } 

@@ -147,7 +147,7 @@ class TabsPinBackground {
         if (b.order !== undefined) return 1;
         return new Date(a.dateAdded || 0) - new Date(b.dateAdded || 0);
       });
-
+      
       // Get tabs from specific window if provided, otherwise all tabs
       const queryOptions = windowId ? { windowId: windowId } : {};
       const existingTabs = await browser.tabs.query(queryOptions);
@@ -456,10 +456,10 @@ class TabsPinBackground {
         // Ensure tabs are loaded before trying to open them
         await this.loadData();
           
-        if (this.tabs.length > 0) {
+          if (this.tabs.length > 0) {
           await this.openAllTabs(window.id);
         }
-      } catch (error) {
+    } catch (error) {
         console.error('Error during auto-opening tabs:', error);
       }
     }
@@ -598,7 +598,7 @@ class TabsPinBackground {
 
 // Initialize the background script
 try {
-  const tabsPinBackground = new TabsPinBackground();
+const tabsPinBackground = new TabsPinBackground();
 } catch (error) {
   console.error('Failed to initialize TabsPinBackground:', error);
 }

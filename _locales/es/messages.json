@@ -538,7 +538,33 @@
     "description": "Mensaje de error durante el reordenamiento"
   },
   "footerCreatedBy": {
-    "message": "Creado por Alexandre with",
-    "description": "Texto del pie de página - creado por Alexandre with"
+    "message": "Creado por Alexandre con",
+    "description": "Footer created by text"
+  },
+  "changeCategoryTooltip": {
+    "message": "Cambiar categoría",
+    "description": "Tooltip for the category badge on a tab item"
+  },
+  "categoryChanged": {
+    "message": "¡Categoría actualizada!",
+    "description": "Success message when a tab's category is changed via quick edit"
+  },
+  "configureManually": {
+    "message": "Configurar manualmente"
+  },
+  "getStartedTitle": {
+    "message": "¡Empieza aquí!"
+  },
+  "getStartedDescription": {
+    "message": "Fija tu primera pestaña para crear tu espacio personal y aumentar la productividad."
+  },
+  "pinCurrentTabAction": {
+    "message": "Fijar Pestaña Actual"
+  },
+  "pinCurrentTabHelper": {
+    "message": "Añade la pestaña que estás viendo actualmente"
+  },
+  "orDivider": {
+    "message": "o"
   }
 } 

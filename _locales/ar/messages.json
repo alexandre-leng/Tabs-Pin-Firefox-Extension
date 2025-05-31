@@ -1,0 +1,460 @@
+{
+  "extensionName": {
+    "message": "تثبيت التبويبات"
+  },
+  "extensionDescription": {
+    "message": "إدارة وفتح التبويبات المثبتة بسهولة. تنظيم التبويبات حسب الفئات وفتحها تلقائياً في نوافذ جديدة."
+  },
+  "browserActionTitle": {
+    "message": "فتح تثبيت التبويبات"
+  },
+  "openAllTabs": {
+    "message": "فتح جميع التبويبات"
+  },
+  "openOneTab": {
+    "message": "فتح تبويب واحد"
+  },
+  "openTabsCount": {
+    "message": "فتح $COUNT$ تبويب",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "openTabsSingular": {
+    "message": "فتح $COUNT$ تبويب",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "openTabsPlural": {
+    "message": "فتح $COUNT$ تبويب",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "noTabsConfigured": {
+    "message": "لم يتم تكوين تبويبات"
+  },
+  "configureTabsMessage": {
+    "message": "قم بتكوين تبويباتك المفضلة في صفحة الخيارات للبدء."
+  },
+  "pinCurrentTab": {
+    "message": "تثبيت التبويب الحالي"
+  },
+  "openOptions": {
+    "message": "فتح الخيارات"
+  },
+  "categories": {
+    "message": "الفئات"
+  },
+  "work": {
+    "message": "العمل"
+  },
+  "personal": {
+    "message": "شخصي"
+  },
+  "development": {
+    "message": "التطوير"
+  },
+  "social": {
+    "message": "اجتماعي"
+  },
+  "tools": {
+    "message": "أدوات"
+  },
+  "entertainment": {
+    "message": "ترفيه"
+  },
+  "optionsTitle": {
+    "message": "خيارات تثبيت التبويبات"
+  },
+  "manageTabs": {
+    "message": "إدارة التبويبات المثبتة"
+  },
+  "addNewTab": {
+    "message": "إضافة تبويب جديد"
+  },
+  "tabUrl": {
+    "message": "رابط التبويب"
+  },
+  "tabTitle": {
+    "message": "عنوان التبويب (اختياري)"
+  },
+  "tabCategory": {
+    "message": "الفئة"
+  },
+  "saveTab": {
+    "message": "حفظ التبويب"
+  },
+  "cancel": {
+    "message": "إلغاء"
+  },
+  "edit": {
+    "message": "تحرير"
+  },
+  "delete": {
+    "message": "حذف"
+  },
+  "deleteConfirm": {
+    "message": "هل أنت متأكد من حذف هذا التبويب؟"
+  },
+  "generalSettings": {
+    "message": "الإعدادات العامة"
+  },
+  "autoOpenTabs": {
+    "message": "فتح التبويبات تلقائياً عند إنشاء نوافذ جديدة"
+  },
+  "autoOpenTabsDescription": {
+    "message": "عند التفعيل، ستفتح التبويبات المثبتة تلقائياً عند إنشاء نافذة Firefox جديدة."
+  },
+  "importExport": {
+    "message": "استيراد/تصدير"
+  },
+  "exportSettings": {
+    "message": "تصدير الإعدادات"
+  },
+  "importSettings": {
+    "message": "استيراد الإعدادات"
+  },
+  "settingsExported": {
+    "message": "تم تصدير الإعدادات بنجاح!"
+  },
+  "settingsImported": {
+    "message": "تم استيراد الإعدادات بنجاح!"
+  },
+  "invalidFile": {
+    "message": "تنسيق ملف غير صالح"
+  },
+  "tabsSaved": {
+    "message": "تم حفظ التبويب بنجاح!"
+  },
+  "tabDeleted": {
+    "message": "تم حذف التبويب بنجاح!"
+  },
+  "invalidUrl": {
+    "message": "يرجى إدخال رابط صحيح"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "titlePlaceholder": {
+    "message": "موقعي المفضل"
+  },
+  "loading": {
+    "message": "جار التحميل..."
+  },
+  "retry": {
+    "message": "إعادة المحاولة"
+  },
+  "close": {
+    "message": "إغلاق"
+  },
+  "options": {
+    "message": "خيارات"
+  },
+  "refresh": {
+    "message": "تحديث"
+  },
+  "tabAlreadyPinned": {
+    "message": "التبويب مثبت بالفعل"
+  },
+  "currentTabCannotBePinned": {
+    "message": "لا يمكن تثبيت التبويب الحالي"
+  },
+  "lastOpenedPrefix": {
+    "message": "آخر فتح:"
+  },
+  "readyToOpenTabs": {
+    "message": "جاهز لفتح التبويبات"
+  },
+  "tabPlural": {
+    "message": "تبويبات"
+  },
+  "tabSingular": {
+    "message": "تبويب"
+  },
+  "checkingExistingTabs": {
+    "message": "فحص التبويبات الموجودة..."
+  },
+  "allTabsAlreadyOpen": {
+    "message": "جميع التبويبات مفتوحة ومثبتة بالفعل"
+  },
+  "someTabsAlreadyOpen": {
+    "message": "$SKIPPED$ تبويب مفتوح بالفعل، تم إنشاء $OPENED$ تبويب جديد",
+    "placeholders": {
+      "skipped": {
+        "content": "$1",
+        "example": "3"
+      },
+      "opened": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+  "tabsOpened": {
+    "message": "تم فتح التبويبات بنجاح!"
+  },
+  "errorOpeningTabs": {
+    "message": "خطأ في فتح التبويبات"
+  },
+  "cannotPinTab": {
+    "message": "لا يمكن تثبيت هذا التبويب"
+  },
+  "failedToInitialize": {
+    "message": "فشل في التهيئة"
+  },
+  "categoryPrefix": {
+    "message": "فئة"
+  },
+  "containsPrefix": {
+    "message": "يحتوي على"
+  },
+  "noCategoryTabs": {
+    "message": "لا توجد تبويبات في هذه الفئة"
+  },
+  "tabPinnedInCategory": {
+    "message": "تم تثبيت \"$TITLE$\" في $CATEGORY$",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      },
+      "category": {
+        "content": "$2",
+        "example": "العمل"
+      }
+    }
+  },
+  "failedToPinTab": {
+    "message": "فشل في تثبيت التبويب"
+  },
+  "ago": {
+    "message": "منذ"
+  },
+  "days": {
+    "message": "أيام"
+  },
+  "hours": {
+    "message": "ساعات"
+  },
+  "minutes": {
+    "message": "دقائق"
+  },
+  "justNow": {
+    "message": "الآن"
+  },
+  "tabsOpenedCount": {
+    "message": "تم فتح $COUNT$ تبويب",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "errorOpeningCategoryTabs": {
+    "message": "خطأ في فتح تبويبات الفئة"
+  },
+  "tabPinned": {
+    "message": "تم تثبيت \"$TITLE$\"",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      }
+    }
+  },
+  "openingTabs": {
+    "message": "فتح التبويبات..."
+  },
+  "openingCategoryTabs": {
+    "message": "فتح تبويبات الفئة..."
+  },
+  "lastOpened": {
+    "message": "آخر فتح: $TIME$",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "منذ 5 دقائق"
+      }
+    }
+  },
+  "editTab": {
+    "message": "تحرير التبويب"
+  },
+  "deleteTab": {
+    "message": "حذف التبويب"
+  },
+  "uncategorized": {
+    "message": "غير مصنف"
+  },
+  "manageCategories": {
+    "message": "إدارة الفئات"
+  },
+  "resetCategories": {
+    "message": "إعادة تعيين للافتراضي"
+  },
+  "editCategory": {
+    "message": "تحرير الفئة"
+  },
+  "categoryName": {
+    "message": "اسم الفئة"
+  },
+  "categoryNamePlaceholder": {
+    "message": "أدخل اسم الفئة"
+  },
+  "categoryIcon": {
+    "message": "أيقونة الفئة"
+  },
+  "categoryIconPlaceholder": {
+    "message": "📁"
+  },
+  "categoryIconHelp": {
+    "message": "اختر رمز تعبيري لتمثيل هذه الفئة"
+  },
+  "saveCategory": {
+    "message": "حفظ الفئة"
+  },
+  "categorySaved": {
+    "message": "تم حفظ الفئة بنجاح!"
+  },
+  "categoriesReset": {
+    "message": "تم إعادة تعيين الفئات للافتراضي!"
+  },
+  "resetCategoriesConfirm": {
+    "message": "هل أنت متأكد من إعادة تعيين جميع الفئات؟ سيؤدي هذا إلى استعادة الأسماء والأيقونات الافتراضية."
+  },
+  "categoryNameRequired": {
+    "message": "اسم الفئة مطلوب"
+  },
+  "categoryIconRequired": {
+    "message": "أيقونة الفئة مطلوبة"
+  },
+  "pinnedTabsShort": {
+    "message": "مثبتة"
+  },
+  "categoriesShort": {
+    "message": "فئات"
+  },
+  "refreshTooltip": {
+    "message": "تحديث بيانات التبويبات والفئات"
+  },
+  "clickToOpenPinnedTabs": {
+    "message": "انقر لفتح التبويبات المثبتة"
+  },
+  "pinCurrentTabTooltip": {
+    "message": "تثبيت التبويب الحالي"
+  },
+  "manageTabsAndSettingsTooltip": {
+    "message": "إدارة التبويبات والإعدادات"
+  },
+  "manageCategoriesButtonTooltip": {
+    "message": "إدارة الفئات"
+  },
+  "viewAllPinnedTabsTooltip": {
+    "message": "عرض جميع التبويبات المثبتة"
+  },
+  "manageCategoriesStatTooltip": {
+    "message": "إدارة الفئات"
+  },
+  "extensionVersionTooltip": {
+    "message": "إصدار الإضافة"
+  },
+  "exportSettingsTooltip": {
+    "message": "تصدير الإعدادات"
+  },
+  "importSettingsTooltip": {
+    "message": "استيراد الإعدادات"
+  },
+  "notificationsDenied": {
+    "message": "الإشعارات معطلة. يرجى تفعيلها في إعدادات المتصفح."
+  },
+  "criticalErrorTitle": {
+    "message": "خطأ بالغ"
+  },
+  "criticalErrorMessage": {
+    "message": "حدث خطأ بالغ. يرجى إعادة تشغيل الإضافة."
+  },
+  "selectCategory": {
+    "message": "اختر الفئة"
+  },
+  "selectCategoryIcon": {
+    "message": "اختر أيقونة الفئة"
+  },
+  "searchIcons": {
+    "message": "البحث عن أيقونات..."
+  },
+  "recent": {
+    "message": "حديث"
+  },
+  "objects": {
+    "message": "كائنات"
+  },
+  "symbols": {
+    "message": "رموز"
+  },
+  "activities": {
+    "message": "أنشطة"
+  },
+  "nature": {
+    "message": "طبيعة"
+  },
+  "food": {
+    "message": "طعام"
+  },
+  "noRecentIcons": {
+    "message": "لا توجد أيقونات حديثة"
+  },
+  "noIconsFound": {
+    "message": "لم يتم العثور على أيقونات"
+  },
+  "dragToReorder": {
+    "message": "اسحب لإعادة الترتيب"
+  },
+  "dropHere": {
+    "message": "أسقط هنا"
+  },
+  "tabReordered": {
+    "message": "تم تحديث ترتيب التبويبات!"
+  },
+  "reorderError": {
+    "message": "خطأ في إعادة ترتيب التبويبات"
+  },
+  "footerCreatedBy": {
+    "message": "من إنشاء Alexandre"
+  },
+  "changeCategoryTooltip": {
+    "message": "تغيير الفئة"
+  },
+  "categoryChanged": {
+    "message": "تم تحديث الفئة!"
+  },
+  "getStartedTitle": {
+    "message": "ابدأ من هنا!"
+  },
+  "getStartedDescription": {
+    "message": "ثبت تبويبك الأول لإنشاء مساحتك الشخصية وتحسين الإنتاجية."
+  },
+  "pinCurrentTabAction": {
+    "message": "تثبيت التبويب الحالي"
+  },
+  "pinCurrentTabHelper": {
+    "message": "إضافة التبويب الذي تشاهده حالياً"
+  },
+  "orDivider": {
+    "message": "أو"
+  },
+  "configureManually": {
+    "message": "تكوين يدوي"
+  }
+} 

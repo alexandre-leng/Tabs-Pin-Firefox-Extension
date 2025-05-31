@@ -539,6 +539,38 @@
   },
   "footerCreatedBy": {
     "message": "Created by Alexandre with",
-    "description": "Footer text - created by Alexandre with"
+    "description": "Footer created by text"
+  },
+  "changeCategoryTooltip": {
+    "message": "Change category",
+    "description": "Tooltip for the category badge on a tab item"
+  },
+  "categoryChanged": {
+    "message": "Category updated!",
+    "description": "Success message when a tab's category is changed via quick edit"
+  },
+  "configureManually": {
+    "message": "Configure manually",
+    "description": "Button text for manual configuration option"
+  },
+  "getStartedTitle": {
+    "message": "Get Started Here!",
+    "description": "Title for empty state welcome message"
+  },
+  "getStartedDescription": {
+    "message": "Pin your first tab to create your personal space and boost productivity.",
+    "description": "Description for empty state welcome message"
+  },
+  "pinCurrentTabAction": {
+    "message": "Pin Current Tab",
+    "description": "Main action button text for pinning current tab"
+  },
+  "pinCurrentTabHelper": {
+    "message": "Add the tab you're currently viewing",
+    "description": "Helper text explaining the pin current tab action"
+  },
+  "orDivider": {
+    "message": "or",
+    "description": "Text divider between primary and secondary actions"
   }
 } 

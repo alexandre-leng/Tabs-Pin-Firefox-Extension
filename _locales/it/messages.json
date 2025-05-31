@@ -538,7 +538,33 @@
     "description": "Messaggio di errore durante il riordinamento"
   },
   "footerCreatedBy": {
-    "message": "Creato da Alexandre with",
-    "description": "Testo del footer - creato da Alexandre with"
+    "message": "Creato da Alexandre con",
+    "description": "Footer created by text"
+  },
+  "changeCategoryTooltip": {
+    "message": "Cambia categoria",
+    "description": "Tooltip for the category badge on a tab item"
+  },
+  "categoryChanged": {
+    "message": "Categoria aggiornata!",
+    "description": "Success message when a tab's category is changed via quick edit"
+  },
+  "configureManually": {
+    "message": "Configura manualmente"
+  },
+  "getStartedTitle": {
+    "message": "Inizia qui!"
+  },
+  "getStartedDescription": {
+    "message": "Fissa la tua prima scheda per creare il tuo spazio personale e aumentare la produttività."
+  },
+  "pinCurrentTabAction": {
+    "message": "Fissa Scheda Corrente"
+  },
+  "pinCurrentTabHelper": {
+    "message": "Aggiungi la scheda che stai visualizzando attualmente"
+  },
+  "orDivider": {
+    "message": "o"
   }
 } 

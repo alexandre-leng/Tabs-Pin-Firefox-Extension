@@ -50,11 +50,12 @@ cd firefox-extension
 
 - **Documentation**: See this README.
 - **Issues & Suggestions**: [GitHub Issues](https://github.com/alexandre-leng/Tabs-Pin---Pin-Tabs-Manager-for-Firefox/issues)
-- **Email**: alexandre.lg99 {AT] gmail.com
+- **Email**: dev.alexandre.git [@] gmail.com
 
 ## 📝 License
 
-Distributed under the GNU License. See `LICENSE` for more information.
+Distributed under the GNU License. See [Voir la licence GPL-3.0](https://github.com/alexandre-leng/Tabs-Pin-Firefox-Extension/tree/main?tab=GPL-3.0-1-ov-file#readme)
+ for more information.
 
 ---
 

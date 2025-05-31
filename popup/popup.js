@@ -364,13 +364,18 @@ class PopupManager {
   renderCategories() {
     if (!this.elements.categoriesList) return;
     
-    this.elements.categoriesList.innerHTML = '';
+    // Clear existing content safely
+    while (this.elements.categoriesList.firstChild) {
+      this.elements.categoriesList.removeChild(this.elements.categoriesList.firstChild);
+    }
     
-    // Group tabs by category
-    const tabsByCategory = this.groupTabsByCategory();
+    const groups = this.groupTabsByCategory();
     
-    this.categories.forEach(category => {
-      const tabsInCategory = tabsByCategory[category.id] || [];
+    // NOUVELLE LOGIQUE : Trier les catégories avec "Développement" en dernier par défaut
+    const sortedCategories = this.getSortedCategories();
+    
+    sortedCategories.forEach(category => {
+      const tabsInCategory = groups[category.id] || [];
       if (tabsInCategory.length > 0) {
         const categoryElement = this.createCategoryElement(category, tabsInCategory.length);
         this.elements.categoriesList.appendChild(categoryElement);
@@ -411,13 +416,27 @@ class PopupManager {
       (browser.i18n.getMessage('tabPlural') || 'tabs') :
       (browser.i18n.getMessage('tabSingular') || 'tab');
     
-    element.innerHTML = `
-      <div class="category-icon">${category.icon}</div>
-      <div class="category-info">
-        <div class="category-name">${this.escapeHtml(category.name)}</div>
-        <div class="category-count">${count} ${tabWord}</div>
-      </div>
-    `;
+    // Create elements safely without innerHTML
+    const iconDiv = document.createElement('div');
+    iconDiv.className = 'category-icon';
+    iconDiv.textContent = category.icon;
+    
+    const infoDiv = document.createElement('div');
+    infoDiv.className = 'category-info';
+    
+    const nameDiv = document.createElement('div');
+    nameDiv.className = 'category-name';
+    nameDiv.textContent = category.name; // Already escaped by textContent
+    
+    const countDiv = document.createElement('div');
+    countDiv.className = 'category-count';
+    countDiv.textContent = `${count} ${tabWord}`;
+    
+    // Assemble the structure
+    infoDiv.appendChild(nameDiv);
+    infoDiv.appendChild(countDiv);
+    element.appendChild(iconDiv);
+    element.appendChild(infoDiv);
     
     // Add click event with feedback
     element.addEventListener('click', async () => {
@@ -681,25 +700,17 @@ class PopupManager {
   }
 
   renderCategorySelectionList() {
-    if (!this.elements.categorySelectionList) {
-      console.log('❌ Category selection list element not found');
-      return;
+    if (!this.elements.categorySelectionList) return;
+    
+    // Clear existing content safely
+    while (this.elements.categorySelectionList.firstChild) {
+      this.elements.categorySelectionList.removeChild(this.elements.categorySelectionList.firstChild);
     }
     
-    this.elements.categorySelectionList.innerHTML = '';
-    
-    // Sort categories: non-empty first, then empty
-    const sortedCategories = this.categories.sort((a, b) => {
-      const aCount = this.tabs.filter(tab => tab.category === a.id).length;
-      const bCount = this.tabs.filter(tab => tab.category === b.id).length;
+    const tabsByCategory = this.groupTabsByCategory();
       
-      // Non-empty categories first
-      if (aCount > 0 && bCount === 0) return -1;
-      if (aCount === 0 && bCount > 0) return 1;
-      
-      // Within same group, sort alphabetically
-      return a.name.localeCompare(b.name);
-    });
+    // NOUVELLE LOGIQUE : Utiliser la même fonction de tri
+    const sortedCategories = this.getSortedCategoriesForSelection();
     
     let firstEmptyAdded = false;
     
@@ -749,13 +760,27 @@ class PopupManager {
       element.classList.add('first-empty-category');
     }
     
-    element.innerHTML = `
-      <div class="category-icon">${category.icon}</div>
-      <div class="category-info">
-        <div class="category-name">${this.escapeHtml(category.name)}</div>
-        <div class="category-count">${tabCount} ${tabWord}</div>
-      </div>
-    `;
+    // Create elements safely without innerHTML
+    const iconDiv = document.createElement('div');
+    iconDiv.className = 'category-icon';
+    iconDiv.textContent = category.icon;
+    
+    const infoDiv = document.createElement('div');
+    infoDiv.className = 'category-info';
+    
+    const nameDiv = document.createElement('div');
+    nameDiv.className = 'category-name';
+    nameDiv.textContent = category.name; // Already escaped by textContent
+    
+    const countDiv = document.createElement('div');
+    countDiv.className = 'category-count';
+    countDiv.textContent = `${tabCount} ${tabWord}`;
+    
+    // Assemble the structure
+    infoDiv.appendChild(nameDiv);
+    infoDiv.appendChild(countDiv);
+    element.appendChild(iconDiv);
+    element.appendChild(infoDiv);
     
     // Add click event to select category
     element.addEventListener('click', () => {
@@ -956,6 +981,60 @@ class PopupManager {
     } else {
       console.log('❌ Modal overlay element not found');
     }
+  }
+
+  // NOUVELLE FONCTION : Tri des catégories pour l'affichage principal
+  getSortedCategories() {
+    // Si l'utilisateur n'a aucun onglet épinglé, utiliser l'ordre spécial
+    if (this.tabs.length === 0) {
+      return this.getDefaultCategoryOrder();
+    }
+    
+    // Sinon, utiliser l'ordre alphabétique normal
+    return [...this.categories].sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  // NOUVELLE FONCTION : Tri des catégories pour la modal de sélection
+  getSortedCategoriesForSelection() {
+    // Si l'utilisateur n'a aucun onglet épinglé, utiliser l'ordre spécial
+    if (this.tabs.length === 0) {
+      return this.getDefaultCategoryOrder();
+    }
+    
+    // Sinon, utiliser la logique originale (non-vides d'abord, puis alphabétique)
+    return [...this.categories].sort((a, b) => {
+      const aCount = this.tabs.filter(tab => tab.category === a.id).length;
+      const bCount = this.tabs.filter(tab => tab.category === b.id).length;
+      
+      // Non-empty categories first
+      if (aCount > 0 && bCount === 0) return -1;
+      if (aCount === 0 && bCount > 0) return 1;
+      
+      // Within same group, sort alphabetically
+      return a.name.localeCompare(b.name);
+    });
+  }
+
+  // NOUVELLE FONCTION : Ordre par défaut avec "Développement" en dernier
+  getDefaultCategoryOrder() {
+    const developmentCategory = this.categories.find(cat => 
+      cat.name.toLowerCase().includes('développement') || 
+      cat.name.toLowerCase().includes('development') ||
+      cat.name.toLowerCase().includes('dev')
+    );
+    
+    if (!developmentCategory) {
+      // Si pas de catégorie "Développement", ordre alphabétique normal
+      return [...this.categories].sort((a, b) => a.name.localeCompare(b.name));
+    }
+    
+    // Séparer les autres catégories et les trier alphabétiquement
+    const otherCategories = this.categories
+      .filter(cat => cat.id !== developmentCategory.id)
+      .sort((a, b) => a.name.localeCompare(b.name));
+    
+    // Retourner avec "Développement" en dernier
+    return [...otherCategories, developmentCategory];
   }
 }
 

@@ -1,0 +1,460 @@
+{
+  "extensionName": {
+    "message": "タブピン"
+  },
+  "extensionDescription": {
+    "message": "ピンしたタブを簡単に管理・開くことができます。タブをカテゴリ別に整理し、新しいウィンドウで自動的に開きます。"
+  },
+  "browserActionTitle": {
+    "message": "タブピンを開く"
+  },
+  "openAllTabs": {
+    "message": "すべてのタブを開く"
+  },
+  "openOneTab": {
+    "message": "1個のタブを開く"
+  },
+  "openTabsCount": {
+    "message": "$COUNT$個のタブを開く",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "openTabsSingular": {
+    "message": "$COUNT$個のタブを開く",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "openTabsPlural": {
+    "message": "$COUNT$個のタブを開く",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "noTabsConfigured": {
+    "message": "タブが設定されていません"
+  },
+  "configureTabsMessage": {
+    "message": "オプションページでお気に入りのタブを設定して開始してください。"
+  },
+  "pinCurrentTab": {
+    "message": "現在のタブをピン"
+  },
+  "openOptions": {
+    "message": "オプションを開く"
+  },
+  "categories": {
+    "message": "カテゴリ"
+  },
+  "work": {
+    "message": "仕事"
+  },
+  "personal": {
+    "message": "個人"
+  },
+  "development": {
+    "message": "開発"
+  },
+  "social": {
+    "message": "ソーシャル"
+  },
+  "tools": {
+    "message": "ツール"
+  },
+  "entertainment": {
+    "message": "娯楽"
+  },
+  "optionsTitle": {
+    "message": "タブピンオプション"
+  },
+  "manageTabs": {
+    "message": "ピンしたタブを管理"
+  },
+  "addNewTab": {
+    "message": "新しいタブを追加"
+  },
+  "tabUrl": {
+    "message": "タブURL"
+  },
+  "tabTitle": {
+    "message": "タブタイトル（任意）"
+  },
+  "tabCategory": {
+    "message": "カテゴリ"
+  },
+  "saveTab": {
+    "message": "タブを保存"
+  },
+  "cancel": {
+    "message": "キャンセル"
+  },
+  "edit": {
+    "message": "編集"
+  },
+  "delete": {
+    "message": "削除"
+  },
+  "deleteConfirm": {
+    "message": "このタブを削除してもよろしいですか？"
+  },
+  "generalSettings": {
+    "message": "一般設定"
+  },
+  "autoOpenTabs": {
+    "message": "新しいウィンドウ作成時にタブを自動的に開く"
+  },
+  "autoOpenTabsDescription": {
+    "message": "有効にすると、新しいFirefoxウィンドウを作成した際にピンしたタブが自動的に開きます。"
+  },
+  "importExport": {
+    "message": "インポート/エクスポート"
+  },
+  "exportSettings": {
+    "message": "設定をエクスポート"
+  },
+  "importSettings": {
+    "message": "設定をインポート"
+  },
+  "settingsExported": {
+    "message": "設定が正常にエクスポートされました！"
+  },
+  "settingsImported": {
+    "message": "設定が正常にインポートされました！"
+  },
+  "invalidFile": {
+    "message": "無効なファイル形式"
+  },
+  "tabsSaved": {
+    "message": "タブが正常に保存されました！"
+  },
+  "tabDeleted": {
+    "message": "タブが正常に削除されました！"
+  },
+  "invalidUrl": {
+    "message": "有効なURLを入力してください"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "titlePlaceholder": {
+    "message": "お気に入りのサイト"
+  },
+  "loading": {
+    "message": "読み込み中..."
+  },
+  "retry": {
+    "message": "再試行"
+  },
+  "close": {
+    "message": "閉じる"
+  },
+  "options": {
+    "message": "オプション"
+  },
+  "refresh": {
+    "message": "更新"
+  },
+  "tabAlreadyPinned": {
+    "message": "タブは既にピンされています"
+  },
+  "currentTabCannotBePinned": {
+    "message": "現在のタブはピンできません"
+  },
+  "lastOpenedPrefix": {
+    "message": "最後に開いた時刻："
+  },
+  "readyToOpenTabs": {
+    "message": "タブを開く準備完了"
+  },
+  "tabPlural": {
+    "message": "個のタブ"
+  },
+  "tabSingular": {
+    "message": "個のタブ"
+  },
+  "checkingExistingTabs": {
+    "message": "既存のタブを確認しています..."
+  },
+  "allTabsAlreadyOpen": {
+    "message": "すべてのタブが既に開かれてピンされています"
+  },
+  "someTabsAlreadyOpen": {
+    "message": "$SKIPPED$個のタブが既に開いており、$OPENED$個の新しいタブが作成されました",
+    "placeholders": {
+      "skipped": {
+        "content": "$1",
+        "example": "3"
+      },
+      "opened": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+  "tabsOpened": {
+    "message": "タブが正常に開かれました！"
+  },
+  "errorOpeningTabs": {
+    "message": "タブを開く際にエラーが発生しました"
+  },
+  "cannotPinTab": {
+    "message": "このタブをピンできません"
+  },
+  "failedToInitialize": {
+    "message": "初期化に失敗しました"
+  },
+  "categoryPrefix": {
+    "message": "カテゴリ"
+  },
+  "containsPrefix": {
+    "message": "に含まれています"
+  },
+  "noCategoryTabs": {
+    "message": "このカテゴリにはタブがありません"
+  },
+  "tabPinnedInCategory": {
+    "message": "\"$TITLE$\" を$CATEGORY$にピンしました",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      },
+      "category": {
+        "content": "$2",
+        "example": "仕事"
+      }
+    }
+  },
+  "failedToPinTab": {
+    "message": "タブのピンに失敗しました"
+  },
+  "ago": {
+    "message": "前"
+  },
+  "days": {
+    "message": "日"
+  },
+  "hours": {
+    "message": "時間"
+  },
+  "minutes": {
+    "message": "分"
+  },
+  "justNow": {
+    "message": "たった今"
+  },
+  "tabsOpenedCount": {
+    "message": "$COUNT$個のタブを開きました",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "errorOpeningCategoryTabs": {
+    "message": "カテゴリタブを開く際にエラーが発生しました"
+  },
+  "tabPinned": {
+    "message": "\"$TITLE$\" がピンされました",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      }
+    }
+  },
+  "openingTabs": {
+    "message": "タブを開いています..."
+  },
+  "openingCategoryTabs": {
+    "message": "カテゴリタブを開いています..."
+  },
+  "lastOpened": {
+    "message": "最後に開いた時刻: $TIME$",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "5分前"
+      }
+    }
+  },
+  "editTab": {
+    "message": "タブを編集"
+  },
+  "deleteTab": {
+    "message": "タブを削除"
+  },
+  "uncategorized": {
+    "message": "未分類"
+  },
+  "manageCategories": {
+    "message": "カテゴリを管理"
+  },
+  "resetCategories": {
+    "message": "デフォルトに戻す"
+  },
+  "editCategory": {
+    "message": "カテゴリを編集"
+  },
+  "categoryName": {
+    "message": "カテゴリ名"
+  },
+  "categoryNamePlaceholder": {
+    "message": "カテゴリ名を入力"
+  },
+  "categoryIcon": {
+    "message": "カテゴリアイコン"
+  },
+  "categoryIconPlaceholder": {
+    "message": "📁"
+  },
+  "categoryIconHelp": {
+    "message": "このカテゴリを表す絵文字を選択してください"
+  },
+  "saveCategory": {
+    "message": "カテゴリを保存"
+  },
+  "categorySaved": {
+    "message": "カテゴリが正常に保存されました！"
+  },
+  "categoriesReset": {
+    "message": "カテゴリがデフォルトにリセットされました！"
+  },
+  "resetCategoriesConfirm": {
+    "message": "すべてのカテゴリをリセットしてもよろしいですか？デフォルトの名前とアイコンに戻ります。"
+  },
+  "categoryNameRequired": {
+    "message": "カテゴリ名は必須です"
+  },
+  "categoryIconRequired": {
+    "message": "カテゴリアイコンは必須です"
+  },
+  "pinnedTabsShort": {
+    "message": "ピン済み"
+  },
+  "categoriesShort": {
+    "message": "カテゴリ"
+  },
+  "refreshTooltip": {
+    "message": "タブとカテゴリのデータを更新"
+  },
+  "clickToOpenPinnedTabs": {
+    "message": "クリックしてピンしたタブを開く"
+  },
+  "pinCurrentTabTooltip": {
+    "message": "現在のタブをピン"
+  },
+  "manageTabsAndSettingsTooltip": {
+    "message": "タブと設定を管理"
+  },
+  "manageCategoriesButtonTooltip": {
+    "message": "カテゴリを管理"
+  },
+  "viewAllPinnedTabsTooltip": {
+    "message": "すべてのピンしたタブを表示"
+  },
+  "manageCategoriesStatTooltip": {
+    "message": "カテゴリを管理"
+  },
+  "extensionVersionTooltip": {
+    "message": "拡張機能のバージョン"
+  },
+  "exportSettingsTooltip": {
+    "message": "設定をエクスポート"
+  },
+  "importSettingsTooltip": {
+    "message": "設定をインポート"
+  },
+  "notificationsDenied": {
+    "message": "通知が無効になっています。ブラウザ設定で有効にしてください。"
+  },
+  "criticalErrorTitle": {
+    "message": "重大なエラー"
+  },
+  "criticalErrorMessage": {
+    "message": "重大なエラーが発生しました。拡張機能を再起動してください。"
+  },
+  "selectCategory": {
+    "message": "カテゴリを選択"
+  },
+  "selectCategoryIcon": {
+    "message": "カテゴリアイコンを選択"
+  },
+  "searchIcons": {
+    "message": "アイコンを検索..."
+  },
+  "recent": {
+    "message": "最近"
+  },
+  "objects": {
+    "message": "オブジェクト"
+  },
+  "symbols": {
+    "message": "シンボル"
+  },
+  "activities": {
+    "message": "アクティビティ"
+  },
+  "nature": {
+    "message": "自然"
+  },
+  "food": {
+    "message": "食べ物"
+  },
+  "noRecentIcons": {
+    "message": "最近のアイコンはありません"
+  },
+  "noIconsFound": {
+    "message": "アイコンが見つかりません"
+  },
+  "dragToReorder": {
+    "message": "ドラッグして並び替え"
+  },
+  "dropHere": {
+    "message": "ここにドロップ"
+  },
+  "tabReordered": {
+    "message": "タブの順序が更新されました！"
+  },
+  "reorderError": {
+    "message": "タブの並び替えでエラーが発生しました"
+  },
+  "footerCreatedBy": {
+    "message": "Alexandre によって作成"
+  },
+  "changeCategoryTooltip": {
+    "message": "カテゴリを変更"
+  },
+  "categoryChanged": {
+    "message": "カテゴリが更新されました！"
+  },
+  "getStartedTitle": {
+    "message": "ここから始めましょう！"
+  },
+  "getStartedDescription": {
+    "message": "最初のタブをピンして、パーソナルスペースを作成し、生産性を向上させましょう。"
+  },
+  "pinCurrentTabAction": {
+    "message": "現在のタブをピン"
+  },
+  "pinCurrentTabHelper": {
+    "message": "現在表示しているタブを追加"
+  },
+  "orDivider": {
+    "message": "または"
+  },
+  "configureManually": {
+    "message": "手動で設定"
+  }
+} 

@@ -539,6 +539,32 @@
   },
   "footerCreatedBy": {
     "message": "Créé par Alexandre with",
-    "description": "Texte du footer - créé par Alexandre with"
+    "description": "Footer created by text"
+  },
+  "changeCategoryTooltip": {
+    "message": "Changer la catégorie",
+    "description": "Tooltip for the category badge on a tab item"
+  },
+  "categoryChanged": {
+    "message": "Catégorie mise à jour !",
+    "description": "Success message when a tab's category is changed via quick edit"
+  },
+  "getStartedTitle": {
+    "message": "Commencez ici !"
+  },
+  "getStartedDescription": {
+    "message": "Épinglez votre premier onglet pour créer votre espace personnalisé et améliorer votre productivité."
+  },
+  "pinCurrentTabAction": {
+    "message": "Épingler l'onglet actuel"
+  },
+  "pinCurrentTabHelper": {
+    "message": "Ajoute l'onglet que vous consultez actuellement"
+  },
+  "orDivider": {
+    "message": "ou"
+  },
+  "configureManually": {
+    "message": "Configurer manuellement"
   }
 } 

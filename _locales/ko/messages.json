@@ -1,0 +1,460 @@
+{
+  "extensionName": {
+    "message": "탭 고정"
+  },
+  "extensionDescription": {
+    "message": "고정된 탭을 쉽게 관리하고 열 수 있습니다. 탭을 카테고리별로 정리하고 새 창에서 자동으로 열어보세요."
+  },
+  "browserActionTitle": {
+    "message": "탭 고정 열기"
+  },
+  "openAllTabs": {
+    "message": "모든 탭 열기"
+  },
+  "openOneTab": {
+    "message": "1개 탭 열기"
+  },
+  "openTabsCount": {
+    "message": "$COUNT$개 탭 열기",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "openTabsSingular": {
+    "message": "$COUNT$개 탭 열기",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "openTabsPlural": {
+    "message": "$COUNT$개 탭 열기",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "noTabsConfigured": {
+    "message": "구성된 탭이 없습니다"
+  },
+  "configureTabsMessage": {
+    "message": "시작하려면 옵션 페이지에서 즐겨찾는 탭을 구성하세요."
+  },
+  "pinCurrentTab": {
+    "message": "현재 탭 고정"
+  },
+  "openOptions": {
+    "message": "옵션 열기"
+  },
+  "categories": {
+    "message": "카테고리"
+  },
+  "work": {
+    "message": "업무"
+  },
+  "personal": {
+    "message": "개인"
+  },
+  "development": {
+    "message": "개발"
+  },
+  "social": {
+    "message": "소셜"
+  },
+  "tools": {
+    "message": "도구"
+  },
+  "entertainment": {
+    "message": "오락"
+  },
+  "optionsTitle": {
+    "message": "탭 고정 옵션"
+  },
+  "manageTabs": {
+    "message": "고정된 탭 관리"
+  },
+  "addNewTab": {
+    "message": "새 탭 추가"
+  },
+  "tabUrl": {
+    "message": "탭 URL"
+  },
+  "tabTitle": {
+    "message": "탭 제목 (선택사항)"
+  },
+  "tabCategory": {
+    "message": "카테고리"
+  },
+  "saveTab": {
+    "message": "탭 저장"
+  },
+  "cancel": {
+    "message": "취소"
+  },
+  "edit": {
+    "message": "편집"
+  },
+  "delete": {
+    "message": "삭제"
+  },
+  "deleteConfirm": {
+    "message": "이 탭을 삭제하시겠습니까?"
+  },
+  "generalSettings": {
+    "message": "일반 설정"
+  },
+  "autoOpenTabs": {
+    "message": "새 창 생성 시 탭 자동 열기"
+  },
+  "autoOpenTabsDescription": {
+    "message": "활성화하면 새 Firefox 창을 만들 때 고정된 탭이 자동으로 열립니다."
+  },
+  "importExport": {
+    "message": "가져오기/내보내기"
+  },
+  "exportSettings": {
+    "message": "설정 내보내기"
+  },
+  "importSettings": {
+    "message": "설정 가져오기"
+  },
+  "settingsExported": {
+    "message": "설정이 성공적으로 내보내졌습니다!"
+  },
+  "settingsImported": {
+    "message": "설정이 성공적으로 가져와졌습니다!"
+  },
+  "invalidFile": {
+    "message": "잘못된 파일 형식"
+  },
+  "tabsSaved": {
+    "message": "탭이 성공적으로 저장되었습니다!"
+  },
+  "tabDeleted": {
+    "message": "탭이 성공적으로 삭제되었습니다!"
+  },
+  "invalidUrl": {
+    "message": "유효한 URL을 입력하세요"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "titlePlaceholder": {
+    "message": "내가 좋아하는 사이트"
+  },
+  "loading": {
+    "message": "로딩 중..."
+  },
+  "retry": {
+    "message": "다시 시도"
+  },
+  "close": {
+    "message": "닫기"
+  },
+  "options": {
+    "message": "옵션"
+  },
+  "refresh": {
+    "message": "새로고침"
+  },
+  "tabAlreadyPinned": {
+    "message": "탭이 이미 고정되어 있습니다"
+  },
+  "currentTabCannotBePinned": {
+    "message": "현재 탭을 고정할 수 없습니다"
+  },
+  "lastOpenedPrefix": {
+    "message": "마지막 열린 시간:"
+  },
+  "readyToOpenTabs": {
+    "message": "탭을 열 준비가 되었습니다"
+  },
+  "tabPlural": {
+    "message": "개 탭"
+  },
+  "tabSingular": {
+    "message": "개 탭"
+  },
+  "checkingExistingTabs": {
+    "message": "기존 탭을 확인하는 중..."
+  },
+  "allTabsAlreadyOpen": {
+    "message": "모든 탭이 이미 열려있고 고정되어 있습니다"
+  },
+  "someTabsAlreadyOpen": {
+    "message": "$SKIPPED$개 탭이 이미 열려있고, $OPENED$개의 새 탭이 생성되었습니다",
+    "placeholders": {
+      "skipped": {
+        "content": "$1",
+        "example": "3"
+      },
+      "opened": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+  "tabsOpened": {
+    "message": "탭이 성공적으로 열렸습니다!"
+  },
+  "errorOpeningTabs": {
+    "message": "탭 여는 중 오류 발생"
+  },
+  "cannotPinTab": {
+    "message": "이 탭을 고정할 수 없습니다"
+  },
+  "failedToInitialize": {
+    "message": "초기화에 실패했습니다"
+  },
+  "categoryPrefix": {
+    "message": "카테고리"
+  },
+  "containsPrefix": {
+    "message": "포함"
+  },
+  "noCategoryTabs": {
+    "message": "이 카테고리에는 탭이 없습니다"
+  },
+  "tabPinnedInCategory": {
+    "message": "\"$TITLE$\"이(가) $CATEGORY$에 고정되었습니다",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      },
+      "category": {
+        "content": "$2",
+        "example": "업무"
+      }
+    }
+  },
+  "failedToPinTab": {
+    "message": "탭 고정에 실패했습니다"
+  },
+  "ago": {
+    "message": "전"
+  },
+  "days": {
+    "message": "일"
+  },
+  "hours": {
+    "message": "시간"
+  },
+  "minutes": {
+    "message": "분"
+  },
+  "justNow": {
+    "message": "방금 전"
+  },
+  "tabsOpenedCount": {
+    "message": "$COUNT$개 탭이 열렸습니다",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "errorOpeningCategoryTabs": {
+    "message": "카테고리 탭 여는 중 오류 발생"
+  },
+  "tabPinned": {
+    "message": "\"$TITLE$\"이(가) 고정되었습니다",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      }
+    }
+  },
+  "openingTabs": {
+    "message": "탭을 여는 중..."
+  },
+  "openingCategoryTabs": {
+    "message": "카테고리 탭을 여는 중..."
+  },
+  "lastOpened": {
+    "message": "마지막 열린 시간: $TIME$",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "5분 전"
+      }
+    }
+  },
+  "editTab": {
+    "message": "탭 편집"
+  },
+  "deleteTab": {
+    "message": "탭 삭제"
+  },
+  "uncategorized": {
+    "message": "미분류"
+  },
+  "manageCategories": {
+    "message": "카테고리 관리"
+  },
+  "resetCategories": {
+    "message": "기본값으로 재설정"
+  },
+  "editCategory": {
+    "message": "카테고리 편집"
+  },
+  "categoryName": {
+    "message": "카테고리 이름"
+  },
+  "categoryNamePlaceholder": {
+    "message": "카테고리 이름 입력"
+  },
+  "categoryIcon": {
+    "message": "카테고리 아이콘"
+  },
+  "categoryIconPlaceholder": {
+    "message": "📁"
+  },
+  "categoryIconHelp": {
+    "message": "이 카테고리를 나타낼 이모지를 선택하세요"
+  },
+  "saveCategory": {
+    "message": "카테고리 저장"
+  },
+  "categorySaved": {
+    "message": "카테고리가 성공적으로 저장되었습니다!"
+  },
+  "categoriesReset": {
+    "message": "카테고리가 기본값으로 재설정되었습니다!"
+  },
+  "resetCategoriesConfirm": {
+    "message": "모든 카테고리를 재설정하시겠습니까? 기본 이름과 아이콘으로 복원됩니다."
+  },
+  "categoryNameRequired": {
+    "message": "카테고리 이름이 필요합니다"
+  },
+  "categoryIconRequired": {
+    "message": "카테고리 아이콘이 필요합니다"
+  },
+  "pinnedTabsShort": {
+    "message": "고정됨"
+  },
+  "categoriesShort": {
+    "message": "카테고리"
+  },
+  "refreshTooltip": {
+    "message": "탭과 카테고리 데이터 새로고침"
+  },
+  "clickToOpenPinnedTabs": {
+    "message": "고정된 탭을 열려면 클릭하세요"
+  },
+  "pinCurrentTabTooltip": {
+    "message": "현재 탭 고정"
+  },
+  "manageTabsAndSettingsTooltip": {
+    "message": "탭과 설정 관리"
+  },
+  "manageCategoriesButtonTooltip": {
+    "message": "카테고리 관리"
+  },
+  "viewAllPinnedTabsTooltip": {
+    "message": "모든 고정된 탭 보기"
+  },
+  "manageCategoriesStatTooltip": {
+    "message": "카테고리 관리"
+  },
+  "extensionVersionTooltip": {
+    "message": "확장 프로그램 버전"
+  },
+  "exportSettingsTooltip": {
+    "message": "설정 내보내기"
+  },
+  "importSettingsTooltip": {
+    "message": "설정 가져오기"
+  },
+  "notificationsDenied": {
+    "message": "알림이 비활성화되었습니다. 브라우저 설정에서 활성화해주세요."
+  },
+  "criticalErrorTitle": {
+    "message": "치명적 오류"
+  },
+  "criticalErrorMessage": {
+    "message": "치명적 오류가 발생했습니다. 확장 프로그램을 다시 시작해주세요."
+  },
+  "selectCategory": {
+    "message": "카테고리 선택"
+  },
+  "selectCategoryIcon": {
+    "message": "카테고리 아이콘 선택"
+  },
+  "searchIcons": {
+    "message": "아이콘 검색..."
+  },
+  "recent": {
+    "message": "최근"
+  },
+  "objects": {
+    "message": "객체"
+  },
+  "symbols": {
+    "message": "기호"
+  },
+  "activities": {
+    "message": "활동"
+  },
+  "nature": {
+    "message": "자연"
+  },
+  "food": {
+    "message": "음식"
+  },
+  "noRecentIcons": {
+    "message": "최근 아이콘이 없습니다"
+  },
+  "noIconsFound": {
+    "message": "아이콘을 찾을 수 없습니다"
+  },
+  "dragToReorder": {
+    "message": "드래그하여 순서 변경"
+  },
+  "dropHere": {
+    "message": "여기에 놓기"
+  },
+  "tabReordered": {
+    "message": "탭 순서가 업데이트되었습니다!"
+  },
+  "reorderError": {
+    "message": "탭 순서 변경 중 오류 발생"
+  },
+  "footerCreatedBy": {
+    "message": "Alexandre에 의해 제작됨"
+  },
+  "changeCategoryTooltip": {
+    "message": "카테고리 변경"
+  },
+  "categoryChanged": {
+    "message": "카테고리가 업데이트되었습니다!"
+  },
+  "getStartedTitle": {
+    "message": "여기서 시작하세요!"
+  },
+  "getStartedDescription": {
+    "message": "첫 번째 탭을 고정하여 개인 공간을 만들고 생산성을 향상시키세요."
+  },
+  "pinCurrentTabAction": {
+    "message": "현재 탭 고정"
+  },
+  "pinCurrentTabHelper": {
+    "message": "현재 보고 있는 탭 추가"
+  },
+  "orDivider": {
+    "message": "또는"
+  },
+  "configureManually": {
+    "message": "수동으로 구성"
+  }
+} 

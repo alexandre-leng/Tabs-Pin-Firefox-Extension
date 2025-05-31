@@ -5,6 +5,37 @@
 
 'use strict';
 
+// Enhanced animations
+function animateElements() {
+  // Animate sections with stagger effect
+  const sections = document.querySelectorAll('.section');
+  sections.forEach((section, index) => {
+    section.style.animationDelay = `${index * 0.1}s`;
+    section.classList.add('fade-in-up');
+  });
+
+  // Animate cards with stagger
+  const cards = document.querySelectorAll('.tab-item, .category-item');
+  cards.forEach((card, index) => {
+    card.style.animationDelay = `${0.3 + (index * 0.05)}s`;
+    card.classList.add('fade-in-up');
+  });
+}
+
+// Page load handler
+document.addEventListener('DOMContentLoaded', () => {
+  // Start initialization
+  setTimeout(() => {
+    // Initialize the options manager
+    window.optionsManager = new OptionsManager();
+    
+    // Animate elements after initialization
+    setTimeout(() => {
+      animateElements();
+    }, 100);
+  }, 50);
+});
+
 class OptionsManager {
   constructor() {
     this.tabs = [];
@@ -15,6 +46,7 @@ class OptionsManager {
     this.iconPickerOpen = false;
     this.currentIconInput = null;
     this.isDataLoading = false; // Flag to prevent unnecessary operations during data load
+    this.activeQuickEditPopover = null; // To keep track of the currently open popover
     
     this.elements = this.getElements();
     this.init();
@@ -190,6 +222,17 @@ class OptionsManager {
         this.forceRefresh();
       }
     });
+
+    // Close popover on outside click
+    document.addEventListener('click', (e) => {
+      if (this.activeQuickEditPopover && !this.activeQuickEditPopover.contains(e.target)) {
+        // Check if the click was on a category badge, if so, let that handler manage it
+        const clickedOnBadge = e.target.closest('.tab-category');
+        if (!clickedOnBadge || !this.activeQuickEditPopover.previousElementSibling?.contains(clickedOnBadge)) {
+            this.closeCategoryQuickEdit();
+        }
+      }
+    });
   }
 
   setupDataChangeListener() {
@@ -259,7 +302,10 @@ class OptionsManager {
     this.elements.tabsGrid.style.display = 'grid';
     this.elements.emptyTabs.style.display = 'none';
     
-    this.elements.tabsGrid.innerHTML = '';
+    // Clear existing content safely
+    while (this.elements.tabsGrid.firstChild) {
+      this.elements.tabsGrid.removeChild(this.elements.tabsGrid.firstChild);
+    }
     
     // Sort tabs by order (if exists) or by dateAdded
     const sortedTabs = [...this.tabs].sort((a, b) => {
@@ -287,6 +333,12 @@ class OptionsManager {
     card.dataset.tabIndex = index;
     card.draggable = true;
     
+    // Add order indicator
+    const orderIndicator = document.createElement('div');
+    orderIndicator.className = 'tab-order-indicator';
+    orderIndicator.textContent = index + 1;
+    card.appendChild(orderIndicator);
+    
     // Get category info
     const category = this.categories.find(c => c.id === tab.category);
     const categoryName = category ? category.name : (browser.i18n.getMessage('uncategorized') || 'Uncategorized');
@@ -296,47 +348,119 @@ class OptionsManager {
     const editLabel = browser.i18n.getMessage('edit') || 'Edit';
     const deleteLabel = browser.i18n.getMessage('delete') || 'Delete';
     const dragLabel = browser.i18n.getMessage('dragToReorder') || 'Drag to reorder';
+    const changeCategoryLabel = browser.i18n.getMessage('changeCategoryTooltip') || 'Change category';
     
-    card.innerHTML = `
-      <div class="tab-card-header">
-        <div class="drag-handle" title="${dragLabel}">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M11,18c0,1.1-0.9,2-2,2s-2-0.9-2-2s0.9-2,2-2S11,16.9,11,18z M9,10c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S10.1,10,9,10z M9,4C7.9,4,7,4.9,7,6s0.9,2,2,2s2-0.9,2-2S10.1,4,9,4z M15,8c1.1,0,2-0.9,2-2s-0.9-2-2-2s-2,0.9-2,2S13.9,8,15,8z M15,10c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S16.1,10,15,10z M15,16c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S16.1,16,15,16z"/>
-          </svg>
-        </div>
-        <div class="tab-favicon-container"></div>
-        <div class="tab-info">
-          <h3 class="tab-title">${this.escapeHtml(tab.title || this.extractDomain(tab.url))}</h3>
-          <p class="tab-url">${this.escapeHtml(tab.url)}</p>
-        </div>
-        <div class="tab-actions">
-          <button class="icon-btn edit" title="${editLabel}">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
-            </svg>
-          </button>
-          <button class="icon-btn danger delete" title="${deleteLabel}">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-      <div class="tab-category">
-        <span>${categoryIcon}</span>
-        <span>${this.escapeHtml(categoryName)}</span>
-      </div>
-    `;
+    // Create card header
+    const cardHeader = document.createElement('div');
+    cardHeader.className = 'tab-card-header';
+    
+    // Create drag handle
+    const dragHandle = document.createElement('div');
+    dragHandle.className = 'drag-handle';
+    dragHandle.title = dragLabel;
+    
+    // Create SVG for drag handle
+    const dragSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    dragSvg.setAttribute('width', '16');
+    dragSvg.setAttribute('height', '16');
+    dragSvg.setAttribute('viewBox', '0 0 24 24');
+    dragSvg.setAttribute('fill', 'currentColor');
+    
+    const dragPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    dragPath.setAttribute('d', 'M11,18c0,1.1-0.9,2-2,2s-2-0.9-2-2s0.9-2,2-2S11,16.9,11,18z M9,10c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S10.1,10,9,10z M9,4C7.9,4,7,4.9,7,6s0.9,2,2,2s2-0.9,2-2S10.1,4,9,4z M15,8c1.1,0,2-0.9,2-2s-0.9-2-2-2s-2,0.9-2,2S13.9,8,15,8z M15,10c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S16.1,10,15,10z M15,16c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S16.1,16,15,16z');
+    
+    dragSvg.appendChild(dragPath);
+    dragHandle.appendChild(dragSvg);
+    
+    // Create favicon container
+    const faviconContainer = document.createElement('div');
+    faviconContainer.className = 'tab-favicon-container';
+    
+    // Create tab info
+    const tabInfo = document.createElement('div');
+    tabInfo.className = 'tab-info';
+    
+    const tabTitle = document.createElement('h3');
+    tabTitle.className = 'tab-title';
+    tabTitle.textContent = tab.title || this.extractDomain(tab.url);
+    
+    const tabUrl = document.createElement('p');
+    tabUrl.className = 'tab-url';
+    tabUrl.textContent = tab.url;
+    
+    tabInfo.appendChild(tabTitle);
+    tabInfo.appendChild(tabUrl);
+    
+    // Create actions
+    const tabActions = document.createElement('div');
+    tabActions.className = 'tab-actions';
+    
+    const editBtn = document.createElement('button');
+    editBtn.className = 'icon-btn edit';
+    editBtn.title = editLabel;
+    
+    // Create SVG for edit button
+    const editSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    editSvg.setAttribute('width', '12');
+    editSvg.setAttribute('height', '12');
+    editSvg.setAttribute('viewBox', '0 0 24 24');
+    editSvg.setAttribute('fill', 'currentColor');
+    
+    const editPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    editPath.setAttribute('d', 'M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z');
+    
+    editSvg.appendChild(editPath);
+    editBtn.appendChild(editSvg);
+    
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'icon-btn danger delete';
+    deleteBtn.title = deleteLabel;
+    
+    // Create SVG for delete button
+    const deleteSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    deleteSvg.setAttribute('width', '12');
+    deleteSvg.setAttribute('height', '12');
+    deleteSvg.setAttribute('viewBox', '0 0 24 24');
+    deleteSvg.setAttribute('fill', 'currentColor');
+    
+    const deletePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    deletePath.setAttribute('d', 'M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z');
+    
+    deleteSvg.appendChild(deletePath);
+    deleteBtn.appendChild(deleteSvg);
+    
+    tabActions.appendChild(editBtn);
+    tabActions.appendChild(deleteBtn);
+    
+    // Assemble header
+    cardHeader.appendChild(dragHandle);
+    cardHeader.appendChild(faviconContainer);
+    cardHeader.appendChild(tabInfo);
+    cardHeader.appendChild(tabActions);
+    
+    // Create category badge
+    const categoryBadge = document.createElement('div');
+    categoryBadge.className = 'tab-category';
+    categoryBadge.title = changeCategoryLabel;
+    
+    const categoryIconSpan = document.createElement('span');
+    categoryIconSpan.textContent = categoryIcon;
+    
+    const categoryNameSpan = document.createElement('span');
+    categoryNameSpan.textContent = categoryName;
+    
+    categoryBadge.appendChild(categoryIconSpan);
+    categoryBadge.appendChild(categoryNameSpan);
+    
+    // Assemble card
+    card.appendChild(cardHeader);
+    card.appendChild(categoryBadge);
     
     // Add the favicon element to the container
-    const faviconContainer = card.querySelector('.tab-favicon-container');
     const faviconElement = this.createFaviconElement(tab.url, categoryIcon);
     faviconContainer.appendChild(faviconElement);
     
     // Add event listeners
-    const editBtn = card.querySelector('.icon-btn.edit');
-    const deleteBtn = card.querySelector('.icon-btn.delete');
-    
     if (editBtn) {
       editBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -353,13 +477,23 @@ class OptionsManager {
       });
     }
     
+    if (categoryBadge) {
+      categoryBadge.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent card click or other parent events
+        this.openCategoryQuickEdit(e.currentTarget, tab);
+      });
+    }
+    
     return card;
   }
 
   renderCategories() {
     if (!this.elements.categoriesGrid) return;
     
-    this.elements.categoriesGrid.innerHTML = '';
+    // Clear existing content safely
+    while (this.elements.categoriesGrid.firstChild) {
+      this.elements.categoriesGrid.removeChild(this.elements.categoriesGrid.firstChild);
+    }
     
     this.categories.forEach(category => {
       const categoryCard = this.createCategoryCard(category);
@@ -380,13 +514,27 @@ class OptionsManager {
       (browser.i18n.getMessage('tabPlural') || 'tabs') :
       (browser.i18n.getMessage('tabSingular') || 'tab');
     
-    card.innerHTML = `
-      <div class="category-icon">${category.icon}</div>
-      <div class="category-info">
-        <h3 class="category-name">${this.escapeHtml(category.name)}</h3>
-        <p class="category-count">${tabCount} ${tabWord}</p>
-      </div>
-    `;
+    // Create elements safely
+    const iconDiv = document.createElement('div');
+    iconDiv.className = 'category-icon';
+    iconDiv.textContent = category.icon;
+    
+    const infoDiv = document.createElement('div');
+    infoDiv.className = 'category-info';
+    
+    const nameTitle = document.createElement('h3');
+    nameTitle.className = 'category-name';
+    nameTitle.textContent = category.name;
+    
+    const countPara = document.createElement('p');
+    countPara.className = 'category-count';
+    countPara.textContent = `${tabCount} ${tabWord}`;
+    
+    // Assemble the structure
+    infoDiv.appendChild(nameTitle);
+    infoDiv.appendChild(countPara);
+    card.appendChild(iconDiv);
+    card.appendChild(infoDiv);
     
     // Add click event to edit category
     card.addEventListener('click', (e) => {
@@ -425,12 +573,20 @@ class OptionsManager {
     this.populateCategoryDropdown();
     
     // Show modal
-    this.elements.tabModalOverlay.style.display = 'flex';
+    this.elements.tabModalOverlay.style.display = 'flex'; // Ensure it is display:flex before adding show
+    requestAnimationFrame(() => {
+      this.elements.tabModalOverlay.classList.add('show');
+    });
     this.elements.tabUrl.focus();
   }
 
   closeTabModal() {
+    this.elements.tabModalOverlay.classList.remove('show');
+    // Wait for animation to complete before hiding
+    this.elements.tabModalOverlay.addEventListener('transitionend', () => {
     this.elements.tabModalOverlay.style.display = 'none';
+    }, { once: true });
+
     this.currentEditingTab = null;
     this.elements.tabForm.reset();
   }
@@ -438,12 +594,17 @@ class OptionsManager {
   populateCategoryDropdown() {
     if (!this.elements.tabCategory) return;
     
-    this.elements.tabCategory.innerHTML = '';
+    // Clear existing content safely
+    while (this.elements.tabCategory.firstChild) {
+      this.elements.tabCategory.removeChild(this.elements.tabCategory.firstChild);
+    }
     
     this.categories.forEach(category => {
       const option = document.createElement('option');
       option.value = category.id;
-      option.textContent = category.name;
+      option.textContent = `${category.icon} ${category.name}`;
+      option.dataset.icon = category.icon;
+      option.dataset.name = category.name;
       this.elements.tabCategory.appendChild(option);
     });
   }
@@ -552,8 +713,10 @@ class OptionsManager {
     }
     
     if (this.elements.categoryModalOverlay) {
-      this.elements.categoryModalOverlay.style.display = 'flex';
+      this.elements.categoryModalOverlay.style.display = 'flex'; // Ensure it is display:flex before adding show
+      requestAnimationFrame(() => {
       this.elements.categoryModalOverlay.classList.add('show');
+      });
     }
     
     if (this.elements.categoryName) {
@@ -565,8 +728,11 @@ class OptionsManager {
 
   closeCategoryModal() {
     if (this.elements.categoryModalOverlay) {
-      this.elements.categoryModalOverlay.style.display = 'none';
       this.elements.categoryModalOverlay.classList.remove('show');
+      // Wait for animation to complete before hiding
+      this.elements.categoryModalOverlay.addEventListener('transitionend', () => {
+        this.elements.categoryModalOverlay.style.display = 'none';
+      }, { once: true });
     }
     
     this.currentEditingCategory = null;
@@ -679,7 +845,7 @@ class OptionsManager {
       
       // Revert checkbox state on error
       if (this.elements.autoOpenTabs) {
-        this.elements.autoOpenTabs.checked = !enabled;
+      this.elements.autoOpenTabs.checked = !enabled;
       }
     }
   }
@@ -909,12 +1075,21 @@ class OptionsManager {
         // Create placeholder
         placeholder = document.createElement('div');
         placeholder.className = 'tab-item-placeholder';
-        placeholder.innerHTML = `
-          <div class="placeholder-content">
-            <div class="placeholder-icon">📁</div>
-            <div class="placeholder-text">${browser.i18n.getMessage('dropHere') || 'Drop here'}</div>
-          </div>
-        `;
+        
+        const placeholderContent = document.createElement('div');
+        placeholderContent.className = 'placeholder-content';
+        
+        const placeholderIcon = document.createElement('div');
+        placeholderIcon.className = 'placeholder-icon';
+        placeholderIcon.textContent = '📁';
+        
+        const placeholderText = document.createElement('div');
+        placeholderText.className = 'placeholder-text';
+        placeholderText.textContent = browser.i18n.getMessage('dropHere') || 'Drop here';
+        
+        placeholderContent.appendChild(placeholderIcon);
+        placeholderContent.appendChild(placeholderText);
+        placeholder.appendChild(placeholderContent);
         
         e.dataTransfer.effectAllowed = 'move';
         e.dataTransfer.setData('text/html', item.outerHTML);
@@ -1090,7 +1265,10 @@ class OptionsManager {
     this.elements.tabsGrid.style.display = 'grid';
     this.elements.emptyTabs.style.display = 'none';
     
-    this.elements.tabsGrid.innerHTML = '';
+    // Clear existing content safely
+    while (this.elements.tabsGrid.firstChild) {
+      this.elements.tabsGrid.removeChild(this.elements.tabsGrid.firstChild);
+    }
     
     // Sort tabs by order (if exists) or by dateAdded
     const sortedTabs = [...this.tabs].sort((a, b) => {
@@ -1112,12 +1290,175 @@ class OptionsManager {
       this.enableDragAndDrop();
     }, 100);
   }
+
+  getCurrentIconValue() {
+    return this.elements.selectedIcon?.textContent || '📁';
+  }
+
+  getSelectedIcon() {
+    return this.elements.selectedIcon?.textContent || '📁';
+  }
+
+  // Category Quick Edit Popover Management
+  openCategoryQuickEdit(badgeElement, tab) {
+    this.closeCategoryQuickEdit(); // Close any existing popover
+
+    const template = document.getElementById('categoryQuickEditPopoverTemplate');
+    if (!template) return;
+
+    const popover = template.cloneNode(true);
+    popover.id = 'activeCategoryQuickEditPopover';
+    document.body.appendChild(popover);
+    this.activeQuickEditPopover = popover;
+
+    const selectElement = popover.querySelector('.popover-category-select');
+    
+    // Clear existing options safely
+    while (selectElement.firstChild) {
+      selectElement.removeChild(selectElement.firstChild);
+    }
+    
+    // Add categories with proper icon display
+    this.categories.forEach(category => {
+      const option = document.createElement('option');
+      option.value = category.id;
+      option.textContent = `${category.icon} ${category.name}`;
+      option.dataset.icon = category.icon;
+      option.dataset.name = category.name;
+      
+      if (category.id === tab.category) {
+        option.selected = true;
+      }
+      
+      selectElement.appendChild(option);
+    });
+
+    const confirmBtn = popover.querySelector('.popover-confirm-btn');
+    const cancelBtn = popover.querySelector('.popover-cancel-btn');
+
+    confirmBtn.onclick = () => this.handleQuickCategoryChange(tab.id, selectElement.value);
+    cancelBtn.onclick = () => this.closeCategoryQuickEdit();
+
+    // Positioning
+    const badgeRect = badgeElement.getBoundingClientRect();
+    popover.style.top = `${badgeRect.bottom + window.scrollY + 5}px`;
+    popover.style.left = `${badgeRect.left + window.scrollX}px`;
+    
+    // Ensure popover doesn't go off screen
+    const popoverRect = popover.getBoundingClientRect();
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    
+    // Adjust horizontal position if needed
+    if (popoverRect.right > viewportWidth) {
+      popover.style.left = `${badgeRect.right + window.scrollX - popoverRect.width}px`;
+    }
+    
+    // Adjust vertical position if needed (show above if not enough space below)
+    if (popoverRect.bottom > viewportHeight) {
+      popover.style.top = `${badgeRect.top + window.scrollY - popoverRect.height - 5}px`;
+    }
+    
+    // Ensure popover is visible before starting animation
+    popover.style.display = 'flex';
+    requestAnimationFrame(() => {
+        popover.classList.add('show');
+    });
+    
+    selectElement.focus();
+  }
+
+  async handleQuickCategoryChange(tabId, newCategoryId) {
+    const tab = this.tabs.find(t => t.id === tabId);
+    const newCategory = this.categories.find(c => c.id === newCategoryId);
+    
+    if (tab && newCategory && tab.category !== newCategoryId) {
+      // Store old category for potential rollback
+      const oldCategoryId = tab.category;
+      
+      // Update tab category immediately
+      tab.category = newCategoryId;
+      
+      // Find the tab element and update the badge immediately for visual feedback
+      const tabElement = document.querySelector(`[data-tab-id="${tabId}"]`);
+      if (tabElement) {
+        const categoryBadge = tabElement.querySelector('.tab-category');
+        if (categoryBadge) {
+          const iconSpan = categoryBadge.querySelector('span:first-child');
+          const nameSpan = categoryBadge.querySelector('span:last-child');
+          if (iconSpan && nameSpan) {
+            iconSpan.textContent = newCategory.icon;
+            nameSpan.textContent = newCategory.name;
+          }
+        }
+      }
+      
+      try {
+        const response = await this.sendMessageWithRetry({
+          action: 'saveTab',
+          tab: tab
+        });
+        
+        if (response && response.success) {
+          // Success - reload data to ensure consistency
+          await this.loadData();
+          this.renderTabs();
+          this.renderCategories();
+          this.showToast('success', '✅', browser.i18n.getMessage('categoryChanged') || 'Category updated!');
+        } else {
+          throw new Error(response?.error || 'Failed to update category');
+        }
+      } catch (error) {
+        console.error('Error updating category:', error);
+        
+        // Rollback the change
+        tab.category = oldCategoryId;
+        
+        // Rollback visual change
+        if (tabElement) {
+          const categoryBadge = tabElement.querySelector('.tab-category');
+          if (categoryBadge) {
+            const oldCategory = this.categories.find(c => c.id === oldCategoryId);
+            if (oldCategory) {
+              const iconSpan = categoryBadge.querySelector('span:first-child');
+              const nameSpan = categoryBadge.querySelector('span:last-child');
+              if (iconSpan && nameSpan) {
+                iconSpan.textContent = oldCategory.icon;
+                nameSpan.textContent = oldCategory.name;
+              }
+            }
+          }
+        }
+        
+        this.showToast('error', '❌', error.message);
+      }
+    }
+    this.closeCategoryQuickEdit();
+  }
+
+  closeCategoryQuickEdit() {
+    if (this.activeQuickEditPopover) {
+      this.activeQuickEditPopover.classList.remove('show');
+      this.activeQuickEditPopover.addEventListener('transitionend', () => {
+        this.activeQuickEditPopover.remove();
+        this.activeQuickEditPopover = null;
+      }, { once: true });
+    }
+  }
 }
 
-// Initialize options manager when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  new OptionsManager();
-});
+// Page ready initialization - moved from beginning for proper order
+if (document.readyState === 'loading') {
+  // DOMContentLoaded listener already set above
+} else {
+  // DOM already loaded
+  setTimeout(() => {
+    window.optionsManager = new OptionsManager();
+    setTimeout(() => {
+      animateElements();
+    }, 100);
+  }, 50);
+}
 
 // Handle unload to cleanup
 window.addEventListener('beforeunload', () => {
@@ -1320,12 +1661,12 @@ OptionsManager.prototype.initIconData = function() {
 
 OptionsManager.prototype.openIconPicker = function() {
   this.initIconData();
-  this.elements.iconPickerOverlay.style.display = 'flex';
+  this.elements.iconPickerOverlay.style.display = 'flex'; // Ensure it is display:flex before adding show
   this.elements.iconSelectorBtn.classList.add('active');
   
-  setTimeout(() => {
+  requestAnimationFrame(() => {
     this.elements.iconPickerOverlay.classList.add('show');
-  }, 10);
+  });
   
   // Show recent icons by default
   this.switchIconCategory('objects');
@@ -1340,9 +1681,10 @@ OptionsManager.prototype.closeIconPicker = function() {
   this.elements.iconPickerOverlay.classList.remove('show');
   this.elements.iconSelectorBtn.classList.remove('active');
   
-  setTimeout(() => {
+  // Wait for animation to complete before hiding
+  this.elements.iconPickerOverlay.addEventListener('transitionend', () => {
     this.elements.iconPickerOverlay.style.display = 'none';
-  }, 200);
+  }, { once: true });
 };
 
 OptionsManager.prototype.switchIconCategory = function(category) {
@@ -1397,22 +1739,32 @@ OptionsManager.prototype.renderIconGrid = function(iconsData, category) {
   if (!this.elements.iconGrid) return;
   
   if (iconsData.length === 0) {
-    this.elements.iconGrid.innerHTML = `
-      <div class="icon-grid empty">
-        <div class="icon-empty-text">
-          ${category === 'recent' ? 
+    // Clear existing content safely
+    while (this.elements.iconGrid.firstChild) {
+      this.elements.iconGrid.removeChild(this.elements.iconGrid.firstChild);
+    }
+    
+    // Create empty state container
+    const emptyContainer = document.createElement('div');
+    emptyContainer.className = 'icon-grid empty';
+    
+    const emptyText = document.createElement('div');
+    emptyText.className = 'icon-empty-text';
+    emptyText.textContent = category === 'recent' ? 
             (browser.i18n.getMessage('noRecentIcons') || 'No recent icons') : 
             category === 'search' ?
             (browser.i18n.getMessage('noIconsFound') || 'No icons found') :
-            (browser.i18n.getMessage('noIconsFound') || 'No icons found')
-          }
-        </div>
-      </div>
-    `;
+      (browser.i18n.getMessage('noIconsFound') || 'No icons found');
+    
+    emptyContainer.appendChild(emptyText);
+    this.elements.iconGrid.appendChild(emptyContainer);
     return;
   }
   
-  this.elements.iconGrid.innerHTML = '';
+  // Clear existing content safely
+  while (this.elements.iconGrid.firstChild) {
+    this.elements.iconGrid.removeChild(this.elements.iconGrid.firstChild);
+  }
   
   iconsData.forEach(iconData => {
     const icon = iconData.icon || iconData; // Support both formats
