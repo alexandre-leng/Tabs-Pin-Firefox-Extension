@@ -220,8 +220,8 @@
     "description": "Message d'erreur quand l'épinglage échoue"
   },
   "failedToInitialize": {
-    "message": "Échec de l'initialisation du popup",
-    "description": "Message d'erreur quand le popup ne peut pas s'initialiser"
+    "message": "Échec de l'initialisation de la popup",
+    "description": "Message d'erreur quand la popup échoue à se charger"
   },
   "openingTabs": {
     "message": "Ouverture des onglets...",
@@ -520,5 +520,25 @@
   },
   "noIconsFound": {
     "message": "Aucune icône trouvée"
+  },
+  "dragToReorder": {
+    "message": "Glisser pour réorganiser",
+    "description": "Tooltip pour la poignée de drag des onglets"
+  },
+  "dropHere": {
+    "message": "Déposer ici",
+    "description": "Texte affiché dans la zone de dépôt lors du drag and drop"
+  },
+  "tabReordered": {
+    "message": "Ordre des onglets mis à jour !",
+    "description": "Message de succès quand l'ordre des onglets est modifié"
+  },
+  "reorderError": {
+    "message": "Erreur lors du réordonnancement de l'onglet",
+    "description": "Message d'erreur lors du réordonnancement"
+  },
+  "footerCreatedBy": {
+    "message": "Créé par Alexandre with",
+    "description": "Texte du footer - créé par Alexandre with"
   }
 } 

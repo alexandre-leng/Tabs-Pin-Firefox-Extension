@@ -520,5 +520,25 @@
   },
   "noIconsFound": {
     "message": "No icons found"
+  },
+  "dragToReorder": {
+    "message": "Drag to reorder",
+    "description": "Tooltip for the drag handle of tabs"
+  },
+  "dropHere": {
+    "message": "Drop here",
+    "description": "Text displayed in the drop zone during drag and drop"
+  },
+  "tabReordered": {
+    "message": "Tab order updated!",
+    "description": "Success message when tab order is changed"
+  },
+  "reorderError": {
+    "message": "Failed to reorder tab",
+    "description": "Error message during reordering"
+  },
+  "footerCreatedBy": {
+    "message": "Created by Alexandre with",
+    "description": "Footer text - created by Alexandre with"
   }
 } 

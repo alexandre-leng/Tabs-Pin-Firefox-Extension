@@ -520,5 +520,25 @@
   },
   "noIconsFound": {
     "message": "No se encontraron iconos"
+  },
+  "dragToReorder": {
+    "message": "Arrastrar para reordenar",
+    "description": "Tooltip para el asa de arrastre de las pestañas"
+  },
+  "dropHere": {
+    "message": "Soltar aquí",
+    "description": "Texto mostrado en la zona de soltar durante el arrastrar y soltar"
+  },
+  "tabReordered": {
+    "message": "¡Orden de pestañas actualizado!",
+    "description": "Mensaje de éxito cuando se cambia el orden de las pestañas"
+  },
+  "reorderError": {
+    "message": "Error al reordenar la pestaña",
+    "description": "Mensaje de error durante el reordenamiento"
+  },
+  "footerCreatedBy": {
+    "message": "Creado por Alexandre with",
+    "description": "Texto del pie de página - creado por Alexandre with"
   }
 } 

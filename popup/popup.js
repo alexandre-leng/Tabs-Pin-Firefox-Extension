@@ -380,7 +380,18 @@ class PopupManager {
 
   groupTabsByCategory() {
     const groups = {};
-    this.tabs.forEach(tab => {
+    
+    // Sort tabs by order before grouping
+    const sortedTabs = [...this.tabs].sort((a, b) => {
+      if (a.order !== undefined && b.order !== undefined) {
+        return a.order - b.order;
+      }
+      if (a.order !== undefined) return -1;
+      if (b.order !== undefined) return 1;
+      return new Date(a.dateAdded || 0) - new Date(b.dateAdded || 0);
+    });
+    
+    sortedTabs.forEach(tab => {
       const categoryId = tab.category || 'uncategorized';
       if (!groups[categoryId]) {
         groups[categoryId] = [];
@@ -627,10 +638,34 @@ class PopupManager {
     
     if (this.elements.previewFavicon) {
       const domain = this.extractDomainFromUrl(this.currentTab.url);
-      const faviconUrl = `https://www.google.com/s2/favicons?domain=${domain}`;
-      this.elements.previewFavicon.src = faviconUrl;
-      this.elements.previewFavicon.addEventListener('error', function() {
-        this.style.display = 'none';
+      const services = [
+        `https://www.google.com/s2/favicons?domain=${domain}&sz=16`,
+        `https://icons.duckduckgo.com/ip3/${domain}.ico`,
+        `https://${domain}/favicon.ico`
+      ];
+      
+      let currentServiceIndex = 0;
+      this.elements.previewFavicon.src = services[0];
+      
+      // Create fallback handler
+      const handleFaviconError = () => {
+        currentServiceIndex++;
+        if (currentServiceIndex < services.length) {
+          console.log(`Trying fallback favicon service ${currentServiceIndex} for ${domain}: ${services[currentServiceIndex]}`);
+          this.elements.previewFavicon.src = services[currentServiceIndex];
+        } else {
+          console.log(`All favicon services failed for ${domain}, hiding favicon`);
+          this.elements.previewFavicon.style.display = 'none';
+        }
+      };
+      
+      // Remove any existing error listeners to prevent duplicates
+      this.elements.previewFavicon.removeEventListener('error', handleFaviconError);
+      this.elements.previewFavicon.addEventListener('error', handleFaviconError);
+      
+      // Show favicon when it loads successfully
+      this.elements.previewFavicon.addEventListener('load', function() {
+        this.style.display = 'inline-block';
       });
     }
     

@@ -138,6 +138,16 @@ class TabsPinBackground {
         return { success: false, error: 'No tabs configured' };
       }
 
+      // Sort tabs by order before opening
+      const sortedTabs = [...this.tabs].sort((a, b) => {
+        if (a.order !== undefined && b.order !== undefined) {
+          return a.order - b.order;
+        }
+        if (a.order !== undefined) return -1;
+        if (b.order !== undefined) return 1;
+        return new Date(a.dateAdded || 0) - new Date(b.dateAdded || 0);
+      });
+
       // Get tabs from specific window if provided, otherwise all tabs
       const queryOptions = windowId ? { windowId: windowId } : {};
       const existingTabs = await browser.tabs.query(queryOptions);
@@ -156,7 +166,7 @@ class TabsPinBackground {
       const tabsToOpen = [];
       const alreadyOpenTabs = [];
       
-      for (const tab of this.tabs) {
+      for (const tab of sortedTabs) {
         if (tab.enabled === false) continue;
         
         const normalizedConfigUrl = normalizeUrl(tab.url);
@@ -184,7 +194,7 @@ class TabsPinBackground {
         };
       }
       
-      // Open only the tabs that are not already open
+      // Open only the tabs that are not already open, in order
       const results = [];
       for (const tab of tabsToOpen) {
         try {
@@ -231,9 +241,17 @@ class TabsPinBackground {
 
   async openCategoryTabs(categoryId, windowId = null) {
     try {
+      // Get all tabs in category and sort by order
       const categoryTabs = this.tabs.filter(tab => 
         tab.category === categoryId && tab.enabled !== false
-      );
+      ).sort((a, b) => {
+        if (a.order !== undefined && b.order !== undefined) {
+          return a.order - b.order;
+        }
+        if (a.order !== undefined) return -1;
+        if (b.order !== undefined) return 1;
+        return new Date(a.dateAdded || 0) - new Date(b.dateAdded || 0);
+      });
 
       if (categoryTabs.length === 0) {
         return { success: false, error: 'No tabs in this category' };
@@ -283,7 +301,7 @@ class TabsPinBackground {
         };
       }
       
-      // Open only the tabs that are not already open
+      // Open only the tabs that are not already open, in order
       const results = [];
       for (const tab of tabsToOpen) {
         try {

@@ -261,16 +261,31 @@ class OptionsManager {
     
     this.elements.tabsGrid.innerHTML = '';
     
-    this.tabs.forEach(tab => {
-      const tabCard = this.createTabCard(tab);
+    // Sort tabs by order (if exists) or by dateAdded
+    const sortedTabs = [...this.tabs].sort((a, b) => {
+      if (a.order !== undefined && b.order !== undefined) {
+        return a.order - b.order;
+      }
+      if (a.order !== undefined) return -1;
+      if (b.order !== undefined) return 1;
+      return new Date(a.dateAdded || 0) - new Date(b.dateAdded || 0);
+    });
+    
+    sortedTabs.forEach((tab, index) => {
+      const tabCard = this.createTabCard(tab, index);
       this.elements.tabsGrid.appendChild(tabCard);
     });
+    
+    // Enable drag and drop
+    this.enableDragAndDrop();
   }
 
-  createTabCard(tab) {
+  createTabCard(tab, index) {
     const card = document.createElement('div');
     card.className = 'tab-item';
     card.dataset.tabId = tab.id;
+    card.dataset.tabIndex = index;
+    card.draggable = true;
     
     // Get category info
     const category = this.categories.find(c => c.id === tab.category);
@@ -280,41 +295,43 @@ class OptionsManager {
     // Get translated button labels
     const editLabel = browser.i18n.getMessage('edit') || 'Edit';
     const deleteLabel = browser.i18n.getMessage('delete') || 'Delete';
+    const dragLabel = browser.i18n.getMessage('dragToReorder') || 'Drag to reorder';
     
     card.innerHTML = `
       <div class="tab-card-header">
-        <img class="tab-favicon" src="https://www.google.com/s2/favicons?domain=${this.extractDomain(tab.url)}" 
-             alt="Favicon">
+        <div class="drag-handle" title="${dragLabel}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11,18c0,1.1-0.9,2-2,2s-2-0.9-2-2s0.9-2,2-2S11,16.9,11,18z M9,10c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S10.1,10,9,10z M9,4C7.9,4,7,4.9,7,6s0.9,2,2,2s2-0.9,2-2S10.1,4,9,4z M15,8c1.1,0,2-0.9,2-2s-0.9-2-2-2s-2,0.9-2,2S13.9,8,15,8z M15,10c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S16.1,10,15,10z M15,16c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S16.1,16,15,16z"/>
+          </svg>
+        </div>
+        <div class="tab-favicon-container"></div>
         <div class="tab-info">
           <h3 class="tab-title">${this.escapeHtml(tab.title || this.extractDomain(tab.url))}</h3>
           <p class="tab-url">${this.escapeHtml(tab.url)}</p>
-            </div>
+        </div>
         <div class="tab-actions">
           <button class="icon-btn edit" title="${editLabel}">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
               <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
-              </svg>
-            </button>
+            </svg>
+          </button>
           <button class="icon-btn danger delete" title="${deleteLabel}">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
               <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
-              </svg>
-            </button>
-          </div>
+            </svg>
+          </button>
         </div>
+      </div>
       <div class="tab-category">
         <span>${categoryIcon}</span>
         <span>${this.escapeHtml(categoryName)}</span>
-        </div>
+      </div>
     `;
     
-    // Handle favicon error safely
-    const favicon = card.querySelector('.tab-favicon');
-    if (favicon) {
-      favicon.addEventListener('error', function() {
-        this.style.display = 'none';
-      });
-    }
+    // Add the favicon element to the container
+    const faviconContainer = card.querySelector('.tab-favicon-container');
+    const faviconElement = this.createFaviconElement(tab.url, categoryIcon);
+    faviconContainer.appendChild(faviconElement);
     
     // Add event listeners
     const editBtn = card.querySelector('.icon-btn.edit');
@@ -759,6 +776,82 @@ class OptionsManager {
     }
   }
 
+  getFaviconUrl(domain, fallbackIcon = '🌐') {
+    // Return a data URL with a fallback icon if no domain
+    if (!domain) {
+      return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+          <text x="50%" y="50%" text-anchor="middle" dy="0.3em" font-size="12">${fallbackIcon}</text>
+        </svg>
+      `)}`;
+    }
+    
+    // Try multiple favicon services in order of preference
+    const services = [
+      `https://www.google.com/s2/favicons?domain=${domain}&sz=16`,
+      `https://icons.duckduckgo.com/ip3/${domain}.ico`,
+      `https://${domain}/favicon.ico`
+    ];
+    
+    return services[0]; // Start with Google's service
+  }
+
+  createFaviconElement(url, fallbackIcon = '🌐') {
+    const domain = this.extractDomain(url);
+    
+    // Create favicon img element
+    const favicon = document.createElement('img');
+    favicon.className = 'tab-favicon';
+    favicon.alt = 'Favicon';
+    favicon.src = this.getFaviconUrl(domain);
+    
+    // Create fallback element
+    const fallback = document.createElement('span');
+    fallback.className = 'tab-favicon-fallback';
+    fallback.textContent = fallbackIcon;
+    fallback.style.display = 'none';
+    fallback.style.fontSize = '16px';
+    fallback.style.lineHeight = '16px';
+    fallback.style.width = '16px';
+    fallback.style.height = '16px';
+    fallback.style.textAlign = 'center';
+    
+    // Add error handling with multiple fallbacks
+    let currentServiceIndex = 0;
+    const services = [
+      `https://www.google.com/s2/favicons?domain=${domain}&sz=16`,
+      `https://icons.duckduckgo.com/ip3/${domain}.ico`,
+      `https://${domain}/favicon.ico`
+    ];
+    
+    favicon.addEventListener('error', function() {
+      currentServiceIndex++;
+      if (currentServiceIndex < services.length) {
+        // Try next service
+        console.log(`Trying fallback favicon service ${currentServiceIndex} for ${domain}: ${services[currentServiceIndex]}`);
+        this.src = services[currentServiceIndex];
+      } else {
+        // All services failed, show fallback
+        console.log(`All favicon services failed for ${domain}, showing fallback icon: ${fallbackIcon}`);
+        this.style.display = 'none';
+        fallback.style.display = 'inline-block';
+      }
+    });
+    
+    // Add load success handler
+    favicon.addEventListener('load', function() {
+      fallback.style.display = 'none';
+      this.style.display = 'inline-block';
+    });
+    
+    // Create a fragment to return both elements
+    const fragment = document.createDocumentFragment();
+    fragment.appendChild(favicon);
+    fragment.appendChild(fallback);
+    
+    return fragment;
+  }
+
   generateTabId() {
     return 'tab_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
   }
@@ -800,6 +893,224 @@ class OptionsManager {
     await this.loadData();
     this.render();
     this.showToast('success', '✅', 'Data refreshed successfully!');
+  }
+
+  enableDragAndDrop() {
+    const tabItems = this.elements.tabsGrid.querySelectorAll('.tab-item');
+    let draggedElement = null;
+    let placeholder = null;
+    
+    tabItems.forEach(item => {
+      // Drag start
+      item.addEventListener('dragstart', (e) => {
+        draggedElement = item;
+        item.classList.add('dragging');
+        
+        // Create placeholder
+        placeholder = document.createElement('div');
+        placeholder.className = 'tab-item-placeholder';
+        placeholder.innerHTML = `
+          <div class="placeholder-content">
+            <div class="placeholder-icon">📁</div>
+            <div class="placeholder-text">${browser.i18n.getMessage('dropHere') || 'Drop here'}</div>
+          </div>
+        `;
+        
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', item.outerHTML);
+      });
+      
+      // Drag end
+      item.addEventListener('dragend', (e) => {
+        item.classList.remove('dragging');
+        if (placeholder && placeholder.parentNode) {
+          placeholder.parentNode.removeChild(placeholder);
+        }
+        draggedElement = null;
+        placeholder = null;
+        
+        // Remove all drag-over classes
+        tabItems.forEach(el => el.classList.remove('drag-over'));
+      });
+      
+      // Drag over
+      item.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        
+        if (item !== draggedElement && placeholder) {
+          // Remove drag-over from all items
+          tabItems.forEach(el => el.classList.remove('drag-over'));
+          item.classList.add('drag-over');
+          
+          // Insert placeholder
+          const rect = item.getBoundingClientRect();
+          const midpoint = rect.top + rect.height / 2;
+          
+          if (e.clientY < midpoint) {
+            // Insert before current item
+            if (item.parentNode) {
+              item.parentNode.insertBefore(placeholder, item);
+            }
+          } else {
+            // Insert after current item
+            if (item.parentNode) {
+              item.parentNode.insertBefore(placeholder, item.nextSibling);
+            }
+          }
+        }
+      });
+      
+      // Drag leave
+      item.addEventListener('dragleave', (e) => {
+        // Only remove drag-over if we're not entering a child element
+        if (!item.contains(e.relatedTarget)) {
+          item.classList.remove('drag-over');
+        }
+      });
+      
+      // Drop
+      item.addEventListener('drop', (e) => {
+        e.preventDefault();
+        
+        if (item !== draggedElement && placeholder && placeholder.parentNode) {
+          // Get new order
+          const newOrder = this.calculateNewOrder(placeholder);
+          if (newOrder !== null) {
+            this.reorderTab(draggedElement.dataset.tabId, newOrder);
+          }
+        }
+        
+        // Clean up
+        item.classList.remove('drag-over');
+        if (placeholder && placeholder.parentNode) {
+          placeholder.parentNode.removeChild(placeholder);
+        }
+      });
+    });
+    
+    // Handle drop on grid itself
+    this.elements.tabsGrid.addEventListener('dragover', (e) => {
+      e.preventDefault();
+    });
+    
+    this.elements.tabsGrid.addEventListener('drop', (e) => {
+      e.preventDefault();
+      
+      if (placeholder && draggedElement && placeholder.parentNode) {
+        const newOrder = this.calculateNewOrder(placeholder);
+        if (newOrder !== null) {
+          this.reorderTab(draggedElement.dataset.tabId, newOrder);
+        }
+      }
+    });
+  }
+
+  calculateNewOrder(placeholder) {
+    // Guard: check if placeholder has a parent
+    if (!placeholder || !placeholder.parentNode) {
+      console.warn('Placeholder element has no parent');
+      return null;
+    }
+    
+    const items = Array.from(this.elements.tabsGrid.querySelectorAll('.tab-item:not(.dragging)'));
+    const placeholderIndex = Array.from(placeholder.parentNode.children).indexOf(placeholder);
+    
+    if (placeholderIndex === 0) {
+      // First position
+      return 0;
+    } else if (placeholderIndex >= items.length) {
+      // Last position
+      const lastItem = items[items.length - 1];
+      const lastTabId = lastItem?.dataset.tabId;
+      const lastTab = this.tabs.find(t => t.id === lastTabId);
+      return (lastTab?.order || items.length - 1) + 1;
+    } else {
+      // Between items
+      const prevItem = items[placeholderIndex - 1];
+      const nextItem = items[placeholderIndex];
+      
+      const prevTabId = prevItem?.dataset.tabId;
+      const nextTabId = nextItem?.dataset.tabId;
+      
+      const prevTab = this.tabs.find(t => t.id === prevTabId);
+      const nextTab = this.tabs.find(t => t.id === nextTabId);
+      
+      const prevOrder = prevTab?.order || 0;
+      const nextOrder = nextTab?.order || 1;
+      
+      return (prevOrder + nextOrder) / 2;
+    }
+  }
+
+  async reorderTab(tabId, newOrder) {
+    try {
+      // Find the tab and update its order
+      const tabIndex = this.tabs.findIndex(t => t.id === tabId);
+      if (tabIndex === -1) return;
+      
+      const tab = { ...this.tabs[tabIndex], order: newOrder };
+      
+      const response = await this.sendMessageWithRetry({
+        action: 'updateTab',
+        tab: tab
+      });
+      
+      if (response && response.success) {
+        // Update local data
+        this.tabs[tabIndex] = tab;
+        
+        // Show success message
+        this.showToast('success', '↕️', browser.i18n.getMessage('tabReordered') || 'Tab order updated!');
+        
+        // Re-render tabs WITHOUT calling enableDragAndDrop again to avoid infinite loop
+        this.renderTabsWithoutDragDrop();
+      } else {
+        throw new Error(response?.error || 'Failed to reorder tab');
+      }
+    } catch (error) {
+      console.error('Error reordering tab:', error);
+      this.showToast('error', '❌', browser.i18n.getMessage('reorderError') || 'Failed to reorder tab');
+      
+      // Reload data to reset state
+      await this.loadData();
+      this.renderTabs();
+    }
+  }
+
+  renderTabsWithoutDragDrop() {
+    if (!this.elements.tabsGrid || !this.elements.emptyTabs) return;
+    
+    if (this.tabs.length === 0) {
+      this.elements.tabsGrid.style.display = 'none';
+      this.elements.emptyTabs.style.display = 'flex';
+      return;
+    }
+    
+    this.elements.tabsGrid.style.display = 'grid';
+    this.elements.emptyTabs.style.display = 'none';
+    
+    this.elements.tabsGrid.innerHTML = '';
+    
+    // Sort tabs by order (if exists) or by dateAdded
+    const sortedTabs = [...this.tabs].sort((a, b) => {
+      if (a.order !== undefined && b.order !== undefined) {
+        return a.order - b.order;
+      }
+      if (a.order !== undefined) return -1;
+      if (b.order !== undefined) return 1;
+      return new Date(a.dateAdded || 0) - new Date(b.dateAdded || 0);
+    });
+    
+    sortedTabs.forEach((tab, index) => {
+      const tabCard = this.createTabCard(tab, index);
+      this.elements.tabsGrid.appendChild(tabCard);
+    });
+    
+    // Re-enable drag and drop after a small delay to ensure DOM is stable
+    setTimeout(() => {
+      this.enableDragAndDrop();
+    }, 100);
   }
 }
 

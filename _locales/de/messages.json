@@ -346,5 +346,28 @@
   "categoryIconRequired": {
     "message": "Kategorie-Symbol ist erforderlich",
     "description": "Fehlermeldung für erforderliches Kategorie-Symbol"
+  },
+  "noIconsFound": {
+    "message": "Keine Symbole gefunden"
+  },
+  "dragToReorder": {
+    "message": "Ziehen zum Sortieren",
+    "description": "Tooltip für den Ziehgriff der Tabs"
+  },
+  "dropHere": {
+    "message": "Hier ablegen",
+    "description": "Text, der in der Ablegebereich während dem Drag & Drop angezeigt wird"
+  },
+  "tabReordered": {
+    "message": "Tab-Reihenfolge aktualisiert!",
+    "description": "Erfolgsmeldung wenn die Tab-Reihenfolge geändert wird"
+  },
+  "reorderError": {
+    "message": "Tab-Neuordnung fehlgeschlagen",
+    "description": "Fehlermeldung beim Neuordnen"
+  },
+  "footerCreatedBy": {
+    "message": "Erstellt von Alexandre with",
+    "description": "Footer-Text - erstellt von Alexandre with"
   }
 } 

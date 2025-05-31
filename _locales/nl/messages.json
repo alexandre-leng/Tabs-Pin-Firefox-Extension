@@ -346,5 +346,28 @@
   "categoryIconRequired": {
     "message": "Categorie pictogram is vereist",
     "description": "Foutmelding voor vereist categorie pictogram"
+  },
+  "noIconsFound": {
+    "message": "Geen pictogrammen gevonden"
+  },
+  "dragToReorder": {
+    "message": "Sleep om opnieuw te rangschikken",
+    "description": "Tooltip voor de sleepgreep van tabbladen"
+  },
+  "dropHere": {
+    "message": "Hier neerzetten",
+    "description": "Tekst getoond in de neerzetzone tijdens slepen en neerzetten"
+  },
+  "tabReordered": {
+    "message": "Tabbladenvolgorde bijgewerkt!",
+    "description": "Succesbericht wanneer de tabbladenvolgorde wordt gewijzigd"
+  },
+  "reorderError": {
+    "message": "Fout bij opnieuw rangschikken van tabblad",
+    "description": "Foutbericht tijdens het opnieuw rangschikken"
+  },
+  "footerCreatedBy": {
+    "message": "Gemaakt door Alexandre with",
+    "description": "Footer tekst - gemaakt door Alexandre with"
   }
 } 

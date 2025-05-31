@@ -83,9 +83,9 @@ body {
 
 /* Layout */
 .options-container {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 .options-header {
@@ -226,6 +226,8 @@ body {
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   transition: all 0.2s ease;
+  cursor: grab;
+  position: relative;
 }
 
 .tab-item:hover {
@@ -233,22 +235,54 @@ body {
   background: var(--background-tertiary);
 }
 
+.tab-item.dragging {
+  opacity: 0.5;
+  transform: rotate(2deg);
+  cursor: grabbing;
+  z-index: 1000;
+  box-shadow: var(--shadow-large);
+}
+
+.tab-item.drag-over {
+  border-color: var(--primary-color);
+  background: rgba(0, 96, 223, 0.05);
+  transform: scale(1.02);
+}
+
 .tab-card-header {
   display: flex;
   align-items: flex-start;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
+}
+
+.tab-favicon-container {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
 }
 
 .tab-favicon {
   width: 16px;
   height: 16px;
-  border-radius: var(--border-radius-small);
-  background: var(--background-tertiary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  flex-shrink: 0;
+  object-fit: contain;
+  display: inline-block;
+}
+
+.tab-favicon-fallback {
+  width: 16px;
+  height: 16px;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  display: none;
+  opacity: 0.7;
+  background: var(--bg-secondary);
+  border-radius: 2px;
 }
 
 .tab-info {
@@ -462,54 +496,45 @@ input:checked + .toggle-slider:before {
 
 /* Footer */
 .options-footer {
-  background: var(--background-elevated);
-  border-top: 1px solid var(--border-color);
   margin-top: auto;
+  padding: var(--spacing-lg) 0;
+  background: var(--background-secondary);
+  border-top: 1px solid var(--border-color);
+  text-align: center;
 }
 
 .footer-content {
-  max-width: var(--container-max-width);
+  max-width: 1200px;
   margin: 0 auto;
-  padding: var(--spacing-lg);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-lg);
+  padding: 0 var(--spacing-md);
 }
 
-.footer-info {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  font-size: var(--font-size-small);
-  color: var(--text-muted);
-}
-
-.separator {
-  opacity: 0.5;
-}
-
-.version-info {
+.footer-text {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
   font-weight: 500;
+  letter-spacing: 0.3px;
 }
 
-.footer-links {
-  display: flex;
-  gap: var(--spacing-sm);
+.heart {
+  color: #e74c3c;
+  font-size: 16px;
+  animation: heartbeat 1.5s ease-in-out infinite;
+  display: inline-block;
+  margin-left: 2px;
 }
 
-.footer-link {
-  background: transparent;
-  border: none;
-  color: var(--text-link);
-  font-size: var(--font-size-small);
-  cursor: pointer;
-  text-decoration: underline;
-  transition: color 0.2s ease;
-}
-
-.footer-link:hover {
-  color: var(--primary-hover);
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Buttons */
@@ -1285,4 +1310,95 @@ select:focus-visible,
     padding: 4px 8px;
     font-size: 11px;
   }
+}
+
+/* Favicon handling improvements */
+.tab-favicon-container {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+}
+
+.tab-favicon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: inline-block;
+}
+
+.tab-favicon-fallback {
+  width: 16px;
+  height: 16px;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  display: none;
+  opacity: 0.7;
+  background: var(--bg-secondary);
+  border-radius: 2px;
+}
+
+/* Drag handle */
+.drag-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--text-secondary);
+  cursor: grab;
+  opacity: 0.6;
+  transition: all 0.2s ease;
+  border-radius: var(--border-radius-small);
+  flex-shrink: 0;
+}
+
+.drag-handle:hover {
+  opacity: 1;
+  background: var(--background-tertiary);
+  color: var(--text-primary);
+}
+
+.tab-item.dragging .drag-handle {
+  cursor: grabbing;
+}
+
+/* Placeholder for drop zones */
+.tab-item-placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background: rgba(0, 96, 223, 0.1);
+  border: 2px dashed var(--primary-color);
+  border-radius: var(--border-radius);
+  transition: all 0.2s ease;
+  min-height: 120px;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.placeholder-icon {
+  font-size: 24px;
+  opacity: 0.7;
+}
+
+.placeholder-text {
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  opacity: 0.8;
 }
