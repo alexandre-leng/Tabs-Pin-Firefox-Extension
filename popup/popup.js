@@ -90,7 +90,6 @@ class PopupManager {
       this.categories = result.categories || this.getDefaultCategories();
       this.settings = { autoOpenTabs: false, ...result.settings };
       
-      console.log('Loaded data:', { tabs: this.tabs.length, categories: this.categories.length });
     } catch (error) {
       console.error('Error loading data:', error);
       throw error;
@@ -433,30 +432,29 @@ class PopupManager {
 
   async openAllTabs() {
     if (this.tabs.length === 0) {
-      console.log('ℹ️ openAllTabs: No tabs configured, skipping');
       return;
     }
 
     // Prevent multiple simultaneous calls
     if (this.isOpeningTabs) {
-      console.log('⚠️ openAllTabs: Already opening tabs, skipping');
       return;
     }
 
     this.isOpeningTabs = true;
-    console.log('🚀 openAllTabs: Starting to open tabs...');
 
     try {
       // Show initial loading state
       this.showButtonLoading(true);
       this.showToast('info', '🔍', browser.i18n.getMessage('checkingExistingTabs') || 'Checking existing tabs...');
       
-      // Send message to background script
-      const response = await browser.runtime.sendMessage({
-        action: 'openAllTabs'
-      });
+      // Get current window ID to ensure tabs are checked/opened in the correct window
+      const currentWindow = await browser.windows.getCurrent();
       
-      console.log('📬 Background response:', response);
+      // Send message to background script with current window ID
+      const response = await browser.runtime.sendMessage({
+        action: 'openAllTabs',
+        windowId: currentWindow.id
+      });
       
       // Vérifier que la réponse est valide
       if (!response) {
@@ -492,16 +490,14 @@ class PopupManager {
         }
       } else {
         // Background script returned an error
-        console.log('⚠️ Background script error:', response.error);
         if (response.error === 'No tabs configured') {
           // This is expected when no tabs are configured, don't show as error
-          console.log('ℹ️ No tabs configured - this is normal');
           return;
         }
         throw new Error(response.error || 'Failed to open tabs');
       }
     } catch (error) {
-      console.error('💥 Error opening tabs:', error);
+      console.error('Error opening tabs:', error);
       // Only show toast error for real errors, not when no tabs configured
       if (!error.message.includes('No tabs configured')) {
         this.showToast('error', '❌', browser.i18n.getMessage('errorOpeningTabs') || 'Error opening tabs');
@@ -554,12 +550,14 @@ class PopupManager {
     try {
       this.showToast('info', '🔍', browser.i18n.getMessage('checkingExistingTabs') || 'Checking existing tabs...');
       
+      // Get current window ID to ensure tabs are checked/opened in the correct window
+      const currentWindow = await browser.windows.getCurrent();
+      
       const response = await browser.runtime.sendMessage({
         action: 'openCategoryTabs',
-        categoryId: categoryId
+        categoryId: categoryId,
+        windowId: currentWindow.id
       });
-      
-      console.log('Background response for category:', response);
       
       // Vérifier que la réponse est valide
       if (!response) {

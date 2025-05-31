@@ -6,7 +6,7 @@
   "default_locale": "en",
 
   "author": "Alexandre",
-  "homepage_url": "",
+  "homepage_url": "https://github.com/alexandre-leng/Tabs-Pin-Firefox-Extension",
 
   "icons": {
     "16": "assets/icons/icon-16.png",
@@ -19,8 +19,7 @@
   "permissions": ["tabs", "storage", "activeTab"],
 
   "background": {
-    "scripts": ["background/background.js"],
-    "persistent": true
+    "scripts": ["background/background.js"]
   },
 
   "browser_action": {

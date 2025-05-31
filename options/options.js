@@ -10,66 +10,13 @@ class OptionsManager {
     this.tabs = [];
     this.categories = [];
     this.settings = {};
+    
     this.currentEditingTab = null;
-    this.currentEditingCategory = null;
+    this.iconPickerOpen = false;
+    this.currentIconInput = null;
+    this.isDataLoading = false; // Flag to prevent unnecessary operations during data load
     
-    this.elements = {
-      // Containers
-      tabsGrid: document.getElementById('tabsGrid'),
-      emptyTabs: document.getElementById('emptyTabs'),
-      categoriesGrid: document.getElementById('categoriesGrid'),
-      
-      // Buttons
-      addTabBtn: document.getElementById('addTabBtn'),
-      addFirstTabBtn: document.getElementById('addFirstTabBtn'),
-      resetCategoriesBtn: document.getElementById('resetCategoriesBtn'),
-      exportBtn: document.getElementById('exportBtn'),
-      importBtn: document.getElementById('importBtn'),
-      
-      // Settings
-      autoOpenTabs: document.getElementById('autoOpenTabs'),
-      
-      // Tab Modal
-      tabModalOverlay: document.getElementById('tabModalOverlay'),
-      tabModal: document.getElementById('tabModal'),
-      tabModalTitle: document.getElementById('tabModalTitle'),
-      closeTabModal: document.getElementById('closeTabModal'),
-      tabForm: document.getElementById('tabForm'),
-      tabUrl: document.getElementById('tabUrl'),
-      tabTitle: document.getElementById('tabTitle'),
-      tabCategory: document.getElementById('tabCategory'),
-      saveTabBtn: document.getElementById('saveTabBtn'),
-      cancelTabBtn: document.getElementById('cancelTabBtn'),
-      
-      // Category Modal
-      categoryModalOverlay: document.getElementById('categoryModalOverlay'),
-      categoryModal: document.getElementById('categoryModal'),
-      categoryModalTitle: document.getElementById('categoryModalTitle'),
-      closeCategoryModal: document.getElementById('closeCategoryModal'),
-      categoryForm: document.getElementById('categoryForm'),
-      categoryName: document.getElementById('categoryName'),
-      categoryIcon: document.getElementById('categoryIcon'),
-      saveCategoryBtn: document.getElementById('saveCategoryBtn'),
-      cancelCategoryBtn: document.getElementById('cancelCategoryBtn'),
-      
-      // Icon Picker Modal
-      iconPickerOverlay: document.getElementById('iconPickerOverlay'),
-      iconPickerModal: document.getElementById('iconPickerModal'),
-      closeIconPicker: document.getElementById('closeIconPicker'),
-      iconSearchInput: document.getElementById('iconSearchInput'),
-      iconGrid: document.getElementById('iconGrid'),
-      iconSelectorBtn: document.getElementById('iconSelectorBtn'),
-      selectedIcon: document.getElementById('selectedIcon'),
-      
-      // Import/Export
-      importFileInput: document.getElementById('importFileInput'),
-      
-      // Toast
-      toast: document.getElementById('toast'),
-      toastIcon: document.getElementById('toastIcon'),
-      toastMessage: document.getElementById('toastMessage')
-    };
-    
+    this.elements = this.getElements();
     this.init();
   }
 
@@ -81,8 +28,7 @@ class OptionsManager {
       await this.loadData();
       this.render();
     } catch (error) {
-      console.error('Failed to initialize options:', error);
-      this.showToast('error', '❌', 'Failed to initialize options page');
+      console.error('Failed to initialize options page:', error);
     }
   }
 
@@ -132,7 +78,11 @@ class OptionsManager {
     this.elements.importFileInput?.addEventListener('change', (e) => this.handleFileImport(e));
     
     // Settings
-    this.elements.autoOpenTabs?.addEventListener('change', (e) => this.updateAutoOpenSetting(e.target.checked));
+    if (this.elements.autoOpenTabs) {
+      this.elements.autoOpenTabs.addEventListener('change', (e) => {
+        this.updateAutoOpenSetting(e.target.checked);
+      });
+    }
     
     // Tab Modal
     this.elements.closeTabModal?.addEventListener('click', () => this.closeTabModal());
@@ -190,7 +140,6 @@ class OptionsManager {
     // Listen for data changes from background script
     browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
       if (message.action === 'dataChanged') {
-        console.log('Received data change notification:', message.changeType);
         // Update local data and re-render
         this.tabs = message.data.tabs || [];
         this.categories = message.data.categories || [];
@@ -210,12 +159,6 @@ class OptionsManager {
         this.tabs = response.data.tabs || [];
         this.categories = response.data.categories || [];
         this.settings = response.data.settings || {};
-        
-        console.log('Options data loaded:', {
-          tabs: this.tabs.length,
-          categories: this.categories.length,
-          settings: this.settings
-        });
       } else {
         throw new Error(response?.error || 'Failed to load data');
       }
@@ -229,12 +172,9 @@ class OptionsManager {
   async sendMessageWithRetry(message, maxRetries = 3) {
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       try {
-        console.log(`Sending message (attempt ${attempt}):`, message.action);
         const response = await browser.runtime.sendMessage(message);
         return response;
       } catch (error) {
-        console.warn(`Message attempt ${attempt} failed:`, error.message);
-        
         if (attempt === maxRetries) {
           throw new Error(`Failed to communicate with background script after ${maxRetries} attempts: ${error.message}`);
         }
@@ -657,17 +597,17 @@ class OptionsManager {
       
       if (response && response.success) {
         this.settings.autoOpenTabs = enabled;
-        console.log('Auto-open setting updated:', enabled);
       } else {
         throw new Error(response?.error || 'Failed to update setting');
       }
     } catch (error) {
-      console.error('Error updating setting:', error);
-      const errorMessage = browser.i18n.getMessage('errorGeneral') || 'Failed to update setting';
-      this.showToast('error', '❌', errorMessage);
+      console.error('Error updating auto-open setting:', error);
+      this.showToast('error', '❌', browser.i18n.getMessage('settingsUpdateError') || 'Failed to update setting');
       
-      // Revert checkbox state
-      this.elements.autoOpenTabs.checked = !enabled;
+      // Revert checkbox state on error
+      if (this.elements.autoOpenTabs) {
+        this.elements.autoOpenTabs.checked = !enabled;
+      }
     }
   }
 
@@ -1021,7 +961,7 @@ OptionsManager.prototype.openIconPicker = function() {
   }, 10);
   
   // Show recent icons by default
-  this.switchIconCategory('recent');
+  this.switchIconCategory('objects');
   
   // Focus search input
   setTimeout(() => {

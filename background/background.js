@@ -10,7 +10,6 @@ class TabsPinBackground {
     this.tabs = [];
     this.categories = [];
     this.settings = { autoOpenTabs: false };
-    
     this.init();
   }
 
@@ -36,11 +35,6 @@ class TabsPinBackground {
       this.categories = result.categories || this.getDefaultCategories();
       this.settings = { autoOpenTabs: false, ...result.settings };
       
-      console.log('Background data loaded:', {
-        tabs: this.tabs.length,
-        categories: this.categories.length,
-        settings: this.settings
-      });
     } catch (error) {
       console.error('Error loading background data:', error);
       throw error;
@@ -83,21 +77,24 @@ class TabsPinBackground {
 
   async handleMessage(request, sender, sendResponse) {
     try {
-      console.log('Background received message:', request.action);
+      let result;
       
       switch (request.action) {
         case 'openAllTabs':
-          return await this.openAllTabs();
+          result = await this.openAllTabs(request.windowId);
+          break;
           
         case 'openCategoryTabs':
-          return await this.openCategoryTabs(request.categoryId);
+          result = await this.openCategoryTabs(request.categoryId, request.windowId);
+          break;
           
         case 'updateSettings':
-          return await this.updateSettings(request.settings);
+          result = await this.updateSettings(request.settings);
+          break;
           
         case 'getTabsData':
           await this.loadData();
-          return {
+          result = {
             success: true,
             data: {
               tabs: this.tabs,
@@ -105,39 +102,45 @@ class TabsPinBackground {
               settings: this.settings
             }
           };
+          break;
           
         case 'saveTab':
-          return await this.saveTab(request.tab);
+          result = await this.saveTab(request.tab);
+          break;
           
         case 'deleteTab':
-          return await this.deleteTab(request.tabId);
+          result = await this.deleteTab(request.tabId);
+          break;
           
         case 'updateTab':
-          return await this.updateTab(request.tab);
+          result = await this.updateTab(request.tab);
+          break;
           
         case 'saveCategories':
-          return await this.saveCategories(request.categories);
+          result = await this.saveCategories(request.categories);
+          break;
           
         default:
           console.warn('Unknown action:', request.action);
-          return { success: false, error: 'Unknown action' };
+          result = { success: false, error: 'Unknown action' };
       }
+      
+      return result;
     } catch (error) {
       console.error('Error handling message:', error);
       return { success: false, error: error.message };
     }
   }
 
-  async openAllTabs() {
+  async openAllTabs(windowId = null) {
     try {
       if (this.tabs.length === 0) {
         return { success: false, error: 'No tabs configured' };
       }
 
-      console.log(`Checking ${this.tabs.length} tabs for duplicates`);
-      
-      // Get all currently open tabs
-      const existingTabs = await browser.tabs.query({});
+      // Get tabs from specific window if provided, otherwise all tabs
+      const queryOptions = windowId ? { windowId: windowId } : {};
+      const existingTabs = await browser.tabs.query(queryOptions);
       
       // Helper function to normalize URLs for comparison
       const normalizeUrl = (url) => {
@@ -165,7 +168,6 @@ class TabsPinBackground {
         
         if (isAlreadyOpen) {
           alreadyOpenTabs.push(tab);
-          console.log(`Tab already open and pinned: ${tab.title || tab.url}`);
         } else {
           tabsToOpen.push(tab);
         }
@@ -186,14 +188,20 @@ class TabsPinBackground {
       const results = [];
       for (const tab of tabsToOpen) {
         try {
-          const newTab = await browser.tabs.create({
+          const createOptions = {
             url: tab.url,
             pinned: true,
             active: false
-          });
+          };
+          
+          // If a specific window is provided, create tabs in that window
+          if (windowId) {
+            createOptions.windowId = windowId;
+          }
+          
+          const newTab = await browser.tabs.create(createOptions);
           
           results.push({ success: true, tab: newTab, config: tab });
-          console.log(`Opened tab: ${tab.title || tab.url}`);
         } catch (error) {
           console.error(`Failed to open tab ${tab.url}:`, error);
           results.push({ success: false, error: error.message, config: tab });
@@ -221,7 +229,7 @@ class TabsPinBackground {
     }
   }
 
-  async openCategoryTabs(categoryId) {
+  async openCategoryTabs(categoryId, windowId = null) {
     try {
       const categoryTabs = this.tabs.filter(tab => 
         tab.category === categoryId && tab.enabled !== false
@@ -231,10 +239,9 @@ class TabsPinBackground {
         return { success: false, error: 'No tabs in this category' };
       }
 
-      console.log(`Checking ${categoryTabs.length} tabs from category: ${categoryId} for duplicates`);
-      
-      // Get all currently open tabs
-      const existingTabs = await browser.tabs.query({});
+      // Get tabs from specific window if provided, otherwise all tabs
+      const queryOptions = windowId ? { windowId: windowId } : {};
+      const existingTabs = await browser.tabs.query(queryOptions);
       
       // Helper function to normalize URLs for comparison
       const normalizeUrl = (url) => {
@@ -260,7 +267,6 @@ class TabsPinBackground {
         
         if (isAlreadyOpen) {
           alreadyOpenTabs.push(tab);
-          console.log(`Category tab already open and pinned: ${tab.title || tab.url}`);
         } else {
           tabsToOpen.push(tab);
         }
@@ -281,14 +287,20 @@ class TabsPinBackground {
       const results = [];
       for (const tab of tabsToOpen) {
         try {
-          const newTab = await browser.tabs.create({
+          const createOptions = {
             url: tab.url,
             pinned: true,
             active: false
-          });
+          };
+          
+          // If a specific window is provided, create tabs in that window
+          if (windowId) {
+            createOptions.windowId = windowId;
+          }
+          
+          const newTab = await browser.tabs.create(createOptions);
           
           results.push({ success: true, tab: newTab, config: tab });
-          console.log(`Opened category tab: ${tab.title || tab.url}`);
         } catch (error) {
           console.error(`Failed to open category tab ${tab.url}:`, error);
           results.push({ success: false, error: error.message, config: tab });
@@ -412,7 +424,6 @@ class TabsPinBackground {
       // Notify other parts of the extension about the change
       this.notifyDataChange('settingsChanged');
       
-      console.log('Settings updated:', this.settings);
       return { success: true, settings: this.settings };
     } catch (error) {
       console.error('Error updating settings:', error);
@@ -421,32 +432,18 @@ class TabsPinBackground {
   }
 
   async handleWindowCreated(window) {
-    try {
-      // Only auto-open for normal windows, not popup or devtools
-      if (window.type !== 'normal') {
-        return;
-      }
-
-      // Check if auto-open is enabled
-      if (!this.settings.autoOpenTabs) {
-        return;
-      }
-
-      // Wait a bit for the window to be fully created
-      setTimeout(async () => {
-        try {
-          await this.loadData(); // Refresh data
+    // Check if auto-open is enabled and it's a normal window
+    if (this.settings.autoOpenTabs && window.type === 'normal') {
+      try {
+        // Ensure tabs are loaded before trying to open them
+        await this.loadData();
           
-          if (this.tabs.length > 0) {
-            console.log('Auto-opening tabs for new window');
-            await this.openAllTabs();
-          }
-        } catch (error) {
-          console.error('Error auto-opening tabs:', error);
+        if (this.tabs.length > 0) {
+          await this.openAllTabs(window.id);
         }
-      }, 1000);
-    } catch (error) {
-      console.error('Error handling window created:', error);
+      } catch (error) {
+        console.error('Error during auto-opening tabs:', error);
+      }
     }
   }
 
@@ -582,4 +579,8 @@ class TabsPinBackground {
 }
 
 // Initialize the background script
-const tabsPinBackground = new TabsPinBackground();
+try {
+  const tabsPinBackground = new TabsPinBackground();
+} catch (error) {
+  console.error('Failed to initialize TabsPinBackground:', error);
+}
