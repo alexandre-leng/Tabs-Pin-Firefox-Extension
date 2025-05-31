@@ -1,0 +1,350 @@
+{
+  "extensionName": {
+    "message": "TabsFlow - Angeheftete Tabs Verwalter",
+    "description": "Der Name der Erweiterung"
+  },
+  "extensionDescription": {
+    "message": "Verwalten Sie Ihre angehefteten Tabs effizient mit kategorisierten Favoriten und automatischer Arbeitsablauf-Wiederherstellung",
+    "description": "Die Beschreibung der Erweiterung"
+  },
+  "browserActionTitle": {
+    "message": "TabsFlow öffnen",
+    "description": "Der Titel, der beim Überfahren der Browser-Aktionsschaltfläche angezeigt wird"
+  },
+  "openAllTabs": {
+    "message": "Alle Tabs öffnen",
+    "description": "Schaltflächentext zum Öffnen aller konfigurierten Tabs"
+  },
+  "openTabsCount": {
+    "message": "$COUNT$ Tabs öffnen",
+    "description": "Schaltflächentext, der die Anzahl der zu öffnenden Tabs anzeigt",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "noTabsConfigured": {
+    "message": "Keine Tabs konfiguriert",
+    "description": "Nachricht, wenn keine Tabs konfiguriert sind"
+  },
+  "configureTabsMessage": {
+    "message": "Konfigurieren Sie Ihre Lieblings-Tabs auf der Optionsseite, um zu beginnen.",
+    "description": "Anweisungen für Erstbenutzer"
+  },
+  "openOptions": {
+    "message": "Optionen öffnen",
+    "description": "Schaltfläche zum Öffnen der Optionsseite"
+  },
+  "categories": {
+    "message": "Kategorien",
+    "description": "Titel der Kategorienbereich"
+  },
+  "work": {
+    "message": "Arbeit",
+    "description": "Name der Arbeitskategorie"
+  },
+  "personal": {
+    "message": "Persönlich",
+    "description": "Name der persönlichen Kategorie"
+  },
+  "development": {
+    "message": "Entwicklung",
+    "description": "Name der Entwicklungskategorie"
+  },
+  "social": {
+    "message": "Sozial",
+    "description": "Name der sozialen Kategorie"
+  },
+  "tools": {
+    "message": "Werkzeuge",
+    "description": "Name der Werkzeugkategorie"
+  },
+  "entertainment": {
+    "message": "Unterhaltung",
+    "description": "Name der Unterhaltungskategorie"
+  },
+  "optionsTitle": {
+    "message": "TabsFlow Optionen",
+    "description": "Titel der Optionsseite"
+  },
+  "manageTabs": {
+    "message": "Ihre angehefteten Tabs verwalten",
+    "description": "Untertitel auf der Optionsseite"
+  },
+  "addNewTab": {
+    "message": "Neuen Tab hinzufügen",
+    "description": "Schaltfläche zum Hinzufügen einer neuen Tab-Konfiguration"
+  },
+  "tabUrl": {
+    "message": "Tab-URL",
+    "description": "Beschriftung für das URL-Eingabefeld"
+  },
+  "tabTitle": {
+    "message": "Tab-Titel (optional)",
+    "description": "Beschriftung für das Titel-Eingabefeld"
+  },
+  "tabCategory": {
+    "message": "Kategorie",
+    "description": "Beschriftung für die Kategorieauswahl"
+  },
+  "saveTab": {
+    "message": "Tab speichern",
+    "description": "Schaltfläche zum Speichern der Tab-Konfiguration"
+  },
+  "cancel": {
+    "message": "Abbrechen",
+    "description": "Text der Abbrechen-Schaltfläche"
+  },
+  "edit": {
+    "message": "Bearbeiten",
+    "description": "Text der Bearbeiten-Schaltfläche"
+  },
+  "delete": {
+    "message": "Löschen",
+    "description": "Text der Löschen-Schaltfläche"
+  },
+  "deleteConfirm": {
+    "message": "Sind Sie sicher, dass Sie diesen Tab löschen möchten?",
+    "description": "Bestätigungsnachricht für Tab-Löschung"
+  },
+  "generalSettings": {
+    "message": "Allgemeine Einstellungen",
+    "description": "Titel der Allgemeinen Einstellungen-Sektion"
+  },
+  "autoOpenTabs": {
+    "message": "Tabs automatisch beim Erstellen neuer Fenster öffnen",
+    "description": "Kontrollkästchen-Beschriftung für die automatische Öffnungseinstellung"
+  },
+  "autoOpenTabsDescription": {
+    "message": "Wenn aktiviert, werden Ihre angehefteten Tabs automatisch geöffnet, wenn Sie ein neues Firefox-Fenster erstellen.",
+    "description": "Beschreibung für die automatische Öffnungseinstellung"
+  },
+  "importExport": {
+    "message": "Import/Export",
+    "description": "Titel der Import/Export-Sektion"
+  },
+  "exportSettings": {
+    "message": "Einstellungen exportieren",
+    "description": "Text der Export-Schaltfläche"
+  },
+  "importSettings": {
+    "message": "Einstellungen importieren",
+    "description": "Text der Import-Schaltfläche"
+  },
+  "settingsExported": {
+    "message": "Einstellungen erfolgreich exportiert!",
+    "description": "Erfolgsnachricht für Export"
+  },
+  "settingsImported": {
+    "message": "Einstellungen erfolgreich importiert!",
+    "description": "Erfolgsnachricht für Import"
+  },
+  "invalidFile": {
+    "message": "Ungültiges Dateiformat",
+    "description": "Fehlermeldung für ungültige Importdatei"
+  },
+  "errorOpeningTabs": {
+    "message": "Fehler beim Öffnen der Tabs",
+    "description": "Fehlermeldung, wenn Tabs nicht geöffnet werden können"
+  },
+  "tabsOpened": {
+    "message": "Tabs erfolgreich geöffnet!",
+    "description": "Erfolgsnachricht, wenn Tabs geöffnet werden"
+  },
+  "tabsSaved": {
+    "message": "Tab erfolgreich gespeichert!",
+    "description": "Erfolgsnachricht, wenn Tab gespeichert wird"
+  },
+  "tabDeleted": {
+    "message": "Tab erfolgreich gelöscht!",
+    "description": "Erfolgsnachricht, wenn Tab gelöscht wird"
+  },
+  "invalidUrl": {
+    "message": "Bitte geben Sie eine gültige URL ein",
+    "description": "Fehlermeldung für ungültige URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://beispiel.com",
+    "description": "Platzhaltertext für URL-Eingabe"
+  },
+  "titlePlaceholder": {
+    "message": "Meine Lieblingsseite",
+    "description": "Platzhaltertext für Titel-Eingabe"
+  },
+  "loading": {
+    "message": "Laden...",
+    "description": "Ladenachricht"
+  },
+  "retry": {
+    "message": "Wiederholen",
+    "description": "Text der Wiederholen-Schaltfläche"
+  },
+  "close": {
+    "message": "Schließen",
+    "description": "Schließen-Button Text"
+  },
+  "pinCurrentTab": {
+    "message": "Aktuellen Tab anheften",
+    "description": "Button-Text zum Anheften des aktuellen Tabs"
+  },
+  "options": {
+    "message": "Einstellungen",
+    "description": "Einstellungen-Button Text"
+  },
+  "cannotPinTab": {
+    "message": "Dieser Tab kann nicht angeheftet werden",
+    "description": "Fehlermeldung wenn Tab nicht angeheftet werden kann"
+  },
+  "tabAlreadyPinned": {
+    "message": "Dieser Tab ist bereits angeheftet",
+    "description": "Warnmeldung wenn Tab bereits in der Liste ist"
+  },
+  "tabPinned": {
+    "message": "\"$TITLE$\" wurde angeheftet",
+    "description": "Erfolgsmeldung wenn Tab angeheftet wird",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      }
+    }
+  },
+  "failedToPinTab": {
+    "message": "Fehler beim Anheften des Tabs",
+    "description": "Fehlermeldung wenn Anheften fehlschlägt"
+  },
+  "failedToInitialize": {
+    "message": "Fehler beim Initialisieren des Popups",
+    "description": "Fehlermeldung wenn Popup nicht initialisiert werden kann"
+  },
+  "openingTabs": {
+    "message": "Öffne Tabs...",
+    "description": "Nachricht während Tabs geöffnet werden"
+  },
+  "openingCategoryTabs": {
+    "message": "Öffne Kategorie-Tabs...",
+    "description": "Nachricht während Kategorie-Tabs geöffnet werden"
+  },
+  "readyToOpenTabs": {
+    "message": "Bereit zum Öffnen der Tabs",
+    "description": "Statusnachricht wenn Erweiterung bereit ist"
+  },
+  "currentTabCannotBePinned": {
+    "message": "Aktueller Tab kann nicht angeheftet werden",
+    "description": "Fehlermeldung für Anheft-Button Status"
+  },
+  "errorOpeningCategoryTabs": {
+    "message": "Fehler beim Öffnen der Kategorie-Tabs",
+    "description": "Fehlermeldung spezifisch für Kategorien"
+  },
+  "tabsOpenedCount": {
+    "message": "$COUNT$ Tabs geöffnet",
+    "description": "Erfolgsmeldung mit Anzahl geöffneter Tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "justNow": {
+    "message": "Gerade eben",
+    "description": "Zeitangabe für kürzliche Ereignisse"
+  },
+  "lastOpened": {
+    "message": "Zuletzt geöffnet: $TIME$",
+    "description": "Anzeige der letzten Öffnungszeit",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "vor 5 Minuten"
+      }
+    }
+  },
+  "editTab": {
+    "message": "Tab bearbeiten",
+    "description": "Bearbeitungsdialog-Titel"
+  },
+  "deleteTab": {
+    "message": "Tab löschen",
+    "description": "Löschdialog-Titel"
+  },
+  "days": {
+    "message": "Tag",
+    "description": "Zeiteinheit - Tag"
+  },
+  "hours": {
+    "message": "Stunde",
+    "description": "Zeiteinheit - Stunde"
+  },
+  "minutes": {
+    "message": "Minute",
+    "description": "Zeiteinheit - Minute"
+  },
+  "ago": {
+    "message": "vor",
+    "description": "Vergangene Zeit Indikator"
+  },
+  "uncategorized": {
+    "message": "Unkategorisiert",
+    "description": "Standard-Kategorie für Tabs ohne Kategorie"
+  },
+  "manageCategories": {
+    "message": "Kategorien Verwalten",
+    "description": "Titel der Kategorien-Verwaltungssektion"
+  },
+  "resetCategories": {
+    "message": "Auf Standard Zurücksetzen",
+    "description": "Schaltfläche zum Wiederherstellen der Standard-Kategorien"
+  },
+  "editCategory": {
+    "message": "Kategorie Bearbeiten",
+    "description": "Titel des Kategorie-Bearbeitungsmodals"
+  },
+  "categoryName": {
+    "message": "Kategoriename",
+    "description": "Label für Kategoriename-Feld"
+  },
+  "categoryNamePlaceholder": {
+    "message": "Kategoriename eingeben",
+    "description": "Platzhalter für Kategoriename-Feld"
+  },
+  "categoryIcon": {
+    "message": "Kategorie-Symbol",
+    "description": "Label für Kategorie-Symbol-Feld"
+  },
+  "categoryIconPlaceholder": {
+    "message": "📁",
+    "description": "Platzhalter für Kategorie-Symbol-Feld"
+  },
+  "categoryIconHelp": {
+    "message": "Wählen Sie ein Emoji zur Darstellung dieser Kategorie",
+    "description": "Hilfetext für Kategorie-Symbol"
+  },
+  "saveCategory": {
+    "message": "Kategorie Speichern",
+    "description": "Schaltfläche zum Speichern der Kategorie"
+  },
+  "categorySaved": {
+    "message": "Kategorie erfolgreich gespeichert!",
+    "description": "Erfolgsmeldung für Kategorie-Speicherung"
+  },
+  "categoriesReset": {
+    "message": "Kategorien auf Standard zurückgesetzt!",
+    "description": "Erfolgsmeldung für Kategorien-Zurücksetzung"
+  },
+  "resetCategoriesConfirm": {
+    "message": "Sind Sie sicher, dass Sie alle Kategorien zurücksetzen möchten? Dies wird die Standard-Namen und -Symbole wiederherstellen.",
+    "description": "Bestätigungsmeldung für Kategorien-Zurücksetzung"
+  },
+  "categoryNameRequired": {
+    "message": "Kategoriename ist erforderlich",
+    "description": "Fehlermeldung für erforderlichen Kategorienamen"
+  },
+  "categoryIconRequired": {
+    "message": "Kategorie-Symbol ist erforderlich",
+    "description": "Fehlermeldung für erforderliches Kategorie-Symbol"
+  }
+} 

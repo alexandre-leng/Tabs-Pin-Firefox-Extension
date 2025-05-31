@@ -1,0 +1,524 @@
+{
+  "extensionName": {
+    "message": "Tabs Pin - Gestore Schede Fissate",
+    "description": "Il nome dell'estensione"
+  },
+  "extensionDescription": {
+    "message": "Gestisci efficacemente le tue schede fissate con preferiti categorizzati e ripristino automatico del flusso di lavoro",
+    "description": "La descrizione dell'estensione"
+  },
+  "browserActionTitle": {
+    "message": "Apri Tabs Pin",
+    "description": "Il titolo mostrato passando il mouse sul pulsante di azione del browser"
+  },
+  "openAllTabs": {
+    "message": "Apri Tutte le Schede",
+    "description": "Testo del pulsante per aprire tutte le schede configurate"
+  },
+  "openOneTab": {
+    "message": "Apri 1 Scheda",
+    "description": "Testo del pulsante per aprire una singola scheda"
+  },
+  "openTabsCount": {
+    "message": "Apri $COUNT$ schede",
+    "description": "Testo del pulsante che mostra il numero di schede da aprire",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "noTabsConfigured": {
+    "message": "Nessuna scheda configurata",
+    "description": "Messaggio quando non ci sono schede configurate"
+  },
+  "configureTabsMessage": {
+    "message": "Configura le tue schede preferite nella pagina delle opzioni per iniziare.",
+    "description": "Istruzioni per i nuovi utenti"
+  },
+  "openOptions": {
+    "message": "Apri Opzioni",
+    "description": "Pulsante per aprire la pagina delle opzioni"
+  },
+  "categories": {
+    "message": "Categorie",
+    "description": "Titolo della sezione categorie"
+  },
+  "work": {
+    "message": "Lavoro",
+    "description": "Nome della categoria lavoro"
+  },
+  "personal": {
+    "message": "Personale",
+    "description": "Nome della categoria personale"
+  },
+  "development": {
+    "message": "Sviluppo",
+    "description": "Nome della categoria sviluppo"
+  },
+  "social": {
+    "message": "Social",
+    "description": "Nome della categoria social"
+  },
+  "tools": {
+    "message": "Strumenti",
+    "description": "Nome della categoria strumenti"
+  },
+  "entertainment": {
+    "message": "Intrattenimento",
+    "description": "Nome della categoria intrattenimento"
+  },
+  "optionsTitle": {
+    "message": "Opzioni Tabs Pin",
+    "description": "Titolo della pagina delle opzioni"
+  },
+  "manageTabs": {
+    "message": "Gestisci le Tue Schede Fissate",
+    "description": "Sottotitolo nella pagina delle opzioni"
+  },
+  "addNewTab": {
+    "message": "Aggiungi Nuova Scheda",
+    "description": "Pulsante per aggiungere una nuova configurazione scheda"
+  },
+  "tabUrl": {
+    "message": "URL della Scheda",
+    "description": "Etichetta per il campo di input URL"
+  },
+  "tabTitle": {
+    "message": "Titolo della Scheda (opzionale)",
+    "description": "Etichetta per il campo di input titolo"
+  },
+  "tabCategory": {
+    "message": "Categoria",
+    "description": "Etichetta per la selezione categoria"
+  },
+  "saveTab": {
+    "message": "Salva Scheda",
+    "description": "Pulsante per salvare la configurazione scheda"
+  },
+  "cancel": {
+    "message": "Annulla",
+    "description": "Testo del pulsante annulla"
+  },
+  "edit": {
+    "message": "Modifica",
+    "description": "Testo del pulsante modifica"
+  },
+  "delete": {
+    "message": "Elimina",
+    "description": "Testo del pulsante elimina"
+  },
+  "deleteConfirm": {
+    "message": "Sei sicuro di voler eliminare questa scheda?",
+    "description": "Messaggio di conferma per l'eliminazione della scheda"
+  },
+  "generalSettings": {
+    "message": "Impostazioni Generali",
+    "description": "Titolo della sezione impostazioni generali"
+  },
+  "autoOpenTabs": {
+    "message": "Apri automaticamente le schede quando si creano nuove finestre",
+    "description": "Etichetta della casella di controllo per l'impostazione di apertura automatica"
+  },
+  "autoOpenTabsDescription": {
+    "message": "Quando abilitato, le tue schede fissate si apriranno automaticamente quando crei una nuova finestra Firefox.",
+    "description": "Descrizione per l'impostazione di apertura automatica"
+  },
+  "importExport": {
+    "message": "Importa/Esporta",
+    "description": "Titolo della sezione Importa/Esporta"
+  },
+  "exportSettings": {
+    "message": "Esporta Impostazioni",
+    "description": "Testo del pulsante esporta"
+  },
+  "importSettings": {
+    "message": "Importa Impostazioni",
+    "description": "Testo del pulsante importa"
+  },
+  "settingsExported": {
+    "message": "Impostazioni esportate con successo!",
+    "description": "Messaggio di successo per l'esportazione"
+  },
+  "settingsImported": {
+    "message": "Impostazioni importate con successo!",
+    "description": "Messaggio di successo per l'importazione"
+  },
+  "invalidFile": {
+    "message": "Formato file non valido",
+    "description": "Messaggio di errore per file di importazione non valido"
+  },
+  "errorOpeningTabs": {
+    "message": "Errore nell'apertura delle schede",
+    "description": "Messaggio di errore quando le schede non riescono ad aprirsi"
+  },
+  "tabsOpened": {
+    "message": "Schede aperte con successo!",
+    "description": "Messaggio di successo quando le schede si aprono"
+  },
+  "tabsSaved": {
+    "message": "Scheda salvata con successo!",
+    "description": "Messaggio di successo quando la scheda è salvata"
+  },
+  "tabDeleted": {
+    "message": "Scheda eliminata con successo!",
+    "description": "Messaggio di successo quando la scheda è eliminata"
+  },
+  "invalidUrl": {
+    "message": "Inserisci un URL valido",
+    "description": "Messaggio di errore per URL non valido"
+  },
+  "urlPlaceholder": {
+    "message": "https://esempio.com",
+    "description": "Testo segnaposto per l'input URL"
+  },
+  "titlePlaceholder": {
+    "message": "Il Mio Sito Preferito",
+    "description": "Testo segnaposto per l'input titolo"
+  },
+  "loading": {
+    "message": "Caricamento...",
+    "description": "Messaggio di caricamento"
+  },
+  "retry": {
+    "message": "Riprova",
+    "description": "Testo del pulsante riprova"
+  },
+  "close": {
+    "message": "Chiudi",
+    "description": "Testo del pulsante chiudi"
+  },
+  "pinCurrentTab": {
+    "message": "Fissa Scheda Corrente",
+    "description": "Testo del pulsante per fissare la scheda corrente"
+  },
+  "options": {
+    "message": "Opzioni",
+    "description": "Testo del pulsante opzioni"
+  },
+  "cannotPinTab": {
+    "message": "Impossibile fissare questa scheda",
+    "description": "Messaggio di errore quando la scheda non può essere fissata"
+  },
+  "tabAlreadyPinned": {
+    "message": "Questa scheda è già fissata",
+    "description": "Messaggio di avviso quando la scheda è già nella lista"
+  },
+  "tabPinned": {
+    "message": "\"$TITLE$\" è stata fissata",
+    "description": "Messaggio di successo quando la scheda è fissata",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      }
+    }
+  },
+  "failedToPinTab": {
+    "message": "Errore nel fissare la scheda",
+    "description": "Messaggio di errore quando il fissaggio fallisce"
+  },
+  "failedToInitialize": {
+    "message": "Errore nell'inizializzazione del popup",
+    "description": "Messaggio di errore quando il popup non può inizializzarsi"
+  },
+  "openingTabs": {
+    "message": "Apertura schede...",
+    "description": "Messaggio mostrato durante l'apertura delle schede"
+  },
+  "openingCategoryTabs": {
+    "message": "Apertura schede della categoria...",
+    "description": "Messaggio mostrato durante l'apertura delle schede di una categoria"
+  },
+  "readyToOpenTabs": {
+    "message": "Pronto per aprire le schede",
+    "description": "Messaggio di stato quando l'estensione è pronta"
+  },
+  "currentTabCannotBePinned": {
+    "message": "La scheda corrente non può essere fissata",
+    "description": "Messaggio di errore per lo stato del pulsante di fissaggio"
+  },
+  "errorOpeningCategoryTabs": {
+    "message": "Errore nell'apertura delle schede della categoria",
+    "description": "Messaggio di errore specifico per le categorie"
+  },
+  "tabsOpenedCount": {
+    "message": "Aperte $COUNT$ schede",
+    "description": "Messaggio di successo con numero di schede aperte",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "justNow": {
+    "message": "Proprio ora",
+    "description": "Indicazione temporale per evento recente"
+  },
+  "lastOpened": {
+    "message": "Ultima apertura: $TIME$",
+    "description": "Visualizzazione del tempo dell'ultima apertura",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "5 minuti fa"
+      }
+    }
+  },
+  "editTab": {
+    "message": "Modifica Scheda",
+    "description": "Titolo del dialogo di modifica"
+  },
+  "deleteTab": {
+    "message": "Elimina Scheda",
+    "description": "Titolo del dialogo di eliminazione"
+  },
+  "days": {
+    "message": "giorno",
+    "description": "Unità di tempo - giorno"
+  },
+  "hours": {
+    "message": "ora",
+    "description": "Unità di tempo - ora"
+  },
+  "minutes": {
+    "message": "minuto",
+    "description": "Unità di tempo - minuto"
+  },
+  "ago": {
+    "message": "fa",
+    "description": "Indicatore di tempo passato"
+  },
+  "uncategorized": {
+    "message": "Senza categoria",
+    "description": "Categoria predefinita per schede senza categoria"
+  },
+  "manageCategories": {
+    "message": "Gestisci Categorie",
+    "description": "Titolo della sezione gestione categorie"
+  },
+  "resetCategories": {
+    "message": "Ripristina Predefinite",
+    "description": "Pulsante per ripristinare le categorie predefinite"
+  },
+  "editCategory": {
+    "message": "Modifica Categoria",
+    "description": "Titolo del modal di modifica categoria"
+  },
+  "categoryName": {
+    "message": "Nome Categoria",
+    "description": "Etichetta per il campo nome categoria"
+  },
+  "categoryNamePlaceholder": {
+    "message": "Inserisci il nome della categoria",
+    "description": "Segnaposto per il campo nome categoria"
+  },
+  "categoryIcon": {
+    "message": "Icona Categoria",
+    "description": "Etichetta per il campo icona categoria"
+  },
+  "categoryIconPlaceholder": {
+    "message": "📁",
+    "description": "Segnaposto per il campo icona categoria"
+  },
+  "categoryIconHelp": {
+    "message": "Scegli un emoji per rappresentare questa categoria",
+    "description": "Testo di aiuto per l'icona categoria"
+  },
+  "saveCategory": {
+    "message": "Salva Categoria",
+    "description": "Pulsante per salvare la categoria"
+  },
+  "categorySaved": {
+    "message": "Categoria salvata con successo!",
+    "description": "Messaggio di successo per il salvataggio categoria"
+  },
+  "categoriesReset": {
+    "message": "Categorie ripristinate alle predefinite!",
+    "description": "Messaggio di successo per il ripristino categorie"
+  },
+  "resetCategoriesConfirm": {
+    "message": "Sei sicuro di voler ripristinare tutte le categorie? Questo ripristinerà i nomi e le icone predefinite.",
+    "description": "Messaggio di conferma per il ripristino categorie"
+  },
+  "categoryNameRequired": {
+    "message": "Il nome della categoria è richiesto",
+    "description": "Messaggio di errore per nome categoria richiesto"
+  },
+  "categoryIconRequired": {
+    "message": "L'icona della categoria è richiesta",
+    "description": "Messaggio di errore per icona categoria richiesta"
+  },
+  "pinnedTabsShort": {
+    "message": "Fissate",
+    "description": "Etichetta breve per schede fissate nelle statistiche"
+  },
+  "categoriesShort": {
+    "message": "Categorie",
+    "description": "Etichetta breve per categorie nelle statistiche"
+  },
+  "allTabsAlreadyOpen": {
+    "message": "Tutte le schede sono già aperte e bloccate",
+    "description": "Messaggio informativo quando tutte le schede configurate sono già aperte"
+  },
+  "someTabsAlreadyOpen": {
+    "message": "$SKIPPED$ scheda/e già aperta/e, $OPENED$ nuova/e scheda/e creata/e",
+    "description": "Messaggio informativo su schede saltate vs create",
+    "placeholders": {
+      "skipped": {
+        "content": "$1",
+        "example": "3"
+      },
+      "opened": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+  "checkingExistingTabs": {
+    "message": "Controllo schede esistenti...",
+    "description": "Messaggio mostrato durante il controllo delle schede già aperte"
+  },
+  "openTabsSingular": {
+    "message": "Apri $COUNT$ scheda",
+    "description": "Testo del pulsante per aprire una singola scheda (versione completa)",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "openTabsPlural": {
+    "message": "Apri $COUNT$ schede",
+    "description": "Testo del pulsante per aprire più schede (versione completa)",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "refresh": {
+    "message": "Aggiorna",
+    "description": "Testo del pulsante aggiorna"
+  },
+  "refreshTooltip": {
+    "message": "Aggiorna dati delle schede e categorie",
+    "description": "Tooltip del pulsante aggiorna"
+  },
+  "clickToOpenPinnedTabs": {
+    "message": "Clicca per aprire le tue schede fissate",
+    "description": "Descrizione del pulsante principale di apertura schede"
+  },
+  "lastOpenedPrefix": {
+    "message": "Ultima apertura:",
+    "description": "Prefisso per la visualizzazione del tempo dell'ultima apertura"
+  },
+  "tabSingular": {
+    "message": "scheda",
+    "description": "Parola scheda singolare"
+  },
+  "tabPlural": {
+    "message": "schede",
+    "description": "Parola scheda plurale"
+  },
+  "pinCurrentTabTooltip": {
+    "message": "Fissa Scheda Corrente",
+    "description": "Tooltip per il pulsante fissa scheda corrente"
+  },
+  "manageTabsAndSettingsTooltip": {
+    "message": "Gestisci le tue schede e impostazioni",
+    "description": "Tooltip per il pulsante opzioni"
+  },
+  "manageCategoriesButtonTooltip": {
+    "message": "Gestisci categorie",
+    "description": "Tooltip per il pulsante gestisci categorie"
+  },
+  "viewAllPinnedTabsTooltip": {
+    "message": "Visualizza tutte le schede fissate",
+    "description": "Tooltip per il pulsante statistiche schede fissate"
+  },
+  "manageCategoriesStatTooltip": {
+    "message": "Gestisci categorie",
+    "description": "Tooltip per il pulsante statistiche categorie"
+  },
+  "extensionVersionTooltip": {
+    "message": "Versione dell'estensione",
+    "description": "Tooltip per la visualizzazione della versione"
+  },
+  "exportSettingsTooltip": {
+    "message": "Esporta impostazioni",
+    "description": "Tooltip per il pulsante esporta"
+  },
+  "importSettingsTooltip": {
+    "message": "Importa impostazioni",
+    "description": "Tooltip per il pulsante importa"
+  },
+  "notificationsDenied": {
+    "message": "Notifiche disabilitate. Abilitale nelle impostazioni del tuo browser."
+  },
+  "criticalErrorTitle": {
+    "message": "Errore critico"
+  },
+  "criticalErrorMessage": {
+    "message": "Si è verificato un errore critico. Riavvia l'estensione."
+  },
+  "selectCategory": {
+    "message": "Seleziona una categoria"
+  },
+  "tabPinnedInCategory": {
+    "message": "\"$TAB_TITLE$\" fissato in $CATEGORY_NAME$",
+    "placeholders": {
+      "tab_title": {
+        "content": "$1",
+        "example": "Google"
+      },
+      "category_name": {
+        "content": "$2",
+        "example": "Lavoro"
+      }
+    }
+  },
+  "categoryPrefix": {
+    "message": "Categoria"
+  },
+  "containsPrefix": {
+    "message": "contiene"
+  },
+  "noCategoryTabs": {
+    "message": "Nessuna scheda in questa categoria"
+  },
+  "selectCategoryIcon": {
+    "message": "Seleziona Icona Categoria"
+  },
+  "searchIcons": {
+    "message": "Cerca icone..."
+  },
+  "recent": {
+    "message": "Recenti"
+  },
+  "objects": {
+    "message": "Oggetti"
+  },
+  "symbols": {
+    "message": "Simboli"
+  },
+  "activities": {
+    "message": "Attività"
+  },
+  "nature": {
+    "message": "Natura"
+  },
+  "food": {
+    "message": "Cibo"
+  },
+  "noRecentIcons": {
+    "message": "Nessuna icona recente"
+  },
+  "noIconsFound": {
+    "message": "Nessuna icona trovata"
+  }
+} 

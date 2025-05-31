@@ -1,0 +1,524 @@
+{
+  "extensionName": {
+    "message": "Tabs Pin - Gestionnaire d'Onglets Épinglés",
+    "description": "Le nom de l'extension"
+  },
+  "extensionDescription": {
+    "message": "Gérez efficacement vos onglets épinglés avec des favoris catégorisés et la restauration automatique de workflow",
+    "description": "La description de l'extension"
+  },
+  "browserActionTitle": {
+    "message": "Ouvrir Tabs Pin",
+    "description": "Le titre affiché au survol du bouton d'action du navigateur"
+  },
+  "openAllTabs": {
+    "message": "Ouvrir Tous les Onglets",
+    "description": "Texte du bouton pour ouvrir tous les onglets configurés"
+  },
+  "openOneTab": {
+    "message": "Ouvrir 1 Onglet",
+    "description": "Texte du bouton pour ouvrir un seul onglet"
+  },
+  "openTabsCount": {
+    "message": "Ouvrir $COUNT$ onglets",
+    "description": "Texte du bouton montrant le nombre d'onglets à ouvrir",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "noTabsConfigured": {
+    "message": "Aucun onglet configuré",
+    "description": "Message quand aucun onglet n'est configuré"
+  },
+  "configureTabsMessage": {
+    "message": "Configurez vos onglets favoris dans la page d'options pour commencer.",
+    "description": "Instructions pour les nouveaux utilisateurs"
+  },
+  "openOptions": {
+    "message": "Ouvrir les Options",
+    "description": "Bouton pour ouvrir la page d'options"
+  },
+  "categories": {
+    "message": "Catégories",
+    "description": "Titre de la section catégories"
+  },
+  "work": {
+    "message": "Travail",
+    "description": "Nom de la catégorie travail"
+  },
+  "personal": {
+    "message": "Personnel",
+    "description": "Nom de la catégorie personnel"
+  },
+  "development": {
+    "message": "Développement",
+    "description": "Nom de la catégorie développement"
+  },
+  "social": {
+    "message": "Social",
+    "description": "Nom de la catégorie social"
+  },
+  "tools": {
+    "message": "Outils",
+    "description": "Nom de la catégorie outils"
+  },
+  "entertainment": {
+    "message": "Divertissement",
+    "description": "Nom de la catégorie divertissement"
+  },
+  "optionsTitle": {
+    "message": "Options Tabs Pin",
+    "description": "Titre de la page d'options"
+  },
+  "manageTabs": {
+    "message": "Gérer Vos Onglets Épinglés",
+    "description": "Sous-titre dans la page d'options"
+  },
+  "addNewTab": {
+    "message": "Ajouter un Nouvel Onglet",
+    "description": "Bouton pour ajouter une nouvelle configuration d'onglet"
+  },
+  "tabUrl": {
+    "message": "URL de l'Onglet",
+    "description": "Libellé pour le champ de saisie URL"
+  },
+  "tabTitle": {
+    "message": "Titre de l'Onglet (optionnel)",
+    "description": "Libellé pour le champ de saisie titre"
+  },
+  "tabCategory": {
+    "message": "Catégorie",
+    "description": "Libellé pour la sélection de catégorie"
+  },
+  "saveTab": {
+    "message": "Enregistrer l'Onglet",
+    "description": "Bouton pour enregistrer la configuration d'onglet"
+  },
+  "cancel": {
+    "message": "Annuler",
+    "description": "Texte du bouton annuler"
+  },
+  "edit": {
+    "message": "Modifier",
+    "description": "Texte du bouton modifier"
+  },
+  "delete": {
+    "message": "Supprimer",
+    "description": "Texte du bouton supprimer"
+  },
+  "deleteConfirm": {
+    "message": "Êtes-vous sûr de vouloir supprimer cet onglet ?",
+    "description": "Message de confirmation pour la suppression d'onglet"
+  },
+  "generalSettings": {
+    "message": "Paramètres Généraux",
+    "description": "Titre de la section paramètres généraux"
+  },
+  "autoOpenTabs": {
+    "message": "Ouvrir automatiquement les onglets lors de la création de nouvelles fenêtres",
+    "description": "Libellé de la case à cocher pour le paramètre d'ouverture automatique"
+  },
+  "autoOpenTabsDescription": {
+    "message": "Quand activé, vos onglets épinglés s'ouvriront automatiquement lorsque vous créez une nouvelle fenêtre Firefox.",
+    "description": "Description pour le paramètre d'ouverture automatique"
+  },
+  "importExport": {
+    "message": "Import/Export",
+    "description": "Titre de la section Import/Export"
+  },
+  "exportSettings": {
+    "message": "Exporter les Paramètres",
+    "description": "Texte du bouton d'export"
+  },
+  "importSettings": {
+    "message": "Importer les Paramètres",
+    "description": "Texte du bouton d'import"
+  },
+  "settingsExported": {
+    "message": "Paramètres exportés avec succès !",
+    "description": "Message de succès pour l'export"
+  },
+  "settingsImported": {
+    "message": "Paramètres importés avec succès !",
+    "description": "Message de succès pour l'import"
+  },
+  "invalidFile": {
+    "message": "Format de fichier invalide",
+    "description": "Message d'erreur pour un fichier d'import invalide"
+  },
+  "errorOpeningTabs": {
+    "message": "Erreur lors de l'ouverture des onglets",
+    "description": "Message d'erreur quand les onglets échouent à s'ouvrir"
+  },
+  "tabsOpened": {
+    "message": "Onglets ouverts avec succès !",
+    "description": "Message de succès quand les onglets sont ouverts"
+  },
+  "tabsSaved": {
+    "message": "Onglet enregistré avec succès !",
+    "description": "Message de succès quand l'onglet est enregistré"
+  },
+  "tabDeleted": {
+    "message": "Onglet supprimé avec succès !",
+    "description": "Message de succès quand l'onglet est supprimé"
+  },
+  "invalidUrl": {
+    "message": "Veuillez entrer une URL valide",
+    "description": "Message d'erreur pour une URL invalide"
+  },
+  "urlPlaceholder": {
+    "message": "https://exemple.com",
+    "description": "Texte d'espace réservé pour la saisie URL"
+  },
+  "titlePlaceholder": {
+    "message": "Mon Site Favori",
+    "description": "Texte d'espace réservé pour la saisie titre"
+  },
+  "loading": {
+    "message": "Chargement...",
+    "description": "Message de chargement"
+  },
+  "retry": {
+    "message": "Réessayer",
+    "description": "Texte du bouton réessayer"
+  },
+  "close": {
+    "message": "Fermer",
+    "description": "Texte du bouton fermer"
+  },
+  "pinCurrentTab": {
+    "message": "Épingler l'onglet actuel",
+    "description": "Texte du bouton pour épingler l'onglet actuel"
+  },
+  "options": {
+    "message": "Options",
+    "description": "Texte du bouton options"
+  },
+  "cannotPinTab": {
+    "message": "Impossible d'épingler cet onglet",
+    "description": "Message d'erreur quand l'onglet ne peut pas être épinglé"
+  },
+  "tabAlreadyPinned": {
+    "message": "Cet onglet est déjà épinglé",
+    "description": "Message d'avertissement quand l'onglet est déjà dans la liste"
+  },
+  "tabPinned": {
+    "message": "\"$TITLE$\" a été épinglé",
+    "description": "Message de succès quand l'onglet est épinglé",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      }
+    }
+  },
+  "failedToPinTab": {
+    "message": "Échec de l'épinglage de l'onglet",
+    "description": "Message d'erreur quand l'épinglage échoue"
+  },
+  "failedToInitialize": {
+    "message": "Échec de l'initialisation du popup",
+    "description": "Message d'erreur quand le popup ne peut pas s'initialiser"
+  },
+  "openingTabs": {
+    "message": "Ouverture des onglets...",
+    "description": "Message affiché pendant l'ouverture des onglets"
+  },
+  "openingCategoryTabs": {
+    "message": "Ouverture des onglets de la catégorie...",
+    "description": "Message affiché pendant l'ouverture des onglets d'une catégorie"
+  },
+  "readyToOpenTabs": {
+    "message": "Prêt à ouvrir les onglets",
+    "description": "Message de statut quand l'extension est prête"
+  },
+  "currentTabCannotBePinned": {
+    "message": "L'onglet actuel ne peut pas être épinglé",
+    "description": "Message d'erreur pour l'état du bouton d'épinglage"
+  },
+  "errorOpeningCategoryTabs": {
+    "message": "Erreur lors de l'ouverture des onglets de la catégorie",
+    "description": "Message d'erreur spécifique aux catégories"
+  },
+  "tabsOpenedCount": {
+    "message": "Ouvert $COUNT$ onglets",
+    "description": "Message de succès avec nombre d'onglets ouverts",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "justNow": {
+    "message": "À l'instant",
+    "description": "Indication de temps pour un événement récent"
+  },
+  "lastOpened": {
+    "message": "Dernière ouverture : $TIME$",
+    "description": "Affichage du temps de la dernière ouverture",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "il y a 5 minutes"
+      }
+    }
+  },
+  "editTab": {
+    "message": "Modifier l'onglet",
+    "description": "Titre de la boîte de dialogue d'édition"
+  },
+  "deleteTab": {
+    "message": "Supprimer l'onglet",
+    "description": "Titre de la boîte de dialogue de suppression"
+  },
+  "days": {
+    "message": "jour",
+    "description": "Unité de temps - jour"
+  },
+  "hours": {
+    "message": "heure",
+    "description": "Unité de temps - heure"
+  },
+  "minutes": {
+    "message": "minute",
+    "description": "Unité de temps - minute"
+  },
+  "ago": {
+    "message": "il y a",
+    "description": "Indicateur de temps passé"
+  },
+  "uncategorized": {
+    "message": "Non catégorisé",
+    "description": "Catégorie par défaut pour les onglets sans catégorie"
+  },
+  "manageCategories": {
+    "message": "Gérer les Catégories",
+    "description": "Titre de la section gestion des catégories"
+  },
+  "resetCategories": {
+    "message": "Réinitialiser par Défaut",
+    "description": "Bouton pour restaurer les catégories par défaut"
+  },
+  "editCategory": {
+    "message": "Modifier la Catégorie",
+    "description": "Titre du modal d'édition de catégorie"
+  },
+  "categoryName": {
+    "message": "Nom de la Catégorie",
+    "description": "Label pour le champ nom de catégorie"
+  },
+  "categoryNamePlaceholder": {
+    "message": "Saisir le nom de la catégorie",
+    "description": "Placeholder pour le champ nom de catégorie"
+  },
+  "categoryIcon": {
+    "message": "Icône de la Catégorie",
+    "description": "Label pour le champ icône de catégorie"
+  },
+  "categoryIconPlaceholder": {
+    "message": "📁",
+    "description": "Placeholder pour le champ icône de catégorie"
+  },
+  "categoryIconHelp": {
+    "message": "Choisissez un emoji pour représenter cette catégorie",
+    "description": "Texte d'aide pour l'icône de catégorie"
+  },
+  "saveCategory": {
+    "message": "Enregistrer la Catégorie",
+    "description": "Bouton pour sauvegarder la catégorie"
+  },
+  "categorySaved": {
+    "message": "Catégorie sauvegardée avec succès !",
+    "description": "Message de succès pour la sauvegarde de catégorie"
+  },
+  "categoriesReset": {
+    "message": "Catégories réinitialisées par défaut !",
+    "description": "Message de succès pour la réinitialisation des catégories"
+  },
+  "resetCategoriesConfirm": {
+    "message": "Êtes-vous sûr de vouloir réinitialiser toutes les catégories ? Cela restaurera les noms et icônes par défaut.",
+    "description": "Message de confirmation pour la réinitialisation des catégories"
+  },
+  "categoryNameRequired": {
+    "message": "Le nom de la catégorie est requis",
+    "description": "Message d'erreur pour nom de catégorie requis"
+  },
+  "categoryIconRequired": {
+    "message": "L'icône de la catégorie est requise",
+    "description": "Message d'erreur pour icône de catégorie requise"
+  },
+  "pinnedTabsShort": {
+    "message": "Épinglés",
+    "description": "Libellé court pour les onglets épinglés dans les statistiques"
+  },
+  "categoriesShort": {
+    "message": "Catégories",
+    "description": "Libellé court pour les catégories dans les statistiques"
+  },
+  "allTabsAlreadyOpen": {
+    "message": "Tous les onglets sont déjà ouverts et épinglés",
+    "description": "Message informatif quand tous les onglets configurés sont déjà ouverts"
+  },
+  "someTabsAlreadyOpen": {
+    "message": "$SKIPPED$ onglet(s) déjà ouvert(s), $OPENED$ nouveau(x) onglet(s) créé(s)",
+    "description": "Message informatif sur le nombre d'onglets ignorés vs créés",
+    "placeholders": {
+      "skipped": {
+        "content": "$1",
+        "example": "3"
+      },
+      "opened": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+  "checkingExistingTabs": {
+    "message": "Vérification des onglets existants...",
+    "description": "Message affiché pendant la vérification des onglets déjà ouverts"
+  },
+  "openTabsSingular": {
+    "message": "Ouvrir $COUNT$ onglet",
+    "description": "Texte du bouton pour ouvrir un seul onglet (version complète)",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "openTabsPlural": {
+    "message": "Ouvrir $COUNT$ onglets",
+    "description": "Texte du bouton pour ouvrir plusieurs onglets (version complète)",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "refresh": {
+    "message": "Actualiser",
+    "description": "Texte du bouton actualiser"
+  },
+  "refreshTooltip": {
+    "message": "Actualiser les données des onglets et catégories",
+    "description": "Info-bulle du bouton actualiser"
+  },
+  "clickToOpenPinnedTabs": {
+    "message": "Cliquez pour ouvrir vos onglets épinglés",
+    "description": "Description du bouton principal d'ouverture des onglets"
+  },
+  "lastOpenedPrefix": {
+    "message": "Dernière ouverture :",
+    "description": "Préfixe pour l'affichage du temps de dernière ouverture"
+  },
+  "tabSingular": {
+    "message": "onglet",
+    "description": "Mot onglet au singulier"
+  },
+  "tabPlural": {
+    "message": "onglets",
+    "description": "Mot onglet au pluriel"
+  },
+  "pinCurrentTabTooltip": {
+    "message": "Épingler l'onglet actuel",
+    "description": "Info-bulle du bouton épingler l'onglet actuel"
+  },
+  "manageTabsAndSettingsTooltip": {
+    "message": "Gérer vos onglets et paramètres",
+    "description": "Info-bulle du bouton options"
+  },
+  "manageCategoriesButtonTooltip": {
+    "message": "Gérer les catégories",
+    "description": "Info-bulle du bouton gérer les catégories"
+  },
+  "viewAllPinnedTabsTooltip": {
+    "message": "Voir tous les onglets épinglés",
+    "description": "Info-bulle du bouton statistiques onglets épinglés"
+  },
+  "manageCategoriesStatTooltip": {
+    "message": "Gérer les catégories",
+    "description": "Info-bulle du bouton statistiques catégories"
+  },
+  "extensionVersionTooltip": {
+    "message": "Version de l'extension",
+    "description": "Info-bulle de l'affichage de version"
+  },
+  "exportSettingsTooltip": {
+    "message": "Exporter les paramètres",
+    "description": "Info-bulle du bouton exporter"
+  },
+  "importSettingsTooltip": {
+    "message": "Importer les paramètres",
+    "description": "Info-bulle du bouton importer"
+  },
+  "notificationsDenied": {
+    "message": "Notifications désactivées. Veuillez les activer dans les paramètres de votre navigateur."
+  },
+  "criticalErrorTitle": {
+    "message": "Erreur critique"
+  },
+  "criticalErrorMessage": {
+    "message": "Une erreur critique s'est produite. Veuillez redémarrer l'extension."
+  },
+  "selectCategory": {
+    "message": "Sélectionner une catégorie"
+  },
+  "tabPinnedInCategory": {
+    "message": "$TAB_TITLE$ épinglé dans $CATEGORY_NAME$",
+    "placeholders": {
+      "tab_title": {
+        "content": "$1",
+        "example": "Google"
+      },
+      "category_name": {
+        "content": "$2",
+        "example": "Travail"
+      }
+    }
+  },
+  "categoryPrefix": {
+    "message": "Catégorie"
+  },
+  "containsPrefix": {
+    "message": "contient"
+  },
+  "noCategoryTabs": {
+    "message": "Aucun onglet dans cette catégorie"
+  },
+  "selectCategoryIcon": {
+    "message": "Sélectionner une icône de catégorie"
+  },
+  "searchIcons": {
+    "message": "Rechercher des icônes..."
+  },
+  "recent": {
+    "message": "Récent"
+  },
+  "objects": {
+    "message": "Objets"
+  },
+  "symbols": {
+    "message": "Symboles"
+  },
+  "activities": {
+    "message": "Activités"
+  },
+  "nature": {
+    "message": "Nature"
+  },
+  "food": {
+    "message": "Nourriture"
+  },
+  "noRecentIcons": {
+    "message": "Aucune icône récente"
+  },
+  "noIconsFound": {
+    "message": "Aucune icône trouvée"
+  }
+} 

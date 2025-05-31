@@ -1,0 +1,52 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "1.0.0",
+  "default_locale": "en",
+
+  "author": "Alexandre",
+  "homepage_url": "",
+
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "32": "assets/icons/icon-32.png",
+    "48": "assets/icons/icon-48.png",
+    "96": "assets/icons/icon-96.png",
+    "128": "assets/icons/icon-128.png"
+  },
+
+  "permissions": ["tabs", "storage", "activeTab"],
+
+  "background": {
+    "scripts": ["background/background.js"],
+    "persistent": true
+  },
+
+  "browser_action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "__MSG_browserActionTitle__",
+    "default_icon": {
+      "16": "assets/icons/icon-16.png",
+      "32": "assets/icons/icon-32.png",
+      "48": "assets/icons/icon-48.png",
+      "128": "assets/icons/icon-128.png"
+    }
+  },
+
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+
+  "web_accessible_resources": ["assets/icons/*.png"],
+
+  "content_security_policy": "script-src 'self'; object-src 'self';",
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "tabspin@firefox.extension",
+      "strict_min_version": "78.0"
+    }
+  }
+}

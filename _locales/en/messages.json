@@ -1,0 +1,524 @@
+{
+  "extensionName": {
+    "message": "Tabs Pin - Pin Tabs Manager",
+    "description": "The name of the extension"
+  },
+  "extensionDescription": {
+    "message": "Efficiently manage your pinned tabs with categorized favorites and automatic workflow restoration",
+    "description": "The description of the extension"
+  },
+  "browserActionTitle": {
+    "message": "Open Tabs Pin",
+    "description": "The title shown when hovering over the browser action button"
+  },
+  "openAllTabs": {
+    "message": "Open All Tabs",
+    "description": "Button text to open all configured tabs"
+  },
+  "openOneTab": {
+    "message": "Open 1 Tab",
+    "description": "Button text to open one single tab"
+  },
+  "openTabsCount": {
+    "message": "Open $COUNT$ tabs",
+    "description": "Button text showing number of tabs to open",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "noTabsConfigured": {
+    "message": "No tabs configured",
+    "description": "Message when no tabs are configured"
+  },
+  "configureTabsMessage": {
+    "message": "Configure your favorite tabs in the options page to get started.",
+    "description": "Instructions for first-time users"
+  },
+  "openOptions": {
+    "message": "Open Options",
+    "description": "Button to open options page"
+  },
+  "categories": {
+    "message": "Categories",
+    "description": "Categories section title"
+  },
+  "work": {
+    "message": "Work",
+    "description": "Work category name"
+  },
+  "personal": {
+    "message": "Personal",
+    "description": "Personal category name"
+  },
+  "development": {
+    "message": "Development",
+    "description": "Development category name"
+  },
+  "social": {
+    "message": "Social",
+    "description": "Social category name"
+  },
+  "tools": {
+    "message": "Tools",
+    "description": "Tools category name"
+  },
+  "entertainment": {
+    "message": "Entertainment",
+    "description": "Entertainment category name"
+  },
+  "optionsTitle": {
+    "message": "Tabs Pin Options",
+    "description": "Title of the options page"
+  },
+  "manageTabs": {
+    "message": "Manage Your Pinned Tabs",
+    "description": "Subtitle in options page"
+  },
+  "addNewTab": {
+    "message": "Add New Tab",
+    "description": "Button to add a new tab configuration"
+  },
+  "tabUrl": {
+    "message": "Tab URL",
+    "description": "Label for URL input field"
+  },
+  "tabTitle": {
+    "message": "Tab Title (optional)",
+    "description": "Label for title input field"
+  },
+  "tabCategory": {
+    "message": "Category",
+    "description": "Label for category selection"
+  },
+  "saveTab": {
+    "message": "Save Tab",
+    "description": "Button to save tab configuration"
+  },
+  "cancel": {
+    "message": "Cancel",
+    "description": "Cancel button text"
+  },
+  "edit": {
+    "message": "Edit",
+    "description": "Edit button text"
+  },
+  "delete": {
+    "message": "Delete",
+    "description": "Delete button text"
+  },
+  "deleteConfirm": {
+    "message": "Are you sure you want to delete this tab?",
+    "description": "Confirmation message for tab deletion"
+  },
+  "generalSettings": {
+    "message": "General Settings",
+    "description": "General settings section title"
+  },
+  "autoOpenTabs": {
+    "message": "Automatically open tabs when creating new windows",
+    "description": "Checkbox label for auto-open setting"
+  },
+  "autoOpenTabsDescription": {
+    "message": "When enabled, your pinned tabs will automatically open when you create a new Firefox window.",
+    "description": "Description for auto-open setting"
+  },
+  "importExport": {
+    "message": "Import/Export",
+    "description": "Import/Export section title"
+  },
+  "exportSettings": {
+    "message": "Export Settings",
+    "description": "Export button text"
+  },
+  "importSettings": {
+    "message": "Import Settings",
+    "description": "Import button text"
+  },
+  "settingsExported": {
+    "message": "Settings exported successfully!",
+    "description": "Success message for export"
+  },
+  "settingsImported": {
+    "message": "Settings imported successfully!",
+    "description": "Success message for import"
+  },
+  "invalidFile": {
+    "message": "Invalid file format",
+    "description": "Error message for invalid import file"
+  },
+  "errorOpeningTabs": {
+    "message": "Error opening tabs",
+    "description": "Error message when tabs fail to open"
+  },
+  "tabsOpened": {
+    "message": "Tabs opened successfully!",
+    "description": "Success message when tabs are opened"
+  },
+  "tabsSaved": {
+    "message": "Tab saved successfully!",
+    "description": "Success message when tab is saved"
+  },
+  "tabDeleted": {
+    "message": "Tab deleted successfully!",
+    "description": "Success message when tab is deleted"
+  },
+  "invalidUrl": {
+    "message": "Please enter a valid URL",
+    "description": "Error message for invalid URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com",
+    "description": "Placeholder text for URL input"
+  },
+  "titlePlaceholder": {
+    "message": "My Favorite Site",
+    "description": "Placeholder text for title input"
+  },
+  "loading": {
+    "message": "Loading...",
+    "description": "Loading message"
+  },
+  "retry": {
+    "message": "Retry",
+    "description": "Retry button text"
+  },
+  "close": {
+    "message": "Close",
+    "description": "Close button text"
+  },
+  "pinCurrentTab": {
+    "message": "Pin Current Tab",
+    "description": "Button text for pinning the current tab"
+  },
+  "options": {
+    "message": "Options",
+    "description": "Options button text"
+  },
+  "cannotPinTab": {
+    "message": "Cannot pin this tab",
+    "description": "Error message when tab cannot be pinned"
+  },
+  "tabAlreadyPinned": {
+    "message": "Tab is already pinned",
+    "description": "Warning message when tab is already in the list"
+  },
+  "tabPinned": {
+    "message": "\"$TITLE$\" has been pinned",
+    "description": "Success message when tab is pinned",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      }
+    }
+  },
+  "failedToPinTab": {
+    "message": "Failed to pin tab",
+    "description": "Error message when pinning fails"
+  },
+  "failedToInitialize": {
+    "message": "Failed to initialize popup",
+    "description": "Error message when popup cannot initialize"
+  },
+  "openingTabs": {
+    "message": "Opening tabs...",
+    "description": "Message displayed while opening tabs"
+  },
+  "openingCategoryTabs": {
+    "message": "Opening category tabs...",
+    "description": "Message displayed while opening category tabs"
+  },
+  "readyToOpenTabs": {
+    "message": "Ready to open tabs",
+    "description": "Status message when extension is ready"
+  },
+  "currentTabCannotBePinned": {
+    "message": "Current tab cannot be pinned",
+    "description": "Error message for pin button state"
+  },
+  "errorOpeningCategoryTabs": {
+    "message": "Error opening category tabs",
+    "description": "Error message specific to categories"
+  },
+  "tabsOpenedCount": {
+    "message": "Opened $COUNT$ tabs",
+    "description": "Success message with number of tabs opened",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "justNow": {
+    "message": "Just now",
+    "description": "Time indication for recent event"
+  },
+  "lastOpened": {
+    "message": "Last opened: $TIME$",
+    "description": "Display of last opening time",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "5 minutes ago"
+      }
+    }
+  },
+  "editTab": {
+    "message": "Edit Tab",
+    "description": "Edit dialog title"
+  },
+  "deleteTab": {
+    "message": "Delete Tab",
+    "description": "Delete dialog title"
+  },
+  "days": {
+    "message": "day",
+    "description": "Time unit - day"
+  },
+  "hours": {
+    "message": "hour",
+    "description": "Time unit - hour"
+  },
+  "minutes": {
+    "message": "minute",
+    "description": "Time unit - minute"
+  },
+  "ago": {
+    "message": "ago",
+    "description": "Past time indicator"
+  },
+  "uncategorized": {
+    "message": "Uncategorized",
+    "description": "Default category for tabs without category"
+  },
+  "manageCategories": {
+    "message": "Manage Categories",
+    "description": "Title of categories management section"
+  },
+  "resetCategories": {
+    "message": "Reset to Default",
+    "description": "Button to restore default categories"
+  },
+  "editCategory": {
+    "message": "Edit Category",
+    "description": "Title of category edit modal"
+  },
+  "categoryName": {
+    "message": "Category Name",
+    "description": "Label for category name field"
+  },
+  "categoryNamePlaceholder": {
+    "message": "Enter category name",
+    "description": "Placeholder for category name field"
+  },
+  "categoryIcon": {
+    "message": "Category Icon",
+    "description": "Label for category icon field"
+  },
+  "categoryIconPlaceholder": {
+    "message": "📁",
+    "description": "Placeholder for category icon field"
+  },
+  "categoryIconHelp": {
+    "message": "Choose an emoji to represent this category",
+    "description": "Help text for category icon"
+  },
+  "saveCategory": {
+    "message": "Save Category",
+    "description": "Button to save category"
+  },
+  "categorySaved": {
+    "message": "Category saved successfully!",
+    "description": "Success message for category save"
+  },
+  "categoriesReset": {
+    "message": "Categories reset to default!",
+    "description": "Success message for categories reset"
+  },
+  "resetCategoriesConfirm": {
+    "message": "Are you sure you want to reset all categories? This will restore default names and icons.",
+    "description": "Confirmation message for categories reset"
+  },
+  "categoryNameRequired": {
+    "message": "Category name is required",
+    "description": "Error message for required category name"
+  },
+  "categoryIconRequired": {
+    "message": "Category icon is required",
+    "description": "Error message for required category icon"
+  },
+  "pinnedTabsShort": {
+    "message": "Pinned",
+    "description": "Short label for pinned tabs in statistics"
+  },
+  "categoriesShort": {
+    "message": "Categories",
+    "description": "Short label for categories in statistics"
+  },
+  "allTabsAlreadyOpen": {
+    "message": "All tabs are already open and pinned",
+    "description": "Informative message when all configured tabs are already open"
+  },
+  "someTabsAlreadyOpen": {
+    "message": "$SKIPPED$ tab(s) already open, $OPENED$ new tab(s) created",
+    "description": "Informative message about skipped vs created tabs",
+    "placeholders": {
+      "skipped": {
+        "content": "$1",
+        "example": "3"
+      },
+      "opened": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+  "checkingExistingTabs": {
+    "message": "Checking existing tabs...",
+    "description": "Message displayed while checking already open tabs"
+  },
+  "openTabsSingular": {
+    "message": "Open $COUNT$ tab",
+    "description": "Button text for opening a single tab (complete version)",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "openTabsPlural": {
+    "message": "Open $COUNT$ tabs",
+    "description": "Button text for opening multiple tabs (complete version)",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "refresh": {
+    "message": "Refresh",
+    "description": "Refresh button text"
+  },
+  "refreshTooltip": {
+    "message": "Refresh tabs and categories data",
+    "description": "Refresh button tooltip"
+  },
+  "clickToOpenPinnedTabs": {
+    "message": "Click to open your pinned tabs",
+    "description": "Description of the main open tabs button"
+  },
+  "lastOpenedPrefix": {
+    "message": "Last opened:",
+    "description": "Prefix for last opening time display"
+  },
+  "tabSingular": {
+    "message": "tab",
+    "description": "Tab word singular"
+  },
+  "tabPlural": {
+    "message": "tabs",
+    "description": "Tab word plural"
+  },
+  "pinCurrentTabTooltip": {
+    "message": "Pin Current Tab",
+    "description": "Tooltip for pin current tab button"
+  },
+  "manageTabsAndSettingsTooltip": {
+    "message": "Manage your tabs and settings",
+    "description": "Tooltip for options button"
+  },
+  "manageCategoriesButtonTooltip": {
+    "message": "Manage categories",
+    "description": "Tooltip for manage categories button"
+  },
+  "viewAllPinnedTabsTooltip": {
+    "message": "View all pinned tabs",
+    "description": "Tooltip for pinned tabs statistics button"
+  },
+  "manageCategoriesStatTooltip": {
+    "message": "Manage categories",
+    "description": "Tooltip for categories statistics button"
+  },
+  "extensionVersionTooltip": {
+    "message": "Extension version",
+    "description": "Tooltip for version display"
+  },
+  "exportSettingsTooltip": {
+    "message": "Export settings",
+    "description": "Tooltip for export button"
+  },
+  "importSettingsTooltip": {
+    "message": "Import settings",
+    "description": "Tooltip for import button"
+  },
+  "notificationsDenied": {
+    "message": "Notifications disabled. Please enable them in your browser settings."
+  },
+  "criticalErrorTitle": {
+    "message": "Critical Error"
+  },
+  "criticalErrorMessage": {
+    "message": "A critical error occurred. Please restart the extension."
+  },
+  "selectCategory": {
+    "message": "Select a category"
+  },
+  "tabPinnedInCategory": {
+    "message": "\"$TAB_TITLE$\" pinned in $CATEGORY_NAME$",
+    "placeholders": {
+      "tab_title": {
+        "content": "$1",
+        "example": "Google"
+      },
+      "category_name": {
+        "content": "$2",
+        "example": "Work"
+      }
+    }
+  },
+  "categoryPrefix": {
+    "message": "Category"
+  },
+  "containsPrefix": {
+    "message": "contains"
+  },
+  "noCategoryTabs": {
+    "message": "No tabs in this category"
+  },
+  "selectCategoryIcon": {
+    "message": "Select Category Icon"
+  },
+  "searchIcons": {
+    "message": "Search icons..."
+  },
+  "recent": {
+    "message": "Recent"
+  },
+  "objects": {
+    "message": "Objects"
+  },
+  "symbols": {
+    "message": "Symbols"
+  },
+  "activities": {
+    "message": "Activities"
+  },
+  "nature": {
+    "message": "Nature"
+  },
+  "food": {
+    "message": "Food"
+  },
+  "noRecentIcons": {
+    "message": "No recent icons"
+  },
+  "noIconsFound": {
+    "message": "No icons found"
+  }
+} 

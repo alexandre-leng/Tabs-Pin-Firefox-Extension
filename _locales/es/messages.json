@@ -1,0 +1,524 @@
+{
+  "extensionName": {
+    "message": "Tabs Pin - Gestor de Pestañas Fijadas",
+    "description": "El nombre de la extensión"
+  },
+  "extensionDescription": {
+    "message": "Gestione eficientemente sus pestañas fijadas con favoritos categorizados y restauración automática de flujo de trabajo",
+    "description": "La descripción de la extensión"
+  },
+  "browserActionTitle": {
+    "message": "Abrir Tabs Pin",
+    "description": "El título mostrado al pasar el ratón sobre el botón de acción del navegador"
+  },
+  "openAllTabs": {
+    "message": "Abrir Todas las Pestañas",
+    "description": "Texto del botón para abrir todas las pestañas configuradas"
+  },
+  "openOneTab": {
+    "message": "Abrir 1 Pestaña",
+    "description": "Texto del botón para abrir una sola pestaña"
+  },
+  "openTabsCount": {
+    "message": "Abrir $COUNT$ pestañas",
+    "description": "Texto del botón mostrando el número de pestañas a abrir",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "noTabsConfigured": {
+    "message": "No hay pestañas configuradas",
+    "description": "Mensaje cuando no hay pestañas configuradas"
+  },
+  "configureTabsMessage": {
+    "message": "Configure sus pestañas favoritas en la página de opciones para comenzar.",
+    "description": "Instrucciones para usuarios nuevos"
+  },
+  "openOptions": {
+    "message": "Abrir Opciones",
+    "description": "Botón para abrir la página de opciones"
+  },
+  "categories": {
+    "message": "Categorías",
+    "description": "Título de la sección de categorías"
+  },
+  "work": {
+    "message": "Trabajo",
+    "description": "Nombre de la categoría trabajo"
+  },
+  "personal": {
+    "message": "Personal",
+    "description": "Nombre de la categoría personal"
+  },
+  "development": {
+    "message": "Desarrollo",
+    "description": "Nombre de la categoría desarrollo"
+  },
+  "social": {
+    "message": "Social",
+    "description": "Nombre de la categoría social"
+  },
+  "tools": {
+    "message": "Herramientas",
+    "description": "Nombre de la categoría herramientas"
+  },
+  "entertainment": {
+    "message": "Entretenimiento",
+    "description": "Nombre de la categoría entretenimiento"
+  },
+  "optionsTitle": {
+    "message": "Opciones de Tabs Pin",
+    "description": "Título de la página de opciones"
+  },
+  "manageTabs": {
+    "message": "Gestionar Sus Pestañas Fijadas",
+    "description": "Subtítulo en la página de opciones"
+  },
+  "addNewTab": {
+    "message": "Añadir Nueva Pestaña",
+    "description": "Botón para añadir una nueva configuración de pestaña"
+  },
+  "tabUrl": {
+    "message": "URL de la Pestaña",
+    "description": "Etiqueta para el campo de entrada URL"
+  },
+  "tabTitle": {
+    "message": "Título de la Pestaña (opcional)",
+    "description": "Etiqueta para el campo de entrada título"
+  },
+  "tabCategory": {
+    "message": "Categoría",
+    "description": "Etiqueta para la selección de categoría"
+  },
+  "saveTab": {
+    "message": "Guardar Pestaña",
+    "description": "Botón para guardar la configuración de pestaña"
+  },
+  "cancel": {
+    "message": "Cancelar",
+    "description": "Texto del botón cancelar"
+  },
+  "edit": {
+    "message": "Editar",
+    "description": "Texto del botón editar"
+  },
+  "delete": {
+    "message": "Eliminar",
+    "description": "Texto del botón eliminar"
+  },
+  "deleteConfirm": {
+    "message": "¿Está seguro de que desea eliminar esta pestaña?",
+    "description": "Mensaje de confirmación para la eliminación de pestaña"
+  },
+  "generalSettings": {
+    "message": "Configuración General",
+    "description": "Título de la sección de configuración general"
+  },
+  "autoOpenTabs": {
+    "message": "Abrir automáticamente las pestañas al crear nuevas ventanas",
+    "description": "Etiqueta de la casilla de verificación para la configuración de apertura automática"
+  },
+  "autoOpenTabsDescription": {
+    "message": "Cuando esté habilitado, sus pestañas fijadas se abrirán automáticamente cuando cree una nueva ventana de Firefox.",
+    "description": "Descripción para la configuración de apertura automática"
+  },
+  "importExport": {
+    "message": "Importar/Exportar",
+    "description": "Título de la sección Importar/Exportar"
+  },
+  "exportSettings": {
+    "message": "Exportar Configuración",
+    "description": "Texto del botón de exportar"
+  },
+  "importSettings": {
+    "message": "Importar Configuración",
+    "description": "Texto del botón de importar"
+  },
+  "settingsExported": {
+    "message": "¡Configuración exportada con éxito!",
+    "description": "Mensaje de éxito para la exportación"
+  },
+  "settingsImported": {
+    "message": "¡Configuración importada con éxito!",
+    "description": "Mensaje de éxito para la importación"
+  },
+  "invalidFile": {
+    "message": "Formato de archivo inválido",
+    "description": "Mensaje de error para archivo de importación inválido"
+  },
+  "errorOpeningTabs": {
+    "message": "Error al abrir las pestañas",
+    "description": "Mensaje de error cuando las pestañas fallan al abrirse"
+  },
+  "tabsOpened": {
+    "message": "¡Pestañas abiertas con éxito!",
+    "description": "Mensaje de éxito cuando las pestañas se abren"
+  },
+  "tabsSaved": {
+    "message": "¡Pestaña guardada con éxito!",
+    "description": "Mensaje de éxito cuando la pestaña se guarda"
+  },
+  "tabDeleted": {
+    "message": "¡Pestaña eliminada con éxito!",
+    "description": "Mensaje de éxito cuando la pestaña se elimina"
+  },
+  "invalidUrl": {
+    "message": "Por favor ingrese una URL válida",
+    "description": "Mensaje de error para URL inválida"
+  },
+  "urlPlaceholder": {
+    "message": "https://ejemplo.com",
+    "description": "Texto de marcador de posición para entrada URL"
+  },
+  "titlePlaceholder": {
+    "message": "Mi Sitio Favorito",
+    "description": "Texto de marcador de posición para entrada título"
+  },
+  "loading": {
+    "message": "Cargando...",
+    "description": "Mensaje de carga"
+  },
+  "retry": {
+    "message": "Reintentar",
+    "description": "Texto del botón reintentar"
+  },
+  "close": {
+    "message": "Cerrar",
+    "description": "Texto del botón cerrar"
+  },
+  "pinCurrentTab": {
+    "message": "Fijar Pestaña Actual",
+    "description": "Texto del botón para fijar la pestaña actual"
+  },
+  "options": {
+    "message": "Opciones",
+    "description": "Texto del botón opciones"
+  },
+  "cannotPinTab": {
+    "message": "No se puede fijar esta pestaña",
+    "description": "Mensaje de error cuando la pestaña no se puede fijar"
+  },
+  "tabAlreadyPinned": {
+    "message": "Esta pestaña ya está fijada",
+    "description": "Mensaje de advertencia cuando la pestaña ya está en la lista"
+  },
+  "tabPinned": {
+    "message": "\"$TITLE$\" ha sido fijada",
+    "description": "Mensaje de éxito cuando la pestaña se fija",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      }
+    }
+  },
+  "failedToPinTab": {
+    "message": "Error al fijar la pestaña",
+    "description": "Mensaje de error cuando el fijado falla"
+  },
+  "failedToInitialize": {
+    "message": "Error al inicializar el popup",
+    "description": "Mensaje de error cuando el popup no puede inicializarse"
+  },
+  "openingTabs": {
+    "message": "Abriendo pestañas...",
+    "description": "Mensaje mostrado mientras se abren las pestañas"
+  },
+  "openingCategoryTabs": {
+    "message": "Abriendo pestañas de la categoría...",
+    "description": "Mensaje mostrado mientras se abren las pestañas de una categoría"
+  },
+  "readyToOpenTabs": {
+    "message": "Listo para abrir pestañas",
+    "description": "Mensaje de estado cuando la extensión está lista"
+  },
+  "currentTabCannotBePinned": {
+    "message": "La pestaña actual no se puede fijar",
+    "description": "Mensaje de error para el estado del botón de fijado"
+  },
+  "errorOpeningCategoryTabs": {
+    "message": "Error al abrir las pestañas de la categoría",
+    "description": "Mensaje de error específico para categorías"
+  },
+  "tabsOpenedCount": {
+    "message": "Abiertas $COUNT$ pestañas",
+    "description": "Mensaje de éxito con número de pestañas abiertas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "justNow": {
+    "message": "Ahora mismo",
+    "description": "Indicación de tiempo para evento reciente"
+  },
+  "lastOpened": {
+    "message": "Última apertura: $TIME$",
+    "description": "Visualización del tiempo de la última apertura",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "hace 5 minutos"
+      }
+    }
+  },
+  "editTab": {
+    "message": "Editar Pestaña",
+    "description": "Título del diálogo de edición"
+  },
+  "deleteTab": {
+    "message": "Eliminar Pestaña",
+    "description": "Título del diálogo de eliminación"
+  },
+  "days": {
+    "message": "día",
+    "description": "Unidad de tiempo - día"
+  },
+  "hours": {
+    "message": "hora",
+    "description": "Unidad de tiempo - hora"
+  },
+  "minutes": {
+    "message": "minuto",
+    "description": "Unidad de tiempo - minuto"
+  },
+  "ago": {
+    "message": "hace",
+    "description": "Indicador de tiempo pasado"
+  },
+  "uncategorized": {
+    "message": "Sin categoría",
+    "description": "Categoría por defecto para pestañas sin categoría"
+  },
+  "manageCategories": {
+    "message": "Gestionar Categorías",
+    "description": "Título de la sección de gestión de categorías"
+  },
+  "resetCategories": {
+    "message": "Restablecer a Predeterminado",
+    "description": "Botón para restaurar las categorías predeterminadas"
+  },
+  "editCategory": {
+    "message": "Editar Categoría",
+    "description": "Título del modal de edición de categoría"
+  },
+  "categoryName": {
+    "message": "Nombre de la Categoría",
+    "description": "Etiqueta para el campo nombre de categoría"
+  },
+  "categoryNamePlaceholder": {
+    "message": "Ingrese el nombre de la categoría",
+    "description": "Marcador de posición para el campo nombre de categoría"
+  },
+  "categoryIcon": {
+    "message": "Icono de la Categoría",
+    "description": "Etiqueta para el campo icono de categoría"
+  },
+  "categoryIconPlaceholder": {
+    "message": "📁",
+    "description": "Marcador de posición para el campo icono de categoría"
+  },
+  "categoryIconHelp": {
+    "message": "Elija un emoji para representar esta categoría",
+    "description": "Texto de ayuda para el icono de categoría"
+  },
+  "saveCategory": {
+    "message": "Guardar Categoría",
+    "description": "Botón para guardar la categoría"
+  },
+  "categorySaved": {
+    "message": "¡Categoría guardada con éxito!",
+    "description": "Mensaje de éxito para el guardado de categoría"
+  },
+  "categoriesReset": {
+    "message": "¡Categorías restablecidas a predeterminado!",
+    "description": "Mensaje de éxito para el restablecimiento de categorías"
+  },
+  "resetCategoriesConfirm": {
+    "message": "¿Está seguro de que desea restablecer todas las categorías? Esto restaurará los nombres e iconos predeterminados.",
+    "description": "Mensaje de confirmación para el restablecimiento de categorías"
+  },
+  "categoryNameRequired": {
+    "message": "El nombre de la categoría es requerido",
+    "description": "Mensaje de error para nombre de categoría requerido"
+  },
+  "categoryIconRequired": {
+    "message": "El icono de la categoría es requerido",
+    "description": "Mensaje de error para icono de categoría requerido"
+  },
+  "pinnedTabsShort": {
+    "message": "Fijadas",
+    "description": "Etiqueta corta para pestañas fijadas en estadísticas"
+  },
+  "categoriesShort": {
+    "message": "Categorías",
+    "description": "Etiqueta corta para categorías en estadísticas"
+  },
+  "allTabsAlreadyOpen": {
+    "message": "Todas las pestañas ya están abiertas y fijadas",
+    "description": "Mensaje informativo cuando todas las pestañas configuradas ya están abiertas"
+  },
+  "someTabsAlreadyOpen": {
+    "message": "$SKIPPED$ pestaña(s) ya abierta(s), $OPENED$ nueva(s) pestaña(s) creada(s)",
+    "description": "Mensaje informativo sobre pestañas omitidas vs creadas",
+    "placeholders": {
+      "skipped": {
+        "content": "$1",
+        "example": "3"
+      },
+      "opened": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+  "checkingExistingTabs": {
+    "message": "Verificando pestañas existentes...",
+    "description": "Mensaje mostrado mientras se verifican las pestañas ya abiertas"
+  },
+  "openTabsSingular": {
+    "message": "Abrir $COUNT$ pestaña",
+    "description": "Texto del botón para abrir una sola pestaña (versión completa)",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "openTabsPlural": {
+    "message": "Abrir $COUNT$ pestañas",
+    "description": "Texto del botón para abrir múltiples pestañas (versión completa)",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "refresh": {
+    "message": "Actualizar",
+    "description": "Texto del botón actualizar"
+  },
+  "refreshTooltip": {
+    "message": "Actualizar datos de pestañas y categorías",
+    "description": "Información sobre herramientas del botón actualizar"
+  },
+  "clickToOpenPinnedTabs": {
+    "message": "Haga clic para abrir sus pestañas fijadas",
+    "description": "Descripción del botón principal de apertura de pestañas"
+  },
+  "lastOpenedPrefix": {
+    "message": "Última apertura:",
+    "description": "Prefijo para la visualización del tiempo de última apertura"
+  },
+  "tabSingular": {
+    "message": "pestaña",
+    "description": "Palabra pestaña singular"
+  },
+  "tabPlural": {
+    "message": "pestañas",
+    "description": "Palabra pestaña plural"
+  },
+  "pinCurrentTabTooltip": {
+    "message": "Fijar Pestaña Actual",
+    "description": "Tooltip para el botón fijar pestaña actual"
+  },
+  "manageTabsAndSettingsTooltip": {
+    "message": "Gestionar sus pestañas y configuración",
+    "description": "Tooltip para el botón opciones"
+  },
+  "manageCategoriesButtonTooltip": {
+    "message": "Gestionar categorías",
+    "description": "Tooltip para el botón gestionar categorías"
+  },
+  "viewAllPinnedTabsTooltip": {
+    "message": "Ver todas las pestañas fijadas",
+    "description": "Tooltip para el botón estadísticas pestañas fijadas"
+  },
+  "manageCategoriesStatTooltip": {
+    "message": "Gestionar categorías",
+    "description": "Tooltip para el botón estadísticas categorías"
+  },
+  "extensionVersionTooltip": {
+    "message": "Versión de la extensión",
+    "description": "Tooltip para la visualización de versión"
+  },
+  "exportSettingsTooltip": {
+    "message": "Exportar configuración",
+    "description": "Tooltip para el botón exportar"
+  },
+  "importSettingsTooltip": {
+    "message": "Importar configuración",
+    "description": "Tooltip para el botón importar"
+  },
+  "notificationsDenied": {
+    "message": "Notificaciones desactivadas. Actívalas en la configuración de tu navegador."
+  },
+  "criticalErrorTitle": {
+    "message": "Error crítico"
+  },
+  "criticalErrorMessage": {
+    "message": "Se produjo un error crítico. Reinicia la extensión."
+  },
+  "selectCategory": {
+    "message": "Seleccionar una categoría"
+  },
+  "tabPinnedInCategory": {
+    "message": "\"$TAB_TITLE$\" fijado en $CATEGORY_NAME$",
+    "placeholders": {
+      "tab_title": {
+        "content": "$1",
+        "example": "Google"
+      },
+      "category_name": {
+        "content": "$2",
+        "example": "Trabajo"
+      }
+    }
+  },
+  "categoryPrefix": {
+    "message": "Categoría"
+  },
+  "containsPrefix": {
+    "message": "contiene"
+  },
+  "noCategoryTabs": {
+    "message": "No hay pestañas en esta categoría"
+  },
+  "selectCategoryIcon": {
+    "message": "Seleccionar Icono de Categoría"
+  },
+  "searchIcons": {
+    "message": "Buscar iconos..."
+  },
+  "recent": {
+    "message": "Reciente"
+  },
+  "objects": {
+    "message": "Objetos"
+  },
+  "symbols": {
+    "message": "Símbolos"
+  },
+  "activities": {
+    "message": "Actividades"
+  },
+  "nature": {
+    "message": "Naturaleza"
+  },
+  "food": {
+    "message": "Comida"
+  },
+  "noRecentIcons": {
+    "message": "No hay iconos recientes"
+  },
+  "noIconsFound": {
+    "message": "No se encontraron iconos"
+  }
+} 
