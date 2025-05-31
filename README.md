@@ -45,6 +45,7 @@ cd firefox-extension
 - **Minimal Permissions**: Access to tabs (`tabs`), local storage (`storage`), active tab (`activeTab`) for pinning.
 - **100% Local**: No data is transmitted externally.
 - **No Tracking**.
+- **Privacy-First & Open Source**.
 
 ## 📞 Support
 
