@@ -20,6 +20,62 @@ class OptionsManager {
     this.init();
   }
 
+  getElements() {
+    return {
+      // Main container elements
+      tabsGrid: document.getElementById('tabsGrid'),
+      emptyTabs: document.getElementById('emptyTabs'),
+      categoriesGrid: document.getElementById('categoriesGrid'),
+      
+      // Action buttons
+      addTabBtn: document.getElementById('addTabBtn'),
+      addFirstTabBtn: document.getElementById('addFirstTabBtn'),
+      resetCategoriesBtn: document.getElementById('resetCategoriesBtn'),
+      exportBtn: document.getElementById('exportBtn'),
+      importBtn: document.getElementById('importBtn'),
+      importFileInput: document.getElementById('importFileInput'),
+      
+      // Settings
+      autoOpenTabs: document.getElementById('autoOpenTabs'),
+      
+      // Tab Modal elements
+      tabModalOverlay: document.getElementById('tabModalOverlay'),
+      tabModal: document.getElementById('tabModal'),
+      closeTabModal: document.getElementById('closeTabModal'),
+      tabModalTitle: document.getElementById('tabModalTitle'),
+      tabForm: document.getElementById('tabForm'),
+      tabUrl: document.getElementById('tabUrl'),
+      tabTitle: document.getElementById('tabTitle'),
+      tabCategory: document.getElementById('tabCategory'),
+      saveTabBtn: document.getElementById('saveTabBtn'),
+      cancelTabBtn: document.getElementById('cancelTabBtn'),
+      
+      // Category Modal elements
+      categoryModalOverlay: document.getElementById('categoryModalOverlay'),
+      categoryModal: document.getElementById('categoryModal'),
+      closeCategoryModal: document.getElementById('closeCategoryModal'),
+      categoryModalTitle: document.getElementById('categoryModalTitle'),
+      categoryForm: document.getElementById('categoryForm'),
+      categoryName: document.getElementById('categoryName'),
+      selectedIcon: document.getElementById('selectedIcon'),
+      iconSelectorBtn: document.getElementById('iconSelectorBtn'),
+      saveCategoryBtn: document.getElementById('saveCategoryBtn'),
+      cancelCategoryBtn: document.getElementById('cancelCategoryBtn'),
+      
+      // Icon Picker elements
+      iconPickerOverlay: document.getElementById('iconPickerOverlay'),
+      iconPickerModal: document.getElementById('iconPickerModal'),
+      closeIconPicker: document.getElementById('closeIconPicker'),
+      iconSearchInput: document.getElementById('iconSearchInput'),
+      iconGrid: document.getElementById('iconGrid'),
+      
+      // Toast elements
+      toast: document.getElementById('toast'),
+      toastIcon: document.getElementById('toastIcon'),
+      toastMessage: document.getElementById('toastMessage')
+    };
+  }
+
   async init() {
     try {
       this.setupI18n();
