@@ -50,7 +50,7 @@ cd firefox-extension
 
 - **Documentation**: See this README.
 - **Issues & Suggestions**: [GitHub Issues](https://github.com/alexandre-leng/Tabs-Pin---Pin-Tabs-Manager-for-Firefox/issues)
-- **Email**: alexandre.lg99 {AT] gmail.com
+- **Email**: 
 
 ## 📝 License
 
