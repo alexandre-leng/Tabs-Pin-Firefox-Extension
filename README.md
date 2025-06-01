@@ -15,7 +15,7 @@ Tabs Pin helps you organize your pinned tabs in Firefox. Create custom work envi
 - **Simplified Management**: Easily add, modify, and delete your tabs.
 - **Direct Pinning**: A button to instantly pin the current tab.
 - **Categories**: Organize your tabs with 6 customizable categories (Work, Personal, Dev, etc.).
-- **Multi-language**: Available in French, English, Spanish, Italian (auto-detection) and more...
+- **Multi-language**: The application supports Arabic, German, English, Spanish, French, Hindi, Indonesian, Italian, Japanese, Korean, Dutch, Portuguese, Russian, and Chinese.
 - **Import/Export**: Save and share your configurations.
 - **Adaptive Theme**: Adapts to your browser's light/dark theme.
 
