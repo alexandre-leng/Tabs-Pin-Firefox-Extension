@@ -1,4 +1,4 @@
-# 🚀 Tabs Pin - Pinned Tabs Manager for Firefox
+# Tabs Pin - Pinned Tabs Manager for Firefox
 
 ![Tabs Pin Logo](assets/icons/icon-128.png)
 
@@ -15,7 +15,7 @@ Tabs Pin helps you organize your pinned tabs in Firefox. Create custom work envi
 - **Simplified Management**: Easily add, modify, and delete your tabs.
 - **Direct Pinning**: A button to instantly pin the current tab.
 - **Categories**: Organize your tabs with 6 customizable categories (Work, Personal, Dev, etc.).
-- **Multi-language**: Available in French, English, Spanish, Italian (auto-detection).
+- **Multi-language**: Available in French, English, Spanish, Italian (auto-detection) and more...
 - **Import/Export**: Save and share your configurations.
 - **Adaptive Theme**: Adapts to your browser's light/dark theme.
 
@@ -28,7 +28,7 @@ Tabs Pin helps you organize your pinned tabs in Firefox. Create custom work envi
 
 ### Manual (for developers)
 ```bash
-git clone https://github.com/alexandre-leng/Tabs-Pin---Pin-Tabs-Manager-for-Firefox
+git clone https://github.com/alexandre-leng/Tabs-Pin-Firefox-Extension/
 cd firefox-extension
 # In Firefox, go to about:debugging -> This Firefox -> Load Temporary Add-on -> manifest.json
 ```
@@ -50,7 +50,7 @@ cd firefox-extension
 ## 📞 Support
 
 - **Documentation**: See this README.
-- **Issues & Suggestions**: [GitHub Issues](https://github.com/alexandre-leng/Tabs-Pin---Pin-Tabs-Manager-for-Firefox/issues)
+- **Issues & Suggestions**: [GitHub Issues](https://github.com/alexandre-leng/Tabs-Pin-Firefox-Extension/issues)
 - **Email**: dev.alexandre.git [@] gmail.com
 
 ## 📝 License
