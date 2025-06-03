@@ -22,7 +22,7 @@ Tabs Pin helps you organize your pinned tabs in Firefox. Create custom work envi
 ## 🛠️ Installation
 
 ### Recommended (Firefox Add-ons)
-1. Visit the [Firefox Add-ons Store](https://addons.mozilla.org).
+1. Visit the [Firefox Add-ons Store](https://addons.mozilla.org/fr/firefox/addon/tabs-pin-pin-tabs-manager/).
 2. Search for "Tabs Pin".
 3. Click "Add to Firefox".
 
@@ -64,7 +64,7 @@ Distributed under the GNU License. See [Voir la licence GPL-3.0](https://github.
 
 ### 🚀 **Tabs Pin - Transform your workflow!**
 
-[![Install](https://img.shields.io/badge/Firefox-Install%20Now-FF7139?style=for-the-badge&logo=firefox)](https://addons.mozilla.org/firefox/addon/tabspin/)
+[![Install](https://img.shields.io/badge/Firefox-Install%20Now-FF7139?style=for-the-badge&logo=firefox)](https://addons.mozilla.org/fr/firefox/addon/tabs-pin-pin-tabs-manager/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/alexandre-leng/Tabs-Pin---Pin-Tabs-Manager-for-Firefox/)
 
 **Developed with ❤️ by Alexandre**
