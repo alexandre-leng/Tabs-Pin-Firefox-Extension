@@ -65,7 +65,7 @@ Distributed under the GNU License. See [Voir la licence GPL-3.0](https://github.
 ### 🚀 **Tabs Pin - Transform your workflow!**
 
 [![Install](https://img.shields.io/badge/Firefox-Install%20Now-FF7139?style=for-the-badge&logo=firefox)](https://addons.mozilla.org/fr/firefox/addon/tabs-pin-pin-tabs-manager/)
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/alexandre-leng/Tabs-Pin---Pin-Tabs-Manager-for-Firefox/)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/alexandre-leng/Tabs-Pin-Firefox-Extension/)
 
 **Developed with ❤️ by Alexandre**
 
