@@ -162,35 +162,59 @@ class TabsPinBackground {
         }
       };
       
-      // Find tabs that are already open and pinned
+      // Find tabs that are already open (pinned or not)
       const tabsToOpen = [];
       const alreadyOpenTabs = [];
+      const tabsToPin = []; // Onglets ouverts mais pas encore épinglés
       
       for (const tab of sortedTabs) {
         if (tab.enabled === false) continue;
         
         const normalizedConfigUrl = normalizeUrl(tab.url);
-        const isAlreadyOpen = existingTabs.some(existingTab => {
-          if (!existingTab.pinned) return false;
+        const existingTab = existingTabs.find(existingTab => {
           const normalizedExistingUrl = normalizeUrl(existingTab.url);
           return normalizedExistingUrl === normalizedConfigUrl;
         });
         
-        if (isAlreadyOpen) {
-          alreadyOpenTabs.push(tab);
+        if (existingTab) {
+          if (existingTab.pinned) {
+            // Onglet déjà ouvert ET épinglé
+            alreadyOpenTabs.push(tab);
+          } else {
+            // Onglet ouvert mais pas encore épinglé - on va l'épingler
+            tabsToPin.push({ config: tab, existingTab });
+          }
         } else {
+          // Onglet pas encore ouvert
           tabsToOpen.push(tab);
         }
       }
       
-      // If all tabs are already open, return early with special message
+      // Épingler les onglets existants qui ne sont pas encore épinglés
+      const pinResults = [];
+      for (const { config, existingTab } of tabsToPin) {
+        try {
+          await browser.tabs.update(existingTab.id, { pinned: true });
+          pinResults.push({ success: true, tab: existingTab, config });
+          console.log(`Épinglé l'onglet existant: ${config.url}`);
+        } catch (error) {
+          console.error(`Échec de l'épinglage de l'onglet ${config.url}:`, error);
+          pinResults.push({ success: false, error: error.message, config });
+        }
+      }
+      
+      // Si tous les onglets sont déjà ouverts (épinglés ou maintenant épinglés), retourner rapidement
       if (tabsToOpen.length === 0) {
+        const totalPinned = pinResults.filter(r => r.success).length;
+        const totalSkipped = alreadyOpenTabs.length;
+        
         return {
           success: true,
-          allAlreadyOpen: true,
-          skipped: alreadyOpenTabs.length,
+          allAlreadyOpen: totalSkipped > 0 && totalPinned === 0,
+          skipped: totalSkipped,
           opened: 0,
-          message: 'allTabsAlreadyOpen'
+          pinned: totalPinned,
+          message: totalPinned > 0 ? 'someTabsPinned' : 'allTabsAlreadyOpen'
         };
       }
       
@@ -224,14 +248,18 @@ class TabsPinBackground {
 
       const opened = results.filter(r => r.success).length;
       const failed = results.filter(r => !r.success).length;
+      const totalPinned = pinResults.filter(r => r.success).length;
 
       return {
         success: true,
         results: results,
+        pinResults: pinResults,
         opened: opened,
         failed: failed,
         skipped: alreadyOpenTabs.length,
-        message: alreadyOpenTabs.length > 0 ? 'someTabsAlreadyOpen' : null
+        pinned: totalPinned,
+        message: alreadyOpenTabs.length > 0 || totalPinned > 0 ? 
+          (totalPinned > 0 ? 'someTabsPinnedAndOpened' : 'someTabsAlreadyOpen') : null
       };
     } catch (error) {
       console.error('Error opening all tabs:', error);
@@ -271,33 +299,57 @@ class TabsPinBackground {
         }
       };
       
-      // Find tabs that are already open and pinned
+      // Find tabs that are already open (pinned or not)
       const tabsToOpen = [];
       const alreadyOpenTabs = [];
+      const tabsToPin = []; // Onglets ouverts mais pas encore épinglés
       
       for (const tab of categoryTabs) {
         const normalizedConfigUrl = normalizeUrl(tab.url);
-        const isAlreadyOpen = existingTabs.some(existingTab => {
-          if (!existingTab.pinned) return false;
+        const existingTab = existingTabs.find(existingTab => {
           const normalizedExistingUrl = normalizeUrl(existingTab.url);
           return normalizedExistingUrl === normalizedConfigUrl;
         });
         
-        if (isAlreadyOpen) {
-          alreadyOpenTabs.push(tab);
+        if (existingTab) {
+          if (existingTab.pinned) {
+            // Onglet déjà ouvert ET épinglé
+            alreadyOpenTabs.push(tab);
+          } else {
+            // Onglet ouvert mais pas encore épinglé - on va l'épingler
+            tabsToPin.push({ config: tab, existingTab });
+          }
         } else {
+          // Onglet pas encore ouvert
           tabsToOpen.push(tab);
         }
       }
       
-      // If all tabs are already open, return early with special message
+      // Épingler les onglets existants qui ne sont pas encore épinglés
+      const pinResults = [];
+      for (const { config, existingTab } of tabsToPin) {
+        try {
+          await browser.tabs.update(existingTab.id, { pinned: true });
+          pinResults.push({ success: true, tab: existingTab, config });
+          console.log(`Épinglé l'onglet existant: ${config.url}`);
+        } catch (error) {
+          console.error(`Échec de l'épinglage de l'onglet ${config.url}:`, error);
+          pinResults.push({ success: false, error: error.message, config });
+        }
+      }
+      
+      // Si tous les onglets sont déjà ouverts (épinglés ou maintenant épinglés), retourner rapidement
       if (tabsToOpen.length === 0) {
+        const totalPinned = pinResults.filter(r => r.success).length;
+        const totalSkipped = alreadyOpenTabs.length;
+        
         return {
           success: true,
-          allAlreadyOpen: true,
-          skipped: alreadyOpenTabs.length,
+          allAlreadyOpen: totalSkipped > 0 && totalPinned === 0,
+          skipped: totalSkipped,
           opened: 0,
-          message: 'allTabsAlreadyOpen'
+          pinned: totalPinned,
+          message: totalPinned > 0 ? 'someTabsPinned' : 'allTabsAlreadyOpen'
         };
       }
       
@@ -327,14 +379,18 @@ class TabsPinBackground {
 
       const opened = results.filter(r => r.success).length;
       const failed = results.filter(r => !r.success).length;
+      const totalPinned = pinResults.filter(r => r.success).length;
 
       return {
         success: true,
         results: results,
+        pinResults: pinResults,
         opened: opened,
         failed: failed,
         skipped: alreadyOpenTabs.length,
-        message: alreadyOpenTabs.length > 0 ? 'someTabsAlreadyOpen' : null
+        pinned: totalPinned,
+        message: alreadyOpenTabs.length > 0 || totalPinned > 0 ? 
+          (totalPinned > 0 ? 'someTabsPinnedAndOpened' : 'someTabsAlreadyOpen') : null
       };
     } catch (error) {
       console.error('Error opening category tabs:', error);

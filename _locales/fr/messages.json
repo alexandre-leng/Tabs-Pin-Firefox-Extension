@@ -566,5 +566,29 @@
   },
   "configureManually": {
     "message": "Configurer manuellement"
+  },
+  "tabsPinned": {
+    "message": "$COUNT$ onglet(s) ont été épinglé(s)",
+    "description": "Message de succès pour les onglets épinglés",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "someTabsPinnedAndOpened": {
+    "message": "$PINNED$ onglet(s) épinglé(s), $OPENED$ nouveau(x) onglet(s) créé(s)",
+    "description": "Message informatif quand certains onglets sont épinglés et d'autres créés",
+    "placeholders": {
+      "pinned": {
+        "content": "$1",
+        "example": "2"
+      },
+      "opened": {
+        "content": "$2",
+        "example": "3"
+      }
+    }
   }
 } 
