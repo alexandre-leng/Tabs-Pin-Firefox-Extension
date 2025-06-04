@@ -109,18 +109,6 @@
     "message": "Weet u zeker dat u dit tabblad wilt verwijderen?",
     "description": "Bevestigingsbericht voor tabblad verwijdering"
   },
-  "generalSettings": {
-    "message": "Algemene Instellingen",
-    "description": "Titel van de algemene instellingen sectie"
-  },
-  "autoOpenTabs": {
-    "message": "Automatisch tabbladen openen bij het maken van nieuwe vensters",
-    "description": "Checkbox label voor automatisch openen instelling"
-  },
-  "autoOpenTabsDescription": {
-    "message": "Wanneer ingeschakeld, zullen uw vastgezette tabbladen automatisch openen wanneer u een nieuw Firefox venster maakt.",
-    "description": "Beschrijving voor automatisch openen instelling"
-  },
   "importExport": {
     "message": "Importeren/Exporteren",
     "description": "Titel van de Import/Export sectie"

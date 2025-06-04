@@ -107,15 +107,6 @@
   "deleteConfirm": {
     "message": "このタブを削除してもよろしいですか？"
   },
-  "generalSettings": {
-    "message": "一般設定"
-  },
-  "autoOpenTabs": {
-    "message": "新しいウィンドウ作成時にタブを自動的に開く"
-  },
-  "autoOpenTabsDescription": {
-    "message": "有効にすると、新しいFirefoxウィンドウを作成した際にピンしたタブが自動的に開きます。"
-  },
   "importExport": {
     "message": "インポート/エクスポート"
   },

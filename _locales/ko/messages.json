@@ -107,15 +107,6 @@
   "deleteConfirm": {
     "message": "이 탭을 삭제하시겠습니까?"
   },
-  "generalSettings": {
-    "message": "일반 설정"
-  },
-  "autoOpenTabs": {
-    "message": "새 창 생성 시 탭 자동 열기"
-  },
-  "autoOpenTabsDescription": {
-    "message": "활성화하면 새 Firefox 창을 만들 때 고정된 탭이 자동으로 열립니다."
-  },
   "importExport": {
     "message": "가져오기/내보내기"
   },

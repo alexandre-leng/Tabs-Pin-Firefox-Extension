@@ -109,18 +109,6 @@
     "message": "Tem certeza de que deseja excluir esta aba?",
     "description": "Mensagem de confirmação para exclusão de aba"
   },
-  "generalSettings": {
-    "message": "Configurações Gerais",
-    "description": "Título da seção configurações gerais"
-  },
-  "autoOpenTabs": {
-    "message": "Abrir automaticamente abas ao criar novas janelas",
-    "description": "Rótulo da caixa de seleção para configuração de abertura automática"
-  },
-  "autoOpenTabsDescription": {
-    "message": "Quando habilitado, suas abas fixadas abrirão automaticamente quando você criar uma nova janela do Firefox.",
-    "description": "Descrição para configuração de abertura automática"
-  },
   "importExport": {
     "message": "Importar/Exportar",
     "description": "Título da seção Importar/Exportar"

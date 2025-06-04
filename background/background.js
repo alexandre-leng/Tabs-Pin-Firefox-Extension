@@ -10,15 +10,16 @@ class TabsPinBackground {
   constructor() {
     this.tabs = [];
     this.categories = [];
-    this.settings = { autoOpenTabs: false };
-    // StorageManager est disponible via le manifest.json
+    this.settings = {};
     this.storage = new StorageManager();
-    // ContainerUtils est disponible via le manifest.json
-    this.containerUtils = new ContainerUtils();
-    
-    // Track initialization state
     this.isInitialized = false;
     this.initializationPromise = null;
+    
+    // Keep track of opened tabs across all sessions
+    this.openedTabsInSession = new Set();
+    
+    // Initialize container utilities
+    this.containerUtils = new ContainerUtils();
     
     this.init();
   }
@@ -61,7 +62,7 @@ class TabsPinBackground {
       
       this.tabs = result.pinnedTabs || [];
       this.categories = result.categories || this.getDefaultCategories();
-      this.settings = { autoOpenTabs: false, ...result.settings };
+      this.settings = { ...result.settings };
       
     } catch (error) {
       console.error('Error loading background data:', error);
@@ -95,13 +96,6 @@ class TabsPinBackground {
       // Return true to indicate we will respond asynchronously
       return true;
     });
-
-    // Window creation listener for auto-open functionality
-    if (browser.windows && browser.windows.onCreated) {
-      browser.windows.onCreated.addListener((window) => {
-        this.handleWindowCreated(window);
-      });
-    }
 
     // Installation and startup listeners
     browser.runtime.onInstalled.addListener((details) => {
@@ -171,6 +165,12 @@ class TabsPinBackground {
       return { success: true, tab: updatedTab };
       
     } catch (error) {
+      // Don't log permission errors as they are expected with activeTab permission
+      if (error.message && error.message.includes('Missing host permission')) {
+        console.warn(`Permission denied for tab ${tabId} - skipping (this is normal with activeTab permission)`);
+        return { success: false, error: 'Permission denied', tabId, permissionError: true };
+      }
+      
       console.error(`Failed to update tab ${tabId}:`, error);
       this.cleanupInvalidTab(tabId);
       return { success: false, error: error.message, tabId };
@@ -262,6 +262,100 @@ class TabsPinBackground {
     }
   }
 
+  // Helper function to normalize URLs for comparison
+  normalizeUrl(url) {
+    try {
+      const urlObj = new URL(url);
+      
+      // Special handling for common redirect patterns
+      if (urlObj.hostname === 'accounts.google.com' && urlObj.pathname.includes('ServiceLogin')) {
+        // For Google authentication redirects, extract the target service
+        const continueParam = urlObj.searchParams.get('continue');
+        if (continueParam) {
+          try {
+            const targetUrl = new URL(decodeURIComponent(continueParam));
+            // Return the target service domain for comparison
+            return targetUrl.origin + targetUrl.pathname.replace(/\/$/, '');
+          } catch (e) {
+            // If continue param is malformed, use hostname
+            return urlObj.hostname;
+          }
+        }
+      }
+      
+      // For Firefox addons URLs, normalize the path by removing trailing parameters that might change
+      if (urlObj.hostname === 'addons.mozilla.org') {
+        // Keep the full path for addon URLs to ensure exact matching and remove any query parameters
+        return (urlObj.origin + urlObj.pathname).toLowerCase();
+      }
+      
+      // For other URLs, normalize by removing query parameters and fragments
+      // but keep important path information
+      let normalized = urlObj.origin + urlObj.pathname.replace(/\/$/, '');
+      
+      // Keep important query parameters for some services
+      const importantParams = ['view', 'mode', 'hl']; // Add more as needed
+      const keptParams = new URLSearchParams();
+      importantParams.forEach(param => {
+        if (urlObj.searchParams.has(param)) {
+          keptParams.set(param, urlObj.searchParams.get(param));
+        }
+      });
+      
+      if (keptParams.toString()) {
+        normalized += '?' + keptParams.toString();
+      }
+      
+      return normalized.toLowerCase();
+    } catch (error) {
+      console.warn(`Failed to normalize URL: ${url}`, error);
+      return url.toLowerCase();
+    }
+  }
+
+  // Additional check: exact URL comparison as fallback
+  isUrlAlreadyOpen(configUrl, existingTabs) {
+    const normalizedConfigUrl = this.normalizeUrl(configUrl);
+    console.log(`🔍 Checking if URL is already open: ${configUrl}`);
+    console.log(`🔍 Normalized: ${normalizedConfigUrl}`);
+    
+    // First check if we've already opened this URL in this session
+    if (this.openedTabsInSession.has(normalizedConfigUrl)) {
+      console.log(`  ✅ URL already opened in this session: ${configUrl}`);
+      return true;
+    }
+    
+    // Then check existing tabs
+    for (const existingTab of existingTabs) {
+      const normalizedExistingUrl = this.normalizeUrl(existingTab.url);
+      console.log(`  Comparing with: ${existingTab.url} -> ${normalizedExistingUrl}`);
+      
+      // First try normalized comparison
+      if (normalizedExistingUrl === normalizedConfigUrl) {
+        console.log(`  ✅ Match found (normalized): Tab ID ${existingTab.id}`);
+        this.openedTabsInSession.add(normalizedConfigUrl);
+        return existingTab;
+      }
+      
+      // Fallback: exact URL comparison
+      if (existingTab.url === configUrl) {
+        console.log(`  ✅ Match found (exact): Tab ID ${existingTab.id}`);
+        this.openedTabsInSession.add(normalizedConfigUrl);
+        return existingTab;
+      }
+      
+      // Additional fallback: case-insensitive comparison
+      if (existingTab.url.toLowerCase() === configUrl.toLowerCase()) {
+        console.log(`  ✅ Match found (case-insensitive): Tab ID ${existingTab.id}`);
+        this.openedTabsInSession.add(normalizedConfigUrl);
+        return existingTab;
+      }
+    }
+    
+    console.log(`  ❌ No match found for: ${configUrl}`);
+    return null;
+  }
+
   async openAllTabs(windowId = null) {
     try {
       if (this.tabs.length === 0) {
@@ -282,51 +376,6 @@ class TabsPinBackground {
       const queryOptions = windowId ? { windowId: windowId } : {};
       const existingTabs = await browser.tabs.query(queryOptions);
       
-      // Helper function to normalize URLs for comparison
-      const normalizeUrl = (url) => {
-        try {
-          const urlObj = new URL(url);
-          
-          // Special handling for common redirect patterns
-          if (urlObj.hostname === 'accounts.google.com' && urlObj.pathname.includes('ServiceLogin')) {
-            // For Google authentication redirects, extract the target service
-            const continueParam = urlObj.searchParams.get('continue');
-            if (continueParam) {
-              try {
-                const targetUrl = new URL(decodeURIComponent(continueParam));
-                // Return the target service domain for comparison
-                return targetUrl.origin + targetUrl.pathname.replace(/\/$/, '');
-              } catch (e) {
-                // If continue param is malformed, use hostname
-                return urlObj.hostname;
-              }
-            }
-          }
-          
-          // For other URLs, normalize by removing query parameters and fragments
-          // but keep important path information
-          let normalized = urlObj.origin + urlObj.pathname.replace(/\/$/, '');
-          
-          // Keep important query parameters for some services
-          const importantParams = ['view', 'mode', 'hl']; // Add more as needed
-          const keptParams = new URLSearchParams();
-          importantParams.forEach(param => {
-            if (urlObj.searchParams.has(param)) {
-              keptParams.set(param, urlObj.searchParams.get(param));
-            }
-          });
-          
-          if (keptParams.toString()) {
-            normalized += '?' + keptParams.toString();
-          }
-          
-          return normalized.toLowerCase();
-        } catch (error) {
-          console.warn(`Failed to normalize URL: ${url}`, error);
-          return url.toLowerCase();
-        }
-      };
-      
       // Find tabs that are already open (pinned or not)
       const tabsToOpen = [];
       const alreadyOpenTabs = [];
@@ -335,22 +384,26 @@ class TabsPinBackground {
       for (const tab of sortedTabs) {
         if (tab.enabled === false) continue;
         
-        const normalizedConfigUrl = normalizeUrl(tab.url);
-        const existingTab = existingTabs.find(existingTab => {
-          const normalizedExistingUrl = normalizeUrl(existingTab.url);
-          return normalizedExistingUrl === normalizedConfigUrl;
-        });
+        console.log(`\n🔄 Processing tab: ${tab.url}`);
+        const existingTab = this.isUrlAlreadyOpen(tab.url, existingTabs);
         
-        if (existingTab) {
+        if (existingTab === true) {
+          // Tab was opened in this session
+          console.log(`  ✅ Tab already opened in this session: ${tab.url}`);
+          alreadyOpenTabs.push(tab);
+        } else if (existingTab) {
           if (existingTab.pinned) {
             // Onglet déjà ouvert ET épinglé
+            console.log(`  ✅ Tab already open and pinned: ${tab.url}`);
             alreadyOpenTabs.push(tab);
           } else {
             // Onglet ouvert mais pas encore épinglé - on va l'épingler
+            console.log(`  📌 Tab open but not pinned, will pin: ${tab.url}`);
             tabsToPin.push({ config: tab, existingTab });
           }
         } else {
           // Onglet pas encore ouvert
+          console.log(`  🆕 Tab not open, will create: ${tab.url}`);
           tabsToOpen.push(tab);
         }
       }
@@ -366,8 +419,14 @@ class TabsPinBackground {
           pinResults.push({ success: true, tab: pinResult.tab, config });
           console.log(`Successfully pinned existing tab: ${config.url}`);
         } else {
-          console.error(`Failed to pin existing tab ${config.url}:`, pinResult.error);
-          pinResults.push({ success: false, error: pinResult.error, config });
+          // Don't log permission errors as errors since they're expected
+          if (pinResult.permissionError) {
+            console.log(`Skipped tab ${config.url} due to permission restrictions (normal with activeTab)`);
+            pinResults.push({ success: false, error: pinResult.error, config, permissionError: true });
+          } else {
+            console.error(`Failed to pin existing tab ${config.url}:`, pinResult.error);
+            pinResults.push({ success: false, error: pinResult.error, config });
+          }
         }
       }
       
@@ -407,6 +466,9 @@ class TabsPinBackground {
           }
           
           const newTab = await this.containerUtils.createTabWithContainer(createOptions);
+          
+          // Add the normalized URL to our session tracking
+          this.openedTabsInSession.add(this.normalizeUrl(tab.url));
           
           results.push({ success: true, tab: newTab, config: tab });
           console.log(`Opened new pinned tab: ${tab.url}`);
@@ -463,73 +525,32 @@ class TabsPinBackground {
       const queryOptions = windowId ? { windowId: windowId } : {};
       const existingTabs = await browser.tabs.query(queryOptions);
       
-      // Helper function to normalize URLs for comparison
-      const normalizeUrl = (url) => {
-        try {
-          const urlObj = new URL(url);
-          
-          // Special handling for common redirect patterns
-          if (urlObj.hostname === 'accounts.google.com' && urlObj.pathname.includes('ServiceLogin')) {
-            // For Google authentication redirects, extract the target service
-            const continueParam = urlObj.searchParams.get('continue');
-            if (continueParam) {
-              try {
-                const targetUrl = new URL(decodeURIComponent(continueParam));
-                // Return the target service domain for comparison
-                return targetUrl.origin + targetUrl.pathname.replace(/\/$/, '');
-              } catch (e) {
-                // If continue param is malformed, use hostname
-                return urlObj.hostname;
-              }
-            }
-          }
-          
-          // For other URLs, normalize by removing query parameters and fragments
-          // but keep important path information
-          let normalized = urlObj.origin + urlObj.pathname.replace(/\/$/, '');
-          
-          // Keep important query parameters for some services
-          const importantParams = ['view', 'mode', 'hl']; // Add more as needed
-          const keptParams = new URLSearchParams();
-          importantParams.forEach(param => {
-            if (urlObj.searchParams.has(param)) {
-              keptParams.set(param, urlObj.searchParams.get(param));
-            }
-          });
-          
-          if (keptParams.toString()) {
-            normalized += '?' + keptParams.toString();
-          }
-          
-          return normalized.toLowerCase();
-        } catch (error) {
-          console.warn(`Failed to normalize URL: ${url}`, error);
-          return url.toLowerCase();
-        }
-      };
-      
       // Find tabs that are already open (pinned or not)
       const tabsToOpen = [];
       const alreadyOpenTabs = [];
       const tabsToPin = []; // Onglets ouverts mais pas encore épinglés
       
       for (const tab of categoryTabs) {
-        const normalizedConfigUrl = normalizeUrl(tab.url);
-        const existingTab = existingTabs.find(existingTab => {
-          const normalizedExistingUrl = normalizeUrl(existingTab.url);
-          return normalizedExistingUrl === normalizedConfigUrl;
-        });
+        console.log(`\n🔄 Processing category tab: ${tab.url}`);
+        const existingTab = this.isUrlAlreadyOpen(tab.url, existingTabs);
         
-        if (existingTab) {
+        if (existingTab === true) {
+          // Tab was opened in this session
+          console.log(`  ✅ Category tab already opened in this session: ${tab.url}`);
+          alreadyOpenTabs.push(tab);
+        } else if (existingTab) {
           if (existingTab.pinned) {
             // Onglet déjà ouvert ET épinglé
+            console.log(`  ✅ Category tab already open and pinned: ${tab.url}`);
             alreadyOpenTabs.push(tab);
           } else {
             // Onglet ouvert mais pas encore épinglé - on va l'épingler
+            console.log(`  📌 Category tab open but not pinned, will pin: ${tab.url}`);
             tabsToPin.push({ config: tab, existingTab });
           }
         } else {
           // Onglet pas encore ouvert
+          console.log(`  🆕 Category tab not open, will create: ${tab.url}`);
           tabsToOpen.push(tab);
         }
       }
@@ -545,8 +566,14 @@ class TabsPinBackground {
           pinResults.push({ success: true, tab: pinResult.tab, config });
           console.log(`Successfully pinned existing category tab: ${config.url}`);
         } else {
-          console.error(`Failed to pin existing category tab ${config.url}:`, pinResult.error);
-          pinResults.push({ success: false, error: pinResult.error, config });
+          // Don't log permission errors as errors since they're expected
+          if (pinResult.permissionError) {
+            console.log(`Skipped tab ${config.url} due to permission restrictions (normal with activeTab)`);
+            pinResults.push({ success: false, error: pinResult.error, config, permissionError: true });
+          } else {
+            console.error(`Failed to pin existing category tab ${config.url}:`, pinResult.error);
+            pinResults.push({ success: false, error: pinResult.error, config });
+          }
         }
       }
       
@@ -586,6 +613,9 @@ class TabsPinBackground {
           }
           
           const newTab = await this.containerUtils.createTabWithContainer(createOptions);
+          
+          // Add the normalized URL to our session tracking
+          this.openedTabsInSession.add(this.normalizeUrl(tab.url));
           
           results.push({ success: true, tab: newTab, config: tab });
           console.log(`Opened new pinned category tab: ${tab.url}`);
@@ -723,75 +753,6 @@ class TabsPinBackground {
     }
   }
 
-  async handleWindowCreated(window) {
-    // Vérifications strictes pour les fenêtres normales uniquement
-    if (!this.settings.autoOpenTabs) {
-      return; // Paramètre désactivé
-    }
-
-    // Vérifications détaillées pour s'assurer que c'est une vraie fenêtre normale
-    if (!this.isNormalBrowserWindow(window)) {
-      console.log('Auto-open skipped - not a normal browser window:', {
-        type: window.type,
-        state: window.state,
-        incognito: window.incognito
-      });
-      return;
-    }
-
-    try {
-      console.log('Auto-opening tabs in new normal window:', window.id);
-      
-      // Attendre un petit délai pour que la fenêtre soit complètement initialisée
-      await new Promise(resolve => setTimeout(resolve, 100));
-      
-      // Ensure tabs are loaded before trying to open them
-      await this.loadData();
-        
-      if (this.tabs.length > 0) {
-        await this.openAllTabs(window.id);
-      }
-    } catch (error) {
-      console.error('Error during auto-opening tabs:', error);
-    }
-  }
-
-  // Nouvelle fonction pour détecter strictement les fenêtres normales
-  isNormalBrowserWindow(window) {
-    // Vérifications de base
-    if (!window || window.type !== 'normal') {
-      return false;
-    }
-
-    // Exclure les fenêtres en mode incognito si souhaité (optionnel)
-    // if (window.incognito) {
-    //   return false;
-    // }
-
-    // Exclure les fenêtres avec des états particuliers
-    if (window.state === 'minimized') {
-      return false;
-    }
-
-    // Vérifier que la fenêtre a une taille raisonnable (pas un popup déguisé)
-    if (window.width && window.height) {
-      // Rejeter les fenêtres trop petites qui sont probablement des popups
-      const MIN_WINDOW_WIDTH = 400;
-      const MIN_WINDOW_HEIGHT = 300;
-      
-      if (window.width < MIN_WINDOW_WIDTH || window.height < MIN_WINDOW_HEIGHT) {
-        console.log('Window too small to be a normal window:', {
-          width: window.width,
-          height: window.height
-        });
-        return false;
-      }
-    }
-
-    // Si toutes les vérifications passent, c'est une fenêtre normale
-    return true;
-  }
-
   async handleInstalled(details) {
     try {
       console.log('Extension installed/updated:', details.reason);
@@ -823,7 +784,7 @@ class TabsPinBackground {
       const defaultData = {
         pinnedTabs: [],
         categories: this.getDefaultCategories(),
-        settings: { autoOpenTabs: false }
+        settings: {}
       };
 
       await this.storage.set(defaultData);

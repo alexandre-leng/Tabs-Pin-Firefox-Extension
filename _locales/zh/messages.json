@@ -107,15 +107,6 @@
   "deleteConfirm": {
     "message": "您确定要删除此标签页吗？"
   },
-  "generalSettings": {
-    "message": "常规设置"
-  },
-  "autoOpenTabs": {
-    "message": "创建新窗口时自动打开标签页"
-  },
-  "autoOpenTabsDescription": {
-    "message": "启用后，当您创建新的Firefox窗口时，固定的标签页将自动打开。"
-  },
   "importExport": {
     "message": "导入/导出"
   },

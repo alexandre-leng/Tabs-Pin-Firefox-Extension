@@ -107,15 +107,6 @@
   "deleteConfirm": {
     "message": "هل أنت متأكد من حذف هذا التبويب؟"
   },
-  "generalSettings": {
-    "message": "الإعدادات العامة"
-  },
-  "autoOpenTabs": {
-    "message": "فتح التبويبات تلقائياً عند إنشاء نوافذ جديدة"
-  },
-  "autoOpenTabsDescription": {
-    "message": "عند التفعيل، ستفتح التبويبات المثبتة تلقائياً عند إنشاء نافذة Firefox جديدة."
-  },
   "importExport": {
     "message": "استيراد/تصدير"
   },

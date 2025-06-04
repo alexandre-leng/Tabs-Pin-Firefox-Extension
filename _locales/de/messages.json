@@ -109,18 +109,6 @@
     "message": "Sind Sie sicher, dass Sie diesen Tab löschen möchten?",
     "description": "Bestätigungsnachricht für Tab-Löschung"
   },
-  "generalSettings": {
-    "message": "Allgemeine Einstellungen",
-    "description": "Titel der Allgemeinen Einstellungen-Sektion"
-  },
-  "autoOpenTabs": {
-    "message": "Tabs automatisch beim Erstellen neuer Fenster öffnen",
-    "description": "Kontrollkästchen-Beschriftung für die automatische Öffnungseinstellung"
-  },
-  "autoOpenTabsDescription": {
-    "message": "Wenn aktiviert, werden Ihre angehefteten Tabs automatisch geöffnet, wenn Sie ein neues Firefox-Fenster erstellen.",
-    "description": "Beschreibung für die automatische Öffnungseinstellung"
-  },
   "importExport": {
     "message": "Import/Export",
     "description": "Titel der Import/Export-Sektion"

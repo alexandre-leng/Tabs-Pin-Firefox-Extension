@@ -113,18 +113,6 @@
     "message": "¿Está seguro de que desea eliminar esta pestaña?",
     "description": "Mensaje de confirmación para la eliminación de pestaña"
   },
-  "generalSettings": {
-    "message": "Configuración General",
-    "description": "Título de la sección de configuración general"
-  },
-  "autoOpenTabs": {
-    "message": "Abrir automáticamente las pestañas al crear nuevas ventanas",
-    "description": "Etiqueta de la casilla de verificación para la configuración de apertura automática"
-  },
-  "autoOpenTabsDescription": {
-    "message": "Cuando esté habilitado, sus pestañas fijadas se abrirán automáticamente cuando cree una nueva ventana de Firefox.",
-    "description": "Descripción para la configuración de apertura automática"
-  },
   "importExport": {
     "message": "Importar/Exportar",
     "description": "Título de la sección Importar/Exportar"
@@ -669,4 +657,4 @@
     "message": "¡Todas las pestañas ya están fijadas!",
     "description": "Mensaje cuando todas las pestañas ya están fijadas"
   }
-} 
+}

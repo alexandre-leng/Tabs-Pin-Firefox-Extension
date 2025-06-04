@@ -68,7 +68,6 @@ class OptionsManager {
       importFileInput: document.getElementById('importFileInput'),
       
       // Settings
-      autoOpenTabs: document.getElementById('autoOpenTabs'),
       
       // Tab Modal elements
       tabModalOverlay: document.getElementById('tabModalOverlay'),
@@ -165,12 +164,7 @@ class OptionsManager {
     this.elements.importBtn?.addEventListener('click', () => this.importSettings());
     this.elements.importFileInput?.addEventListener('change', (e) => this.handleFileImport(e));
     
-    // Settings
-    if (this.elements.autoOpenTabs) {
-      this.elements.autoOpenTabs.addEventListener('change', (e) => {
-        this.updateAutoOpenSetting(e.target.checked);
-      });
-    }
+    // Settings - autoOpenTabs listener removed
     
     // Tab Modal
     this.elements.closeTabModal?.addEventListener('click', () => this.closeTabModal());
@@ -287,7 +281,6 @@ class OptionsManager {
   render() {
     this.renderTabs();
     this.renderCategories();
-    this.renderSettings();
   }
 
   renderTabs() {
@@ -546,9 +539,7 @@ class OptionsManager {
   }
 
   renderSettings() {
-    if (this.elements.autoOpenTabs) {
-      this.elements.autoOpenTabs.checked = this.settings.autoOpenTabs || false;
-    }
+    // Cette méthode est supprimée car elle ne gérait que autoOpenTabs
   }
 
   // Tab management methods
@@ -790,19 +781,16 @@ class OptionsManager {
   }
 
   async resetCategories() {
-    const confirmMessage = browser.i18n.getMessage('resetCategoriesConfirm') || 
-      'Are you sure you want to reset all categories? This will restore default names and icons.';
+    const confirmed = confirm(browser.i18n.getMessage('resetCategoriesConfirm') || 'Are you sure you want to reset all categories? This will restore default names and icons.');
     
-    if (!confirm(confirmMessage)) {
-      return;
-    }
+    if (!confirmed) return;
     
     try {
       const defaultCategories = [
         { id: 'work', name: browser.i18n.getMessage('work') || 'Work', icon: '💼' },
-        { id: 'personal', name: browser.i18n.getMessage('personal') || 'Personal', icon: '👤' },
+        { id: 'personal', name: browser.i18n.getMessage('personal') || 'Personal', icon: '🏠' },
         { id: 'development', name: browser.i18n.getMessage('development') || 'Development', icon: '💻' },
-        { id: 'social', name: browser.i18n.getMessage('social') || 'Social', icon: '🌐' },
+        { id: 'social', name: browser.i18n.getMessage('social') || 'Social', icon: '👥' },
         { id: 'tools', name: browser.i18n.getMessage('tools') || 'Tools', icon: '🔧' },
         { id: 'entertainment', name: browser.i18n.getMessage('entertainment') || 'Entertainment', icon: '🎮' }
       ];
@@ -813,43 +801,20 @@ class OptionsManager {
       });
       
       if (response && response.success) {
-        await this.loadData();
-        this.renderTabs();
-        this.renderCategories();
+        this.categories = defaultCategories;
+        this.render();
         this.showToast('success', '✅', browser.i18n.getMessage('categoriesReset') || 'Categories reset to default!');
       } else {
         throw new Error(response?.error || 'Failed to reset categories');
       }
     } catch (error) {
       console.error('Error resetting categories:', error);
-      this.showToast('error', '❌', error.message);
+      this.showToast('error', '❌', 'Failed to reset categories');
     }
   }
 
-  // Settings management
-  async updateAutoOpenSetting(enabled) {
-    try {
-      const response = await this.sendMessageWithRetry({
-        action: 'updateSettings',
-        settings: { autoOpenTabs: enabled }
-      });
-      
-      if (response && response.success) {
-        this.settings.autoOpenTabs = enabled;
-      } else {
-        throw new Error(response?.error || 'Failed to update setting');
-      }
-    } catch (error) {
-      console.error('Error updating auto-open setting:', error);
-      this.showToast('error', '❌', browser.i18n.getMessage('settingsUpdateError') || 'Failed to update setting');
-      
-      // Revert checkbox state on error
-      if (this.elements.autoOpenTabs) {
-      this.elements.autoOpenTabs.checked = !enabled;
-      }
-    }
-  }
-
+  // Settings management - autoOpenTabs feature removed
+  
   // Import/Export functionality
   exportSettings() {
     try {

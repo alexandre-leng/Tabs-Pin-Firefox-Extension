@@ -107,15 +107,6 @@
   "deleteConfirm": {
     "message": "क्या आप वाकई इस टैब को हटाना चाहते हैं?"
   },
-  "generalSettings": {
-    "message": "सामान्य सेटिंग्स"
-  },
-  "autoOpenTabs": {
-    "message": "नई विंडो बनाते समय टैब स्वचालित रूप से खोलें"
-  },
-  "autoOpenTabsDescription": {
-    "message": "सक्षम करने पर, जब आप नई Firefox विंडो बनाते हैं तो आपके पिन किए गए टैब स्वचालित रूप से खुल जाएंगे।"
-  },
   "importExport": {
     "message": "आयात/निर्यात"
   },

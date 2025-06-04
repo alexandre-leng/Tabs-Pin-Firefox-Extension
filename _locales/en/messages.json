@@ -113,18 +113,6 @@
     "message": "Are you sure you want to delete this tab?",
     "description": "Confirmation message for tab deletion"
   },
-  "generalSettings": {
-    "message": "General Settings",
-    "description": "General settings section title"
-  },
-  "autoOpenTabs": {
-    "message": "Automatically open tabs when creating new windows",
-    "description": "Checkbox label for auto-open setting"
-  },
-  "autoOpenTabsDescription": {
-    "message": "When enabled, your pinned tabs will automatically open when you create a new normal Firefox window (excludes popups and specialized windows).",
-    "description": "Description for auto-open setting"
-  },
   "importExport": {
     "message": "Import/Export",
     "description": "Import/Export section title"
@@ -675,4 +663,4 @@
     "message": "All tabs are already pinned!",
     "description": "Message when all tabs are already pinned"
   }
-} 
+}

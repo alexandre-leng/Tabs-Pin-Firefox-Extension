@@ -113,18 +113,6 @@
     "message": "Sei sicuro di voler eliminare questa scheda?",
     "description": "Messaggio di conferma per l'eliminazione della scheda"
   },
-  "generalSettings": {
-    "message": "Impostazioni Generali",
-    "description": "Titolo della sezione impostazioni generali"
-  },
-  "autoOpenTabs": {
-    "message": "Apri automaticamente le schede quando si creano nuove finestre",
-    "description": "Etichetta della casella di controllo per l'impostazione di apertura automatica"
-  },
-  "autoOpenTabsDescription": {
-    "message": "Quando abilitato, le tue schede fissate si apriranno automaticamente quando crei una nuova finestra Firefox.",
-    "description": "Descrizione per l'impostazione di apertura automatica"
-  },
   "importExport": {
     "message": "Importa/Esporta",
     "description": "Titolo della sezione Importa/Esporta"

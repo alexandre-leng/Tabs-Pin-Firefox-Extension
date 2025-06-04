@@ -9,7 +9,9 @@ class PopupManager {
   constructor() {
     this.tabs = [];
     this.categories = [];
-    this.settings = { autoOpenTabs: false };
+    this.settings = {};
+    this.currentCategory = 'all';
+    this.isLoading = false;
     this.storage = new StorageManager();
     this.currentTab = null;
     this.isOpeningTabs = false; // Prevent multiple simultaneous calls to openAllTabs
@@ -191,7 +193,7 @@ class PopupManager {
         if (response && response.success && response.data) {
           this.tabs = response.data.tabs || [];
           this.categories = response.data.categories || this.getDefaultCategories();
-          this.settings = response.data.settings || { autoOpenTabs: false };
+          this.settings = response.data.settings || {};
           console.log('✅ Data loaded from background script');
           return;
         }
@@ -203,14 +205,14 @@ class PopupManager {
       const result = await this.storage.get(['pinnedTabs', 'categories', 'settings']);
       this.tabs = result.pinnedTabs || [];
       this.categories = result.categories || this.getDefaultCategories();
-      this.settings = result.settings || { autoOpenTabs: false };
+      this.settings = result.settings || {};
       console.log('📦 Data loaded from storage fallback');
     } catch (error) {
       console.error('Error loading data:', error);
       // Initialize with defaults if all else fails
       this.tabs = [];
       this.categories = this.getDefaultCategories();
-      this.settings = { autoOpenTabs: false };
+      this.settings = {};
     }
   }
 
@@ -692,8 +694,12 @@ class PopupManager {
   }
 
   async openCategoryTabs(categoryId) {
+    if (this.isOpeningTabs) return;
+    
     const categoryTabs = this.tabs.filter(tab => tab.category === categoryId);
     if (categoryTabs.length === 0) return;
+    
+    this.isOpeningTabs = true;
     
     try {
       this.showToast('info', '🔍', browser.i18n.getMessage('checkingExistingTabs') || 'Checking existing tabs...');
@@ -747,6 +753,8 @@ class PopupManager {
     } catch (error) {
       console.error('Error opening category tabs:', error);
       this.showToast('error', '❌', browser.i18n.getMessage('errorOpeningCategoryTabs') || 'Error opening category tabs');
+    } finally {
+      this.isOpeningTabs = false;
     }
   }
 

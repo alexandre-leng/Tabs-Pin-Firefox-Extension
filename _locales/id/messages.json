@@ -107,15 +107,6 @@
   "deleteConfirm": {
     "message": "Apakah Anda yakin ingin menghapus tab ini?"
   },
-  "generalSettings": {
-    "message": "Pengaturan Umum"
-  },
-  "autoOpenTabs": {
-    "message": "Buka tab otomatis saat membuat jendela baru"
-  },
-  "autoOpenTabsDescription": {
-    "message": "Jika diaktifkan, tab yang disematkan akan terbuka otomatis saat Anda membuat jendela Firefox baru."
-  },
   "importExport": {
     "message": "Impor/Ekspor"
   },
