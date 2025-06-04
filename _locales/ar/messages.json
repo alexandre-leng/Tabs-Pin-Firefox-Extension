@@ -456,5 +456,107 @@
   },
   "configureManually": {
     "message": "تكوين يدوي"
+  },
+  "containerSupport": {
+    "message": "تم اكتشاف دعم Firefox Multi-Account Containers",
+    "description": "Message indicating containers are supported"
+  },
+  "defaultContainer": {
+    "message": "الحاوية الافتراضية",
+    "description": "Name for the default container"
+  },
+  "containerTabPin": {
+    "message": "تثبيت علامة التبويب في الحاوية: $CONTAINER$",
+    "description": "Message when pinning a tab in a container",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "Personal"
+      }
+    }
+  },
+  "containerTabCreate": {
+    "message": "إنشاء علامة تبويب في الحاوية: $CONTAINER$",
+    "description": "Message when creating a tab in a container",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "Work"
+      }
+    }
+  },
+  "invalidTabId": {
+    "message": "معرف علامة تبويب غير صالح: $TABID$",
+    "description": "Error message for invalid tab ID",
+    "placeholders": {
+      "tabid": {
+        "content": "$1",
+        "example": "61"
+      }
+    }
+  },
+  "tabNoLongerExists": {
+    "message": "علامة التبويب لم تعد موجودة أو غير قابلة للوصول",
+    "description": "Error message when tab no longer exists"
+  },
+  "containerNotFound": {
+    "message": "الحاوية غير موجودة: $CONTAINER$",
+    "description": "Error message when container is not found",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "firefox-container-1"
+      }
+    }
+  },
+  "containerErrorFallback": {
+    "message": "استخدام الحاوية الافتراضية بسبب خطأ",
+    "description": "Message when falling back to default container"
+  },
+  "someTabsPinned": {
+    "message": "تم تثبيت بعض علامات التبويب الموجودة",
+    "description": "Message when some existing tabs were pinned"
+  },
+  "someTabsPinnedAndOpened": {
+    "message": "تم تثبيت بعض علامات التبويب وفتح أخرى",
+    "description": "Message when some tabs were pinned and others opened"
+  },
+  "tabPinSuccess": {
+    "message": "تم تثبيت علامة التبويب بنجاح: $URL$",
+    "description": "Success message for tab pinning",
+    "placeholders": {
+      "url": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "tabPinError": {
+    "message": "فشل في تثبيت علامة التبويب: $ERROR$",
+    "description": "Error message for tab pinning",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Invalid tab ID"
+      }
+    }
+  },
+  "containerRaceCondition": {
+    "message": "إضافة تأخير لتجنب التعارض مع الحاويات",
+    "description": "Debug message for containers"
+  },
+  "allTabsAlreadyPinned": {
+    "message": "جميع علامات التبويب مثبتة بالفعل!",
+    "description": "Message when all tabs are already pinned"
+  },
+  "tabsPinned": {
+    "message": "تم تثبيت $COUNT$ علامة (علامات) تبويب",
+    "description": "رسالة نجاح لعلامات التبويب المثبتة",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
   }
-} 
+}

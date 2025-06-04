@@ -566,5 +566,107 @@
   },
   "orDivider": {
     "message": "o"
+  },
+  "containerSupport": {
+    "message": "Supporto per Firefox Multi-Account Containers rilevato",
+    "description": "Messaggio che indica che i containers sono supportati"
+  },
+  "defaultContainer": {
+    "message": "Container predefinito",
+    "description": "Nome per il container predefinito"
+  },
+  "containerTabPin": {
+    "message": "Fissaggio scheda nel container: $CONTAINER$",
+    "description": "Messaggio durante il fissaggio di una scheda in un container",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "Personale"
+      }
+    }
+  },
+  "containerTabCreate": {
+    "message": "Creazione scheda nel container: $CONTAINER$",
+    "description": "Messaggio durante la creazione di una scheda in un container",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "Lavoro"
+      }
+    }
+  },
+  "invalidTabId": {
+    "message": "ID scheda non valido: $TABID$",
+    "description": "Messaggio di errore per ID scheda non valido",
+    "placeholders": {
+      "tabid": {
+        "content": "$1",
+        "example": "61"
+      }
+    }
+  },
+  "tabNoLongerExists": {
+    "message": "La scheda non esiste più o non è accessibile",
+    "description": "Messaggio di errore quando la scheda non esiste più"
+  },
+  "containerNotFound": {
+    "message": "Container non trovato: $CONTAINER$",
+    "description": "Messaggio di errore quando un container non è trovato",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "firefox-container-1"
+      }
+    }
+  },
+  "containerErrorFallback": {
+    "message": "Utilizzo del container predefinito a causa di un errore",
+    "description": "Messaggio quando si torna al container predefinito"
+  },
+  "someTabsPinned": {
+    "message": "Alcune schede esistenti sono state fissate",
+    "description": "Messaggio quando alcune schede esistenti sono state fissate"
+  },
+  "someTabsPinnedAndOpened": {
+    "message": "Alcune schede sono state fissate e altre aperte",
+    "description": "Messaggio quando alcune schede sono state fissate e altre aperte"
+  },
+  "tabPinSuccess": {
+    "message": "Scheda fissata con successo: $URL$",
+    "description": "Messaggio di successo per il fissaggio scheda",
+    "placeholders": {
+      "url": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "tabPinError": {
+    "message": "Errore nel fissare la scheda: $ERROR$",
+    "description": "Messaggio di errore per il fissaggio scheda",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Invalid tab ID"
+      }
+    }
+  },
+  "containerRaceCondition": {
+    "message": "Aggiunta di un ritardo per evitare conflitti con i containers",
+    "description": "Messaggio di debug per i containers"
+  },
+  "allTabsAlreadyPinned": {
+    "message": "Tutte le schede sono già fissate!",
+    "description": "Messaggio quando tutte le schede sono già fissate"
+  },
+  "tabsPinned": {
+    "message": "$COUNT$ scheda/e sono state fissate",
+    "description": "Messaggio di successo per le schede fissate",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
   }
-} 
+}

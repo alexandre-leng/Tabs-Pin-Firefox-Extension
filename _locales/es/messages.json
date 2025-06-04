@@ -206,12 +206,12 @@
     "description": "Mensaje de advertencia cuando la pestaña ya está en la lista"
   },
   "tabPinned": {
-    "message": "\"$TITLE$\" ha sido fijada",
-    "description": "Mensaje de éxito cuando la pestaña se fija",
+    "message": "$COUNT$ pestaña(s) han sido fijadas",
+    "description": "Mensaje de éxito para pestañas fijadas",
     "placeholders": {
-      "title": {
+      "count": {
         "content": "$1",
-        "example": "Google"
+        "example": "3"
       }
     }
   },
@@ -566,5 +566,107 @@
   },
   "orDivider": {
     "message": "o"
+  },
+  "containerSupport": {
+    "message": "Soporte para Firefox Multi-Account Containers detectado",
+    "description": "Mensaje indicando que los contenedores están soportados"
+  },
+  "defaultContainer": {
+    "message": "Contenedor predeterminado",
+    "description": "Nombre para el contenedor predeterminado"
+  },
+  "containerTabPin": {
+    "message": "Fijando pestaña en contenedor: $CONTAINER$",
+    "description": "Mensaje durante el fijado de una pestaña en un contenedor",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "Personal"
+      }
+    }
+  },
+  "containerTabCreate": {
+    "message": "Creando pestaña en contenedor: $CONTAINER$",
+    "description": "Mensaje durante la creación de una pestaña en un contenedor",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "Trabajo"
+      }
+    }
+  },
+  "invalidTabId": {
+    "message": "ID de pestaña inválido: $TABID$",
+    "description": "Mensaje de error para ID de pestaña inválido",
+    "placeholders": {
+      "tabid": {
+        "content": "$1",
+        "example": "61"
+      }
+    }
+  },
+  "tabNoLongerExists": {
+    "message": "La pestaña ya no existe o no es accesible",
+    "description": "Mensaje de error cuando la pestaña ya no existe"
+  },
+  "containerNotFound": {
+    "message": "Contenedor no encontrado: $CONTAINER$",
+    "description": "Mensaje de error cuando un contenedor no se encuentra",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "firefox-container-1"
+      }
+    }
+  },
+  "containerErrorFallback": {
+    "message": "Usando contenedor predeterminado debido a un error",
+    "description": "Mensaje cuando se vuelve al contenedor predeterminado"
+  },
+  "someTabsPinned": {
+    "message": "Algunas pestañas existentes han sido fijadas",
+    "description": "Mensaje cuando algunas pestañas existentes fueron fijadas"
+  },
+  "someTabsPinnedAndOpened": {
+    "message": "Algunas pestañas fueron fijadas y otras abiertas",
+    "description": "Mensaje cuando algunas pestañas fueron fijadas y otras abiertas"
+  },
+  "tabPinSuccess": {
+    "message": "Pestaña fijada exitosamente: $URL$",
+    "description": "Mensaje de éxito para el fijado de pestaña",
+    "placeholders": {
+      "url": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "tabPinError": {
+    "message": "Error al fijar la pestaña: $ERROR$",
+    "description": "Mensaje de error para el fijado de pestaña",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Invalid tab ID"
+      }
+    }
+  },
+  "containerRaceCondition": {
+    "message": "Añadiendo retraso para evitar conflictos con contenedores",
+    "description": "Mensaje de debug para contenedores"
+  },
+  "tabsPinned": {
+    "message": "$COUNT$ pestaña(s) han sido fijadas",
+    "description": "Mensaje de éxito para pestañas fijadas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "allTabsAlreadyPinned": {
+    "message": "¡Todas las pestañas ya están fijadas!",
+    "description": "Mensaje cuando todas las pestañas ya están fijadas"
   }
 } 

@@ -122,7 +122,7 @@
     "description": "Libellé de la case à cocher pour le paramètre d'ouverture automatique"
   },
   "autoOpenTabsDescription": {
-    "message": "Quand activé, vos onglets épinglés s'ouvriront automatiquement lorsque vous créez une nouvelle fenêtre Firefox.",
+    "message": "Quand activé, vos onglets épinglés s'ouvriront automatiquement lorsque vous créez une nouvelle fenêtre Firefox normale (exclut les popups et fenêtres spécialisées).",
     "description": "Description pour le paramètre d'ouverture automatique"
   },
   "importExport": {
@@ -590,5 +590,139 @@
         "example": "3"
       }
     }
+  },
+  "allTabsAlreadyPinned": {
+    "message": "Tous les onglets sont déjà épinglés !",
+    "description": "Message quand tous les onglets sont déjà épinglés"
+  },
+  "helpAndSupport": {
+    "message": "Aide et Support",
+    "description": "Titre de la section aide et support"
+  },
+  "helpDescription": {
+    "message": "Pour plus d'informations, des FAQ et de la documentation, visitez :",
+    "description": "Description de l'aide"
+  },
+  "reportIssue": {
+    "message": "Signaler un Problème",
+    "description": "Lien pour signaler un problème"
+  },
+  "versionInfo": {
+    "message": "Version",
+    "description": "Label pour les informations de version"
+  },
+  "lastOpened": {
+    "message": "Dernière ouverture",
+    "description": "Label pour la dernière fois que les onglets ont été ouverts"
+  },
+  "never": {
+    "message": "Jamais",
+    "description": "Valeur pour 'jamais' dans les statistiques"
+  },
+  "footer": {
+    "message": "Développé avec ❤️ pour la productivité",
+    "description": "Texte du pied de page"
+  },
+  "currentTabInfo": {
+    "message": "Onglet actuel : $TITLE$",
+    "description": "Informations sur l'onglet actuel",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      }
+    }
+  },
+  "containerSupport": {
+    "message": "Support des Containers Firefox Multi-Account détecté",
+    "description": "Message indiquant que les containers sont supportés"
+  },
+  "defaultContainer": {
+    "message": "Container par défaut",
+    "description": "Nom du container par défaut"
+  },
+  "containerTabPin": {
+    "message": "Épinglage d'onglet dans le container : $CONTAINER$",
+    "description": "Message lors de l'épinglage d'un onglet dans un container",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "Personal"
+      }
+    }
+  },
+  "containerTabCreate": {
+    "message": "Création d'onglet dans le container : $CONTAINER$",
+    "description": "Message lors de la création d'un onglet dans un container",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "Work"
+      }
+    }
+  },
+  "invalidTabId": {
+    "message": "ID d'onglet invalide : $TABID$",
+    "description": "Message d'erreur pour un ID d'onglet invalide",
+    "placeholders": {
+      "tabid": {
+        "content": "$1",
+        "example": "61"
+      }
+    }
+  },
+  "tabNoLongerExists": {
+    "message": "L'onglet n'existe plus ou n'est pas accessible",
+    "description": "Message d'erreur quand l'onglet n'existe plus"
+  },
+  "containerNotFound": {
+    "message": "Container non trouvé : $CONTAINER$",
+    "description": "Message d'erreur quand un container n'est pas trouvé",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "firefox-container-1"
+      }
+    }
+  },
+  "containerErrorFallback": {
+    "message": "Utilisation du container par défaut en raison d'une erreur",
+    "description": "Message quand on revient au container par défaut"
+  },
+  "someTabsPinned": {
+    "message": "Certains onglets ont été épinglés",
+    "description": "Message quand certains onglets existants ont été épinglés"
+  },
+  "someTabsPinnedAndOpened": {
+    "message": "Certains onglets ont été épinglés et d'autres ouverts",
+    "description": "Message quand certains onglets ont été épinglés et d'autres ouverts"
+  },
+  "someTabsAlreadyOpen": {
+    "message": "Certains onglets étaient déjà ouverts",
+    "description": "Message quand certains onglets étaient déjà ouverts"
+  },
+  "tabPinSuccess": {
+    "message": "Onglet épinglé avec succès : $URL$",
+    "description": "Message de succès pour l'épinglage d'onglet",
+    "placeholders": {
+      "url": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "tabPinError": {
+    "message": "Échec de l'épinglage de l'onglet : $ERROR$",
+    "description": "Message d'erreur pour l'épinglage d'onglet",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Invalid tab ID"
+      }
+    }
+  },
+  "containerRaceCondition": {
+    "message": "Ajout d'un délai pour éviter les conflits avec les containers",
+    "description": "Message de debug pour les containers"
   }
 } 

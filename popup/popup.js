@@ -9,7 +9,8 @@ class PopupManager {
   constructor() {
     this.tabs = [];
     this.categories = [];
-    this.settings = {};
+    this.settings = { autoOpenTabs: false };
+    this.storage = new StorageManager();
     this.currentTab = null;
     this.isOpeningTabs = false; // Prevent multiple simultaneous calls to openAllTabs
     
@@ -59,17 +60,117 @@ class PopupManager {
 
   async init() {
     try {
-      this.setupI18n();
-      this.setupEventListeners();
-      this.setupDataChangeListener();
-      this.updateVersionInfo();
+      // Check connection with background script first
+      await this.checkBackgroundConnection();
+      
       await this.getCurrentTab();
       await this.loadData();
+      this.setupEventListeners();
+      this.setupI18n();
+      this.updateVersionInfo();
+      
+      // Initial render
       this.render();
+      
+      // Setup data change listener
+      this.setupDataChangeListener();
+      
+      console.log('Popup initialized successfully');
     } catch (error) {
       console.error('Failed to initialize popup:', error);
       this.showToast('error', '❌', browser.i18n.getMessage('failedToInitialize') || 'Failed to initialize popup');
-      this.showEmptyState();
+    }
+  }
+
+  /**
+   * Check if background script is responsive
+   * @returns {Promise<boolean>} True if background script responds
+   */
+  async checkBackgroundConnection() {
+    try {
+      console.log('🔍 Checking background script connection...');
+      const response = await browser.runtime.sendMessage({ action: 'ping' });
+      if (response && response.success && response.message === 'pong') {
+        console.log('✅ Background script connection verified');
+        return true;
+      } else {
+        console.error('❌ Invalid ping response:', response);
+        throw new Error('Invalid ping response');
+      }
+    } catch (error) {
+      console.error('❌ Background script connection failed:', error);
+      
+      // Enhanced error information
+      const errorInfo = {
+        message: error.message,
+        stack: error.stack,
+        timestamp: new Date().toISOString(),
+        runtime: {
+          lastError: browser.runtime.lastError?.message,
+          id: browser.runtime.id
+        }
+      };
+      
+      console.error('🔍 Connection error details:', errorInfo);
+      
+      // Determine the specific error type
+      if (error.message.includes('Receiving end does not exist')) {
+        throw new Error('Background script is not running or failed to initialize. Please try reloading the extension.');
+      } else if (error.message.includes('Could not establish connection')) {
+        throw new Error('Communication with background script failed. Extension may need to be reloaded.');
+      } else {
+        throw new Error('Could not establish connection with background script: ' + error.message);
+      }
+    }
+  }
+
+  /**
+   * Send message to background script with retry mechanism
+   * @param {object} message - Message to send
+   * @param {number} retries - Number of retries (default: 2)
+   * @returns {Promise<object>} Response from background script
+   */
+  async sendMessageWithRetry(message, retries = 2) {
+    for (let attempt = 0; attempt <= retries; attempt++) {
+      try {
+        console.log(`📤 Sending message (attempt ${attempt + 1}/${retries + 1}):`, message.action);
+        const response = await browser.runtime.sendMessage(message);
+        
+        if (!response) {
+          throw new Error('No response from background script');
+        }
+        
+        // Check if the response indicates an error
+        if (response.success === false) {
+          console.warn(`⚠️ Background script returned error:`, response.error);
+          // Don't retry on background script errors
+          throw new Error(response.error || 'Background script operation failed');
+        }
+        
+        console.log(`✅ Message sent successfully:`, message.action);
+        return response;
+      } catch (error) {
+        console.warn(`❌ Message attempt ${attempt + 1} failed:`, {
+          action: message.action,
+          error: error.message,
+          attempt: attempt + 1,
+          maxAttempts: retries + 1
+        });
+        
+        if (attempt === retries) {
+          // Last attempt failed
+          const errorMessage = error.message.includes('Receiving end does not exist') 
+            ? 'Background script is not responding. Please reload the extension.'
+            : `Could not establish connection after ${retries + 1} attempts: ${error.message}`;
+          
+          throw new Error(errorMessage);
+        }
+        
+        // Wait before retry with exponential backoff
+        const delay = 100 * Math.pow(2, attempt);
+        console.log(`⏳ Waiting ${delay}ms before retry...`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+      }
     }
   }
 
@@ -84,15 +185,32 @@ class PopupManager {
 
   async loadData() {
     try {
-      const result = await browser.storage.local.get(['pinnedTabs', 'categories', 'settings']);
+      // First try to get data from background script for consistency
+      try {
+        const response = await this.sendMessageWithRetry({ action: 'getTabsData' });
+        if (response && response.success && response.data) {
+          this.tabs = response.data.tabs || [];
+          this.categories = response.data.categories || this.getDefaultCategories();
+          this.settings = response.data.settings || { autoOpenTabs: false };
+          console.log('✅ Data loaded from background script');
+          return;
+        }
+      } catch (error) {
+        console.warn('Failed to load data from background script, falling back to storage:', error);
+      }
       
+      // Fallback to direct storage access using StorageManager
+      const result = await this.storage.get(['pinnedTabs', 'categories', 'settings']);
       this.tabs = result.pinnedTabs || [];
       this.categories = result.categories || this.getDefaultCategories();
-      this.settings = { autoOpenTabs: false, ...result.settings };
-      
+      this.settings = result.settings || { autoOpenTabs: false };
+      console.log('📦 Data loaded from storage fallback');
     } catch (error) {
       console.error('Error loading data:', error);
-      throw error;
+      // Initialize with defaults if all else fails
+      this.tabs = [];
+      this.categories = this.getDefaultCategories();
+      this.settings = { autoOpenTabs: false };
     }
   }
 
@@ -461,39 +579,26 @@ class PopupManager {
   }
 
   async openAllTabs() {
-    if (this.tabs.length === 0) {
-      return;
-    }
-
-    // Prevent multiple simultaneous calls
-    if (this.isOpeningTabs) {
-      return;
-    }
-
+    if (this.isOpeningTabs) return;
+    
     this.isOpeningTabs = true;
-
+    this.showButtonLoading(true);
+    
     try {
-      // Show initial loading state
-      this.showButtonLoading(true);
       this.showToast('info', '🔍', browser.i18n.getMessage('checkingExistingTabs') || 'Checking existing tabs...');
       
       // Get current window ID to ensure tabs are checked/opened in the correct window
       const currentWindow = await browser.windows.getCurrent();
       
-      // Send message to background script with current window ID
-      const response = await browser.runtime.sendMessage({
+      // Send message to background script with current window ID using retry mechanism
+      const response = await this.sendMessageWithRetry({
         action: 'openAllTabs',
         windowId: currentWindow.id
       });
       
-      // Vérifier que la réponse est valide
-      if (!response) {
-        throw new Error('No response from background script');
-      }
-      
       if (response.success) {
         this.settings.lastOpened = new Date().toISOString();
-        await browser.storage.local.set({ settings: this.settings });
+        await this.storage.set({ settings: this.settings });
         this.updateStatusInfo();
         
         // Handle different response scenarios with better logic
@@ -596,16 +701,11 @@ class PopupManager {
       // Get current window ID to ensure tabs are checked/opened in the correct window
       const currentWindow = await browser.windows.getCurrent();
       
-      const response = await browser.runtime.sendMessage({
+      const response = await this.sendMessageWithRetry({
         action: 'openCategoryTabs',
         categoryId: categoryId,
         windowId: currentWindow.id
       });
-      
-      // Vérifier que la réponse est valide
-      if (!response) {
-        throw new Error('No response from background script');
-      }
       
       if (response.success) {
         // Handle different response scenarios with better logic

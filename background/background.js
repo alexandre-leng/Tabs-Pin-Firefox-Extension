@@ -1,6 +1,7 @@
 /**
  * Tabs Pin Background Script for Firefox
  * Handles core extension functionality and tab management
+ * Enhanced with Firefox Multi-Account Containers support and robust storage management
  */
 
 'use strict';
@@ -10,26 +11,53 @@ class TabsPinBackground {
     this.tabs = [];
     this.categories = [];
     this.settings = { autoOpenTabs: false };
+    // StorageManager est disponible via le manifest.json
+    this.storage = new StorageManager();
+    // ContainerUtils est disponible via le manifest.json
+    this.containerUtils = new ContainerUtils();
+    
+    // Track initialization state
+    this.isInitialized = false;
+    this.initializationPromise = null;
+    
     this.init();
   }
 
   async init() {
     try {
-      // Load initial data
-      await this.loadData();
+      console.log('🚀 Starting TabsPinBackground initialization...');
       
-      // Setup event listeners
-      this.setupEventListeners();
+      // Store the initialization promise
+      this.initializationPromise = this.performInitialization();
+      await this.initializationPromise;
       
-      console.log('TabsPin background script initialized');
+      this.isInitialized = true;
+      console.log('✅ TabsPin background script initialized successfully');
     } catch (error) {
-      console.error('Failed to initialize background script:', error);
+      console.error('❌ Failed to initialize background script:', error);
+      this.isInitialized = false;
+      throw error;
     }
+  }
+
+  async performInitialization() {
+    // Wait for storage manager to be ready
+    const healthCheck = await this.storage.healthCheck();
+    console.log('📊 Storage health check:', healthCheck);
+    
+    // Load initial data
+    await this.loadData();
+    
+    // Setup event listeners
+    this.setupEventListeners();
+    
+    console.log('Container support:', this.containerUtils.containersSupported);
+    console.log('Storage system:', healthCheck.healthy ? '✅ Healthy' : '❌ Issues detected');
   }
 
   async loadData() {
     try {
-      const result = await browser.storage.local.get(['pinnedTabs', 'categories', 'settings']);
+      const result = await this.storage.get(['pinnedTabs', 'categories', 'settings']);
       
       this.tabs = result.pinnedTabs || [];
       this.categories = result.categories || this.getDefaultCategories();
@@ -55,7 +83,17 @@ class TabsPinBackground {
   setupEventListeners() {
     // Message listener for popup communications
     browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-      return this.handleMessage(request, sender, sendResponse);
+      this.handleMessage(request, sender, sendResponse)
+        .then(result => {
+          sendResponse(result);
+        })
+        .catch(error => {
+          console.error('Error in message handler:', error);
+          sendResponse({ success: false, error: error.message });
+        });
+      
+      // Return true to indicate we will respond asynchronously
+      return true;
     });
 
     // Window creation listener for auto-open functionality
@@ -73,10 +111,97 @@ class TabsPinBackground {
     browser.runtime.onStartup.addListener(() => {
       this.handleStartup();
     });
+
+    // Tab listeners for better error handling
+    if (browser.tabs.onRemoved) {
+      browser.tabs.onRemoved.addListener((tabId, removeInfo) => {
+        this.handleTabRemoved(tabId, removeInfo);
+      });
+    }
+  }
+
+  /**
+   * Safely checks if a tab exists and is accessible
+   * @param {number} tabId - The tab ID to check
+   * @returns {Promise<boolean>} - True if tab exists and is accessible
+   */
+  async isTabValid(tabId) {
+    try {
+      if (!tabId || typeof tabId !== 'number') {
+        return false;
+      }
+      
+      const tab = await browser.tabs.get(tabId);
+      return tab !== null && tab !== undefined;
+    } catch (error) {
+      // Tab doesn't exist or is not accessible
+      if (error.message && error.message.includes('Invalid tab ID')) {
+        console.warn(`Tab ID ${tabId} is invalid or no longer exists`);
+      }
+      return false;
+    }
+  }
+
+  /**
+   * Clean up invalid tab references from tracking
+   * @param {number} tabId - The invalid tab ID to clean up
+   */
+  cleanupInvalidTab(tabId) {
+    // Remove from any internal tracking if we had such functionality
+    console.log(`Cleaned up invalid tab reference: ${tabId}`);
+  }
+
+  /**
+   * Safely updates a tab with error handling for containers
+   * @param {number} tabId - The tab ID to update
+   * @param {object} updateProperties - Properties to update
+   * @returns {Promise<object>} - Result object with success status
+   */
+  async safeTabUpdate(tabId, updateProperties) {
+    try {
+      // First check if tab is valid
+      const isValid = await this.isTabValid(tabId);
+      if (!isValid) {
+        this.cleanupInvalidTab(tabId);
+        throw new Error(`Invalid tab ID: ${tabId}`);
+      }
+
+      // Use containerUtils for better container handling
+      const updatedTab = await this.containerUtils.updateTabWithContainer(tabId, updateProperties);
+      return { success: true, tab: updatedTab };
+      
+    } catch (error) {
+      console.error(`Failed to update tab ${tabId}:`, error);
+      this.cleanupInvalidTab(tabId);
+      return { success: false, error: error.message, tabId };
+    }
+  }
+
+  handleTabRemoved(tabId, removeInfo) {
+    // Clean up any references to removed tabs
+    console.log(`Tab ${tabId} was removed, cleaning up references`);
+    this.cleanupInvalidTab(tabId);
   }
 
   async handleMessage(request, sender, sendResponse) {
     try {
+      // Wait for initialization to complete if it's still in progress
+      if (!this.isInitialized && this.initializationPromise) {
+        console.log('⏳ Waiting for background script initialization to complete...');
+        try {
+          await this.initializationPromise;
+        } catch (error) {
+          console.error('❌ Background script initialization failed:', error);
+          return { success: false, error: 'Background script initialization failed: ' + error.message };
+        }
+      }
+      
+      // If still not initialized after waiting, return error
+      if (!this.isInitialized) {
+        console.error('❌ Background script not initialized, cannot handle message:', request.action);
+        return { success: false, error: 'Background script not properly initialized' };
+      }
+      
       let result;
       
       switch (request.action) {
@@ -119,6 +244,11 @@ class TabsPinBackground {
         case 'saveCategories':
           result = await this.saveCategories(request.categories);
           break;
+
+        case 'ping':
+          // Simple ping to check if background script is responsive
+          result = { success: true, message: 'pong' };
+          break;
           
         default:
           console.warn('Unknown action:', request.action);
@@ -156,9 +286,44 @@ class TabsPinBackground {
       const normalizeUrl = (url) => {
         try {
           const urlObj = new URL(url);
-          return urlObj.origin + urlObj.pathname.replace(/\/$/, '') + urlObj.search;
+          
+          // Special handling for common redirect patterns
+          if (urlObj.hostname === 'accounts.google.com' && urlObj.pathname.includes('ServiceLogin')) {
+            // For Google authentication redirects, extract the target service
+            const continueParam = urlObj.searchParams.get('continue');
+            if (continueParam) {
+              try {
+                const targetUrl = new URL(decodeURIComponent(continueParam));
+                // Return the target service domain for comparison
+                return targetUrl.origin + targetUrl.pathname.replace(/\/$/, '');
+              } catch (e) {
+                // If continue param is malformed, use hostname
+                return urlObj.hostname;
+              }
+            }
+          }
+          
+          // For other URLs, normalize by removing query parameters and fragments
+          // but keep important path information
+          let normalized = urlObj.origin + urlObj.pathname.replace(/\/$/, '');
+          
+          // Keep important query parameters for some services
+          const importantParams = ['view', 'mode', 'hl']; // Add more as needed
+          const keptParams = new URLSearchParams();
+          importantParams.forEach(param => {
+            if (urlObj.searchParams.has(param)) {
+              keptParams.set(param, urlObj.searchParams.get(param));
+            }
+          });
+          
+          if (keptParams.toString()) {
+            normalized += '?' + keptParams.toString();
+          }
+          
+          return normalized.toLowerCase();
         } catch (error) {
-          return url;
+          console.warn(`Failed to normalize URL: ${url}`, error);
+          return url.toLowerCase();
         }
       };
       
@@ -193,13 +358,16 @@ class TabsPinBackground {
       // Épingler les onglets existants qui ne sont pas encore épinglés
       const pinResults = [];
       for (const { config, existingTab } of tabsToPin) {
-        try {
-          await browser.tabs.update(existingTab.id, { pinned: true });
-          pinResults.push({ success: true, tab: existingTab, config });
-          console.log(`Épinglé l'onglet existant: ${config.url}`);
-        } catch (error) {
-          console.error(`Échec de l'épinglage de l'onglet ${config.url}:`, error);
-          pinResults.push({ success: false, error: error.message, config });
+        console.log(`Attempting to pin existing tab: ${config.url} (ID: ${existingTab.id})`);
+        
+        const pinResult = await this.safeTabUpdate(existingTab.id, { pinned: true });
+        
+        if (pinResult.success) {
+          pinResults.push({ success: true, tab: pinResult.tab, config });
+          console.log(`Successfully pinned existing tab: ${config.url}`);
+        } else {
+          console.error(`Failed to pin existing tab ${config.url}:`, pinResult.error);
+          pinResults.push({ success: false, error: pinResult.error, config });
         }
       }
       
@@ -233,9 +401,15 @@ class TabsPinBackground {
             createOptions.windowId = windowId;
           }
           
-          const newTab = await browser.tabs.create(createOptions);
+          // Support for containers if specified in tab config
+          if (tab.cookieStoreId && tab.cookieStoreId !== 'firefox-default') {
+            createOptions.cookieStoreId = tab.cookieStoreId;
+          }
+          
+          const newTab = await this.containerUtils.createTabWithContainer(createOptions);
           
           results.push({ success: true, tab: newTab, config: tab });
+          console.log(`Opened new pinned tab: ${tab.url}`);
         } catch (error) {
           console.error(`Failed to open tab ${tab.url}:`, error);
           results.push({ success: false, error: error.message, config: tab });
@@ -244,7 +418,7 @@ class TabsPinBackground {
 
       // Update last opened timestamp
       this.settings.lastOpened = new Date().toISOString();
-      await browser.storage.local.set({ settings: this.settings });
+      await this.storage.set({ settings: this.settings });
 
       const opened = results.filter(r => r.success).length;
       const failed = results.filter(r => !r.success).length;
@@ -293,9 +467,44 @@ class TabsPinBackground {
       const normalizeUrl = (url) => {
         try {
           const urlObj = new URL(url);
-          return urlObj.origin + urlObj.pathname.replace(/\/$/, '') + urlObj.search;
+          
+          // Special handling for common redirect patterns
+          if (urlObj.hostname === 'accounts.google.com' && urlObj.pathname.includes('ServiceLogin')) {
+            // For Google authentication redirects, extract the target service
+            const continueParam = urlObj.searchParams.get('continue');
+            if (continueParam) {
+              try {
+                const targetUrl = new URL(decodeURIComponent(continueParam));
+                // Return the target service domain for comparison
+                return targetUrl.origin + targetUrl.pathname.replace(/\/$/, '');
+              } catch (e) {
+                // If continue param is malformed, use hostname
+                return urlObj.hostname;
+              }
+            }
+          }
+          
+          // For other URLs, normalize by removing query parameters and fragments
+          // but keep important path information
+          let normalized = urlObj.origin + urlObj.pathname.replace(/\/$/, '');
+          
+          // Keep important query parameters for some services
+          const importantParams = ['view', 'mode', 'hl']; // Add more as needed
+          const keptParams = new URLSearchParams();
+          importantParams.forEach(param => {
+            if (urlObj.searchParams.has(param)) {
+              keptParams.set(param, urlObj.searchParams.get(param));
+            }
+          });
+          
+          if (keptParams.toString()) {
+            normalized += '?' + keptParams.toString();
+          }
+          
+          return normalized.toLowerCase();
         } catch (error) {
-          return url;
+          console.warn(`Failed to normalize URL: ${url}`, error);
+          return url.toLowerCase();
         }
       };
       
@@ -328,13 +537,16 @@ class TabsPinBackground {
       // Épingler les onglets existants qui ne sont pas encore épinglés
       const pinResults = [];
       for (const { config, existingTab } of tabsToPin) {
-        try {
-          await browser.tabs.update(existingTab.id, { pinned: true });
-          pinResults.push({ success: true, tab: existingTab, config });
-          console.log(`Épinglé l'onglet existant: ${config.url}`);
-        } catch (error) {
-          console.error(`Échec de l'épinglage de l'onglet ${config.url}:`, error);
-          pinResults.push({ success: false, error: error.message, config });
+        console.log(`Attempting to pin existing category tab: ${config.url} (ID: ${existingTab.id})`);
+        
+        const pinResult = await this.safeTabUpdate(existingTab.id, { pinned: true });
+        
+        if (pinResult.success) {
+          pinResults.push({ success: true, tab: pinResult.tab, config });
+          console.log(`Successfully pinned existing category tab: ${config.url}`);
+        } else {
+          console.error(`Failed to pin existing category tab ${config.url}:`, pinResult.error);
+          pinResults.push({ success: false, error: pinResult.error, config });
         }
       }
       
@@ -368,9 +580,15 @@ class TabsPinBackground {
             createOptions.windowId = windowId;
           }
           
-          const newTab = await browser.tabs.create(createOptions);
+          // Support for containers if specified in tab config
+          if (tab.cookieStoreId && tab.cookieStoreId !== 'firefox-default') {
+            createOptions.cookieStoreId = tab.cookieStoreId;
+          }
+          
+          const newTab = await this.containerUtils.createTabWithContainer(createOptions);
           
           results.push({ success: true, tab: newTab, config: tab });
+          console.log(`Opened new pinned category tab: ${tab.url}`);
         } catch (error) {
           console.error(`Failed to open category tab ${tab.url}:`, error);
           results.push({ success: false, error: error.message, config: tab });
@@ -424,7 +642,7 @@ class TabsPinBackground {
       }
 
       // Save to storage
-      await browser.storage.local.set({ pinnedTabs: this.tabs });
+      await this.storage.set({ pinnedTabs: this.tabs });
       
       // Notify other parts of the extension about the change
       this.notifyDataChange('tabsChanged');
@@ -446,7 +664,7 @@ class TabsPinBackground {
         throw new Error('Tab not found');
       }
 
-      await browser.storage.local.set({ pinnedTabs: this.tabs });
+      await this.storage.set({ pinnedTabs: this.tabs });
       
       // Notify other parts of the extension about the change
       this.notifyDataChange('tabsChanged');
@@ -477,7 +695,7 @@ class TabsPinBackground {
       }
 
       this.categories = categories;
-      await browser.storage.local.set({ categories: this.categories });
+      await this.storage.set({ categories: this.categories });
       
       // Notify other parts of the extension about the change
       this.notifyDataChange('categoriesChanged');
@@ -493,7 +711,7 @@ class TabsPinBackground {
   async updateSettings(settings) {
     try {
       this.settings = { ...this.settings, ...settings };
-      await browser.storage.local.set({ settings: this.settings });
+      await this.storage.set({ settings: this.settings });
       
       // Notify other parts of the extension about the change
       this.notifyDataChange('settingsChanged');
@@ -506,19 +724,72 @@ class TabsPinBackground {
   }
 
   async handleWindowCreated(window) {
-    // Check if auto-open is enabled and it's a normal window
-    if (this.settings.autoOpenTabs && window.type === 'normal') {
-      try {
-        // Ensure tabs are loaded before trying to open them
-        await this.loadData();
-          
-          if (this.tabs.length > 0) {
-          await this.openAllTabs(window.id);
-        }
+    // Vérifications strictes pour les fenêtres normales uniquement
+    if (!this.settings.autoOpenTabs) {
+      return; // Paramètre désactivé
+    }
+
+    // Vérifications détaillées pour s'assurer que c'est une vraie fenêtre normale
+    if (!this.isNormalBrowserWindow(window)) {
+      console.log('Auto-open skipped - not a normal browser window:', {
+        type: window.type,
+        state: window.state,
+        incognito: window.incognito
+      });
+      return;
+    }
+
+    try {
+      console.log('Auto-opening tabs in new normal window:', window.id);
+      
+      // Attendre un petit délai pour que la fenêtre soit complètement initialisée
+      await new Promise(resolve => setTimeout(resolve, 100));
+      
+      // Ensure tabs are loaded before trying to open them
+      await this.loadData();
+        
+      if (this.tabs.length > 0) {
+        await this.openAllTabs(window.id);
+      }
     } catch (error) {
-        console.error('Error during auto-opening tabs:', error);
+      console.error('Error during auto-opening tabs:', error);
+    }
+  }
+
+  // Nouvelle fonction pour détecter strictement les fenêtres normales
+  isNormalBrowserWindow(window) {
+    // Vérifications de base
+    if (!window || window.type !== 'normal') {
+      return false;
+    }
+
+    // Exclure les fenêtres en mode incognito si souhaité (optionnel)
+    // if (window.incognito) {
+    //   return false;
+    // }
+
+    // Exclure les fenêtres avec des états particuliers
+    if (window.state === 'minimized') {
+      return false;
+    }
+
+    // Vérifier que la fenêtre a une taille raisonnable (pas un popup déguisé)
+    if (window.width && window.height) {
+      // Rejeter les fenêtres trop petites qui sont probablement des popups
+      const MIN_WINDOW_WIDTH = 400;
+      const MIN_WINDOW_HEIGHT = 300;
+      
+      if (window.width < MIN_WINDOW_WIDTH || window.height < MIN_WINDOW_HEIGHT) {
+        console.log('Window too small to be a normal window:', {
+          width: window.width,
+          height: window.height
+        });
+        return false;
       }
     }
+
+    // Si toutes les vérifications passent, c'est une fenêtre normale
+    return true;
   }
 
   async handleInstalled(details) {
@@ -555,7 +826,7 @@ class TabsPinBackground {
         settings: { autoOpenTabs: false }
       };
 
-      await browser.storage.local.set(defaultData);
+      await this.storage.set(defaultData);
       console.log('Default data initialized with translations');
     } catch (error) {
       console.error('Error initializing default data:', error);
@@ -583,7 +854,7 @@ class TabsPinBackground {
       });
       
       if (needsCategoryUpdate) {
-        await browser.storage.local.set({ categories: this.categories });
+        await this.storage.set({ categories: this.categories });
         console.log('Categories updated with translations');
       }
       
@@ -608,7 +879,7 @@ class TabsPinBackground {
       });
 
       if (needsUpdate) {
-        await browser.storage.local.set({ pinnedTabs: this.tabs });
+        await this.storage.set({ pinnedTabs: this.tabs });
         console.log('Data migration completed');
       }
     } catch (error) {
@@ -654,7 +925,22 @@ class TabsPinBackground {
 
 // Initialize the background script
 try {
-const tabsPinBackground = new TabsPinBackground();
+  console.log('🚀 Initializing TabsPinBackground...');
+  const tabsPinBackground = new TabsPinBackground();
+  
+  // Ensure the background script is properly initialized
+  window.tabsPinBackground = tabsPinBackground;
+  console.log('✅ TabsPinBackground initialized successfully');
 } catch (error) {
-  console.error('Failed to initialize TabsPinBackground:', error);
+  console.error('❌ Failed to initialize TabsPinBackground:', error);
+  
+  // Create a minimal fallback handler to respond to messages
+  browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    console.error('⚠️ Background script not properly initialized, returning error response');
+    sendResponse({ 
+      success: false, 
+      error: 'Background script initialization failed: ' + error.message 
+    });
+    return true;
+  });
 }
