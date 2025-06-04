@@ -4,24 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [1.2.6] - YYYY-MM-DD
 
-### Added
-- 
-
-### Changed
-- 
-
-### Fixed
-- 
+Bug fixed
 
 ## [1.2.5] - YYYY-MM-DD
-
-### Added
-- 
-
-### Changed
-- 
-
-### Fixed
+Bug fixed
 - 
 
 # Changelog - TabsFlow Firefox Extension
