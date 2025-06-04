@@ -546,22 +546,23 @@ class OptionsManager {
   openTabModal(tab = null) {
     this.currentEditingTab = tab;
     
+    // Populate category dropdown FIRST, so its options are available when setting the value.
+    this.populateCategoryDropdown();
+
     if (tab) {
       // Edit mode
-      this.elements.tabModalTitle.textContent = browser.i18n.getMessage('editTab') || 'Edit Tab';
+      this.elements.tabModalTitle.textContent = browser.i18n.getMessage('editTabTitle') || 'Edit Tab'; // Suggest using a more specific key like editTabTitle
       this.elements.tabUrl.value = tab.url || '';
       this.elements.tabTitle.value = tab.title || '';
-      this.elements.tabCategory.value = tab.category || '';
+      this.elements.tabCategory.value = tab.category || ''; // This should now work reliably
     } else {
       // Add mode
       this.elements.tabModalTitle.textContent = browser.i18n.getMessage('addNewTab') || 'Add New Tab';
       this.elements.tabUrl.value = '';
       this.elements.tabTitle.value = '';
-      this.elements.tabCategory.value = this.categories[0]?.id || '';
+      // Ensure categories are loaded and select the first one, or empty if no categories
+      this.elements.tabCategory.value = this.categories.length > 0 ? (this.categories[0]?.id || '') : '';
     }
-    
-    // Populate category dropdown
-    this.populateCategoryDropdown();
     
     // Show modal
     this.elements.tabModalOverlay.style.display = 'flex'; // Ensure it is display:flex before adding show

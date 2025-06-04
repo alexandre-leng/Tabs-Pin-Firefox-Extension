@@ -1,3 +1,29 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+## [1.2.6] - YYYY-MM-DD
+
+### Added
+- 
+
+### Changed
+- 
+
+### Fixed
+- 
+
+## [1.2.5] - YYYY-MM-DD
+
+### Added
+- 
+
+### Changed
+- 
+
+### Fixed
+- 
+
 # Changelog - TabsFlow Firefox Extension
 
 Toutes les modifications notables de cette extension seront documentées dans ce fichier.

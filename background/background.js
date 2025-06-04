@@ -15,11 +15,18 @@ class TabsPinBackground {
     this.isInitialized = false;
     this.initializationPromise = null;
     
-    // Keep track of opened tabs across all sessions
-    this.openedTabsInSession = new Set();
+    // Track tab URLs by ID for cleanup
+    this.tabUrlsById = new Map();
     
     // Initialize container utilities
     this.containerUtils = new ContainerUtils();
+
+    // Locks to prevent concurrent tab opening operations
+    this.isOpeningAllTabsInProgress = false;
+    this.isOpeningCategoryTabsInProgress = false;
+    
+    // Cache for URLs recently decided to be opened/pinned to handle rapid successive calls
+    this.recentlyOpenedUrls = new Map(); // Stores normalizedUrl -> timestamp
     
     this.init();
   }
@@ -46,14 +53,24 @@ class TabsPinBackground {
     const healthCheck = await this.storage.healthCheck();
     console.log('📊 Storage health check:', healthCheck);
     
+    // Wait for container utils to be ready
+    await this.containerUtils.initializationPromise;
+    console.log('🔒 Container support:', this.containerUtils.containersSupported);
+    
     // Load initial data
     await this.loadData();
     
     // Setup event listeners
     this.setupEventListeners();
     
-    console.log('Container support:', this.containerUtils.containersSupported);
     console.log('Storage system:', healthCheck.healthy ? '✅ Healthy' : '❌ Issues detected');
+
+    // Return initialization status
+    return {
+      healthy: healthCheck.healthy,
+      containersSupported: this.containerUtils.containersSupported,
+      dataLoaded: true
+    };
   }
 
   async loadData() {
@@ -141,7 +158,8 @@ class TabsPinBackground {
    * @param {number} tabId - The invalid tab ID to clean up
    */
   cleanupInvalidTab(tabId) {
-    // Remove from any internal tracking if we had such functionality
+    // Remove the tab ID from our mapping
+    this.tabUrlsById.delete(tabId);
     console.log(`Cleaned up invalid tab reference: ${tabId}`);
   }
 
@@ -261,191 +279,200 @@ class TabsPinBackground {
       return { success: false, error: error.message };
     }
   }
-
-  // Helper function to normalize URLs for comparison
+      
   normalizeUrl(url) {
-    try {
-      const urlObj = new URL(url);
-      
-      // Special handling for common redirect patterns
-      if (urlObj.hostname === 'accounts.google.com' && urlObj.pathname.includes('ServiceLogin')) {
-        // For Google authentication redirects, extract the target service
-        const continueParam = urlObj.searchParams.get('continue');
-        if (continueParam) {
-          try {
-            const targetUrl = new URL(decodeURIComponent(continueParam));
-            // Return the target service domain for comparison
-            return targetUrl.origin + targetUrl.pathname.replace(/\/$/, '');
-          } catch (e) {
-            // If continue param is malformed, use hostname
-            return urlObj.hostname;
+        try {
+          const urlObj = new URL(url);
+          const host = urlObj.hostname.toLowerCase(); // Get hostname once
+          
+          // Special handling for common redirect patterns
+          if (host === 'accounts.google.com' && urlObj.pathname.includes('ServiceLogin')) {
+            const continueParam = urlObj.searchParams.get('continue');
+            if (continueParam) {
+              try {
+                const targetUrl = new URL(decodeURIComponent(continueParam));
+                return targetUrl.origin + targetUrl.pathname.replace(/\/$/, '');
+              } catch (e) {
+                return host; // Fallback to hostname if 'continue' is malformed
+              }
+            }
           }
+          
+          // For specific sensitive hosts, keep query parameters as they might be significant for distinguishing pages
+          if (host === 'addons.mozilla.org' || 
+              host === 'login.infomaniak.com' || 
+              host === 'kdrive.infomaniak.com' || // Added for kDrive as well
+              host.endsWith('.infomaniak.com')) { // Broader rule for all infomaniak subdomains
+            return (urlObj.origin + urlObj.pathname + urlObj.search).toLowerCase();
+          }
+          
+          // For other URLs, normalize by removing query parameters and fragments
+          // but keep important path information and a whitelist of common important params
+          let normalized = urlObj.origin + urlObj.pathname.replace(/\/$/, '');
+          
+          const importantParams = ['view', 'mode', 'hl', 'id', 'q', 'query', 'search_query', 'p', 'article', 'page']; // Expanded whitelist
+          const keptParams = new URLSearchParams();
+          let hasKeptParams = false;
+          for (const [key, value] of urlObj.searchParams) {
+            if (importantParams.includes(key.toLowerCase())) {
+              keptParams.set(key, value);
+              hasKeptParams = true;
+            }
+          }
+          
+          if (hasKeptParams) {
+            normalized += '?' + keptParams.toString();
+          }
+          
+          return normalized.toLowerCase();
+        } catch (error) {
+          console.warn(`Failed to normalize URL: ${url}`, error);
+          return url.toLowerCase(); // Fallback to original URL (lowercase) if parsing fails
         }
-      }
-      
-      // For Firefox addons URLs, normalize the path by removing trailing parameters that might change
-      if (urlObj.hostname === 'addons.mozilla.org') {
-        // Keep the full path for addon URLs to ensure exact matching and remove any query parameters
-        return (urlObj.origin + urlObj.pathname).toLowerCase();
-      }
-      
-      // For other URLs, normalize by removing query parameters and fragments
-      // but keep important path information
-      let normalized = urlObj.origin + urlObj.pathname.replace(/\/$/, '');
-      
-      // Keep important query parameters for some services
-      const importantParams = ['view', 'mode', 'hl']; // Add more as needed
-      const keptParams = new URLSearchParams();
-      importantParams.forEach(param => {
-        if (urlObj.searchParams.has(param)) {
-          keptParams.set(param, urlObj.searchParams.get(param));
-        }
-      });
-      
-      if (keptParams.toString()) {
-        normalized += '?' + keptParams.toString();
-      }
-      
-      return normalized.toLowerCase();
-    } catch (error) {
-      console.warn(`Failed to normalize URL: ${url}`, error);
-      return url.toLowerCase();
-    }
-  }
-
-  // Additional check: exact URL comparison as fallback
-  isUrlAlreadyOpen(configUrl, existingTabs) {
-    const normalizedConfigUrl = this.normalizeUrl(configUrl);
-    console.log(`🔍 Checking if URL is already open: ${configUrl}`);
-    console.log(`🔍 Normalized: ${normalizedConfigUrl}`);
-    
-    // First check if we've already opened this URL in this session
-    if (this.openedTabsInSession.has(normalizedConfigUrl)) {
-      console.log(`  ✅ URL already opened in this session: ${configUrl}`);
-      return true;
-    }
-    
-    // Then check existing tabs
-    for (const existingTab of existingTabs) {
-      const normalizedExistingUrl = this.normalizeUrl(existingTab.url);
-      console.log(`  Comparing with: ${existingTab.url} -> ${normalizedExistingUrl}`);
-      
-      // First try normalized comparison
-      if (normalizedExistingUrl === normalizedConfigUrl) {
-        console.log(`  ✅ Match found (normalized): Tab ID ${existingTab.id}`);
-        this.openedTabsInSession.add(normalizedConfigUrl);
-        return existingTab;
-      }
-      
-      // Fallback: exact URL comparison
-      if (existingTab.url === configUrl) {
-        console.log(`  ✅ Match found (exact): Tab ID ${existingTab.id}`);
-        this.openedTabsInSession.add(normalizedConfigUrl);
-        return existingTab;
-      }
-      
-      // Additional fallback: case-insensitive comparison
-      if (existingTab.url.toLowerCase() === configUrl.toLowerCase()) {
-        console.log(`  ✅ Match found (case-insensitive): Tab ID ${existingTab.id}`);
-        this.openedTabsInSession.add(normalizedConfigUrl);
-        return existingTab;
-      }
-    }
-    
-    console.log(`  ❌ No match found for: ${configUrl}`);
-    return null;
   }
 
   async openAllTabs(windowId = null) {
+    if (this.isOpeningAllTabsInProgress) {
+      console.warn('🔒 openAllTabs: Call rejected, operation already in progress.');
+      return { success: false, error: 'Tab opening (all) is already in progress. Please wait.', alreadyInProgress: true };
+    }
+    this.isOpeningAllTabsInProgress = true;
+    console.log('🔑 openAllTabs: Operation lock acquired.');
+
+    const RECENTLY_OPENED_EXPIRY_MS = 2000; // Was 15000 (15 seconds), now 2 seconds
+
     try {
+      const now = Date.now();
+      console.log(`🧹 Cleaning recentlyOpenedUrls cache. Current size: ${this.recentlyOpenedUrls.size}`);
+      for (const [url, time] of this.recentlyOpenedUrls.entries()) {
+        if (now - time > RECENTLY_OPENED_EXPIRY_MS) {
+          this.recentlyOpenedUrls.delete(url);
+          console.log(`  🗑️ Removed ${url} from recentlyOpenedUrls cache (expired).`);
+        }
+      }
+      console.log(`🧹 Finished cleaning recentlyOpenedUrls cache. New size: ${this.recentlyOpenedUrls.size}`);
+
       if (this.tabs.length === 0) {
         return { success: false, error: 'No tabs configured' };
       }
 
-      // Sort tabs by order before opening
       const sortedTabs = [...this.tabs].sort((a, b) => {
-        if (a.order !== undefined && b.order !== undefined) {
-          return a.order - b.order;
-        }
+        if (a.order !== undefined && b.order !== undefined) return a.order - b.order;
         if (a.order !== undefined) return -1;
         if (b.order !== undefined) return 1;
         return new Date(a.dateAdded || 0) - new Date(b.dateAdded || 0);
       });
       
-      // Get tabs from specific window if provided, otherwise all tabs
       const queryOptions = windowId ? { windowId: windowId } : {};
-      const existingTabs = await browser.tabs.query(queryOptions);
+      const existingTabsFromQuery = await browser.tabs.query(queryOptions);
       
-      // Find tabs that are already open (pinned or not)
       const tabsToOpen = [];
       const alreadyOpenTabs = [];
-      const tabsToPin = []; // Onglets ouverts mais pas encore épinglés
+      const tabsToPin = [];
+      const urlsProcessedInThisSpecificCall = new Set(); 
       
-      for (const tab of sortedTabs) {
-        if (tab.enabled === false) continue;
+      for (const tabConfig of sortedTabs) {
+        if (tabConfig.enabled === false) continue;
         
-        console.log(`\n🔄 Processing tab: ${tab.url}`);
-        const existingTab = this.isUrlAlreadyOpen(tab.url, existingTabs);
-        
-        if (existingTab === true) {
-          // Tab was opened in this session
-          console.log(`  ✅ Tab already opened in this session: ${tab.url}`);
-          alreadyOpenTabs.push(tab);
-        } else if (existingTab) {
-          if (existingTab.pinned) {
-            // Onglet déjà ouvert ET épinglé
-            console.log(`  ✅ Tab already open and pinned: ${tab.url}`);
-            alreadyOpenTabs.push(tab);
-          } else {
-            // Onglet ouvert mais pas encore épinglé - on va l'épingler
-            console.log(`  📌 Tab open but not pinned, will pin: ${tab.url}`);
-            tabsToPin.push({ config: tab, existingTab });
+        console.log(`\n🔄 Processing tab: ${tabConfig.url}`);
+        const normalizedConfigUrl = this.normalizeUrl(tabConfig.url);
+        console.log(`  🔍 Normalized config URL: ${normalizedConfigUrl}`);
+
+        if (urlsProcessedInThisSpecificCall.has(normalizedConfigUrl)) {
+          console.log(`  ⏭️ Already decided action for ${normalizedConfigUrl} in this specific run, skipping.`);
+          // This ensures we don't re-process a normalized URL if multiple raw URLs map to it
+          // and one has already been handled (e.g., added to tabsToOpen or tabsToPin).
+          continue;
+        }
+
+        let foundPinnedTab = null;
+        let foundUnpinnedTab = null;
+
+        for (const queriedTab of existingTabsFromQuery) {
+          const normalizedQueriedTabUrl = this.normalizeUrl(queriedTab.url);
+          if (normalizedQueriedTabUrl === normalizedConfigUrl) {
+            if (queriedTab.pinned) {
+              console.log(`  ✨ Found a MATCHING PINNED existing tab in browser: ${queriedTab.url} (ID: ${queriedTab.id})`);
+              foundPinnedTab = queriedTab;
+              break; 
+            } else {
+              console.log(`  ✨ Found a MATCHING UNPINNED existing tab in browser: ${queriedTab.url} (ID: ${queriedTab.id})`);
+              if (!foundUnpinnedTab) foundUnpinnedTab = queriedTab;
+            }
           }
+        }
+
+        if (foundPinnedTab) {
+          console.log(`  ✅ Tab already open and pinned in browser: ${tabConfig.url} (ID: ${foundPinnedTab.id})`);
+          alreadyOpenTabs.push(tabConfig);
+          urlsProcessedInThisSpecificCall.add(normalizedConfigUrl);
+          // Refresh timestamp in recentlyOpenedUrls as it's confirmed to be active
+          this.recentlyOpenedUrls.set(normalizedConfigUrl, now); 
+        } else if (foundUnpinnedTab) {
+          console.log(`  📌 Tab open in browser but not pinned, will pin: ${tabConfig.url} (ID: ${foundUnpinnedTab.id})`);
+          tabsToPin.push({ config: tabConfig, existingTab: foundUnpinnedTab });
+          urlsProcessedInThisSpecificCall.add(normalizedConfigUrl);
+          this.recentlyOpenedUrls.set(normalizedConfigUrl, now);
         } else {
-          // Onglet pas encore ouvert
-          console.log(`  🆕 Tab not open, will create: ${tab.url}`);
-          tabsToOpen.push(tab);
+          // Tab does not exist in the browser (neither pinned nor unpinned)
+          // Now, check the recentlyOpenedUrls cache to prevent rapid re-creation by concurrent/fast successive calls
+          const timeSinceLastProcessed = now - (this.recentlyOpenedUrls.get(normalizedConfigUrl) || 0);
+          if (this.recentlyOpenedUrls.has(normalizedConfigUrl) && timeSinceLastProcessed < RECENTLY_OPENED_EXPIRY_MS) {
+            console.log(`  ⏭️ Tab not in browser, but ${normalizedConfigUrl} was processed globally ${Math.round(timeSinceLastProcessed/1000)}s ago. Assuming it's being created or state is pending. Skipping.`);
+            // We add it to alreadyOpenTabs for stats, assuming it was successfully opened/pinned by the previous call
+            // that put it in recentlyOpenedUrls.
+            alreadyOpenTabs.push(tabConfig); 
+            urlsProcessedInThisSpecificCall.add(normalizedConfigUrl); 
+            // DO NOT update recentlyOpenedUrls here; the previous call's timestamp is the one that matters for its expiry.
+          } else {
+            console.log(`  🆕 Tab not found in browser AND not in recent global cache (or expired). Will create: ${tabConfig.url}`);
+            tabsToOpen.push(tabConfig);
+            urlsProcessedInThisSpecificCall.add(normalizedConfigUrl);
+            this.recentlyOpenedUrls.set(normalizedConfigUrl, now); // Add/update timestamp as we're deciding to open it now
+          }
         }
       }
       
       // Épingler les onglets existants qui ne sont pas encore épinglés
       const pinResults = [];
-      for (const { config, existingTab } of tabsToPin) {
-        console.log(`Attempting to pin existing tab: ${config.url} (ID: ${existingTab.id})`);
-        
-        const pinResult = await this.safeTabUpdate(existingTab.id, { pinned: true });
-        
-        if (pinResult.success) {
-          pinResults.push({ success: true, tab: pinResult.tab, config });
-          console.log(`Successfully pinned existing tab: ${config.url}`);
-        } else {
-          // Don't log permission errors as errors since they're expected
-          if (pinResult.permissionError) {
-            console.log(`Skipped tab ${config.url} due to permission restrictions (normal with activeTab)`);
-            pinResults.push({ success: false, error: pinResult.error, config, permissionError: true });
+      if (tabsToPin.length > 0) {
+        console.log(`\n🎗️ Pinning ${tabsToPin.length} tabs that were found open but unpinned...`);
+        for (const { config, existingTab } of tabsToPin) {
+          console.log(`  Attempting to pin existing tab: ${config.url} (ID: ${existingTab.id})`);
+          const pinResult = await this.safeTabUpdate(existingTab.id, { pinned: true });
+          if (pinResult.success) {
+            pinResults.push({ success: true, tab: pinResult.tab, config });
+            console.log(`    Successfully pinned existing tab: ${config.url}`);
           } else {
-            console.error(`Failed to pin existing tab ${config.url}:`, pinResult.error);
-            pinResults.push({ success: false, error: pinResult.error, config });
+            if (pinResult.permissionError) {
+              console.log(`    Skipped pinning tab ${config.url} due to permission restrictions (normal with activeTab)`);
+            } else {
+              console.error(`    Failed to pin existing tab ${config.url}:`, pinResult.error);
+            }
+            pinResults.push({ success: false, error: pinResult.error, config, permissionError: pinResult.permissionError });
           }
         }
       }
       
-      // Si tous les onglets sont déjà ouverts (épinglés ou maintenant épinglés), retourner rapidement
       if (tabsToOpen.length === 0) {
-        const totalPinned = pinResults.filter(r => r.success).length;
-        const totalSkipped = alreadyOpenTabs.length;
+        console.log(`\n🏁 No new tabs to open. Total already open/processed: ${alreadyOpenTabs.length}, Total successfully pinned now: ${pinResults.filter(r=>r.success).length}`);
+        const totalPinnedNow = pinResults.filter(r => r.success).length;
+        const totalSkippedOrAlreadyOpen = alreadyOpenTabs.length;
         
+        this.settings.lastOpened = new Date().toISOString();
+        await this.storage.set({ settings: this.settings });
+
         return {
           success: true,
-          allAlreadyOpen: totalSkipped > 0 && totalPinned === 0,
-          skipped: totalSkipped,
+          skipped: totalSkippedOrAlreadyOpen,
           opened: 0,
-          pinned: totalPinned,
-          message: totalPinned > 0 ? 'someTabsPinned' : 'allTabsAlreadyOpen'
+          pinned: totalPinnedNow,
+          message: totalSkippedOrAlreadyOpen > 0 || totalPinnedNow > 0 ? 
+            (totalPinnedNow > 0 ? 'someTabsPinned' : 'allTabsAlreadyOpenOrProcessed') : 'noTabsConfiguredOrAllProcessed'
         };
       }
       
-      // Open only the tabs that are not already open, in order
+      console.log(`\n🚀 Opening ${tabsToOpen.length} new tabs...`);
       const results = [];
       for (const tab of tabsToOpen) {
         try {
@@ -454,145 +481,184 @@ class TabsPinBackground {
             pinned: true,
             active: false
           };
-          
-          // If a specific window is provided, create tabs in that window
-          if (windowId) {
-            createOptions.windowId = windowId;
-          }
-          
-          // Support for containers if specified in tab config
+          if (windowId) createOptions.windowId = windowId;
           if (tab.cookieStoreId && tab.cookieStoreId !== 'firefox-default') {
             createOptions.cookieStoreId = tab.cookieStoreId;
           }
-          
           const newTab = await this.containerUtils.createTabWithContainer(createOptions);
-          
-          // Add the normalized URL to our session tracking
-          this.openedTabsInSession.add(this.normalizeUrl(tab.url));
-          
+          this.tabUrlsById.set(newTab.id, tab.url);
           results.push({ success: true, tab: newTab, config: tab });
-          console.log(`Opened new pinned tab: ${tab.url}`);
+          console.log(`  Opened new pinned tab: ${tab.url} (ID: ${newTab.id})`);
         } catch (error) {
-          console.error(`Failed to open tab ${tab.url}:`, error);
+          console.error(`  Failed to open tab ${tab.url}:`, error);
           results.push({ success: false, error: error.message, config: tab });
+          const normalizedFailedUrl = this.normalizeUrl(tab.url);
+          this.recentlyOpenedUrls.delete(normalizedFailedUrl);
+          console.log(`    Removed ${normalizedFailedUrl} from recentlyOpenedUrls due to creation failure.`);
         }
       }
 
-      // Update last opened timestamp
       this.settings.lastOpened = new Date().toISOString();
       await this.storage.set({ settings: this.settings });
 
-      const opened = results.filter(r => r.success).length;
-      const failed = results.filter(r => !r.success).length;
-      const totalPinned = pinResults.filter(r => r.success).length;
+      const openedCount = results.filter(r => r.success).length;
+      const failedCount = results.filter(r => !r.success).length;
+      const pinnedNowCount = pinResults.filter(r => r.success).length;
 
+      console.log(`\n📊 openAllTabs summary: Opened: ${openedCount}, Failed: ${failedCount}, Pinned now: ${pinnedNowCount}, Skipped/Already Open: ${alreadyOpenTabs.length}`);
       return {
         success: true,
         results: results,
         pinResults: pinResults,
-        opened: opened,
-        failed: failed,
+        opened: openedCount,
+        failed: failedCount,
         skipped: alreadyOpenTabs.length,
-        pinned: totalPinned,
-        message: alreadyOpenTabs.length > 0 || totalPinned > 0 ? 
-          (totalPinned > 0 ? 'someTabsPinnedAndOpened' : 'someTabsAlreadyOpen') : null
+        pinned: pinnedNowCount,
+        message: openedCount > 0 || pinnedNowCount > 0 ? 
+                 'tabsOpenedOrPinned' : 
+                 (alreadyOpenTabs.length > 0 ? 'allTabsAlreadyOpenOrProcessed' : 'noActionNeeded')
       };
     } catch (error) {
-      console.error('Error opening all tabs:', error);
+      console.error('❌ Error in openAllTabs:', error);
       return { success: false, error: error.message };
+    } finally {
+      this.isOpeningAllTabsInProgress = false;
+      console.log('🔑 openAllTabs: Operation lock released.');
     }
   }
 
   async openCategoryTabs(categoryId, windowId = null) {
+    if (this.isOpeningCategoryTabsInProgress) {
+      console.warn('🔒 openCategoryTabs: Call rejected, operation already in progress.');
+      return { success: false, error: 'Tab opening (category) is already in progress. Please wait.', alreadyInProgress: true };
+    }
+    this.isOpeningCategoryTabsInProgress = true;
+    console.log('🔑 openCategoryTabs: Operation lock acquired.');
+
+    const RECENTLY_OPENED_EXPIRY_MS = 2000; // Was 15000 (15 seconds), now 2 seconds
+
     try {
-      // Get all tabs in category and sort by order
-      const categoryTabs = this.tabs.filter(tab => 
+      const now = Date.now();
+      console.log(`🧹 Cleaning recentlyOpenedUrls cache for category. Current size: ${this.recentlyOpenedUrls.size}`);
+      for (const [url, time] of this.recentlyOpenedUrls.entries()) {
+        if (now - time > RECENTLY_OPENED_EXPIRY_MS) {
+          this.recentlyOpenedUrls.delete(url);
+          console.log(`  🗑️ Removed ${url} from recentlyOpenedUrls cache (expired).`);
+        }
+      }
+      console.log(`🧹 Finished cleaning recentlyOpenedUrls cache for category. New size: ${this.recentlyOpenedUrls.size}`);
+      
+      const categoryTabsConfig = this.tabs.filter(tab => 
         tab.category === categoryId && tab.enabled !== false
       ).sort((a, b) => {
-        if (a.order !== undefined && b.order !== undefined) {
-          return a.order - b.order;
-        }
+        if (a.order !== undefined && b.order !== undefined) return a.order - b.order;
         if (a.order !== undefined) return -1;
         if (b.order !== undefined) return 1;
         return new Date(a.dateAdded || 0) - new Date(b.dateAdded || 0);
       });
 
-      if (categoryTabs.length === 0) {
+      if (categoryTabsConfig.length === 0) {
         return { success: false, error: 'No tabs in this category' };
       }
 
-      // Get tabs from specific window if provided, otherwise all tabs
       const queryOptions = windowId ? { windowId: windowId } : {};
-      const existingTabs = await browser.tabs.query(queryOptions);
+      const existingTabsFromQuery = await browser.tabs.query(queryOptions);
       
-      // Find tabs that are already open (pinned or not)
       const tabsToOpen = [];
       const alreadyOpenTabs = [];
-      const tabsToPin = []; // Onglets ouverts mais pas encore épinglés
+      const tabsToPin = [];
+      const urlsProcessedInThisSpecificCall = new Set();
       
-      for (const tab of categoryTabs) {
-        console.log(`\n🔄 Processing category tab: ${tab.url}`);
-        const existingTab = this.isUrlAlreadyOpen(tab.url, existingTabs);
-        
-        if (existingTab === true) {
-          // Tab was opened in this session
-          console.log(`  ✅ Category tab already opened in this session: ${tab.url}`);
-          alreadyOpenTabs.push(tab);
-        } else if (existingTab) {
-          if (existingTab.pinned) {
-            // Onglet déjà ouvert ET épinglé
-            console.log(`  ✅ Category tab already open and pinned: ${tab.url}`);
-            alreadyOpenTabs.push(tab);
-          } else {
-            // Onglet ouvert mais pas encore épinglé - on va l'épingler
-            console.log(`  📌 Category tab open but not pinned, will pin: ${tab.url}`);
-            tabsToPin.push({ config: tab, existingTab });
+      for (const tabConfig of categoryTabsConfig) {
+        console.log(`\n🔄 Processing category tab: ${tabConfig.url}`);
+        const normalizedConfigUrl = this.normalizeUrl(tabConfig.url);
+        console.log(`  🔍 Normalized config URL for category tab: ${normalizedConfigUrl}`);
+
+        if (urlsProcessedInThisSpecificCall.has(normalizedConfigUrl)) {
+          console.log(`  ⏭️ Already decided action for ${normalizedConfigUrl} in this category run, skipping.`);
+          continue;
+        }
+
+        let foundPinnedTab = null;
+        let foundUnpinnedTab = null;
+
+        for (const queriedTab of existingTabsFromQuery) {
+          const normalizedQueriedTabUrl = this.normalizeUrl(queriedTab.url);
+          if (normalizedQueriedTabUrl === normalizedConfigUrl) {
+            if (queriedTab.pinned) {
+              console.log(`  ✨ Found a MATCHING PINNED existing tab in browser for category: ${queriedTab.url} (ID: ${queriedTab.id})`);
+              foundPinnedTab = queriedTab;
+              break;
+            } else {
+              console.log(`  ✨ Found a MATCHING UNPINNED existing tab in browser for category: ${queriedTab.url} (ID: ${queriedTab.id})`);
+              if (!foundUnpinnedTab) foundUnpinnedTab = queriedTab;
+            }
           }
+        }
+        
+        if (foundPinnedTab) {
+          console.log(`  ✅ Category tab already open and pinned in browser: ${tabConfig.url} (ID: ${foundPinnedTab.id})`);
+          alreadyOpenTabs.push(tabConfig);
+          urlsProcessedInThisSpecificCall.add(normalizedConfigUrl);
+          this.recentlyOpenedUrls.set(normalizedConfigUrl, now);
+        } else if (foundUnpinnedTab) {
+          console.log(`  📌 Category tab open in browser but not pinned, will pin: ${tabConfig.url} (ID: ${foundUnpinnedTab.id})`);
+          tabsToPin.push({ config: tabConfig, existingTab: foundUnpinnedTab });
+          urlsProcessedInThisSpecificCall.add(normalizedConfigUrl);
+          this.recentlyOpenedUrls.set(normalizedConfigUrl, now);
         } else {
-          // Onglet pas encore ouvert
-          console.log(`  🆕 Category tab not open, will create: ${tab.url}`);
-          tabsToOpen.push(tab);
+          // Tab does not exist in the browser
+          const timeSinceLastProcessed = now - (this.recentlyOpenedUrls.get(normalizedConfigUrl) || 0);
+          if (this.recentlyOpenedUrls.has(normalizedConfigUrl) && timeSinceLastProcessed < RECENTLY_OPENED_EXPIRY_MS) {
+            console.log(`  ⏭️ Category tab not in browser, but ${normalizedConfigUrl} was processed globally ${Math.round(timeSinceLastProcessed/1000)}s ago. Skipping.`);
+            alreadyOpenTabs.push(tabConfig);
+            urlsProcessedInThisSpecificCall.add(normalizedConfigUrl);
+          } else {
+            console.log(`  🆕 Category tab not found in browser AND not in recent global cache. Will create: ${tabConfig.url}`);
+            tabsToOpen.push(tabConfig);
+            urlsProcessedInThisSpecificCall.add(normalizedConfigUrl);
+            this.recentlyOpenedUrls.set(normalizedConfigUrl, now);
+          }
         }
       }
       
       // Épingler les onglets existants qui ne sont pas encore épinglés
       const pinResults = [];
-      for (const { config, existingTab } of tabsToPin) {
-        console.log(`Attempting to pin existing category tab: ${config.url} (ID: ${existingTab.id})`);
-        
-        const pinResult = await this.safeTabUpdate(existingTab.id, { pinned: true });
-        
-        if (pinResult.success) {
-          pinResults.push({ success: true, tab: pinResult.tab, config });
-          console.log(`Successfully pinned existing category tab: ${config.url}`);
-        } else {
-          // Don't log permission errors as errors since they're expected
-          if (pinResult.permissionError) {
-            console.log(`Skipped tab ${config.url} due to permission restrictions (normal with activeTab)`);
-            pinResults.push({ success: false, error: pinResult.error, config, permissionError: true });
+      if (tabsToPin.length > 0) {
+        console.log(`\n🎗️ Pinning ${tabsToPin.length} category tabs that were found open but unpinned...`);
+        for (const { config, existingTab } of tabsToPin) {
+           console.log(`  Attempting to pin existing category tab: ${config.url} (ID: ${existingTab.id})`);
+          const pinResult = await this.safeTabUpdate(existingTab.id, { pinned: true });
+          if (pinResult.success) {
+            pinResults.push({ success: true, tab: pinResult.tab, config });
+            console.log(`    Successfully pinned existing category tab: ${config.url}`);
           } else {
-            console.error(`Failed to pin existing category tab ${config.url}:`, pinResult.error);
-            pinResults.push({ success: false, error: pinResult.error, config });
+            if (pinResult.permissionError) {
+              console.log(`    Skipped pinning category tab ${config.url} due to permission restrictions.`);
+            } else {
+              console.error(`    Failed to pin existing category tab ${config.url}:`, pinResult.error);
+            }
+            pinResults.push({ success: false, error: pinResult.error, config, permissionError: pinResult.permissionError });
           }
         }
       }
       
-      // Si tous les onglets sont déjà ouverts (épinglés ou maintenant épinglés), retourner rapidement
       if (tabsToOpen.length === 0) {
-        const totalPinned = pinResults.filter(r => r.success).length;
-        const totalSkipped = alreadyOpenTabs.length;
+        console.log(`\n🏁 No new category tabs to open. Total already open/processed: ${alreadyOpenTabs.length}, Total successfully pinned now: ${pinResults.filter(r=>r.success).length}`);
+        const totalPinnedNow = pinResults.filter(r => r.success).length;
+        const totalSkippedOrAlreadyOpen = alreadyOpenTabs.length;
         
         return {
           success: true,
-          allAlreadyOpen: totalSkipped > 0 && totalPinned === 0,
-          skipped: totalSkipped,
+          skipped: totalSkippedOrAlreadyOpen,
           opened: 0,
-          pinned: totalPinned,
-          message: totalPinned > 0 ? 'someTabsPinned' : 'allTabsAlreadyOpen'
+          pinned: totalPinnedNow,
+          message: totalSkippedOrAlreadyOpen > 0 || totalPinnedNow > 0 ?
+            (totalPinnedNow > 0 ? 'someCategoryTabsPinned' : 'allCategoryTabsAlreadyOpenOrProcessed') : 'noCategoryTabsConfiguredOrAllProcessed'
         };
       }
       
-      // Open only the tabs that are not already open, in order
+      console.log(`\n🚀 Opening ${tabsToOpen.length} new category tabs...`);
       const results = [];
       for (const tab of tabsToOpen) {
         try {
@@ -601,48 +667,46 @@ class TabsPinBackground {
             pinned: true,
             active: false
           };
-          
-          // If a specific window is provided, create tabs in that window
-          if (windowId) {
-            createOptions.windowId = windowId;
-          }
-          
-          // Support for containers if specified in tab config
+          if (windowId) createOptions.windowId = windowId;
           if (tab.cookieStoreId && tab.cookieStoreId !== 'firefox-default') {
             createOptions.cookieStoreId = tab.cookieStoreId;
           }
-          
           const newTab = await this.containerUtils.createTabWithContainer(createOptions);
-          
-          // Add the normalized URL to our session tracking
-          this.openedTabsInSession.add(this.normalizeUrl(tab.url));
-          
+          this.tabUrlsById.set(newTab.id, tab.url);
           results.push({ success: true, tab: newTab, config: tab });
-          console.log(`Opened new pinned category tab: ${tab.url}`);
+          console.log(`  Opened new pinned category tab: ${tab.url} (ID: ${newTab.id})`);
         } catch (error) {
-          console.error(`Failed to open category tab ${tab.url}:`, error);
+          console.error(`  Failed to open category tab ${tab.url}:`, error);
           results.push({ success: false, error: error.message, config: tab });
+          const normalizedFailedUrl = this.normalizeUrl(tab.url);
+          this.recentlyOpenedUrls.delete(normalizedFailedUrl);
+          console.log(`    Removed ${normalizedFailedUrl} from recentlyOpenedUrls due to category tab creation failure.`);
         }
       }
 
-      const opened = results.filter(r => r.success).length;
-      const failed = results.filter(r => !r.success).length;
-      const totalPinned = pinResults.filter(r => r.success).length;
-
+      const openedCount = results.filter(r => r.success).length;
+      const failedCount = results.filter(r => !r.success).length;
+      const pinnedNowCount = pinResults.filter(r => r.success).length;
+      
+      console.log(`\n📊 openCategoryTabs summary: Opened: ${openedCount}, Failed: ${failedCount}, Pinned now: ${pinnedNowCount}, Skipped/Already Open: ${alreadyOpenTabs.length}`);
       return {
         success: true,
         results: results,
         pinResults: pinResults,
-        opened: opened,
-        failed: failed,
+        opened: openedCount,
+        failed: failedCount,
         skipped: alreadyOpenTabs.length,
-        pinned: totalPinned,
-        message: alreadyOpenTabs.length > 0 || totalPinned > 0 ? 
-          (totalPinned > 0 ? 'someTabsPinnedAndOpened' : 'someTabsAlreadyOpen') : null
+        pinned: pinnedNowCount,
+        message: openedCount > 0 || pinnedNowCount > 0 ?
+                 'categoryTabsOpenedOrPinned' :
+                 (alreadyOpenTabs.length > 0 ? 'allCategoryTabsAlreadyOpenOrProcessed' : 'noActionNeededForCategory')
       };
     } catch (error) {
-      console.error('Error opening category tabs:', error);
+      console.error('❌ Error in openCategoryTabs:', error);
       return { success: false, error: error.message };
+    } finally {
+      this.isOpeningCategoryTabsInProgress = false;
+      console.log('🔑 openCategoryTabs: Operation lock released.');
     }
   }
 
