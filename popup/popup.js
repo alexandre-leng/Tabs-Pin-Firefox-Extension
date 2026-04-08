@@ -217,19 +217,7 @@ class PopupManager {
   }
 
   getDefaultCategories() {
-    const defaultCategories = [
-      { id: 'work', name: 'Work', icon: '💼' },
-      { id: 'personal', name: 'Personal', icon: '👤' },
-      { id: 'development', name: 'Development', icon: '💻' },
-      { id: 'social', name: 'Social', icon: '🌐' },
-      { id: 'tools', name: 'Tools', icon: '🔧' },
-      { id: 'entertainment', name: 'Entertainment', icon: '🎮' }
-    ];
-    
-    return defaultCategories.map(category => ({
-      ...category,
-      name: browser.i18n.getMessage(category.id) || category.name
-    }));
+    return DefaultCategories.getDefaultCategories(browser.i18n);
   }
 
   setupEventListeners() {

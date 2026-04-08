@@ -88,14 +88,7 @@ class TabsPinBackground {
   }
 
   getDefaultCategories() {
-    return [
-      { id: 'work', name: browser.i18n.getMessage('work') || 'Work', icon: '💼' },
-      { id: 'personal', name: browser.i18n.getMessage('personal') || 'Personal', icon: '👤' },
-      { id: 'development', name: browser.i18n.getMessage('development') || 'Development', icon: '💻' },
-      { id: 'social', name: browser.i18n.getMessage('social') || 'Social', icon: '🌐' },
-      { id: 'tools', name: browser.i18n.getMessage('tools') || 'Tools', icon: '🔧' },
-      { id: 'entertainment', name: browser.i18n.getMessage('entertainment') || 'Entertainment', icon: '🎮' }
-    ];
+    return DefaultCategories.getDefaultCategories(browser.i18n);
   }
 
   setupEventListeners() {

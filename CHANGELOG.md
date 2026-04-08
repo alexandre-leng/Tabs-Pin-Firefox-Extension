@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.7] - 2026-04-08
+
+- Bump extension version to 1.2.7.
+
 ## [1.2.6] - YYYY-MM-DD
 
 Bug fixed
