@@ -13,7 +13,8 @@ const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 console.log(`🔧 Preparing manifest for ${target}...`);
 
 if (target === 'firefox') {
-  // Add background.scripts for Firefox compatibility/linter
+  // Firefox MV3 prefers background.scripts over service_worker for stability
+  delete manifest.background.service_worker;
   manifest.background.scripts = [
     "lib/browser-polyfill.js",
     "lib/default-categories.js",
@@ -22,21 +23,27 @@ if (target === 'firefox') {
     "background/background.js"
   ];
   
-  // Ensure we have an ID for Firefox
+  // Ensure we have an ID for Firefox and privacy settings
   if (!manifest.browser_specific_settings) {
-    manifest.browser_specific_settings = {
-      gecko: {
-        id: "tabspin@firefox.extension"
-      }
-    };
+    manifest.browser_specific_settings = { gecko: {} };
   }
+  if (!manifest.browser_specific_settings.gecko) {
+    manifest.browser_specific_settings.gecko = {};
+  }
+  
+  manifest.browser_specific_settings.gecko.id = "tabspin@firefox.extension";
+  manifest.browser_specific_settings.gecko.data_collection_permissions = {
+    "required": ["none"]
+  };
+  
 } else if (target === 'chrome') {
-  // Remove Firefox-only keys to avoid warnings/errors
+  // Chrome MV3 requires service_worker
   delete manifest.browser_specific_settings;
   
-  // Set up background as a Service Worker for Chrome MV3
+  // Ensure background is set up as a Service Worker for Chrome
+  delete manifest.background.scripts;
   manifest.background = {
-    "service_worker": "background/service-worker-wrapper.js"
+    "service_worker": "background/background.js"
   };
   
   // Remove Firefox-only permissions

@@ -6,6 +6,17 @@
 
 'use strict';
 
+// Load dependencies for Service Worker context (Chrome & Firefox MV3)
+if (typeof importScripts === 'function') {
+  importScripts(
+    '../lib/browser-polyfill.js',
+    '../lib/default-categories.js',
+    '../lib/storage-manager.js',
+    '../lib/container-utils.js'
+  );
+}
+
+
 class TabsPinBackground {
   constructor() {
     this.tabs = [];
