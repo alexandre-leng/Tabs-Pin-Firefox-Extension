@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 - Bump extension version to 1.2.7.
 
-## [1.2.6] - YYYY-MM-DD
+## [1.2.7] - YYYY-MM-DD
 
 Bug fixed
 

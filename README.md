@@ -26,12 +26,24 @@ Tabs Pin helps you organize your pinned tabs in Firefox. Create custom work envi
 2. Search for "Tabs Pin".
 3. Click "Add to Firefox".
 
-### Manual (for developers)
+### For Developers
+
+1. Clone the repository:
 ```bash
 git clone https://github.com/alexandre-leng/Tabs-Pin-Firefox-Extension/
-cd firefox-extension
-# In Firefox, go to about:debugging -> This Firefox -> Load Temporary Add-on -> manifest.json
+cd "Tabs Pin Firefox extension"
 ```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Useful commands:
+- **Development**: `npm run dev` (launch Firefox with the extension loaded temporarily)
+- **Build (Recommended)**: `npm run package` (create a signed .zip file in `web-ext-artifacts/`)
+- **Build (Local)**: `npm run build` (create a .xpi file in the `dist/` folder)
+- **Lint**: `npm run lint` (verify the extension's compliance)
 
 ## 🚀 Quick Start
 
@@ -55,8 +67,7 @@ cd firefox-extension
 
 ## 📝 License
 
-Distributed under the GNU License. See [Voir la licence GPL-3.0](https://github.com/alexandre-leng/Tabs-Pin-Firefox-Extension/tree/main?tab=GPL-3.0-1-ov-file#readme)
- for more information.
+Distributed under the GNU License. See [GPL-3.0 License](https://github.com/alexandre-leng/Tabs-Pin-Firefox-Extension/tree/main?tab=GPL-3.0-1-ov-file#readme) for more information.
 
 ---
 
@@ -69,4 +80,4 @@ Distributed under the GNU License. See [Voir la licence GPL-3.0](https://github.
 
 **Developed with ❤️ by Alexandre**
 
-</div> 
+</div>
