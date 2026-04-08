@@ -21,15 +21,26 @@ if (target === 'firefox') {
     "lib/container-utils.js",
     "background/background.js"
   ];
-  
-  // Ensure we have an ID for Firefox
-  if (!manifest.browser_specific_settings) {
-    manifest.browser_specific_settings = {
-      gecko: {
-        id: "tabspin@firefox.extension"
-      }
-    };
+
+  // Remove Chrome MV3 service_worker which is ignored and warns on Firefox
+  if (manifest.background) {
+    delete manifest.background.service_worker;
   }
+  
+  // Ensure we have an ID and data collection permissions for Firefox
+  if (!manifest.browser_specific_settings) {
+    manifest.browser_specific_settings = { gecko: {} };
+  }
+  if (!manifest.browser_specific_settings.gecko) {
+    manifest.browser_specific_settings.gecko = {};
+  }
+  
+  // Required ID for Firefox extensions
+  manifest.browser_specific_settings.gecko.id = "tabspin@firefox.extension";
+  
+  // New requirement for Firefox: data collection consent
+  // We set it to false as this extension does not collect data
+  manifest.browser_specific_settings.gecko.data_collection_permissions = false;
 } else if (target === 'chrome') {
   // Remove Firefox-only keys to avoid warnings/errors
   delete manifest.browser_specific_settings;
