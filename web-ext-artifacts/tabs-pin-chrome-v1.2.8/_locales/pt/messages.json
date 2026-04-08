@@ -1,0 +1,638 @@
+{
+  "extensionName": {
+    "message": "TabsFlow - Gestor de Abas Fixadas",
+    "description": "O nome da extensão"
+  },
+  "extensionDescription": {
+    "message": "Gerencie eficientemente suas abas fixadas com favoritos categorizados e restauração automática de fluxo de trabalho",
+    "description": "A descrição da extensão"
+  },
+  "browserActionTitle": {
+    "message": "Abrir TabsFlow",
+    "description": "O título mostrado ao passar o mouse sobre o botão de ação do navegador"
+  },
+  "openAllTabs": {
+    "message": "Abrir Todas as Abas",
+    "description": "Texto do botão para abrir todas as abas configuradas"
+  },
+  "openTabsCount": {
+    "message": "Abrir $COUNT$ abas",
+    "description": "Texto do botão mostrando o número de abas a abrir",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "noTabsConfigured": {
+    "message": "Nenhuma aba configurada",
+    "description": "Mensagem quando não há abas configuradas"
+  },
+  "configureTabsMessage": {
+    "message": "Configure suas abas favoritas na página de opções para começar.",
+    "description": "Instruções para novos usuários"
+  },
+  "openOptions": {
+    "message": "Abrir Opções",
+    "description": "Botão para abrir a página de opções"
+  },
+  "categories": {
+    "message": "Categorias",
+    "description": "Título da seção categorias"
+  },
+  "work": {
+    "message": "Trabalho",
+    "description": "Nome da categoria trabalho"
+  },
+  "personal": {
+    "message": "Pessoal",
+    "description": "Nome da categoria pessoal"
+  },
+  "development": {
+    "message": "Desenvolvimento",
+    "description": "Nome da categoria desenvolvimento"
+  },
+  "social": {
+    "message": "Social",
+    "description": "Nome da categoria social"
+  },
+  "tools": {
+    "message": "Ferramentas",
+    "description": "Nome da categoria ferramentas"
+  },
+  "entertainment": {
+    "message": "Entretenimento",
+    "description": "Nome da categoria entretenimento"
+  },
+  "optionsTitle": {
+    "message": "Opções TabsFlow",
+    "description": "Título da página de opções"
+  },
+  "manageTabs": {
+    "message": "Gerenciar Suas Abas Fixadas",
+    "description": "Subtítulo na página de opções"
+  },
+  "addNewTab": {
+    "message": "Adicionar Nova Aba",
+    "description": "Botão para adicionar uma nova configuração de aba"
+  },
+  "tabUrl": {
+    "message": "URL da Aba",
+    "description": "Rótulo para o campo de entrada URL"
+  },
+  "tabTitle": {
+    "message": "Título da Aba (opcional)",
+    "description": "Rótulo para o campo de entrada título"
+  },
+  "tabCategory": {
+    "message": "Categoria",
+    "description": "Rótulo para a seleção de categoria"
+  },
+  "saveTab": {
+    "message": "Salvar Aba",
+    "description": "Botão para salvar a configuração da aba"
+  },
+  "cancel": {
+    "message": "Cancelar",
+    "description": "Texto do botão cancelar"
+  },
+  "edit": {
+    "message": "Editar",
+    "description": "Texto do botão editar"
+  },
+  "delete": {
+    "message": "Excluir",
+    "description": "Texto do botão excluir"
+  },
+  "deleteConfirm": {
+    "message": "Tem certeza de que deseja excluir esta aba?",
+    "description": "Mensagem de confirmação para exclusão de aba"
+  },
+  "importExport": {
+    "message": "Importar/Exportar",
+    "description": "Título da seção Importar/Exportar"
+  },
+  "exportSettings": {
+    "message": "Exportar Configurações",
+    "description": "Texto do botão exportar"
+  },
+  "importSettings": {
+    "message": "Importar Configurações",
+    "description": "Texto do botão importar"
+  },
+  "settingsExported": {
+    "message": "Configurações exportadas com sucesso!",
+    "description": "Mensagem de sucesso para exportação"
+  },
+  "settingsImported": {
+    "message": "Configurações importadas com sucesso!",
+    "description": "Mensagem de sucesso para importação"
+  },
+  "invalidFile": {
+    "message": "Formato de arquivo inválido",
+    "description": "Mensagem de erro para arquivo de importação inválido"
+  },
+  "errorOpeningTabs": {
+    "message": "Erro ao abrir abas",
+    "description": "Mensagem de erro quando as abas falham ao abrir"
+  },
+  "tabsOpened": {
+    "message": "Abas abertas com sucesso!",
+    "description": "Mensagem de sucesso quando as abas são abertas"
+  },
+  "tabsSaved": {
+    "message": "Aba salva com sucesso!",
+    "description": "Mensagem de sucesso quando a aba é salva"
+  },
+  "tabDeleted": {
+    "message": "Aba excluída com sucesso!",
+    "description": "Mensagem de sucesso quando a aba é excluída"
+  },
+  "invalidUrl": {
+    "message": "Por favor, insira uma URL válida",
+    "description": "Mensagem de erro para URL inválida"
+  },
+  "urlPlaceholder": {
+    "message": "https://exemplo.com",
+    "description": "Texto de espaço reservado para entrada URL"
+  },
+  "titlePlaceholder": {
+    "message": "Meu Site Favorito",
+    "description": "Texto de espaço reservado para entrada título"
+  },
+  "loading": {
+    "message": "Carregando...",
+    "description": "Mensagem de carregamento"
+  },
+  "retry": {
+    "message": "Tentar Novamente",
+    "description": "Texto do botão tentar novamente"
+  },
+  "close": {
+    "message": "Fechar",
+    "description": "Texto do botão fechar"
+  },
+  "pinCurrentTab": {
+    "message": "Fixar Aba Atual",
+    "description": "Texto do botão para fixar a aba atual"
+  },
+  "options": {
+    "message": "Opções",
+    "description": "Texto do botão opções"
+  },
+  "cannotPinTab": {
+    "message": "Não é possível fixar esta aba",
+    "description": "Mensagem de erro quando a aba não pode ser fixada"
+  },
+  "tabAlreadyPinned": {
+    "message": "Esta aba já está fixada",
+    "description": "Mensagem de aviso quando a aba já está na lista"
+  },
+  "tabPinned": {
+    "message": "\"$TITLE$\" foi fixada",
+    "description": "Mensagem de sucesso quando a aba é fixada",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      }
+    }
+  },
+  "failedToPinTab": {
+    "message": "Falha ao fixar a aba",
+    "description": "Mensagem de erro quando a fixação falha"
+  },
+  "failedToInitialize": {
+    "message": "Falha ao inicializar o popup",
+    "description": "Mensagem de erro quando o popup não pode inicializar"
+  },
+  "openingTabs": {
+    "message": "Abrindo abas...",
+    "description": "Mensagem exibida durante a abertura das abas"
+  },
+  "openingCategoryTabs": {
+    "message": "Abrindo abas da categoria...",
+    "description": "Mensagem exibida durante a abertura das abas de uma categoria"
+  },
+  "readyToOpenTabs": {
+    "message": "Pronto para abrir abas",
+    "description": "Mensagem de status quando a extensão está pronta"
+  },
+  "currentTabCannotBePinned": {
+    "message": "A aba atual não pode ser fixada",
+    "description": "Mensagem de erro para o estado do botão de fixação"
+  },
+  "errorOpeningCategoryTabs": {
+    "message": "Erro ao abrir abas da categoria",
+    "description": "Mensagem de erro específica para categorias"
+  },
+  "tabsOpenedCount": {
+    "message": "Abertas $COUNT$ abas",
+    "description": "Mensagem de sucesso com número de abas abertas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "justNow": {
+    "message": "Agora mesmo",
+    "description": "Indicação de tempo para evento recente"
+  },
+  "lastOpened": {
+    "message": "Última abertura: $TIME$",
+    "description": "Exibição do tempo da última abertura",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "há 5 minutos"
+      }
+    }
+  },
+  "editTab": {
+    "message": "Editar Aba",
+    "description": "Título do diálogo de edição"
+  },
+  "deleteTab": {
+    "message": "Excluir Aba",
+    "description": "Título do diálogo de exclusão"
+  },
+  "days": {
+    "message": "dia",
+    "description": "Unidade de tempo - dia"
+  },
+  "hours": {
+    "message": "hora",
+    "description": "Unidade de tempo - hora"
+  },
+  "minutes": {
+    "message": "minuto",
+    "description": "Unidade de tempo - minuto"
+  },
+  "ago": {
+    "message": "há",
+    "description": "Indicador de tempo passado"
+  },
+  "uncategorized": {
+    "message": "Sem categoria",
+    "description": "Categoria padrão para abas sem categoria"
+  },
+  "manageCategories": {
+    "message": "Gerenciar Categorias",
+    "description": "Título da seção gestão de categorias"
+  },
+  "resetCategories": {
+    "message": "Restaurar Padrão",
+    "description": "Botão para restaurar categorias padrão"
+  },
+  "editCategory": {
+    "message": "Editar Categoria",
+    "description": "Título do modal de edição de categoria"
+  },
+  "categoryName": {
+    "message": "Nome da Categoria",
+    "description": "Rótulo para o campo nome da categoria"
+  },
+  "categoryNamePlaceholder": {
+    "message": "Digite o nome da categoria",
+    "description": "Placeholder para o campo nome da categoria"
+  },
+  "categoryIcon": {
+    "message": "Ícone da Categoria",
+    "description": "Rótulo para o campo ícone da categoria"
+  },
+  "categoryIconPlaceholder": {
+    "message": "📁",
+    "description": "Placeholder para o campo ícone da categoria"
+  },
+  "categoryIconHelp": {
+    "message": "Escolha um emoji para representar esta categoria",
+    "description": "Texto de ajuda para o ícone da categoria"
+  },
+  "saveCategory": {
+    "message": "Salvar Categoria",
+    "description": "Botão para salvar categoria"
+  },
+  "categorySaved": {
+    "message": "Categoria salva com sucesso!",
+    "description": "Mensagem de sucesso para salvar categoria"
+  },
+  "categoriesReset": {
+    "message": "Categorias restauradas para o padrão!",
+    "description": "Mensagem de sucesso para restaurar categorias"
+  },
+  "resetCategoriesConfirm": {
+    "message": "Tem certeza de que deseja restaurar todas as categorias? Isso restaurará os nomes e ícones padrão.",
+    "description": "Mensagem de confirmação para restaurar categorias"
+  },
+  "categoryNameRequired": {
+    "message": "O nome da categoria é obrigatório",
+    "description": "Mensagem de erro para nome de categoria obrigatório"
+  },
+  "categoryIconRequired": {
+    "message": "O ícone da categoria é obrigatório",
+    "description": "Mensagem de erro para ícone de categoria obrigatório"
+  },
+  "noIconsFound": {
+    "message": "Nenhum ícone encontrado"
+  },
+  "dragToReorder": {
+    "message": "Arrastar para reordenar",
+    "description": "Tooltip para a alça de arrasto das abas"
+  },
+  "dropHere": {
+    "message": "Soltar aqui",
+    "description": "Texto exibido na zona de soltar durante o arrastar e soltar"
+  },
+  "tabReordered": {
+    "message": "Ordem das abas atualizada!",
+    "description": "Mensagem de sucesso quando a ordem das abas é alterada"
+  },
+  "reorderError": {
+    "message": "Erro ao reordenar a aba",
+    "description": "Mensagem de erro durante o reordenamento"
+  },
+  "footerCreatedBy": {
+    "message": "Criado por Alexandre com",
+    "description": "Footer created by text"
+  },
+  "changeCategoryTooltip": {
+    "message": "Mudar categoria",
+    "description": "Tooltip for the category badge on a tab item"
+  },
+  "categoryChanged": {
+    "message": "Categoria atualizada!",
+    "description": "Success message when a tab's category is changed via quick edit"
+  },
+  "configureManually": {
+    "message": "Configurar manualmente"
+  },
+  "getStartedTitle": {
+    "message": "Comece aqui!"
+  },
+  "getStartedDescription": {
+    "message": "Fixe sua primeira aba para criar seu espaço pessoal e aumentar a produtividade."
+  },
+  "pinCurrentTabAction": {
+    "message": "Fixar Aba Atual"
+  },
+  "pinCurrentTabHelper": {
+    "message": "Adicione a aba que você está visualizando atualmente"
+  },
+  "orDivider": {
+    "message": "ou"
+  },
+  "openOneTab": {
+    "message": "Abrir 1 Aba"
+  },
+  "pinnedTabsShort": {
+    "message": "Fixadas"
+  },
+  "categoriesShort": {
+    "message": "Categorias"
+  },
+  "allTabsAlreadyOpen": {
+    "message": "Todas as abas já estão abertas e fixadas"
+  },
+  "someTabsAlreadyOpen": {
+    "message": "$SKIPPED$ aba(s) já aberta(s), $OPENED$ nova(s) aba(s) criada(s)",
+    "placeholders": {
+      "skipped": {
+        "content": "$1",
+        "example": "3"
+      },
+      "opened": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+  "checkingExistingTabs": {
+    "message": "Verificando abas existentes..."
+  },
+  "openTabsSingular": {
+    "message": "Abrir $COUNT$ aba",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "openTabsPlural": {
+    "message": "Abrir $COUNT$ abas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "refresh": {
+    "message": "Atualizar"
+  },
+  "refreshTooltip": {
+    "message": "Atualizar dados de abas e categorias"
+  },
+  "clickToOpenPinnedTabs": {
+    "message": "Clique para abrir suas abas fixadas"
+  },
+  "lastOpenedPrefix": {
+    "message": "Última abertura:"
+  },
+  "tabSingular": {
+    "message": "aba"
+  },
+  "tabPlural": {
+    "message": "abas"
+  },
+  "pinCurrentTabTooltip": {
+    "message": "Fixar Aba Atual"
+  },
+  "manageTabsAndSettingsTooltip": {
+    "message": "Gerencie suas abas e configurações"
+  },
+  "manageCategoriesButtonTooltip": {
+    "message": "Gerenciar categorias"
+  },
+  "viewAllPinnedTabsTooltip": {
+    "message": "Ver todas as abas fixadas"
+  },
+  "manageCategoriesStatTooltip": {
+    "message": "Gerenciar categorias"
+  },
+  "extensionVersionTooltip": {
+    "message": "Versão da extensão"
+  },
+  "exportSettingsTooltip": {
+    "message": "Exportar configurações"
+  },
+  "importSettingsTooltip": {
+    "message": "Importar configurações"
+  },
+  "notificationsDenied": {
+    "message": "Notificações desativadas. Ative-as nas configurações do seu navegador."
+  },
+  "criticalErrorTitle": {
+    "message": "Erro crítico"
+  },
+  "criticalErrorMessage": {
+    "message": "Ocorreu um erro crítico. Reinicie a extensão."
+  },
+  "selectCategory": {
+    "message": "Selecionar uma categoria"
+  },
+  "tabPinnedInCategory": {
+    "message": "\"$TAB_TITLE$\" fixada em $CATEGORY_NAME$",
+    "placeholders": {
+      "tab_title": {
+        "content": "$1",
+        "example": "Google"
+      },
+      "category_name": {
+        "content": "$2",
+        "example": "Trabalho"
+      }
+    }
+  },
+  "categoryPrefix": {
+    "message": "Categoria"
+  },
+  "containsPrefix": {
+    "message": "contém"
+  },
+  "noCategoryTabs": {
+    "message": "Nenhuma aba nesta categoria"
+  },
+  "selectCategoryIcon": {
+    "message": "Selecionar Ícone da Categoria"
+  },
+  "searchIcons": {
+    "message": "Buscar ícones..."
+  },
+  "recent": {
+    "message": "Recente"
+  },
+  "objects": {
+    "message": "Objetos"
+  },
+  "symbols": {
+    "message": "Símbolos"
+  },
+  "activities": {
+    "message": "Atividades"
+  },
+  "nature": {
+    "message": "Natureza"
+  },
+  "food": {
+    "message": "Comida"
+  },
+  "noRecentIcons": {
+    "message": "Nenhum ícone recente"
+  },
+  "containerSupport": {
+    "message": "Firefox Multi-Account Containers support detected",
+    "description": "Message indicating containers are supported"
+  },
+  "defaultContainer": {
+    "message": "Default container",
+    "description": "Name for the default container"
+  },
+  "containerTabPin": {
+    "message": "Pinning tab in container: $CONTAINER$",
+    "description": "Message when pinning a tab in a container",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "Personal"
+      }
+    }
+  },
+  "containerTabCreate": {
+    "message": "Creating tab in container: $CONTAINER$",
+    "description": "Message when creating a tab in a container",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "Work"
+      }
+    }
+  },
+  "invalidTabId": {
+    "message": "Invalid tab ID: $TABID$",
+    "description": "Error message for invalid tab ID",
+    "placeholders": {
+      "tabid": {
+        "content": "$1",
+        "example": "61"
+      }
+    }
+  },
+  "tabNoLongerExists": {
+    "message": "Tab no longer exists or is not accessible",
+    "description": "Error message when tab no longer exists"
+  },
+  "containerNotFound": {
+    "message": "Container not found: $CONTAINER$",
+    "description": "Error message when container is not found",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "firefox-container-1"
+      }
+    }
+  },
+  "containerErrorFallback": {
+    "message": "Using default container due to error",
+    "description": "Message when falling back to default container"
+  },
+  "someTabsPinned": {
+    "message": "Some existing tabs have been pinned",
+    "description": "Message when some existing tabs were pinned"
+  },
+  "someTabsPinnedAndOpened": {
+    "message": "Some tabs were pinned and others opened",
+    "description": "Message when some tabs were pinned and others opened"
+  },
+  "tabPinSuccess": {
+    "message": "Tab pinned successfully: $URL$",
+    "description": "Success message for tab pinning",
+    "placeholders": {
+      "url": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "tabPinError": {
+    "message": "Failed to pin tab: $ERROR$",
+    "description": "Error message for tab pinning",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Invalid tab ID"
+      }
+    }
+  },
+  "containerRaceCondition": {
+    "message": "Adding delay to avoid conflicts with containers",
+    "description": "Debug message for containers"
+  },
+  "allTabsAlreadyPinned": {
+    "message": "All tabs are already pinned!",
+    "description": "Message when all tabs are already pinned"
+  },
+  "tabsPinned": {
+    "message": "$COUNT$ aba(s) foram fixadas",
+    "description": "Mensagem de sucesso para abas fixadas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  }
+}

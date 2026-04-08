@@ -2,12 +2,10 @@
   "manifest_version": 3,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "default_locale": "en",
-
   "author": "Alexandre",
   "homepage_url": "https://github.com/alexandre-leng/Tabs-Pin-Firefox-Extension",
-
   "icons": {
     "16": "assets/icons/icon-16.png",
     "32": "assets/icons/icon-32.png",
@@ -15,24 +13,22 @@
     "96": "assets/icons/icon-96.png",
     "128": "assets/icons/icon-128.png"
   },
-
   "permissions": [
-    "tabs", 
-    "storage", 
-    "activeTab", 
-    "contextualIdentities",
+    "tabs",
+    "storage",
+    "activeTab",
     "cookies"
   ],
-
   "background": {
+    "service_worker": "background/service-worker.js",
     "scripts": [
-      "lib/default-categories.js", 
-      "lib/storage-manager.js", 
-      "lib/container-utils.js", 
+      "lib/browser-polyfill.js",
+      "lib/default-categories.js",
+      "lib/storage-manager.js",
+      "lib/container-utils.js",
       "background/background.js"
     ]
   },
-
   "action": {
     "default_popup": "popup/popup.html",
     "default_title": "__MSG_browserActionTitle__",
@@ -43,29 +39,26 @@
       "128": "assets/icons/icon-128.png"
     }
   },
-
   "options_ui": {
     "page": "options/options.html",
     "open_in_tab": true
   },
-
   "web_accessible_resources": [
     {
-      "resources": ["assets/icons/*.png"],
-      "matches": ["<all_urls>"]
+      "resources": [
+        "assets/icons/*.png"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
     }
   ],
-
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self';"
   },
-
   "browser_specific_settings": {
     "gecko": {
-      "id": "tabspin@firefox.extension",
-      "data_collection_permissions": {
-        "required": ["none"]
-      }
+      "id": "tabspin@firefox.extension"
     }
   }
 }

@@ -1,0 +1,553 @@
+{
+  "extensionName": {
+    "message": "Закрепление вкладок"
+  },
+  "extensionDescription": {
+    "message": "Легко управляйте и открывайте закреплённые вкладки. Организуйте вкладки по категориям и автоматически открывайте их в новых окнах."
+  },
+  "browserActionTitle": {
+    "message": "Открыть Закрепление вкладок"
+  },
+  "openAllTabs": {
+    "message": "Открыть все вкладки"
+  },
+  "openOneTab": {
+    "message": "Открыть 1 вкладку"
+  },
+  "openTabsCount": {
+    "message": "Открыть $COUNT$ вкладок",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "openTabsSingular": {
+    "message": "Открыть $COUNT$ вкладку",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "openTabsPlural": {
+    "message": "Открыть $COUNT$ вкладок",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "noTabsConfigured": {
+    "message": "Вкладки не настроены"
+  },
+  "configureTabsMessage": {
+    "message": "Настройте избранные вкладки на странице параметров, чтобы начать."
+  },
+  "pinCurrentTab": {
+    "message": "Закрепить текущую вкладку"
+  },
+  "openOptions": {
+    "message": "Открыть настройки"
+  },
+  "categories": {
+    "message": "Категории"
+  },
+  "work": {
+    "message": "Работа"
+  },
+  "personal": {
+    "message": "Личное"
+  },
+  "development": {
+    "message": "Разработка"
+  },
+  "social": {
+    "message": "Социальные сети"
+  },
+  "tools": {
+    "message": "Инструменты"
+  },
+  "entertainment": {
+    "message": "Развлечения"
+  },
+  "optionsTitle": {
+    "message": "Параметры Закрепления вкладок"
+  },
+  "manageTabs": {
+    "message": "Управление закреплёнными вкладками"
+  },
+  "addNewTab": {
+    "message": "Добавить новую вкладку"
+  },
+  "tabUrl": {
+    "message": "URL вкладки"
+  },
+  "tabTitle": {
+    "message": "Заголовок вкладки (необязательно)"
+  },
+  "tabCategory": {
+    "message": "Категория"
+  },
+  "saveTab": {
+    "message": "Сохранить вкладку"
+  },
+  "cancel": {
+    "message": "Отмена"
+  },
+  "edit": {
+    "message": "Редактировать"
+  },
+  "delete": {
+    "message": "Удалить"
+  },
+  "deleteConfirm": {
+    "message": "Вы уверены, что хотите удалить эту вкладку?"
+  },
+  "importExport": {
+    "message": "Импорт/Экспорт"
+  },
+  "exportSettings": {
+    "message": "Экспорт настроек"
+  },
+  "importSettings": {
+    "message": "Импорт настроек"
+  },
+  "settingsExported": {
+    "message": "Настройки успешно экспортированы!"
+  },
+  "settingsImported": {
+    "message": "Настройки успешно импортированы!"
+  },
+  "invalidFile": {
+    "message": "Неверный формат файла"
+  },
+  "tabsSaved": {
+    "message": "Вкладка успешно сохранена!"
+  },
+  "tabDeleted": {
+    "message": "Вкладка успешно удалена!"
+  },
+  "invalidUrl": {
+    "message": "Пожалуйста, введите действительный URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "titlePlaceholder": {
+    "message": "Мой любимый сайт"
+  },
+  "loading": {
+    "message": "Загрузка..."
+  },
+  "retry": {
+    "message": "Повторить"
+  },
+  "close": {
+    "message": "Закрыть"
+  },
+  "options": {
+    "message": "Параметры"
+  },
+  "refresh": {
+    "message": "Обновить"
+  },
+  "tabAlreadyPinned": {
+    "message": "Вкладка уже закреплена"
+  },
+  "currentTabCannotBePinned": {
+    "message": "Текущую вкладку нельзя закрепить"
+  },
+  "lastOpenedPrefix": {
+    "message": "Последний раз открыто:"
+  },
+  "readyToOpenTabs": {
+    "message": "Готово к открытию вкладок"
+  },
+  "tabPlural": {
+    "message": "вкладок"
+  },
+  "tabSingular": {
+    "message": "вкладка"
+  },
+  "checkingExistingTabs": {
+    "message": "Проверка существующих вкладок..."
+  },
+  "allTabsAlreadyOpen": {
+    "message": "Все вкладки уже открыты и закреплены"
+  },
+  "someTabsAlreadyOpen": {
+    "message": "$SKIPPED$ вкладок уже открыто, $OPENED$ новых вкладок создано",
+    "placeholders": {
+      "skipped": {
+        "content": "$1",
+        "example": "3"
+      },
+      "opened": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+  "tabsOpened": {
+    "message": "Вкладки успешно открыты!"
+  },
+  "errorOpeningTabs": {
+    "message": "Ошибка при открытии вкладок"
+  },
+  "cannotPinTab": {
+    "message": "Невозможно закрепить эту вкладку"
+  },
+  "failedToInitialize": {
+    "message": "Не удалось инициализировать"
+  },
+  "categoryPrefix": {
+    "message": "Категория"
+  },
+  "containsPrefix": {
+    "message": "содержит"
+  },
+  "noCategoryTabs": {
+    "message": "В этой категории нет вкладок"
+  },
+  "tabPinnedInCategory": {
+    "message": "\"$TITLE$\" закреплено в $CATEGORY$",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      },
+      "category": {
+        "content": "$2",
+        "example": "Работа"
+      }
+    }
+  },
+  "failedToPinTab": {
+    "message": "Не удалось закрепить вкладку"
+  },
+  "ago": {
+    "message": "назад"
+  },
+  "days": {
+    "message": "дней"
+  },
+  "hours": {
+    "message": "часов"
+  },
+  "minutes": {
+    "message": "минут"
+  },
+  "justNow": {
+    "message": "Только что"
+  },
+  "tabsOpenedCount": {
+    "message": "Открыто $COUNT$ вкладок",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "errorOpeningCategoryTabs": {
+    "message": "Ошибка при открытии вкладок категории"
+  },
+  "tabPinned": {
+    "message": "\"$TITLE$\" закреплено",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      }
+    }
+  },
+  "openingTabs": {
+    "message": "Открытие вкладок..."
+  },
+  "openingCategoryTabs": {
+    "message": "Открытие вкладок категории..."
+  },
+  "lastOpened": {
+    "message": "Последний раз открыто: $TIME$",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "5 минут назад"
+      }
+    }
+  },
+  "editTab": {
+    "message": "Редактировать вкладку"
+  },
+  "deleteTab": {
+    "message": "Удалить вкладку"
+  },
+  "uncategorized": {
+    "message": "Без категории"
+  },
+  "manageCategories": {
+    "message": "Управление категориями"
+  },
+  "resetCategories": {
+    "message": "Сбросить до умолчаний"
+  },
+  "editCategory": {
+    "message": "Редактировать категорию"
+  },
+  "categoryName": {
+    "message": "Название категории"
+  },
+  "categoryNamePlaceholder": {
+    "message": "Введите название категории"
+  },
+  "categoryIcon": {
+    "message": "Значок категории"
+  },
+  "categoryIconPlaceholder": {
+    "message": "📁"
+  },
+  "categoryIconHelp": {
+    "message": "Выберите эмодзи для представления этой категории"
+  },
+  "saveCategory": {
+    "message": "Сохранить категорию"
+  },
+  "categorySaved": {
+    "message": "Категория успешно сохранена!"
+  },
+  "categoriesReset": {
+    "message": "Категории сброшены до умолчаний!"
+  },
+  "resetCategoriesConfirm": {
+    "message": "Вы уверены, что хотите сбросить все категории? Это восстановит названия и значки по умолчанию."
+  },
+  "categoryNameRequired": {
+    "message": "Название категории обязательно"
+  },
+  "categoryIconRequired": {
+    "message": "Значок категории обязателен"
+  },
+  "pinnedTabsShort": {
+    "message": "Закреплённые"
+  },
+  "categoriesShort": {
+    "message": "Категории"
+  },
+  "refreshTooltip": {
+    "message": "Обновить данные вкладок и категорий"
+  },
+  "clickToOpenPinnedTabs": {
+    "message": "Нажмите, чтобы открыть закреплённые вкладки"
+  },
+  "pinCurrentTabTooltip": {
+    "message": "Закрепить текущую вкладку"
+  },
+  "manageTabsAndSettingsTooltip": {
+    "message": "Управление вкладками и настройками"
+  },
+  "manageCategoriesButtonTooltip": {
+    "message": "Управление категориями"
+  },
+  "viewAllPinnedTabsTooltip": {
+    "message": "Просмотреть все закреплённые вкладки"
+  },
+  "manageCategoriesStatTooltip": {
+    "message": "Управление категориями"
+  },
+  "extensionVersionTooltip": {
+    "message": "Версия расширения"
+  },
+  "exportSettingsTooltip": {
+    "message": "Экспорт настроек"
+  },
+  "importSettingsTooltip": {
+    "message": "Импорт настроек"
+  },
+  "notificationsDenied": {
+    "message": "Уведомления отключены. Пожалуйста, включите их в настройках браузера."
+  },
+  "criticalErrorTitle": {
+    "message": "Критическая ошибка"
+  },
+  "criticalErrorMessage": {
+    "message": "Произошла критическая ошибка. Пожалуйста, перезапустите расширение."
+  },
+  "selectCategory": {
+    "message": "Выбрать категорию"
+  },
+  "selectCategoryIcon": {
+    "message": "Выбрать значок категории"
+  },
+  "searchIcons": {
+    "message": "Поиск значков..."
+  },
+  "recent": {
+    "message": "Недавние"
+  },
+  "objects": {
+    "message": "Объекты"
+  },
+  "symbols": {
+    "message": "Символы"
+  },
+  "activities": {
+    "message": "Активности"
+  },
+  "nature": {
+    "message": "Природа"
+  },
+  "food": {
+    "message": "Еда"
+  },
+  "noRecentIcons": {
+    "message": "Нет недавних значков"
+  },
+  "noIconsFound": {
+    "message": "Значки не найдены"
+  },
+  "dragToReorder": {
+    "message": "Перетащите для изменения порядка"
+  },
+  "dropHere": {
+    "message": "Поместите сюда"
+  },
+  "tabReordered": {
+    "message": "Порядок вкладок обновлён!"
+  },
+  "reorderError": {
+    "message": "Ошибка при изменении порядка вкладок"
+  },
+  "footerCreatedBy": {
+    "message": "Создано Alexandre"
+  },
+  "changeCategoryTooltip": {
+    "message": "Изменить категорию"
+  },
+  "categoryChanged": {
+    "message": "Категория обновлена!"
+  },
+  "getStartedTitle": {
+    "message": "Начните здесь!"
+  },
+  "getStartedDescription": {
+    "message": "Закрепите свою первую вкладку, чтобы создать персональное пространство и повысить продуктивность."
+  },
+  "pinCurrentTabAction": {
+    "message": "Закрепить текущую вкладку"
+  },
+  "pinCurrentTabHelper": {
+    "message": "Добавить вкладку, которую вы сейчас просматриваете"
+  },
+  "orDivider": {
+    "message": "или"
+  },
+  "configureManually": {
+    "message": "Настроить вручную"
+  },
+  "containerSupport": {
+    "message": "Firefox Multi-Account Containers support detected",
+    "description": "Message indicating containers are supported"
+  },
+  "defaultContainer": {
+    "message": "Default container",
+    "description": "Name for the default container"
+  },
+  "containerTabPin": {
+    "message": "Pinning tab in container: $CONTAINER$",
+    "description": "Message when pinning a tab in a container",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "Personal"
+      }
+    }
+  },
+  "containerTabCreate": {
+    "message": "Creating tab in container: $CONTAINER$",
+    "description": "Message when creating a tab in a container",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "Work"
+      }
+    }
+  },
+  "invalidTabId": {
+    "message": "Invalid tab ID: $TABID$",
+    "description": "Error message for invalid tab ID",
+    "placeholders": {
+      "tabid": {
+        "content": "$1",
+        "example": "61"
+      }
+    }
+  },
+  "tabNoLongerExists": {
+    "message": "Tab no longer exists or is not accessible",
+    "description": "Error message when tab no longer exists"
+  },
+  "containerNotFound": {
+    "message": "Container not found: $CONTAINER$",
+    "description": "Error message when container is not found",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "firefox-container-1"
+      }
+    }
+  },
+  "containerErrorFallback": {
+    "message": "Using default container due to error",
+    "description": "Message when falling back to default container"
+  },
+  "someTabsPinned": {
+    "message": "Some existing tabs have been pinned",
+    "description": "Message when some existing tabs were pinned"
+  },
+  "someTabsPinnedAndOpened": {
+    "message": "Some tabs were pinned and others opened",
+    "description": "Message when some tabs were pinned and others opened"
+  },
+  "tabPinSuccess": {
+    "message": "Tab pinned successfully: $URL$",
+    "description": "Success message for tab pinning",
+    "placeholders": {
+      "url": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "tabPinError": {
+    "message": "Failed to pin tab: $ERROR$",
+    "description": "Error message for tab pinning",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Invalid tab ID"
+      }
+    }
+  },
+  "containerRaceCondition": {
+    "message": "Adding delay to avoid conflicts with containers",
+    "description": "Debug message for containers"
+  },
+  "allTabsAlreadyPinned": {
+    "message": "All tabs are already pinned!",
+    "description": "Message when all tabs are already pinned"
+  },
+  "tabsPinned": {
+    "message": "$COUNT$ вкладка(и) были закреплены",
+    "description": "Сообщение об успехе для закрепленных вкладок",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  }
+}

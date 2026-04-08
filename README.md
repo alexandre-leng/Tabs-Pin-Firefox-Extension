@@ -1,30 +1,30 @@
-# Tabs Pin - Pinned Tabs Manager for Firefox
+# Tabs Pin - Pin Tabs Manager for Chrome & Firefox
 
 ![Tabs Pin Logo](assets/icons/icon-128.png)
 
-> Firefox extension to efficiently manage your pinned tabs and improve your productivity.
+> A cross-browser extension to efficiently manage your pinned tabs and improve your productivity. Supports **Manifest V3**.
 
 ## 🎯 In Short
 
-Tabs Pin helps you organize your pinned tabs in Firefox. Create custom work environments with your favorite sites, open them with a single click, and avoid duplicates thanks to smart detection.
+Tabs Pin helps you organize your pinned tabs in both Firefox and Google Chrome. Create custom work environments with your favorite sites, open them with a single click, and avoid duplicates thanks to smart detection.
 
 ## ✨ Key Features
 
+- **Manifest V3**: Modern, secure, and compatible with the latest browser standards.
 - **Quick Launch**: Open all your pinned tabs in one click.
 - **Anti-Duplicate**: Prevents opening tabs that are already present.
 - **Simplified Management**: Easily add, modify, and delete your tabs.
 - **Direct Pinning**: A button to instantly pin the current tab.
 - **Categories**: Organize your tabs with 6 customizable categories (Work, Personal, Dev, etc.).
-- **Multi-language**: The application supports Arabic, German, English, Spanish, French, Hindi, Indonesian, Italian, Japanese, Korean, Dutch, Portuguese, Russian, and Chinese.
+- **Multi-language**: Supports 14+ languages including Arabic, German, English, Spanish, French, Hindi, Italian, Japanese, Korean, etc.
 - **Import/Export**: Save and share your configurations.
-- **Adaptive Theme**: Adapts to your browser's light/dark theme.
+- **Adaptive Theme**: Dark/Light mode support.
 
 ## 🛠️ Installation
 
-### Recommended (Firefox Add-ons)
-1. Visit the [Firefox Add-ons Store](https://addons.mozilla.org/fr/firefox/addon/tabs-pin-pin-tabs-manager/).
-2. Search for "Tabs Pin".
-3. Click "Add to Firefox".
+### Recommended
+- **Firefox**: [Download from Firefox Add-ons](https://addons.mozilla.org/fr/firefox/addon/tabs-pin-pin-tabs-manager/)
+- **Chrome**: Soon available on the Chrome Web Store (or load manually as an unpacked extension).
 
 ### For Developers
 
@@ -40,10 +40,11 @@ npm install
 ```
 
 3. Useful commands:
-- **Development**: `npm run dev` (launch Firefox with the extension loaded temporarily)
-- **Build (Recommended)**: `npm run package` (create a signed .zip file in `web-ext-artifacts/`)
-- **Build (Local)**: `npm run build` (create a .xpi file in the `dist/` folder)
-- **Lint**: `npm run lint` (verify the extension's compliance)
+- **Development (Firefox)**: `npm run dev:firefox` (launch Firefox with auto-reload)
+- **Preparation (Chrome)**: `npm run dev:chrome` (prepare manifest for Chrome manual loading)
+- **Build (All)**: `npm run build` (generate both .zip packages in `web-ext-artifacts/`)
+- **Build (Specific)**: `npm run build:chrome` or `npm run build:firefox`
+- **Lint**: `npm run lint` (verify extension compliance)
 
 ## 🚀 Quick Start
 
@@ -54,9 +55,9 @@ npm install
 
 ## 🔒 Security & Privacy
 
-- **Minimal Permissions**: Access to tabs (`tabs`), local storage (`storage`), active tab (`activeTab`) for pinning.
+- **Minimal Permissions**: Uses `tabs`, `storage`, `activeTab`.
+- **Manifest V3**: Enhanced security and privacy.
 - **100% Local**: No data is transmitted externally.
-- **No Tracking**.
 - **Privacy-First & Open Source**.
 
 ## 📞 Support
@@ -75,8 +76,8 @@ Distributed under the GNU License. See [GPL-3.0 License](https://github.com/alex
 
 ### 🚀 **Tabs Pin - Transform your workflow!**
 
-[![Install](https://img.shields.io/badge/Firefox-Install%20Now-FF7139?style=for-the-badge&logo=firefox)](https://addons.mozilla.org/fr/firefox/addon/tabs-pin-pin-tabs-manager/)
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/alexandre-leng/Tabs-Pin-Firefox-Extension/)
+[![Install for Firefox](https://img.shields.io/badge/Firefox-Install%20Now-FF7139?style=for-the-badge&logo=firefox)](https://addons.mozilla.org/fr/firefox/addon/tabs-pin-pin-tabs-manager/)
+[![Install for Chrome](https://img.shields.io/badge/Chrome-Compatible-4285F4?style=for-the-badge&logo=google-chrome)](https://github.com/alexandre-leng/Tabs-Pin-Firefox-Extension/)
 
 **Developed with ❤️ by Alexandre**
 
