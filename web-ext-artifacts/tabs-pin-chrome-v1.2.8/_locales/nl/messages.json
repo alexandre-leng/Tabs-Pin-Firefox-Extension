@@ -1,0 +1,638 @@
+{
+  "extensionName": {
+    "message": "TabsFlow - Vastgezette Tabbladen Beheerder",
+    "description": "De naam van de extensie"
+  },
+  "extensionDescription": {
+    "message": "Beheer efficiënt uw vastgezette tabbladen met gecategoriseerde favorieten en automatisch werkstroom herstel",
+    "description": "De beschrijving van de extensie"
+  },
+  "browserActionTitle": {
+    "message": "TabsFlow Openen",
+    "description": "De titel getoond bij het hoveren over de browser actie knop"
+  },
+  "openAllTabs": {
+    "message": "Alle Tabbladen Openen",
+    "description": "Knoptekst om alle geconfigureerde tabbladen te openen"
+  },
+  "openTabsCount": {
+    "message": "$COUNT$ tabbladen openen",
+    "description": "Knoptekst die het aantal te openen tabbladen toont",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "noTabsConfigured": {
+    "message": "Geen tabbladen geconfigureerd",
+    "description": "Bericht wanneer er geen tabbladen zijn geconfigureerd"
+  },
+  "configureTabsMessage": {
+    "message": "Configureer uw favoriete tabbladen in de opties pagina om te beginnen.",
+    "description": "Instructies voor nieuwe gebruikers"
+  },
+  "openOptions": {
+    "message": "Opties Openen",
+    "description": "Knop om de opties pagina te openen"
+  },
+  "categories": {
+    "message": "Categorieën",
+    "description": "Titel van de categorieën sectie"
+  },
+  "work": {
+    "message": "Werk",
+    "description": "Naam van de werk categorie"
+  },
+  "personal": {
+    "message": "Persoonlijk",
+    "description": "Naam van de persoonlijke categorie"
+  },
+  "development": {
+    "message": "Ontwikkeling",
+    "description": "Naam van de ontwikkeling categorie"
+  },
+  "social": {
+    "message": "Sociaal",
+    "description": "Naam van de sociale categorie"
+  },
+  "tools": {
+    "message": "Gereedschappen",
+    "description": "Naam van de gereedschappen categorie"
+  },
+  "entertainment": {
+    "message": "Entertainment",
+    "description": "Naam van de entertainment categorie"
+  },
+  "optionsTitle": {
+    "message": "TabsFlow Opties",
+    "description": "Titel van de opties pagina"
+  },
+  "manageTabs": {
+    "message": "Beheer Uw Vastgezette Tabbladen",
+    "description": "Ondertitel in de opties pagina"
+  },
+  "addNewTab": {
+    "message": "Nieuw Tabblad Toevoegen",
+    "description": "Knop om een nieuwe tabblad configuratie toe te voegen"
+  },
+  "tabUrl": {
+    "message": "Tabblad URL",
+    "description": "Label voor het URL invoerveld"
+  },
+  "tabTitle": {
+    "message": "Tabblad Titel (optioneel)",
+    "description": "Label voor het titel invoerveld"
+  },
+  "tabCategory": {
+    "message": "Categorie",
+    "description": "Label voor categorie selectie"
+  },
+  "saveTab": {
+    "message": "Tabblad Opslaan",
+    "description": "Knop om tabblad configuratie op te slaan"
+  },
+  "cancel": {
+    "message": "Annuleren",
+    "description": "Annuleren knop tekst"
+  },
+  "edit": {
+    "message": "Bewerken",
+    "description": "Bewerken knop tekst"
+  },
+  "delete": {
+    "message": "Verwijderen",
+    "description": "Verwijderen knop tekst"
+  },
+  "deleteConfirm": {
+    "message": "Weet u zeker dat u dit tabblad wilt verwijderen?",
+    "description": "Bevestigingsbericht voor tabblad verwijdering"
+  },
+  "importExport": {
+    "message": "Importeren/Exporteren",
+    "description": "Titel van de Import/Export sectie"
+  },
+  "exportSettings": {
+    "message": "Instellingen Exporteren",
+    "description": "Export knop tekst"
+  },
+  "importSettings": {
+    "message": "Instellingen Importeren",
+    "description": "Import knop tekst"
+  },
+  "settingsExported": {
+    "message": "Instellingen succesvol geëxporteerd!",
+    "description": "Succesbericht voor export"
+  },
+  "settingsImported": {
+    "message": "Instellingen succesvol geïmporteerd!",
+    "description": "Succesbericht voor import"
+  },
+  "invalidFile": {
+    "message": "Ongeldig bestandsformaat",
+    "description": "Foutbericht voor ongeldig import bestand"
+  },
+  "errorOpeningTabs": {
+    "message": "Fout bij het openen van tabbladen",
+    "description": "Foutbericht wanneer tabbladen falen te openen"
+  },
+  "tabsOpened": {
+    "message": "Tabbladen succesvol geopend!",
+    "description": "Succesbericht wanneer tabbladen zijn geopend"
+  },
+  "tabsSaved": {
+    "message": "Tabblad succesvol opgeslagen!",
+    "description": "Succesbericht wanneer tabblad is opgeslagen"
+  },
+  "tabDeleted": {
+    "message": "Tabblad succesvol verwijderd!",
+    "description": "Succesbericht wanneer tabblad is verwijderd"
+  },
+  "invalidUrl": {
+    "message": "Voer een geldige URL in",
+    "description": "Foutbericht voor ongeldige URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://voorbeeld.com",
+    "description": "Plaatshouder tekst voor URL invoer"
+  },
+  "titlePlaceholder": {
+    "message": "Mijn Favoriete Site",
+    "description": "Plaatshouder tekst voor titel invoer"
+  },
+  "loading": {
+    "message": "Laden...",
+    "description": "Laad bericht"
+  },
+  "retry": {
+    "message": "Opnieuw Proberen",
+    "description": "Opnieuw proberen knop tekst"
+  },
+  "close": {
+    "message": "Sluiten",
+    "description": "Sluiten knop tekst"
+  },
+  "pinCurrentTab": {
+    "message": "Huidige Tabblad Vastmaken",
+    "description": "Knop tekst voor het vastmaken van het huidige tabblad"
+  },
+  "options": {
+    "message": "Opties",
+    "description": "Opties knop tekst"
+  },
+  "cannotPinTab": {
+    "message": "Kan dit tabblad niet vastmaken",
+    "description": "Foutbericht wanneer tabblad niet kan worden vastgemaakt"
+  },
+  "tabAlreadyPinned": {
+    "message": "Tabblad is al vastgemaakt",
+    "description": "Waarschuwingsbericht wanneer tabblad al in de lijst staat"
+  },
+  "tabPinned": {
+    "message": "\"$TITLE$\" is vastgemaakt",
+    "description": "Succesbericht wanneer tabblad is vastgemaakt",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Google"
+      }
+    }
+  },
+  "failedToPinTab": {
+    "message": "Fout bij het vastmaken van tabblad",
+    "description": "Foutbericht wanneer vastmaken faalt"
+  },
+  "failedToInitialize": {
+    "message": "Fout bij het initialiseren van popup",
+    "description": "Foutbericht wanneer popup niet kan initialiseren"
+  },
+  "openingTabs": {
+    "message": "Tabbladen openen...",
+    "description": "Bericht getoond tijdens het openen van tabbladen"
+  },
+  "openingCategoryTabs": {
+    "message": "Categorie tabbladen openen...",
+    "description": "Bericht getoond tijdens het openen van categorie tabbladen"
+  },
+  "readyToOpenTabs": {
+    "message": "Klaar om tabbladen te openen",
+    "description": "Status bericht wanneer extensie klaar is"
+  },
+  "currentTabCannotBePinned": {
+    "message": "Huidige tabblad kan niet worden vastgemaakt",
+    "description": "Foutbericht voor vastmaak knop status"
+  },
+  "errorOpeningCategoryTabs": {
+    "message": "Fout bij het openen van categorie tabbladen",
+    "description": "Foutbericht specifiek voor categorieën"
+  },
+  "tabsOpenedCount": {
+    "message": "$COUNT$ tabbladen geopend",
+    "description": "Succesbericht met aantal geopende tabbladen",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "justNow": {
+    "message": "Zojuist",
+    "description": "Tijdsindicatie voor recente gebeurtenis"
+  },
+  "lastOpened": {
+    "message": "Laatst geopend: $TIME$",
+    "description": "Weergave van laatste openingstijd",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "5 minuten geleden"
+      }
+    }
+  },
+  "editTab": {
+    "message": "Tabblad Bewerken",
+    "description": "Bewerk dialoog titel"
+  },
+  "deleteTab": {
+    "message": "Tabblad Verwijderen",
+    "description": "Verwijder dialoog titel"
+  },
+  "days": {
+    "message": "dag",
+    "description": "Tijdseenheid - dag"
+  },
+  "hours": {
+    "message": "uur",
+    "description": "Tijdseenheid - uur"
+  },
+  "minutes": {
+    "message": "minuut",
+    "description": "Tijdseenheid - minuut"
+  },
+  "ago": {
+    "message": "geleden",
+    "description": "Verleden tijd indicator"
+  },
+  "uncategorized": {
+    "message": "Ongecategoriseerd",
+    "description": "Standaard categorie voor tabbladen zonder categorie"
+  },
+  "manageCategories": {
+    "message": "Categorieën Beheren",
+    "description": "Titel van de categorieën beheer sectie"
+  },
+  "resetCategories": {
+    "message": "Herstel naar Standaard",
+    "description": "Knop om standaard categorieën te herstellen"
+  },
+  "editCategory": {
+    "message": "Categorie Bewerken",
+    "description": "Titel van categorie bewerk modal"
+  },
+  "categoryName": {
+    "message": "Categorienaam",
+    "description": "Label voor categorienaam veld"
+  },
+  "categoryNamePlaceholder": {
+    "message": "Voer categorienaam in",
+    "description": "Placeholder voor categorienaam veld"
+  },
+  "categoryIcon": {
+    "message": "Categorie Pictogram",
+    "description": "Label voor categorie pictogram veld"
+  },
+  "categoryIconPlaceholder": {
+    "message": "📁",
+    "description": "Placeholder voor categorie pictogram veld"
+  },
+  "categoryIconHelp": {
+    "message": "Kies een emoji om deze categorie weer te geven",
+    "description": "Hulptekst voor categorie pictogram"
+  },
+  "saveCategory": {
+    "message": "Categorie Opslaan",
+    "description": "Knop om categorie op te slaan"
+  },
+  "categorySaved": {
+    "message": "Categorie succesvol opgeslagen!",
+    "description": "Succesbericht voor categorie opslaan"
+  },
+  "categoriesReset": {
+    "message": "Categorieën hersteld naar standaard!",
+    "description": "Succesbericht voor categorieën herstel"
+  },
+  "resetCategoriesConfirm": {
+    "message": "Weet u zeker dat u alle categorieën wilt herstellen? Dit zal de standaard namen en pictogrammen herstellen.",
+    "description": "Bevestigingsbericht voor categorieën herstel"
+  },
+  "categoryNameRequired": {
+    "message": "Categorienaam is vereist",
+    "description": "Foutmelding voor vereiste categorienaam"
+  },
+  "categoryIconRequired": {
+    "message": "Categorie pictogram is vereist",
+    "description": "Foutmelding voor vereist categorie pictogram"
+  },
+  "noIconsFound": {
+    "message": "Geen pictogrammen gevonden"
+  },
+  "dragToReorder": {
+    "message": "Sleep om opnieuw te rangschikken",
+    "description": "Tooltip voor de sleepgreep van tabbladen"
+  },
+  "dropHere": {
+    "message": "Hier neerzetten",
+    "description": "Tekst getoond in de neerzetzone tijdens slepen en neerzetten"
+  },
+  "tabReordered": {
+    "message": "Tabbladenvolgorde bijgewerkt!",
+    "description": "Succesbericht wanneer de tabbladenvolgorde wordt gewijzigd"
+  },
+  "reorderError": {
+    "message": "Fout bij opnieuw rangschikken van tabblad",
+    "description": "Foutbericht tijdens het opnieuw rangschikken"
+  },
+  "footerCreatedBy": {
+    "message": "Gemaakt door Alexandre met",
+    "description": "Footer created by text"
+  },
+  "changeCategoryTooltip": {
+    "message": "Categorie wijzigen",
+    "description": "Tooltip for the category badge on a tab item"
+  },
+  "categoryChanged": {
+    "message": "Categorie bijgewerkt!",
+    "description": "Success message when a tab's category is changed via quick edit"
+  },
+  "openOneTab": {
+    "message": "1 Tabblad openen"
+  },
+  "pinnedTabsShort": {
+    "message": "Vastgemaakt"
+  },
+  "categoriesShort": {
+    "message": "Categorieën"
+  },
+  "allTabsAlreadyOpen": {
+    "message": "Alle tabbladen zijn al geopend en vastgemaakt"
+  },
+  "someTabsAlreadyOpen": {
+    "message": "$SKIPPED$ tabblad(en) al geopend, $OPENED$ nieuwe tabblad(en) aangemaakt",
+    "placeholders": {
+      "skipped": {
+        "content": "$1",
+        "example": "3"
+      },
+      "opened": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+  "checkingExistingTabs": {
+    "message": "Bestaande tabbladen controleren..."
+  },
+  "openTabsSingular": {
+    "message": "$COUNT$ tabblad openen",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "openTabsPlural": {
+    "message": "$COUNT$ tabbladen openen",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "refresh": {
+    "message": "Vernieuwen"
+  },
+  "refreshTooltip": {
+    "message": "Tabbladen en categorieën gegevens vernieuwen"
+  },
+  "clickToOpenPinnedTabs": {
+    "message": "Klik om uw vastgemaakte tabbladen te openen"
+  },
+  "lastOpenedPrefix": {
+    "message": "Laatst geopend:"
+  },
+  "tabSingular": {
+    "message": "tabblad"
+  },
+  "tabPlural": {
+    "message": "tabbladen"
+  },
+  "pinCurrentTabTooltip": {
+    "message": "Huidige Tabblad Vastmaken"
+  },
+  "manageTabsAndSettingsTooltip": {
+    "message": "Beheer uw tabbladen en instellingen"
+  },
+  "manageCategoriesButtonTooltip": {
+    "message": "Categorieën beheren"
+  },
+  "viewAllPinnedTabsTooltip": {
+    "message": "Alle vastgemaakte tabbladen bekijken"
+  },
+  "manageCategoriesStatTooltip": {
+    "message": "Categorieën beheren"
+  },
+  "extensionVersionTooltip": {
+    "message": "Extensie versie"
+  },
+  "exportSettingsTooltip": {
+    "message": "Instellingen exporteren"
+  },
+  "importSettingsTooltip": {
+    "message": "Instellingen importeren"
+  },
+  "notificationsDenied": {
+    "message": "Meldingen uitgeschakeld. Schakel ze in via uw browserinstellingen."
+  },
+  "criticalErrorTitle": {
+    "message": "Kritieke fout"
+  },
+  "criticalErrorMessage": {
+    "message": "Er is een kritieke fout opgetreden. Start de extensie opnieuw."
+  },
+  "selectCategory": {
+    "message": "Selecteer een categorie"
+  },
+  "tabPinnedInCategory": {
+    "message": "\"$TAB_TITLE$\" vastgemaakt in $CATEGORY_NAME$",
+    "placeholders": {
+      "tab_title": {
+        "content": "$1",
+        "example": "Google"
+      },
+      "category_name": {
+        "content": "$2",
+        "example": "Werk"
+      }
+    }
+  },
+  "categoryPrefix": {
+    "message": "Categorie"
+  },
+  "containsPrefix": {
+    "message": "bevat"
+  },
+  "noCategoryTabs": {
+    "message": "Geen tabbladen in deze categorie"
+  },
+  "selectCategoryIcon": {
+    "message": "Categorie Pictogram Selecteren"
+  },
+  "searchIcons": {
+    "message": "Pictogrammen zoeken..."
+  },
+  "recent": {
+    "message": "Recent"
+  },
+  "objects": {
+    "message": "Objecten"
+  },
+  "symbols": {
+    "message": "Symbolen"
+  },
+  "activities": {
+    "message": "Activiteiten"
+  },
+  "nature": {
+    "message": "Natuur"
+  },
+  "food": {
+    "message": "Voedsel"
+  },
+  "noRecentIcons": {
+    "message": "Geen recente pictogrammen"
+  },
+  "configureManually": {
+    "message": "Handmatig configureren"
+  },
+  "getStartedTitle": {
+    "message": "Begin hier!"
+  },
+  "getStartedDescription": {
+    "message": "Maak uw eerste tabblad vast om uw persoonlijke ruimte te creëren en productiviteit te verhogen."
+  },
+  "pinCurrentTabAction": {
+    "message": "Huidige Tabblad Vastmaken"
+  },
+  "pinCurrentTabHelper": {
+    "message": "Voeg het tabblad toe dat u momenteel bekijkt"
+  },
+  "orDivider": {
+    "message": "of"
+  },
+  "containerSupport": {
+    "message": "Firefox Multi-Account Containers support detected",
+    "description": "Message indicating containers are supported"
+  },
+  "defaultContainer": {
+    "message": "Default container",
+    "description": "Name for the default container"
+  },
+  "containerTabPin": {
+    "message": "Pinning tab in container: $CONTAINER$",
+    "description": "Message when pinning a tab in a container",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "Personal"
+      }
+    }
+  },
+  "containerTabCreate": {
+    "message": "Creating tab in container: $CONTAINER$",
+    "description": "Message when creating a tab in a container",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "Work"
+      }
+    }
+  },
+  "invalidTabId": {
+    "message": "Invalid tab ID: $TABID$",
+    "description": "Error message for invalid tab ID",
+    "placeholders": {
+      "tabid": {
+        "content": "$1",
+        "example": "61"
+      }
+    }
+  },
+  "tabNoLongerExists": {
+    "message": "Tab no longer exists or is not accessible",
+    "description": "Error message when tab no longer exists"
+  },
+  "containerNotFound": {
+    "message": "Container not found: $CONTAINER$",
+    "description": "Error message when container is not found",
+    "placeholders": {
+      "container": {
+        "content": "$1",
+        "example": "firefox-container-1"
+      }
+    }
+  },
+  "containerErrorFallback": {
+    "message": "Using default container due to error",
+    "description": "Message when falling back to default container"
+  },
+  "someTabsPinned": {
+    "message": "Some existing tabs have been pinned",
+    "description": "Message when some existing tabs were pinned"
+  },
+  "someTabsPinnedAndOpened": {
+    "message": "Some tabs were pinned and others opened",
+    "description": "Message when some tabs were pinned and others opened"
+  },
+  "tabPinSuccess": {
+    "message": "Tab pinned successfully: $URL$",
+    "description": "Success message for tab pinning",
+    "placeholders": {
+      "url": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "tabPinError": {
+    "message": "Failed to pin tab: $ERROR$",
+    "description": "Error message for tab pinning",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Invalid tab ID"
+      }
+    }
+  },
+  "containerRaceCondition": {
+    "message": "Adding delay to avoid conflicts with containers",
+    "description": "Debug message for containers"
+  },
+  "allTabsAlreadyPinned": {
+    "message": "All tabs are already pinned!",
+    "description": "Message when all tabs are already pinned"
+  },
+  "tabsPinned": {
+    "message": "$COUNT$ tabblad(en) zijn vastgezet",
+    "description": "Succesbericht voor vastgezette tabbladen",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  }
+}
