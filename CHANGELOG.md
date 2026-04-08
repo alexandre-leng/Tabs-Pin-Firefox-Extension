@@ -2,17 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.9] - 2026-04-08
+
+### 🛠️ Corrections
+- **Fix suppression des onglets** : Résolution d'un bug où la suppression d'un onglet depuis le tableau de bord ne fonctionnait pas du premier coup en raison d'un cache de stockage persistant.
+- **Optimisation du StorageManager** : Le cache est maintenant automatiquement vidé lors des opérations d'écriture pour garantir une synchronisation immédiate.
+- **Rafraîchissement forcé** : Ajout d'un mécanisme de rafraîchissement forcé (F5) qui contourne le cache pour une fiabilité maximale.
+
+## [1.2.8] - 2026-04-08
+- Mise à jour technique et build pour Chrome/Firefox.
+
 ## [1.2.7] - 2026-04-08
-
-- Bump extension version to 1.2.7.
-
-## [1.2.7] - YYYY-MM-DD
-
-Bug fixed
-
-## [1.2.5] - YYYY-MM-DD
-Bug fixed
-- 
+- Mise à jour des dépendances et versioning.
 
 # Changelog - TabsFlow Firefox Extension
 
