@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
   "version": "1.2.7",
@@ -25,10 +25,15 @@
   ],
 
   "background": {
-    "scripts": ["lib/default-categories.js", "lib/storage-manager.js", "lib/container-utils.js", "background/background.js"]
+    "scripts": [
+      "lib/default-categories.js", 
+      "lib/storage-manager.js", 
+      "lib/container-utils.js", 
+      "background/background.js"
+    ]
   },
 
-  "browser_action": {
+  "action": {
     "default_popup": "popup/popup.html",
     "default_title": "__MSG_browserActionTitle__",
     "default_icon": {
@@ -44,14 +49,23 @@
     "open_in_tab": true
   },
 
-  "web_accessible_resources": ["assets/icons/*.png"],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/icons/*.png"],
+      "matches": ["<all_urls>"]
+    }
+  ],
 
-  "content_security_policy": "script-src 'self'; object-src 'self';",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  },
 
   "browser_specific_settings": {
     "gecko": {
       "id": "tabspin@firefox.extension",
-      "strict_min_version": "78.0"
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
     }
   }
 }
