@@ -264,10 +264,11 @@ class OptionsManager {
     });
   }
 
-  async loadData() {
+  async loadData(force = false) {
     try {
       const response = await this.sendMessageWithRetry({
-        action: 'getTabsData'
+        action: 'getTabsData',
+        force: force
       });
       
       if (response && response.success) {
@@ -1033,7 +1034,7 @@ class OptionsManager {
   // Force refresh of all data
   async forceRefresh() {
     console.log('Force refreshing options page...');
-    await this.loadData();
+    await this.loadData(true);
     this.render();
     this.showToast('success', '✅', 'Data refreshed successfully!');
   }

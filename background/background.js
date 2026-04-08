@@ -73,9 +73,9 @@ class TabsPinBackground {
     };
   }
 
-  async loadData() {
+  async loadData(useCache = true) {
     try {
-      const result = await this.storage.get(['pinnedTabs', 'categories', 'settings']);
+      const result = await this.storage.get(['pinnedTabs', 'categories', 'settings'], useCache);
       
       this.tabs = result.pinnedTabs || [];
       this.categories = result.categories || this.getDefaultCategories();
@@ -229,7 +229,7 @@ class TabsPinBackground {
           break;
           
         case 'getTabsData':
-          await this.loadData();
+          await this.loadData(request.force === true ? false : true);
           result = {
             success: true,
             data: {

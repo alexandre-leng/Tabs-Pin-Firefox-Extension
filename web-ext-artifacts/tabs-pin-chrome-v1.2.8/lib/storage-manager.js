@@ -162,17 +162,10 @@ class StorageManager {
         
         await this.executeStorageSet(data);
         
-        // Update cache if requested
-        if (updateCache) {
-          Object.keys(data).forEach(key => {
-            this.cache.set(key, {
-              data: { [key]: data[key] },
-              timestamp: Date.now()
-            });
-          });
-        }
-        
-        console.log(`✅ Storage SET successful for: ${dataKeys}`);
+        // Clear all cache on any write to ensure subsequent reads are fresh
+        // Partial cache updates are unreliable with multi-key queries
+        this.cache.clear();
+        console.log(`✅ Storage SET successful and cache cleared for: ${dataKeys}`);
         return;
         
       } catch (error) {
