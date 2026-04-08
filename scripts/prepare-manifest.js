@@ -21,32 +21,23 @@ if (target === 'firefox') {
     "lib/container-utils.js",
     "background/background.js"
   ];
-
-  // Remove Chrome MV3 service_worker which is ignored and warns on Firefox
-  if (manifest.background) {
-    delete manifest.background.service_worker;
-  }
   
-  // Ensure we have an ID and data collection permissions for Firefox
+  // Ensure we have an ID for Firefox
   if (!manifest.browser_specific_settings) {
-    manifest.browser_specific_settings = { gecko: {} };
+    manifest.browser_specific_settings = {
+      gecko: {
+        id: "tabspin@firefox.extension"
+      }
+    };
   }
-  if (!manifest.browser_specific_settings.gecko) {
-    manifest.browser_specific_settings.gecko = {};
-  }
-  
-  // Required ID for Firefox extensions
-  manifest.browser_specific_settings.gecko.id = "tabspin@firefox.extension";
-  
-  // New requirement for Firefox: data collection consent
-  // We set it to false as this extension does not collect data
-  manifest.browser_specific_settings.gecko.data_collection_permissions = false;
 } else if (target === 'chrome') {
   // Remove Firefox-only keys to avoid warnings/errors
   delete manifest.browser_specific_settings;
   
-  // Remove background.scripts (Chrome MV3 only supports service_worker)
-  delete manifest.background.scripts;
+  // Set up background as a Service Worker for Chrome MV3
+  manifest.background = {
+    "service_worker": "background/service-worker-wrapper.js"
+  };
   
   // Remove Firefox-only permissions
   if (manifest.permissions) {

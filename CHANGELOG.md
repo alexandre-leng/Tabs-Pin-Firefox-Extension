@@ -2,18 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.2.9] - 2026-04-08
+## [1.3.0] - 2026-04-08
 
 ### 🛠️ Corrections
-- **Fix suppression des onglets** : Résolution d'un bug où la suppression d'un onglet depuis le tableau de bord ne fonctionnait pas du premier coup en raison d'un cache de stockage persistant.
-- **Optimisation du StorageManager** : Le cache est maintenant automatiquement vidé lors des opérations d'écriture pour garantir une synchronisation immédiate.
-- **Rafraîchissement forcé** : Ajout d'un mécanisme de rafraîchissement forcé (F5) qui contourne le cache pour une fiabilité maximale.
+- **Fix deletion bug** : Résolution du bug de suppression des favoris. L'interface se met désormais à jour instantanément après une suppression (`fixed issue: allow deleting pinned tabs from dashboard`).
+- **Correction Manifest** : Suppression d'un champ invalide dans le `manifest.json` qui bloquait le chargement sous Firefox.
 
-## [1.2.8] - 2026-04-08
-- Mise à jour technique et build pour Chrome/Firefox.
+### ✨ Nouvelles Fonctionnalités
+- **Support Cross-Browser complet** : Architecture unifiée permettant à l'extension de fonctionner nativement sur Chrome et Firefox avec le même code source.
+- **Support des containers Firefox** : Ajout de la permission `contextualIdentities` pour un support complet des conteneurs Multi-Account.
+- **Service Worker Chrome** : Mise en place d'un wrapper pour supporter le cycle de vie des extensions Chrome MV3.
 
-## [1.2.7] - 2026-04-08
-- Mise à jour des dépendances et versioning.
+## [1.2.9] - 2026-04-08
+
+### 🔧 Améliorations
+- Préparation de l'architecture pour le support multi-navigateur.
 
 # Changelog - TabsFlow Firefox Extension
 
