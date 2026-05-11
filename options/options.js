@@ -561,11 +561,7 @@ class OptionsManager {
     return card;
   }
 
-  renderSettings() {
-    // Cette méthode est supprimée car elle ne gérait que autoOpenTabs
-  }
 
-  // Tab management methods
   openTabModal(tab = null) {
     this.currentEditingTab = tab;
     
@@ -1000,11 +996,7 @@ class OptionsManager {
     return 'tab_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
   }
 
-  escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-  }
+
 
   showToast(type, icon, message) {
     if (!this.elements.toast) return;
@@ -1269,9 +1261,7 @@ class OptionsManager {
     }, 100);
   }
 
-  getCurrentIconValue() {
-    return this.elements.selectedIcon?.textContent || '📁';
-  }
+
 
   getSelectedIcon() {
     return this.elements.selectedIcon?.textContent || '📁';

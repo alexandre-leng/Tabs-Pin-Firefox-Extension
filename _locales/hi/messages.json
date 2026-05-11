@@ -107,9 +107,6 @@
   "deleteConfirm": {
     "message": "क्या आप वाकई इस टैब को हटाना चाहते हैं?"
   },
-  "importExport": {
-    "message": "आयात/निर्यात"
-  },
   "exportSettings": {
     "message": "सेटिंग्स निर्यात करें"
   },
@@ -265,12 +262,6 @@
       }
     }
   },
-  "openingTabs": {
-    "message": "टैब खोले जा रहे हैं..."
-  },
-  "openingCategoryTabs": {
-    "message": "श्रेणी के टैब खोले जा रहे हैं..."
-  },
   "lastOpened": {
     "message": "अंतिम बार खोला गया: $TIME$",
     "placeholders": {
@@ -307,9 +298,6 @@
   "categoryIcon": {
     "message": "श्रेणी आइकन"
   },
-  "categoryIconPlaceholder": {
-    "message": "📁"
-  },
   "categoryIconHelp": {
     "message": "इस श्रेणी का प्रतिनिधित्व करने के लिए एक इमोजी चुनें"
   },
@@ -343,12 +331,6 @@
   "clickToOpenPinnedTabs": {
     "message": "अपने पिन किए गए टैब खोलने के लिए क्लिक करें"
   },
-  "pinCurrentTabTooltip": {
-    "message": "वर्तमान टैब पिन करें"
-  },
-  "manageTabsAndSettingsTooltip": {
-    "message": "अपने टैब और सेटिंग्स प्रबंधित करें"
-  },
   "manageCategoriesButtonTooltip": {
     "message": "श्रेणियां प्रबंधित करें"
   },
@@ -366,15 +348,6 @@
   },
   "importSettingsTooltip": {
     "message": "सेटिंग्स आयात करें"
-  },
-  "notificationsDenied": {
-    "message": "सूचनाएं अक्षम हैं। कृपया उन्हें अपनी ब्राउज़र सेटिंग्स में सक्षम करें।"
-  },
-  "criticalErrorTitle": {
-    "message": "गंभीर त्रुटि"
-  },
-  "criticalErrorMessage": {
-    "message": "एक गंभीर त्रुटि हुई। कृपया एक्सटेंशन को पुनः आरंभ करें।"
   },
   "selectCategory": {
     "message": "श्रेणी चुनें"
@@ -448,61 +421,9 @@
   "configureManually": {
     "message": "मैन्युअल रूप से कॉन्फ़िगर करें"
   },
-  "containerSupport": {
-    "message": "Firefox Multi-Account Containers support detected",
-    "description": "Message indicating containers are supported"
-  },
   "defaultContainer": {
     "message": "Default container",
     "description": "Name for the default container"
-  },
-  "containerTabPin": {
-    "message": "Pinning tab in container: $CONTAINER$",
-    "description": "Message when pinning a tab in a container",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "Personal"
-      }
-    }
-  },
-  "containerTabCreate": {
-    "message": "Creating tab in container: $CONTAINER$",
-    "description": "Message when creating a tab in a container",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "Work"
-      }
-    }
-  },
-  "invalidTabId": {
-    "message": "Invalid tab ID: $TABID$",
-    "description": "Error message for invalid tab ID",
-    "placeholders": {
-      "tabid": {
-        "content": "$1",
-        "example": "61"
-      }
-    }
-  },
-  "tabNoLongerExists": {
-    "message": "Tab no longer exists or is not accessible",
-    "description": "Error message when tab no longer exists"
-  },
-  "containerNotFound": {
-    "message": "Container not found: $CONTAINER$",
-    "description": "Error message when container is not found",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "firefox-container-1"
-      }
-    }
-  },
-  "containerErrorFallback": {
-    "message": "Using default container due to error",
-    "description": "Message when falling back to default container"
   },
   "someTabsPinned": {
     "message": "Some existing tabs have been pinned",
@@ -511,34 +432,6 @@
   "someTabsPinnedAndOpened": {
     "message": "Some tabs were pinned and others opened",
     "description": "Message when some tabs were pinned and others opened"
-  },
-  "tabPinSuccess": {
-    "message": "Tab pinned successfully: $URL$",
-    "description": "Success message for tab pinning",
-    "placeholders": {
-      "url": {
-        "content": "$1",
-        "example": "https://example.com"
-      }
-    }
-  },
-  "tabPinError": {
-    "message": "Failed to pin tab: $ERROR$",
-    "description": "Error message for tab pinning",
-    "placeholders": {
-      "error": {
-        "content": "$1",
-        "example": "Invalid tab ID"
-      }
-    }
-  },
-  "containerRaceCondition": {
-    "message": "Adding delay to avoid conflicts with containers",
-    "description": "Debug message for containers"
-  },
-  "allTabsAlreadyPinned": {
-    "message": "All tabs are already pinned!",
-    "description": "Message when all tabs are already pinned"
   },
   "tabsPinned": {
     "message": "$COUNT$ टैब पिन कर दिए गए हैं",

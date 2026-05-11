@@ -109,10 +109,6 @@
     "message": "Tem certeza de que deseja excluir esta aba?",
     "description": "Mensagem de confirmação para exclusão de aba"
   },
-  "importExport": {
-    "message": "Importar/Exportar",
-    "description": "Título da seção Importar/Exportar"
-  },
   "exportSettings": {
     "message": "Exportar Configurações",
     "description": "Texto do botão exportar"
@@ -207,14 +203,6 @@
     "message": "Falha ao inicializar o popup",
     "description": "Mensagem de erro quando o popup não pode inicializar"
   },
-  "openingTabs": {
-    "message": "Abrindo abas...",
-    "description": "Mensagem exibida durante a abertura das abas"
-  },
-  "openingCategoryTabs": {
-    "message": "Abrindo abas da categoria...",
-    "description": "Mensagem exibida durante a abertura das abas de uma categoria"
-  },
   "readyToOpenTabs": {
     "message": "Pronto para abrir abas",
     "description": "Mensagem de status quando a extensão está pronta"
@@ -302,10 +290,6 @@
   "categoryIcon": {
     "message": "Ícone da Categoria",
     "description": "Rótulo para o campo ícone da categoria"
-  },
-  "categoryIconPlaceholder": {
-    "message": "📁",
-    "description": "Placeholder para o campo ícone da categoria"
   },
   "categoryIconHelp": {
     "message": "Escolha um emoji para representar esta categoria",
@@ -448,12 +432,6 @@
   "tabPlural": {
     "message": "abas"
   },
-  "pinCurrentTabTooltip": {
-    "message": "Fixar Aba Atual"
-  },
-  "manageTabsAndSettingsTooltip": {
-    "message": "Gerencie suas abas e configurações"
-  },
   "manageCategoriesButtonTooltip": {
     "message": "Gerenciar categorias"
   },
@@ -471,15 +449,6 @@
   },
   "importSettingsTooltip": {
     "message": "Importar configurações"
-  },
-  "notificationsDenied": {
-    "message": "Notificações desativadas. Ative-as nas configurações do seu navegador."
-  },
-  "criticalErrorTitle": {
-    "message": "Erro crítico"
-  },
-  "criticalErrorMessage": {
-    "message": "Ocorreu um erro crítico. Reinicie a extensão."
   },
   "selectCategory": {
     "message": "Selecionar uma categoria"
@@ -533,61 +502,9 @@
   "noRecentIcons": {
     "message": "Nenhum ícone recente"
   },
-  "containerSupport": {
-    "message": "Firefox Multi-Account Containers support detected",
-    "description": "Message indicating containers are supported"
-  },
   "defaultContainer": {
     "message": "Default container",
     "description": "Name for the default container"
-  },
-  "containerTabPin": {
-    "message": "Pinning tab in container: $CONTAINER$",
-    "description": "Message when pinning a tab in a container",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "Personal"
-      }
-    }
-  },
-  "containerTabCreate": {
-    "message": "Creating tab in container: $CONTAINER$",
-    "description": "Message when creating a tab in a container",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "Work"
-      }
-    }
-  },
-  "invalidTabId": {
-    "message": "Invalid tab ID: $TABID$",
-    "description": "Error message for invalid tab ID",
-    "placeholders": {
-      "tabid": {
-        "content": "$1",
-        "example": "61"
-      }
-    }
-  },
-  "tabNoLongerExists": {
-    "message": "Tab no longer exists or is not accessible",
-    "description": "Error message when tab no longer exists"
-  },
-  "containerNotFound": {
-    "message": "Container not found: $CONTAINER$",
-    "description": "Error message when container is not found",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "firefox-container-1"
-      }
-    }
-  },
-  "containerErrorFallback": {
-    "message": "Using default container due to error",
-    "description": "Message when falling back to default container"
   },
   "someTabsPinned": {
     "message": "Some existing tabs have been pinned",
@@ -596,34 +513,6 @@
   "someTabsPinnedAndOpened": {
     "message": "Some tabs were pinned and others opened",
     "description": "Message when some tabs were pinned and others opened"
-  },
-  "tabPinSuccess": {
-    "message": "Tab pinned successfully: $URL$",
-    "description": "Success message for tab pinning",
-    "placeholders": {
-      "url": {
-        "content": "$1",
-        "example": "https://example.com"
-      }
-    }
-  },
-  "tabPinError": {
-    "message": "Failed to pin tab: $ERROR$",
-    "description": "Error message for tab pinning",
-    "placeholders": {
-      "error": {
-        "content": "$1",
-        "example": "Invalid tab ID"
-      }
-    }
-  },
-  "containerRaceCondition": {
-    "message": "Adding delay to avoid conflicts with containers",
-    "description": "Debug message for containers"
-  },
-  "allTabsAlreadyPinned": {
-    "message": "All tabs are already pinned!",
-    "description": "Message when all tabs are already pinned"
   },
   "tabsPinned": {
     "message": "$COUNT$ aba(s) foram fixadas",

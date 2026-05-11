@@ -107,9 +107,6 @@
   "deleteConfirm": {
     "message": "您确定要删除此标签页吗？"
   },
-  "importExport": {
-    "message": "导入/导出"
-  },
   "exportSettings": {
     "message": "导出设置"
   },
@@ -265,12 +262,6 @@
       }
     }
   },
-  "openingTabs": {
-    "message": "正在打开标签页..."
-  },
-  "openingCategoryTabs": {
-    "message": "正在打开类别标签页..."
-  },
   "lastOpened": {
     "message": "上次打开：$TIME$",
     "placeholders": {
@@ -307,9 +298,6 @@
   "categoryIcon": {
     "message": "类别图标"
   },
-  "categoryIconPlaceholder": {
-    "message": "📁"
-  },
   "categoryIconHelp": {
     "message": "选择一个表情符号来代表此类别"
   },
@@ -343,12 +331,6 @@
   "clickToOpenPinnedTabs": {
     "message": "点击打开您的固定标签页"
   },
-  "pinCurrentTabTooltip": {
-    "message": "固定当前标签页"
-  },
-  "manageTabsAndSettingsTooltip": {
-    "message": "管理您的标签页和设置"
-  },
   "manageCategoriesButtonTooltip": {
     "message": "管理类别"
   },
@@ -366,15 +348,6 @@
   },
   "importSettingsTooltip": {
     "message": "导入设置"
-  },
-  "notificationsDenied": {
-    "message": "通知已禁用。请在浏览器设置中启用它们。"
-  },
-  "criticalErrorTitle": {
-    "message": "严重错误"
-  },
-  "criticalErrorMessage": {
-    "message": "发生严重错误。请重启扩展。"
   },
   "selectCategory": {
     "message": "选择类别"
@@ -448,61 +421,9 @@
   "configureManually": {
     "message": "手动配置"
   },
-  "containerSupport": {
-    "message": "Firefox Multi-Account Containers support detected",
-    "description": "Message indicating containers are supported"
-  },
   "defaultContainer": {
     "message": "Default container",
     "description": "Name for the default container"
-  },
-  "containerTabPin": {
-    "message": "Pinning tab in container: $CONTAINER$",
-    "description": "Message when pinning a tab in a container",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "Personal"
-      }
-    }
-  },
-  "containerTabCreate": {
-    "message": "Creating tab in container: $CONTAINER$",
-    "description": "Message when creating a tab in a container",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "Work"
-      }
-    }
-  },
-  "invalidTabId": {
-    "message": "Invalid tab ID: $TABID$",
-    "description": "Error message for invalid tab ID",
-    "placeholders": {
-      "tabid": {
-        "content": "$1",
-        "example": "61"
-      }
-    }
-  },
-  "tabNoLongerExists": {
-    "message": "Tab no longer exists or is not accessible",
-    "description": "Error message when tab no longer exists"
-  },
-  "containerNotFound": {
-    "message": "Container not found: $CONTAINER$",
-    "description": "Error message when container is not found",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "firefox-container-1"
-      }
-    }
-  },
-  "containerErrorFallback": {
-    "message": "Using default container due to error",
-    "description": "Message when falling back to default container"
   },
   "someTabsPinned": {
     "message": "Some existing tabs have been pinned",
@@ -511,34 +432,6 @@
   "someTabsPinnedAndOpened": {
     "message": "Some tabs were pinned and others opened",
     "description": "Message when some tabs were pinned and others opened"
-  },
-  "tabPinSuccess": {
-    "message": "Tab pinned successfully: $URL$",
-    "description": "Success message for tab pinning",
-    "placeholders": {
-      "url": {
-        "content": "$1",
-        "example": "https://example.com"
-      }
-    }
-  },
-  "tabPinError": {
-    "message": "Failed to pin tab: $ERROR$",
-    "description": "Error message for tab pinning",
-    "placeholders": {
-      "error": {
-        "content": "$1",
-        "example": "Invalid tab ID"
-      }
-    }
-  },
-  "containerRaceCondition": {
-    "message": "Adding delay to avoid conflicts with containers",
-    "description": "Debug message for containers"
-  },
-  "allTabsAlreadyPinned": {
-    "message": "All tabs are already pinned!",
-    "description": "Message when all tabs are already pinned"
   },
   "tabsPinned": {
     "message": "$COUNT$ 个标签页已被固定",

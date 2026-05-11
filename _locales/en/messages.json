@@ -113,10 +113,6 @@
     "message": "Are you sure you want to delete this tab?",
     "description": "Confirmation message for tab deletion"
   },
-  "importExport": {
-    "message": "Import/Export",
-    "description": "Import/Export section title"
-  },
   "exportSettings": {
     "message": "Export Settings",
     "description": "Export button text"
@@ -211,14 +207,6 @@
     "message": "Failed to initialize popup",
     "description": "Error message when popup cannot initialize"
   },
-  "openingTabs": {
-    "message": "Opening tabs...",
-    "description": "Message displayed while opening tabs"
-  },
-  "openingCategoryTabs": {
-    "message": "Opening category tabs...",
-    "description": "Message displayed while opening category tabs"
-  },
   "readyToOpenTabs": {
     "message": "Ready to open tabs",
     "description": "Status message when extension is ready"
@@ -306,10 +294,6 @@
   "categoryIcon": {
     "message": "Category Icon",
     "description": "Label for category icon field"
-  },
-  "categoryIconPlaceholder": {
-    "message": "📁",
-    "description": "Placeholder for category icon field"
   },
   "categoryIconHelp": {
     "message": "Choose an emoji to represent this category",
@@ -413,14 +397,6 @@
     "message": "tabs",
     "description": "Tab word plural"
   },
-  "pinCurrentTabTooltip": {
-    "message": "Pin Current Tab",
-    "description": "Tooltip for pin current tab button"
-  },
-  "manageTabsAndSettingsTooltip": {
-    "message": "Manage your tabs and settings",
-    "description": "Tooltip for options button"
-  },
   "manageCategoriesButtonTooltip": {
     "message": "Manage categories",
     "description": "Tooltip for manage categories button"
@@ -444,15 +420,6 @@
   "importSettingsTooltip": {
     "message": "Import settings",
     "description": "Tooltip for import button"
-  },
-  "notificationsDenied": {
-    "message": "Notifications disabled. Please enable them in your browser settings."
-  },
-  "criticalErrorTitle": {
-    "message": "Critical Error"
-  },
-  "criticalErrorMessage": {
-    "message": "A critical error occurred. Please restart the extension."
   },
   "selectCategory": {
     "message": "Select a category"
@@ -561,61 +528,9 @@
     "message": "or",
     "description": "Text divider between primary and secondary actions"
   },
-  "containerSupport": {
-    "message": "Firefox Multi-Account Containers support detected",
-    "description": "Message indicating containers are supported"
-  },
   "defaultContainer": {
     "message": "Default container",
     "description": "Name for the default container"
-  },
-  "containerTabPin": {
-    "message": "Pinning tab in container: $CONTAINER$",
-    "description": "Message when pinning a tab in a container",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "Personal"
-      }
-    }
-  },
-  "containerTabCreate": {
-    "message": "Creating tab in container: $CONTAINER$",
-    "description": "Message when creating a tab in a container",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "Work"
-      }
-    }
-  },
-  "invalidTabId": {
-    "message": "Invalid tab ID: $TABID$",
-    "description": "Error message for invalid tab ID",
-    "placeholders": {
-      "tabid": {
-        "content": "$1",
-        "example": "61"
-      }
-    }
-  },
-  "tabNoLongerExists": {
-    "message": "Tab no longer exists or is not accessible",
-    "description": "Error message when tab no longer exists"
-  },
-  "containerNotFound": {
-    "message": "Container not found: $CONTAINER$",
-    "description": "Error message when container is not found",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "firefox-container-1"
-      }
-    }
-  },
-  "containerErrorFallback": {
-    "message": "Using default container due to error",
-    "description": "Message when falling back to default container"
   },
   "someTabsPinned": {
     "message": "Some existing tabs have been pinned",
@@ -624,30 +539,6 @@
   "someTabsPinnedAndOpened": {
     "message": "Some tabs were pinned and others opened",
     "description": "Message when some tabs were pinned and others opened"
-  },
-  "tabPinSuccess": {
-    "message": "Tab pinned successfully: $URL$",
-    "description": "Success message for tab pinning",
-    "placeholders": {
-      "url": {
-        "content": "$1",
-        "example": "https://example.com"
-      }
-    }
-  },
-  "tabPinError": {
-    "message": "Failed to pin tab: $ERROR$",
-    "description": "Error message for tab pinning",
-    "placeholders": {
-      "error": {
-        "content": "$1",
-        "example": "Invalid tab ID"
-      }
-    }
-  },
-  "containerRaceCondition": {
-    "message": "Adding delay to avoid conflicts with containers",
-    "description": "Debug message for containers"
   },
   "tabsPinned": {
     "message": "$COUNT$ tab(s) have been pinned",
@@ -658,10 +549,6 @@
         "example": "3"
       }
     }
-  },
-  "allTabsAlreadyPinned": {
-    "message": "All tabs are already pinned!",
-    "description": "Message when all tabs are already pinned"
   },
   "failedToOpenTabs": {
     "message": "Failed to open tabs",

@@ -113,10 +113,6 @@
     "message": "Êtes-vous sûr de vouloir supprimer cet onglet ?",
     "description": "Message de confirmation pour la suppression d'onglet"
   },
-  "importExport": {
-    "message": "Import/Export",
-    "description": "Titre de la section Import/Export"
-  },
   "exportSettings": {
     "message": "Exporter les Paramètres",
     "description": "Texte du bouton d'export"
@@ -211,14 +207,6 @@
     "message": "Échec de l'initialisation de la popup",
     "description": "Message d'erreur quand la popup échoue à se charger"
   },
-  "openingTabs": {
-    "message": "Ouverture des onglets...",
-    "description": "Message affiché pendant l'ouverture des onglets"
-  },
-  "openingCategoryTabs": {
-    "message": "Ouverture des onglets de la catégorie...",
-    "description": "Message affiché pendant l'ouverture des onglets d'une catégorie"
-  },
   "readyToOpenTabs": {
     "message": "Prêt à ouvrir les onglets",
     "description": "Message de statut quand l'extension est prête"
@@ -300,10 +288,6 @@
   "categoryIcon": {
     "message": "Icône de la Catégorie",
     "description": "Label pour le champ icône de catégorie"
-  },
-  "categoryIconPlaceholder": {
-    "message": "📁",
-    "description": "Placeholder pour le champ icône de catégorie"
   },
   "categoryIconHelp": {
     "message": "Choisissez un emoji pour représenter cette catégorie",
@@ -397,14 +381,6 @@
     "message": "onglets",
     "description": "Mot onglet au pluriel"
   },
-  "pinCurrentTabTooltip": {
-    "message": "Épingler l'onglet actuel",
-    "description": "Info-bulle du bouton épingler l'onglet actuel"
-  },
-  "manageTabsAndSettingsTooltip": {
-    "message": "Gérer vos onglets et paramètres",
-    "description": "Info-bulle du bouton options"
-  },
   "manageCategoriesButtonTooltip": {
     "message": "Gérer les catégories",
     "description": "Info-bulle du bouton gérer les catégories"
@@ -428,15 +404,6 @@
   "importSettingsTooltip": {
     "message": "Importer les paramètres",
     "description": "Info-bulle du bouton importer"
-  },
-  "notificationsDenied": {
-    "message": "Notifications désactivées. Veuillez les activer dans les paramètres de votre navigateur."
-  },
-  "criticalErrorTitle": {
-    "message": "Erreur critique"
-  },
-  "criticalErrorMessage": {
-    "message": "Une erreur critique s'est produite. Veuillez redémarrer l'extension."
   },
   "selectCategory": {
     "message": "Sélectionner une catégorie"
@@ -553,93 +520,13 @@
     "message": "Certains onglets ont été épinglés",
     "description": "Message quand certains onglets existants ont été épinglés"
   },
-  "tabPinSuccess": {
-    "message": "Onglet épinglé avec succès : $URL$",
-    "description": "Message de succès pour l'épinglage d'onglet",
-    "placeholders": {
-      "url": {
-        "content": "$1",
-        "example": "https://example.com"
-      }
-    }
-  },
-  "tabPinError": {
-    "message": "Échec de l'épinglage de l'onglet : $ERROR$",
-    "description": "Message d'erreur pour l'épinglage d'onglet",
-    "placeholders": {
-      "error": {
-        "content": "$1",
-        "example": "Invalid tab ID"
-      }
-    }
-  },
-  "containerRaceCondition": {
-    "message": "Ajout d'un délai pour éviter les conflits avec les containers",
-    "description": "Message de debug pour les containers"
-  },
-  "containerSupport": {
-    "message": "Support des Containers Firefox Multi-Account détecté",
-    "description": "Message indiquant que les containers sont supportés"
-  },
   "defaultContainer": {
     "message": "Container par défaut",
     "description": "Nom du container par défaut"
   },
-  "containerTabPin": {
-    "message": "Épinglage d'onglet dans le container : $CONTAINER$",
-    "description": "Message lors de l'épinglage d'un onglet dans un container",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "Personal"
-      }
-    }
-  },
-  "containerTabCreate": {
-    "message": "Création d'onglet dans le container : $CONTAINER$",
-    "description": "Message lors de la création d'un onglet dans un container",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "Work"
-      }
-    }
-  },
-  "invalidTabId": {
-    "message": "ID d'onglet invalide : $TABID$",
-    "description": "Message d'erreur pour un ID d'onglet invalide",
-    "placeholders": {
-      "tabid": {
-        "content": "$1",
-        "example": "61"
-      }
-    }
-  },
-  "tabNoLongerExists": {
-    "message": "L'onglet n'existe plus ou n'est pas accessible",
-    "description": "Message d'erreur quand l'onglet n'existe plus"
-  },
-  "containerNotFound": {
-    "message": "Container non trouvé : $CONTAINER$",
-    "description": "Message d'erreur quand un container n'est pas trouvé",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "firefox-container-1"
-      }
-    }
-  },
-  "containerErrorFallback": {
-    "message": "Utilisation du container par défaut en raison d'une erreur",
-    "description": "Message quand on revient au container par défaut"
-  },
   "someTabsPinnedAndOpened": {
     "message": "Certains onglets ont été épinglés et d'autres ouverts",
     "description": "Message quand certains onglets ont été épinglés et d'autres ouverts"
-  },
-  "allTabsAlreadyPinned": {
-    "message": "Tous les onglets sont déjà épinglés !",
-    "description": "Message quand tous les onglets sont déjà épinglés"
   },
   "failedToOpenTabs": {
     "message": "Échec de l'ouverture des onglets",

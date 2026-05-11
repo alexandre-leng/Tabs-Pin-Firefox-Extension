@@ -107,9 +107,6 @@
   "deleteConfirm": {
     "message": "이 탭을 삭제하시겠습니까?"
   },
-  "importExport": {
-    "message": "가져오기/내보내기"
-  },
   "exportSettings": {
     "message": "설정 내보내기"
   },
@@ -265,12 +262,6 @@
       }
     }
   },
-  "openingTabs": {
-    "message": "탭을 여는 중..."
-  },
-  "openingCategoryTabs": {
-    "message": "카테고리 탭을 여는 중..."
-  },
   "lastOpened": {
     "message": "마지막 열린 시간: $TIME$",
     "placeholders": {
@@ -307,9 +298,6 @@
   "categoryIcon": {
     "message": "카테고리 아이콘"
   },
-  "categoryIconPlaceholder": {
-    "message": "📁"
-  },
   "categoryIconHelp": {
     "message": "이 카테고리를 나타낼 이모지를 선택하세요"
   },
@@ -343,12 +331,6 @@
   "clickToOpenPinnedTabs": {
     "message": "고정된 탭을 열려면 클릭하세요"
   },
-  "pinCurrentTabTooltip": {
-    "message": "현재 탭 고정"
-  },
-  "manageTabsAndSettingsTooltip": {
-    "message": "탭과 설정 관리"
-  },
   "manageCategoriesButtonTooltip": {
     "message": "카테고리 관리"
   },
@@ -366,15 +348,6 @@
   },
   "importSettingsTooltip": {
     "message": "설정 가져오기"
-  },
-  "notificationsDenied": {
-    "message": "알림이 비활성화되었습니다. 브라우저 설정에서 활성화해주세요."
-  },
-  "criticalErrorTitle": {
-    "message": "치명적 오류"
-  },
-  "criticalErrorMessage": {
-    "message": "치명적 오류가 발생했습니다. 확장 프로그램을 다시 시작해주세요."
   },
   "selectCategory": {
     "message": "카테고리 선택"
@@ -448,61 +421,9 @@
   "configureManually": {
     "message": "수동으로 구성"
   },
-  "containerSupport": {
-    "message": "Firefox Multi-Account Containers support detected",
-    "description": "Message indicating containers are supported"
-  },
   "defaultContainer": {
     "message": "Default container",
     "description": "Name for the default container"
-  },
-  "containerTabPin": {
-    "message": "Pinning tab in container: $CONTAINER$",
-    "description": "Message when pinning a tab in a container",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "Personal"
-      }
-    }
-  },
-  "containerTabCreate": {
-    "message": "Creating tab in container: $CONTAINER$",
-    "description": "Message when creating a tab in a container",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "Work"
-      }
-    }
-  },
-  "invalidTabId": {
-    "message": "Invalid tab ID: $TABID$",
-    "description": "Error message for invalid tab ID",
-    "placeholders": {
-      "tabid": {
-        "content": "$1",
-        "example": "61"
-      }
-    }
-  },
-  "tabNoLongerExists": {
-    "message": "Tab no longer exists or is not accessible",
-    "description": "Error message when tab no longer exists"
-  },
-  "containerNotFound": {
-    "message": "Container not found: $CONTAINER$",
-    "description": "Error message when container is not found",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "firefox-container-1"
-      }
-    }
-  },
-  "containerErrorFallback": {
-    "message": "Using default container due to error",
-    "description": "Message when falling back to default container"
   },
   "someTabsPinned": {
     "message": "Some existing tabs have been pinned",
@@ -511,34 +432,6 @@
   "someTabsPinnedAndOpened": {
     "message": "Some tabs were pinned and others opened",
     "description": "Message when some tabs were pinned and others opened"
-  },
-  "tabPinSuccess": {
-    "message": "Tab pinned successfully: $URL$",
-    "description": "Success message for tab pinning",
-    "placeholders": {
-      "url": {
-        "content": "$1",
-        "example": "https://example.com"
-      }
-    }
-  },
-  "tabPinError": {
-    "message": "Failed to pin tab: $ERROR$",
-    "description": "Error message for tab pinning",
-    "placeholders": {
-      "error": {
-        "content": "$1",
-        "example": "Invalid tab ID"
-      }
-    }
-  },
-  "containerRaceCondition": {
-    "message": "Adding delay to avoid conflicts with containers",
-    "description": "Debug message for containers"
-  },
-  "allTabsAlreadyPinned": {
-    "message": "All tabs are already pinned!",
-    "description": "Message when all tabs are already pinned"
   },
   "tabsPinned": {
     "message": "$COUNT$개의 탭이 고정되었습니다",

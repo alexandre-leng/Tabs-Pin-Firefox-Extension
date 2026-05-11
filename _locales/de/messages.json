@@ -109,10 +109,6 @@
     "message": "Sind Sie sicher, dass Sie diesen Tab löschen möchten?",
     "description": "Bestätigungsnachricht für Tab-Löschung"
   },
-  "importExport": {
-    "message": "Import/Export",
-    "description": "Titel der Import/Export-Sektion"
-  },
   "exportSettings": {
     "message": "Einstellungen exportieren",
     "description": "Text der Export-Schaltfläche"
@@ -207,14 +203,6 @@
     "message": "Fehler beim Initialisieren des Popups",
     "description": "Fehlermeldung wenn Popup nicht initialisiert werden kann"
   },
-  "openingTabs": {
-    "message": "Öffne Tabs...",
-    "description": "Nachricht während Tabs geöffnet werden"
-  },
-  "openingCategoryTabs": {
-    "message": "Öffne Kategorie-Tabs...",
-    "description": "Nachricht während Kategorie-Tabs geöffnet werden"
-  },
   "readyToOpenTabs": {
     "message": "Bereit zum Öffnen der Tabs",
     "description": "Statusnachricht wenn Erweiterung bereit ist"
@@ -302,10 +290,6 @@
   "categoryIcon": {
     "message": "Kategorie-Symbol",
     "description": "Label für Kategorie-Symbol-Feld"
-  },
-  "categoryIconPlaceholder": {
-    "message": "📁",
-    "description": "Platzhalter für Kategorie-Symbol-Feld"
   },
   "categoryIconHelp": {
     "message": "Wählen Sie ein Emoji zur Darstellung dieser Kategorie",
@@ -430,12 +414,6 @@
   "tabPlural": {
     "message": "Tabs"
   },
-  "pinCurrentTabTooltip": {
-    "message": "Aktuellen Tab anheften"
-  },
-  "manageTabsAndSettingsTooltip": {
-    "message": "Verwalten Sie Ihre Tabs und Einstellungen"
-  },
   "manageCategoriesButtonTooltip": {
     "message": "Kategorien verwalten"
   },
@@ -453,15 +431,6 @@
   },
   "importSettingsTooltip": {
     "message": "Einstellungen importieren"
-  },
-  "notificationsDenied": {
-    "message": "Benachrichtigungen deaktiviert. Bitte aktivieren Sie sie in Ihren Browser-Einstellungen."
-  },
-  "criticalErrorTitle": {
-    "message": "Kritischer Fehler"
-  },
-  "criticalErrorMessage": {
-    "message": "Ein kritischer Fehler ist aufgetreten. Bitte starten Sie die Erweiterung neu."
   },
   "selectCategory": {
     "message": "Kategorie auswählen"
@@ -533,61 +502,9 @@
   "orDivider": {
     "message": "oder"
   },
-  "containerSupport": {
-    "message": "Firefox Multi-Account Containers Unterstützung erkannt",
-    "description": "Message indicating containers are supported"
-  },
   "defaultContainer": {
     "message": "Standard-Container",
     "description": "Name for the default container"
-  },
-  "containerTabPin": {
-    "message": "Tab in Container anheften: $CONTAINER$",
-    "description": "Message when pinning a tab in a container",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "Personal"
-      }
-    }
-  },
-  "containerTabCreate": {
-    "message": "Tab in Container erstellen: $CONTAINER$",
-    "description": "Message when creating a tab in a container",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "Work"
-      }
-    }
-  },
-  "invalidTabId": {
-    "message": "Ungültige Tab-ID: $TABID$",
-    "description": "Error message for invalid tab ID",
-    "placeholders": {
-      "tabid": {
-        "content": "$1",
-        "example": "61"
-      }
-    }
-  },
-  "tabNoLongerExists": {
-    "message": "Tab existiert nicht mehr oder ist nicht zugänglich",
-    "description": "Error message when tab no longer exists"
-  },
-  "containerNotFound": {
-    "message": "Container nicht gefunden: $CONTAINER$",
-    "description": "Error message when container is not found",
-    "placeholders": {
-      "container": {
-        "content": "$1",
-        "example": "firefox-container-1"
-      }
-    }
-  },
-  "containerErrorFallback": {
-    "message": "Standard-Container wird aufgrund eines Fehlers verwendet",
-    "description": "Message when falling back to default container"
   },
   "someTabsPinned": {
     "message": "Einige vorhandene Tabs wurden angeheftet",
@@ -596,30 +513,6 @@
   "someTabsPinnedAndOpened": {
     "message": "Einige Tabs wurden angeheftet und andere geöffnet",
     "description": "Message when some tabs were pinned and others opened"
-  },
-  "tabPinSuccess": {
-    "message": "Tab erfolgreich angeheftet: $URL$",
-    "description": "Success message for tab pinning",
-    "placeholders": {
-      "url": {
-        "content": "$1",
-        "example": "https://example.com"
-      }
-    }
-  },
-  "tabPinError": {
-    "message": "Fehler beim Anheften des Tabs: $ERROR$",
-    "description": "Error message for tab pinning",
-    "placeholders": {
-      "error": {
-        "content": "$1",
-        "example": "Invalid tab ID"
-      }
-    }
-  },
-  "containerRaceCondition": {
-    "message": "Verzögerung hinzufügen, um Konflikte mit Containern zu vermeiden",
-    "description": "Debug message for containers"
   },
   "tabsPinned": {
     "message": "$COUNT$ Tab(s) wurden angeheftet",
@@ -630,10 +523,6 @@
         "example": "3"
       }
     }
-  },
-  "allTabsAlreadyPinned": {
-    "message": "Alle Tabs sind bereits angeheftet!",
-    "description": "Message when all tabs are already pinned"
   },
   "failedToOpenTabs": {
     "message": "Fehler beim Öffnen der Tabs",
