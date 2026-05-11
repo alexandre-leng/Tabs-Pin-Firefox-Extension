@@ -634,5 +634,61 @@
         "example": "3"
       }
     }
+  },
+  "failedToOpenTabs": {
+    "message": "Falha ao abrir abas",
+    "description": "Error when opening tabs fails"
+  },
+  "failedToOpenCategoryTabs": {
+    "message": "Falha ao abrir abas da categoria",
+    "description": "Error when opening category tabs fails"
+  },
+  "failedToSaveTab": {
+    "message": "Falha ao salvar aba",
+    "description": "Error when saving a pinned tab fails"
+  },
+  "failedToDeleteTab": {
+    "message": "Falha ao excluir aba",
+    "description": "Error when deleting a pinned tab fails"
+  },
+  "failedToSaveCategory": {
+    "message": "Falha ao salvar categoria",
+    "description": "Error when saving a category fails"
+  },
+  "failedToResetCategories": {
+    "message": "Falha ao redefinir categorias",
+    "description": "Error when resetting categories fails"
+  },
+  "failedToImportData": {
+    "message": "Falha ao importar dados",
+    "description": "Error when importing settings fails"
+  },
+  "failedToLoadData": {
+    "message": "Falha ao carregar dados",
+    "description": "Error when loading data fails"
+  },
+  "failedToReorderTab": {
+    "message": "Falha ao reordenar aba",
+    "description": "Error when reordering tabs fails"
+  },
+  "failedToUpdateCategory": {
+    "message": "Falha ao atualizar categoria",
+    "description": "Error when updating a category fails"
+  },
+  "placeholderUrl": {
+    "message": "https://exemplo.pt",
+    "description": "Placeholder for URL input field"
+  },
+  "placeholderSiteName": {
+    "message": "Nome do meu site",
+    "description": "Placeholder for site name input field"
+  },
+  "placeholderCategoryName": {
+    "message": "Digite o nome da categoria",
+    "description": "Placeholder for category name input field"
+  },
+  "dataRefreshed": {
+    "message": "Dados atualizados com sucesso!",
+    "description": "Message shown when data is refreshed successfully"
   }
 }

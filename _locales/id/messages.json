@@ -549,5 +549,61 @@
         "example": "3"
       }
     }
+  },
+  "failedToOpenTabs": {
+    "message": "Gagal membuka tab",
+    "description": "Error when opening tabs fails"
+  },
+  "failedToOpenCategoryTabs": {
+    "message": "Gagal membuka tab kategori",
+    "description": "Error when opening category tabs fails"
+  },
+  "failedToSaveTab": {
+    "message": "Gagal menyimpan tab",
+    "description": "Error when saving a pinned tab fails"
+  },
+  "failedToDeleteTab": {
+    "message": "Gagal menghapus tab",
+    "description": "Error when deleting a pinned tab fails"
+  },
+  "failedToSaveCategory": {
+    "message": "Gagal menyimpan kategori",
+    "description": "Error when saving a category fails"
+  },
+  "failedToResetCategories": {
+    "message": "Gagal mereset kategori",
+    "description": "Error when resetting categories fails"
+  },
+  "failedToImportData": {
+    "message": "Gagal mengimpor data",
+    "description": "Error when importing settings fails"
+  },
+  "failedToLoadData": {
+    "message": "Gagal memuat data",
+    "description": "Error when loading data fails"
+  },
+  "failedToReorderTab": {
+    "message": "Gagal menyusun ulang tab",
+    "description": "Error when reordering tabs fails"
+  },
+  "failedToUpdateCategory": {
+    "message": "Gagal memperbarui kategori",
+    "description": "Error when updating a category fails"
+  },
+  "placeholderUrl": {
+    "message": "https://contoh.id",
+    "description": "Placeholder for URL input field"
+  },
+  "placeholderSiteName": {
+    "message": "Nama situs saya",
+    "description": "Placeholder for site name input field"
+  },
+  "placeholderCategoryName": {
+    "message": "Masukkan nama kategori",
+    "description": "Placeholder for category name input field"
+  },
+  "dataRefreshed": {
+    "message": "Data berhasil disegarkan!",
+    "description": "Message shown when data is refreshed successfully"
   }
 }

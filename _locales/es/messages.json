@@ -656,5 +656,61 @@
   "allTabsAlreadyPinned": {
     "message": "¡Todas las pestañas ya están fijadas!",
     "description": "Mensaje cuando todas las pestañas ya están fijadas"
+  },
+  "failedToOpenTabs": {
+    "message": "Error al abrir pestañas",
+    "description": "Error when opening tabs fails"
+  },
+  "failedToOpenCategoryTabs": {
+    "message": "Error al abrir pestañas de categoría",
+    "description": "Error when opening category tabs fails"
+  },
+  "failedToSaveTab": {
+    "message": "Error al guardar pestaña",
+    "description": "Error when saving a pinned tab fails"
+  },
+  "failedToDeleteTab": {
+    "message": "Error al eliminar pestaña",
+    "description": "Error when deleting a pinned tab fails"
+  },
+  "failedToSaveCategory": {
+    "message": "Error al guardar categoría",
+    "description": "Error when saving a category fails"
+  },
+  "failedToResetCategories": {
+    "message": "Error al restablecer categorías",
+    "description": "Error when resetting categories fails"
+  },
+  "failedToImportData": {
+    "message": "Error al importar datos",
+    "description": "Error when importing settings fails"
+  },
+  "failedToLoadData": {
+    "message": "Error al cargar datos",
+    "description": "Error when loading data fails"
+  },
+  "failedToReorderTab": {
+    "message": "Error al reordenar pestaña",
+    "description": "Error when reordering tabs fails"
+  },
+  "failedToUpdateCategory": {
+    "message": "Error al actualizar categoría",
+    "description": "Error when updating a category fails"
+  },
+  "placeholderUrl": {
+    "message": "https://ejemplo.es",
+    "description": "Placeholder for URL input field"
+  },
+  "placeholderSiteName": {
+    "message": "Nombre de mi sitio",
+    "description": "Placeholder for site name input field"
+  },
+  "placeholderCategoryName": {
+    "message": "Nombre de la categoría",
+    "description": "Placeholder for category name input field"
+  },
+  "dataRefreshed": {
+    "message": "¡Datos actualizados correctamente!",
+    "description": "Message shown when data is refreshed successfully"
   }
 }

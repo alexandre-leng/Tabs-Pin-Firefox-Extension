@@ -549,5 +549,61 @@
         "example": "3"
       }
     }
+  },
+  "failedToOpenTabs": {
+    "message": "Ошибка открытия вкладок",
+    "description": "Error when opening tabs fails"
+  },
+  "failedToOpenCategoryTabs": {
+    "message": "Ошибка открытия вкладок категории",
+    "description": "Error when opening category tabs fails"
+  },
+  "failedToSaveTab": {
+    "message": "Ошибка сохранения вкладки",
+    "description": "Error when saving a pinned tab fails"
+  },
+  "failedToDeleteTab": {
+    "message": "Ошибка удаления вкладки",
+    "description": "Error when deleting a pinned tab fails"
+  },
+  "failedToSaveCategory": {
+    "message": "Ошибка сохранения категории",
+    "description": "Error when saving a category fails"
+  },
+  "failedToResetCategories": {
+    "message": "Ошибка сброса категорий",
+    "description": "Error when resetting categories fails"
+  },
+  "failedToImportData": {
+    "message": "Ошибка импорта данных",
+    "description": "Error when importing settings fails"
+  },
+  "failedToLoadData": {
+    "message": "Ошибка загрузки данных",
+    "description": "Error when loading data fails"
+  },
+  "failedToReorderTab": {
+    "message": "Ошибка переупорядочивания вкладки",
+    "description": "Error when reordering tabs fails"
+  },
+  "failedToUpdateCategory": {
+    "message": "Ошибка обновления категории",
+    "description": "Error when updating a category fails"
+  },
+  "placeholderUrl": {
+    "message": "https://пример.рф",
+    "description": "Placeholder for URL input field"
+  },
+  "placeholderSiteName": {
+    "message": "Название сайта",
+    "description": "Placeholder for site name input field"
+  },
+  "placeholderCategoryName": {
+    "message": "Введите название категории",
+    "description": "Placeholder for category name input field"
+  },
+  "dataRefreshed": {
+    "message": "Данные успешно обновлены!",
+    "description": "Message shown when data is refreshed successfully"
   }
 }

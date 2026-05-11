@@ -549,5 +549,61 @@
         "example": "3"
       }
     }
+  },
+  "failedToOpenTabs": {
+    "message": "タブを開けませんでした",
+    "description": "Error when opening tabs fails"
+  },
+  "failedToOpenCategoryTabs": {
+    "message": "カテゴリのタブを開けませんでした",
+    "description": "Error when opening category tabs fails"
+  },
+  "failedToSaveTab": {
+    "message": "タブを保存できませんでした",
+    "description": "Error when saving a pinned tab fails"
+  },
+  "failedToDeleteTab": {
+    "message": "タブを削除できませんでした",
+    "description": "Error when deleting a pinned tab fails"
+  },
+  "failedToSaveCategory": {
+    "message": "カテゴリを保存できませんでした",
+    "description": "Error when saving a category fails"
+  },
+  "failedToResetCategories": {
+    "message": "カテゴリのリセットに失敗しました",
+    "description": "Error when resetting categories fails"
+  },
+  "failedToImportData": {
+    "message": "データのインポートに失敗しました",
+    "description": "Error when importing settings fails"
+  },
+  "failedToLoadData": {
+    "message": "データの読み込みに失敗しました",
+    "description": "Error when loading data fails"
+  },
+  "failedToReorderTab": {
+    "message": "タブの並べ替えに失敗しました",
+    "description": "Error when reordering tabs fails"
+  },
+  "failedToUpdateCategory": {
+    "message": "カテゴリの更新に失敗しました",
+    "description": "Error when updating a category fails"
+  },
+  "placeholderUrl": {
+    "message": "https://example.jp",
+    "description": "Placeholder for URL input field"
+  },
+  "placeholderSiteName": {
+    "message": "サイト名",
+    "description": "Placeholder for site name input field"
+  },
+  "placeholderCategoryName": {
+    "message": "カテゴリ名を入力",
+    "description": "Placeholder for category name input field"
+  },
+  "dataRefreshed": {
+    "message": "データが正常に更新されました！",
+    "description": "Message shown when data is refreshed successfully"
   }
 }

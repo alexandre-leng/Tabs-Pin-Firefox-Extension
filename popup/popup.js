@@ -618,7 +618,7 @@ class PopupManager {
           // This is expected when no tabs are configured, don't show as error
           return;
         }
-        throw new Error(response.error || 'Failed to open tabs');
+        throw new Error(response.error || browser.i18n.getMessage('failedToOpenTabs'));
       }
     } catch (error) {
       console.error('Error opening tabs:', error);
@@ -722,7 +722,7 @@ class PopupManager {
         }
       } else {
         // Background script returned an error
-        throw new Error(response.error || 'Failed to open category tabs');
+        throw new Error(response.error || browser.i18n.getMessage('failedToOpenCategoryTabs'));
       }
     } catch (error) {
       console.error('Error opening category tabs:', error);

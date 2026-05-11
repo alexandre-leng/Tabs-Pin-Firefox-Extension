@@ -634,5 +634,61 @@
         "example": "3"
       }
     }
+  },
+  "failedToOpenTabs": {
+    "message": "Fout bij openen van tabbladen",
+    "description": "Error when opening tabs fails"
+  },
+  "failedToOpenCategoryTabs": {
+    "message": "Fout bij openen van categorietabbladen",
+    "description": "Error when opening category tabs fails"
+  },
+  "failedToSaveTab": {
+    "message": "Fout bij opslaan van tabblad",
+    "description": "Error when saving a pinned tab fails"
+  },
+  "failedToDeleteTab": {
+    "message": "Fout bij verwijderen van tabblad",
+    "description": "Error when deleting a pinned tab fails"
+  },
+  "failedToSaveCategory": {
+    "message": "Fout bij opslaan van categorie",
+    "description": "Error when saving a category fails"
+  },
+  "failedToResetCategories": {
+    "message": "Fout bij resetten van categorieën",
+    "description": "Error when resetting categories fails"
+  },
+  "failedToImportData": {
+    "message": "Fout bij importeren van gegevens",
+    "description": "Error when importing settings fails"
+  },
+  "failedToLoadData": {
+    "message": "Fout bij laden van gegevens",
+    "description": "Error when loading data fails"
+  },
+  "failedToReorderTab": {
+    "message": "Fout bij herschikken van tabblad",
+    "description": "Error when reordering tabs fails"
+  },
+  "failedToUpdateCategory": {
+    "message": "Fout bij bijwerken van categorie",
+    "description": "Error when updating a category fails"
+  },
+  "placeholderUrl": {
+    "message": "https://voorbeeld.nl",
+    "description": "Placeholder for URL input field"
+  },
+  "placeholderSiteName": {
+    "message": "Naam van mijn site",
+    "description": "Placeholder for site name input field"
+  },
+  "placeholderCategoryName": {
+    "message": "Voer categorienaam in",
+    "description": "Placeholder for category name input field"
+  },
+  "dataRefreshed": {
+    "message": "Gegevens succesvol vernieuwd!",
+    "description": "Message shown when data is refreshed successfully"
   }
 }

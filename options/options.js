@@ -276,7 +276,7 @@ class OptionsManager {
         this.categories = response.data.categories || [];
         this.settings = response.data.settings || {};
       } else {
-        throw new Error(response?.error || 'Failed to load data');
+        throw new Error(response?.error || browser.i18n.getMessage('failedToLoadData'));
       }
     } catch (error) {
       console.error('Error loading data:', error);
@@ -663,7 +663,7 @@ class OptionsManager {
         
         this.showToast('success', '✅', message);
     } else {
-        throw new Error(response?.error || 'Failed to save tab');
+        throw new Error(response?.error || browser.i18n.getMessage('failedToSaveTab'));
       }
     } catch (error) {
       console.error('Error saving tab:', error);
@@ -694,7 +694,7 @@ class OptionsManager {
         this.renderCategories();
         this.showToast('success', '✅', browser.i18n.getMessage('tabDeleted') || 'Tab deleted successfully!');
       } else {
-        throw new Error(response?.error || 'Failed to delete tab');
+        throw new Error(response?.error || browser.i18n.getMessage('failedToDeleteTab'));
       }
     } catch (error) {
       console.error('Error deleting tab:', error);
@@ -796,7 +796,7 @@ class OptionsManager {
         this.closeCategoryModal();
         this.showToast('success', '✅', browser.i18n.getMessage('categorySaved') || 'Category saved successfully!');
       } else {
-        throw new Error(response?.error || 'Failed to save category');
+        throw new Error(response?.error || browser.i18n.getMessage('failedToSaveCategory'));
       }
     } catch (error) {
       console.error('Error saving category:', error);
@@ -822,11 +822,11 @@ class OptionsManager {
         this.render();
         this.showToast('success', '✅', browser.i18n.getMessage('categoriesReset') || 'Categories reset to default!');
       } else {
-        throw new Error(response?.error || 'Failed to reset categories');
+        throw new Error(response?.error || browser.i18n.getMessage('failedToResetCategories'));
       }
     } catch (error) {
       console.error('Error resetting categories:', error);
-      this.showToast('error', '❌', 'Failed to reset categories');
+      this.showToast('error', '❌', browser.i18n.getMessage('failedToResetCategories'));
     }
   }
 
@@ -885,7 +885,7 @@ class OptionsManager {
       });
       
       if (!response || !response.success) {
-        throw new Error(response?.error || 'Failed to import data');
+        throw new Error(response?.error || browser.i18n.getMessage('failedToImportData'));
       }
       
       // Reload and render
@@ -1036,7 +1036,7 @@ class OptionsManager {
     console.log('Force refreshing options page...');
     await this.loadData(true);
     this.render();
-    this.showToast('success', '✅', 'Data refreshed successfully!');
+    this.showToast('success', '✅', browser.i18n.getMessage('dataRefreshed'));
   }
 
   enableDragAndDrop() {
@@ -1219,11 +1219,11 @@ class OptionsManager {
         // Re-render tabs WITHOUT calling enableDragAndDrop again to avoid infinite loop
         this.renderTabsWithoutDragDrop();
       } else {
-        throw new Error(response?.error || 'Failed to reorder tab');
+        throw new Error(response?.error || browser.i18n.getMessage('failedToReorderTab'));
       }
     } catch (error) {
       console.error('Error reordering tab:', error);
-      this.showToast('error', '❌', browser.i18n.getMessage('reorderError') || 'Failed to reorder tab');
+      this.showToast('error', '❌', browser.i18n.getMessage('reorderError') || browser.i18n.getMessage('failedToReorderTab'));
       
       // Reload data to reset state
       await this.loadData();
@@ -1384,7 +1384,7 @@ class OptionsManager {
           this.renderCategories();
           this.showToast('success', '✅', browser.i18n.getMessage('categoryChanged') || 'Category updated!');
         } else {
-          throw new Error(response?.error || 'Failed to update category');
+          throw new Error(response?.error || browser.i18n.getMessage('failedToUpdateCategory'));
         }
       } catch (error) {
         console.error('Error updating category:', error);

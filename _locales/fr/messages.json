@@ -640,5 +640,61 @@
   "allTabsAlreadyPinned": {
     "message": "Tous les onglets sont déjà épinglés !",
     "description": "Message quand tous les onglets sont déjà épinglés"
+  },
+  "failedToOpenTabs": {
+    "message": "Échec de l'ouverture des onglets",
+    "description": "Error when opening tabs fails"
+  },
+  "failedToOpenCategoryTabs": {
+    "message": "Échec de l'ouverture des onglets de la catégorie",
+    "description": "Error when opening category tabs fails"
+  },
+  "failedToSaveTab": {
+    "message": "Échec de l'enregistrement de l'onglet",
+    "description": "Error when saving a pinned tab fails"
+  },
+  "failedToDeleteTab": {
+    "message": "Échec de la suppression de l'onglet",
+    "description": "Error when deleting a pinned tab fails"
+  },
+  "failedToSaveCategory": {
+    "message": "Échec de l'enregistrement de la catégorie",
+    "description": "Error when saving a category fails"
+  },
+  "failedToResetCategories": {
+    "message": "Échec de la réinitialisation des catégories",
+    "description": "Error when resetting categories fails"
+  },
+  "failedToImportData": {
+    "message": "Échec de l'importation des données",
+    "description": "Error when importing settings fails"
+  },
+  "failedToLoadData": {
+    "message": "Échec du chargement des données",
+    "description": "Error when loading data fails"
+  },
+  "failedToReorderTab": {
+    "message": "Échec de la réorganisation de l'onglet",
+    "description": "Error when reordering tabs fails"
+  },
+  "failedToUpdateCategory": {
+    "message": "Échec de la mise à jour de la catégorie",
+    "description": "Error when updating a category fails"
+  },
+  "placeholderUrl": {
+    "message": "https://exemple.fr",
+    "description": "Placeholder for URL input field"
+  },
+  "placeholderSiteName": {
+    "message": "Nom de mon site",
+    "description": "Placeholder for site name input field"
+  },
+  "placeholderCategoryName": {
+    "message": "Nom de la catégorie",
+    "description": "Placeholder for category name input field"
+  },
+  "dataRefreshed": {
+    "message": "Données actualisées avec succès !",
+    "description": "Message shown when data is refreshed successfully"
   }
 }

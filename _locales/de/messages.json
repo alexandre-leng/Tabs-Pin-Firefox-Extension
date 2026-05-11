@@ -634,5 +634,61 @@
   "allTabsAlreadyPinned": {
     "message": "Alle Tabs sind bereits angeheftet!",
     "description": "Message when all tabs are already pinned"
+  },
+  "failedToOpenTabs": {
+    "message": "Fehler beim Öffnen der Tabs",
+    "description": "Error when opening tabs fails"
+  },
+  "failedToOpenCategoryTabs": {
+    "message": "Fehler beim Öffnen der Kategorie-Tabs",
+    "description": "Error when opening category tabs fails"
+  },
+  "failedToSaveTab": {
+    "message": "Fehler beim Speichern des Tabs",
+    "description": "Error when saving a pinned tab fails"
+  },
+  "failedToDeleteTab": {
+    "message": "Fehler beim Löschen des Tabs",
+    "description": "Error when deleting a pinned tab fails"
+  },
+  "failedToSaveCategory": {
+    "message": "Fehler beim Speichern der Kategorie",
+    "description": "Error when saving a category fails"
+  },
+  "failedToResetCategories": {
+    "message": "Fehler beim Zurücksetzen der Kategorien",
+    "description": "Error when resetting categories fails"
+  },
+  "failedToImportData": {
+    "message": "Fehler beim Importieren der Daten",
+    "description": "Error when importing settings fails"
+  },
+  "failedToLoadData": {
+    "message": "Fehler beim Laden der Daten",
+    "description": "Error when loading data fails"
+  },
+  "failedToReorderTab": {
+    "message": "Fehler beim Neuanordnen des Tabs",
+    "description": "Error when reordering tabs fails"
+  },
+  "failedToUpdateCategory": {
+    "message": "Fehler beim Aktualisieren der Kategorie",
+    "description": "Error when updating a category fails"
+  },
+  "placeholderUrl": {
+    "message": "https://beispiel.de",
+    "description": "Placeholder for URL input field"
+  },
+  "placeholderSiteName": {
+    "message": "Name meiner Website",
+    "description": "Placeholder for site name input field"
+  },
+  "placeholderCategoryName": {
+    "message": "Kategoriename eingeben",
+    "description": "Placeholder for category name input field"
+  },
+  "dataRefreshed": {
+    "message": "Daten erfolgreich aktualisiert!",
+    "description": "Message shown when data is refreshed successfully"
   }
 }

@@ -549,5 +549,61 @@
         "example": "3"
       }
     }
+  },
+  "failedToOpenTabs": {
+    "message": "탭을 열지 못했습니다",
+    "description": "Error when opening tabs fails"
+  },
+  "failedToOpenCategoryTabs": {
+    "message": "카테고리 탭을 열지 못했습니다",
+    "description": "Error when opening category tabs fails"
+  },
+  "failedToSaveTab": {
+    "message": "탭을 저장하지 못했습니다",
+    "description": "Error when saving a pinned tab fails"
+  },
+  "failedToDeleteTab": {
+    "message": "탭을 삭제하지 못했습니다",
+    "description": "Error when deleting a pinned tab fails"
+  },
+  "failedToSaveCategory": {
+    "message": "카테고리를 저장하지 못했습니다",
+    "description": "Error when saving a category fails"
+  },
+  "failedToResetCategories": {
+    "message": "카테고리 초기화 실패",
+    "description": "Error when resetting categories fails"
+  },
+  "failedToImportData": {
+    "message": "데이터 가져오기 실패",
+    "description": "Error when importing settings fails"
+  },
+  "failedToLoadData": {
+    "message": "데이터 로드 실패",
+    "description": "Error when loading data fails"
+  },
+  "failedToReorderTab": {
+    "message": "탭 재정렬 실패",
+    "description": "Error when reordering tabs fails"
+  },
+  "failedToUpdateCategory": {
+    "message": "카테고리 업데이트 실패",
+    "description": "Error when updating a category fails"
+  },
+  "placeholderUrl": {
+    "message": "https://example.kr",
+    "description": "Placeholder for URL input field"
+  },
+  "placeholderSiteName": {
+    "message": "사이트 이름",
+    "description": "Placeholder for site name input field"
+  },
+  "placeholderCategoryName": {
+    "message": "카테고리 이름 입력",
+    "description": "Placeholder for category name input field"
+  },
+  "dataRefreshed": {
+    "message": "데이터가 성공적으로 새로고침되었습니다!",
+    "description": "Message shown when data is refreshed successfully"
   }
 }

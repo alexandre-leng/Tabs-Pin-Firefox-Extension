@@ -549,5 +549,61 @@
         "example": "3"
       }
     }
+  },
+  "failedToOpenTabs": {
+    "message": "فشل فتح علامات التبويب",
+    "description": "Error when opening tabs fails"
+  },
+  "failedToOpenCategoryTabs": {
+    "message": "فشل فتح علامات تبويب الفئة",
+    "description": "Error when opening category tabs fails"
+  },
+  "failedToSaveTab": {
+    "message": "فشل حفظ علامة التبويب",
+    "description": "Error when saving a pinned tab fails"
+  },
+  "failedToDeleteTab": {
+    "message": "فشل حذف علامة التبويب",
+    "description": "Error when deleting a pinned tab fails"
+  },
+  "failedToSaveCategory": {
+    "message": "فشل حفظ الفئة",
+    "description": "Error when saving a category fails"
+  },
+  "failedToResetCategories": {
+    "message": "فشل إعادة تعيين الفئات",
+    "description": "Error when resetting categories fails"
+  },
+  "failedToImportData": {
+    "message": "فشل استيراد البيانات",
+    "description": "Error when importing settings fails"
+  },
+  "failedToLoadData": {
+    "message": "فشل تحميل البيانات",
+    "description": "Error when loading data fails"
+  },
+  "failedToReorderTab": {
+    "message": "فشل إعادة ترتيب علامة التبويب",
+    "description": "Error when reordering tabs fails"
+  },
+  "failedToUpdateCategory": {
+    "message": "فشل تحديث الفئة",
+    "description": "Error when updating a category fails"
+  },
+  "placeholderUrl": {
+    "message": "https://example.sa",
+    "description": "Placeholder for URL input field"
+  },
+  "placeholderSiteName": {
+    "message": "اسم موقعي",
+    "description": "Placeholder for site name input field"
+  },
+  "placeholderCategoryName": {
+    "message": "أدخل اسم الفئة",
+    "description": "Placeholder for category name input field"
+  },
+  "dataRefreshed": {
+    "message": "تم تحديث البيانات بنجاح!",
+    "description": "Message shown when data is refreshed successfully"
   }
 }

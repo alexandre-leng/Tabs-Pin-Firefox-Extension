@@ -549,5 +549,61 @@
         "example": "3"
       }
     }
+  },
+  "failedToOpenTabs": {
+    "message": "टैब खोलने में विफल",
+    "description": "Error when opening tabs fails"
+  },
+  "failedToOpenCategoryTabs": {
+    "message": "श्रेणी टैब खोलने में विफल",
+    "description": "Error when opening category tabs fails"
+  },
+  "failedToSaveTab": {
+    "message": "टैब सहेजने में विफल",
+    "description": "Error when saving a pinned tab fails"
+  },
+  "failedToDeleteTab": {
+    "message": "टैब हटाने में विफल",
+    "description": "Error when deleting a pinned tab fails"
+  },
+  "failedToSaveCategory": {
+    "message": "श्रेणी सहेजने में विफल",
+    "description": "Error when saving a category fails"
+  },
+  "failedToResetCategories": {
+    "message": "श्रेणियां रीसेट करने में विफल",
+    "description": "Error when resetting categories fails"
+  },
+  "failedToImportData": {
+    "message": "डेटा आयात करने में विफल",
+    "description": "Error when importing settings fails"
+  },
+  "failedToLoadData": {
+    "message": "डेटा लोड करने में विफल",
+    "description": "Error when loading data fails"
+  },
+  "failedToReorderTab": {
+    "message": "टैब पुनर्क्रमित करने में विफल",
+    "description": "Error when reordering tabs fails"
+  },
+  "failedToUpdateCategory": {
+    "message": "श्रेणी अपडेट करने में विफल",
+    "description": "Error when updating a category fails"
+  },
+  "placeholderUrl": {
+    "message": "https://example.in",
+    "description": "Placeholder for URL input field"
+  },
+  "placeholderSiteName": {
+    "message": "मेरी साइट का नाम",
+    "description": "Placeholder for site name input field"
+  },
+  "placeholderCategoryName": {
+    "message": "श्रेणी का नाम दर्ज करें",
+    "description": "Placeholder for category name input field"
+  },
+  "dataRefreshed": {
+    "message": "डेटा सफलतापूर्वक ताज़ा किया गया!",
+    "description": "Message shown when data is refreshed successfully"
   }
 }

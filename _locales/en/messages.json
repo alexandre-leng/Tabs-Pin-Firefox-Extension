@@ -662,5 +662,61 @@
   "allTabsAlreadyPinned": {
     "message": "All tabs are already pinned!",
     "description": "Message when all tabs are already pinned"
+  },
+  "failedToOpenTabs": {
+    "message": "Failed to open tabs",
+    "description": "Error when opening tabs fails"
+  },
+  "failedToOpenCategoryTabs": {
+    "message": "Failed to open category tabs",
+    "description": "Error when opening category tabs fails"
+  },
+  "failedToSaveTab": {
+    "message": "Failed to save tab",
+    "description": "Error when saving a pinned tab fails"
+  },
+  "failedToDeleteTab": {
+    "message": "Failed to delete tab",
+    "description": "Error when deleting a pinned tab fails"
+  },
+  "failedToSaveCategory": {
+    "message": "Failed to save category",
+    "description": "Error when saving a category fails"
+  },
+  "failedToResetCategories": {
+    "message": "Failed to reset categories",
+    "description": "Error when resetting categories fails"
+  },
+  "failedToImportData": {
+    "message": "Failed to import data",
+    "description": "Error when importing settings fails"
+  },
+  "failedToLoadData": {
+    "message": "Failed to load data",
+    "description": "Error when loading data fails"
+  },
+  "failedToReorderTab": {
+    "message": "Failed to reorder tab",
+    "description": "Error when reordering tabs fails"
+  },
+  "failedToUpdateCategory": {
+    "message": "Failed to update category",
+    "description": "Error when updating a category fails"
+  },
+  "placeholderUrl": {
+    "message": "https://example.com",
+    "description": "Placeholder for URL input field"
+  },
+  "placeholderSiteName": {
+    "message": "My Site Name",
+    "description": "Placeholder for site name input field"
+  },
+  "placeholderCategoryName": {
+    "message": "Enter category name",
+    "description": "Placeholder for category name input field"
+  },
+  "dataRefreshed": {
+    "message": "Data refreshed successfully!",
+    "description": "Message shown when data is refreshed successfully"
   }
 }

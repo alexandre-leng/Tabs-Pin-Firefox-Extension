@@ -656,5 +656,61 @@
         "example": "3"
       }
     }
+  },
+  "failedToOpenTabs": {
+    "message": "Errore nell'aprire le schede",
+    "description": "Error when opening tabs fails"
+  },
+  "failedToOpenCategoryTabs": {
+    "message": "Errore nell'aprire le schede della categoria",
+    "description": "Error when opening category tabs fails"
+  },
+  "failedToSaveTab": {
+    "message": "Errore nel salvare la scheda",
+    "description": "Error when saving a pinned tab fails"
+  },
+  "failedToDeleteTab": {
+    "message": "Errore nell'eliminare la scheda",
+    "description": "Error when deleting a pinned tab fails"
+  },
+  "failedToSaveCategory": {
+    "message": "Errore nel salvare la categoria",
+    "description": "Error when saving a category fails"
+  },
+  "failedToResetCategories": {
+    "message": "Errore nel ripristinare le categorie",
+    "description": "Error when resetting categories fails"
+  },
+  "failedToImportData": {
+    "message": "Errore nell'importare i dati",
+    "description": "Error when importing settings fails"
+  },
+  "failedToLoadData": {
+    "message": "Errore nel caricare i dati",
+    "description": "Error when loading data fails"
+  },
+  "failedToReorderTab": {
+    "message": "Errore nel riordinare la scheda",
+    "description": "Error when reordering tabs fails"
+  },
+  "failedToUpdateCategory": {
+    "message": "Errore nell'aggiornare la categoria",
+    "description": "Error when updating a category fails"
+  },
+  "placeholderUrl": {
+    "message": "https://esempio.it",
+    "description": "Placeholder for URL input field"
+  },
+  "placeholderSiteName": {
+    "message": "Nome del mio sito",
+    "description": "Placeholder for site name input field"
+  },
+  "placeholderCategoryName": {
+    "message": "Inserisci nome categoria",
+    "description": "Placeholder for category name input field"
+  },
+  "dataRefreshed": {
+    "message": "Dati aggiornati con successo!",
+    "description": "Message shown when data is refreshed successfully"
   }
 }
