@@ -577,40 +577,6 @@
     "message": "Ajout d'un délai pour éviter les conflits avec les containers",
     "description": "Message de debug pour les containers"
   },
-  "helpAndSupport": {
-    "message": "Aide et Support",
-    "description": "Titre de la section aide et support"
-  },
-  "helpDescription": {
-    "message": "Pour plus d'informations, des FAQ et de la documentation, visitez :",
-    "description": "Description de l'aide"
-  },
-  "reportIssue": {
-    "message": "Signaler un Problème",
-    "description": "Lien pour signaler un problème"
-  },
-  "versionInfo": {
-    "message": "Version",
-    "description": "Label pour les informations de version"
-  },
-  "never": {
-    "message": "Jamais",
-    "description": "Valeur pour 'jamais' dans les statistiques"
-  },
-  "footer": {
-    "message": "Développé avec ❤️ pour la productivité",
-    "description": "Texte du pied de page"
-  },
-  "currentTabInfo": {
-    "message": "Onglet actuel : $TITLE$",
-    "description": "Informations sur l'onglet actuel",
-    "placeholders": {
-      "title": {
-        "content": "$1",
-        "example": "Google"
-      }
-    }
-  },
   "containerSupport": {
     "message": "Support des Containers Firefox Multi-Account détecté",
     "description": "Message indiquant que les containers sont supportés"
