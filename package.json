@@ -6,13 +6,20 @@
     "dev": "npm run dev:firefox",
     "dev:firefox": "node scripts/prepare-manifest.js firefox && web-ext run",
     "dev:chrome": "node scripts/prepare-manifest.js chrome",
-    "build": "npm run build:chrome && npm run build:firefox",
+    "build": "npm run build:firefox && npm run build:chrome",
     "build:firefox": "node scripts/build.js firefox",
     "build:chrome": "node scripts/build.js chrome",
     "start": "npm run dev",
-    "lint": "node scripts/prepare-manifest.js firefox && web-ext lint"
+    "lint": "node scripts/prepare-manifest.js firefox && web-ext lint",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --passWithNoTests",
+    "test:watch": "npm test -- --watch"
   },
   "devDependencies": {
+    "jest": "^30.2.0",
     "web-ext": "^10.1.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": ["**/tests/**/*.test.js"]
   }
 }
