@@ -16,8 +16,7 @@
   "permissions": [
     "tabs",
     "storage",
-    "activeTab",
-    "cookies"
+    "activeTab"
   ],
   "background": {
     "scripts": [
